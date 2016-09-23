@@ -1,0 +1,132 @@
+%\documentclass[wrr]{agutex}
+\documentclass[wrr, draft]{agutex}
+% Author names in capital letters:
+\authorrunninghead{1st AUTHOR ET AL.}
+
+% Shorter version of title entered in capital letters:
+\titlerunninghead{ADAPTING TO UNCERTAIN SEA LEVEL RISE}
+
+%Corresponding author mailing address and e-mail address:
+\authoraddr{Corresponding author: Name, Address. (email)}
+
+\usepackage{bbm, amsmath}
+%\usepackage[dvips]{graphicx}
+\usepackage{graphicx}
+\setkeys{Gin}{draft=false}
+\usepackage{paralist, booktabs}
+\usepackage{url}
+\usepackage{color}
+
+
+\usepackage{lineno}
+ \linenumbers*[1]
+%  To add line numbers to lines with equations:
+
+\begin{document}
+
+%% ------------------------------------------------------------------------ %%
+%  TITLE
+%% ------------------------------------------------------------------------ %%
+
+\title{I don't know, are you sure you want to do this?}
+
+%% ------------------------------------------------------------------------ %%
+%  AUTHORS AND AFFILIATIONS
+%% ------------------------------------------------------------------------ %%
+
+% \altaffilmark will produce footnote;
+% matching \altaffiltext will appear at bottom of page.
+
+\authors{N.N.\altaffilmark{1}, N.N.\altaffilmark{2,3},...}
+
+\altaffiltext{1}{Affiliation one}
+
+\altaffiltext{2}{Affiliation two}
+
+\altaffiltext{3}{Affiliation three}
+
+%% ------------------------------------------------------------------------ %%
+%  ABSTRACT
+%% ------------------------------------------------------------------------ %%
+
+\begin{abstract}
+...
+\end{abstract}
+
+
+%% ------------------------------------------------------------------------ %%
+%  BEGIN ARTICLE
+%% ------------------------------------------------------------------------ %%
+
+\begin{article}
+
+
+
+\section{Introduction}\label{sec:intro}
+
+\section{Methods}
+
+\subsection{Sea level projections {\color{blue} (PG)}}
+
+\subsubsection{Limitations of the sea level projections}
+
+\subsection{Decision tools {\color{blue} (KdB, MD, TT)}}
+
+\subsubsection{Limitations of the decision tools}
+
+\section{Case studies}
+
+\subsection{Data {\color{blue} (PG)}}
+
+\subsection{Timing of adaptation measures {\color{blue} (KdB, TT)}}
+
+A case study focusing on and comparing different cities in Norway.
+
+\subsection{Selection of adaptation measures(?) {\color{blue} (MD)}}
+
+A case study focusing on Denmark. 
+
+\section{Conclusions}
+
+%  ACKNOWLEDGMENTS
+\begin{acknowledgments}
+This work was funded by NordForsk through project number 74456 ``Statistical Analysis of Climate Projections'' (eSACP) and The Research Council of Norway through project number 243953 ``Physical and Statistical Analysis of Climate Extremes in Large Datasets'' (ClimateXL). The source code for the analysis is implemented in the statistical programming language {\tt R} (\url{http://www.R-project.org}) and is available on GitHub at \url{http://github.com/eSACP/...}.
+\end{acknowledgments}
+
+%%  REFERENCE LIST AND TEXT CITATIONS
+% 5\bibliographystyle{../BibTeX/agufull08}
+\bibliographystyle{agufull08}
+% \bibliography{ref.bib}
+% Please use ONLY \citet and \citep for reference citations.
+
+\begin{thebibliography}{37}
+%%   Before submitting: copy all the contents into the .bbl LaTeX file here
+%%   and run latex again
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{\textit{Robert and Casella}(2004)}]{RobertCasella2004}
+Robert, C.~P., and G.~Casella (2004), \textit{Monte Carlo Statistical Methods},
+  2nd ed., Springer, New York.
+
+\bibitem[{\textit{Rue et~al.}(2009)\textit{Rue, Martino, and
+  Chopin}}]{Rueetal2009}
+Rue, H., S.~Martino, and N.~Chopin (2009), {Approximate {B}ayesian Inference
+  for Latent {G}aussian Models Using Integrated Nested {L}aplace Approximations
+  (with Discussion)}, \textit{Journal of the Royal Statistical Society, Series
+  B}, \textit{71}, 319--392.
+
+
+\end{thebibliography}
+
+%% ------------------------------------------------------------------------ %%
+%  END ARTICLE
+%% ------------------------------------------------------------------------ %%
+\end{article}
+
+%% Enter Figures and Tables here:
+
+\end{document}

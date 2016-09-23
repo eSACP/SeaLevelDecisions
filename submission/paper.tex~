@@ -1,0 +1,798 @@
+%\documentclass[wrr]{agutex}
+\documentclass[wrr, draft]{agutex}
+% Author names in capital letters:
+\authorrunninghead{STEINBAKK ET AL.}
+
+% Shorter version of title entered in capital letters:
+\titlerunninghead{UNCERTAINTY IN DESIGN FLOOD ESTIMATION}
+
+%Corresponding author mailing address and e-mail address:
+\authoraddr{Corresponding author: G. H. Steinbakk,
+Norwegian Computing Center, P.O. Box 114 Blindern, 0314 Oslo, Norway. 
+(gunnhildur@nr.no)}
+
+\usepackage{bbm, amsmath}
+%\usepackage[dvips]{graphicx}
+\usepackage{graphicx}
+\setkeys{Gin}{draft=false}
+\usepackage{paralist, booktabs}
+\usepackage{url}
+
+
+\usepackage{lineno}
+ \linenumbers*[1]
+%  To add line numbers to lines with equations:
+
+\begin{document}
+
+%% ------------------------------------------------------------------------ %%
+%  TITLE
+%% ------------------------------------------------------------------------ %%
+
+\title{Propagation of rating curve uncertainty in design flood estimation}
+
+%% ------------------------------------------------------------------------ %%
+%  AUTHORS AND AFFILIATIONS
+%% ------------------------------------------------------------------------ %%
+
+% \altaffilmark will produce footnote;
+% matching \altaffiltext will appear at bottom of page.
+
+\authors{G. H. Steinbakk\altaffilmark{1}, T. L. Thorarinsdottir\altaffilmark{1}, T. Reitan\altaffilmark{2,3}, L. Schlichting\altaffilmark{3}, S. H\o lleland\altaffilmark{4} and K. Engeland\altaffilmark{3}}
+
+\altaffiltext{1}{Norwegian Computing Center, Oslo, Norway}
+
+\altaffiltext{2}{Centre for Ecological Synthesis, Department of Biology, University of Oslo, Oslo, Norway}
+
+\altaffiltext{3}{Norwegian Water Resources and Energy Directorate, Oslo, Norway}
+
+\altaffiltext{4}{University of Bergen, Bergen, Norway}
+
+%% ------------------------------------------------------------------------ %%
+%  ABSTRACT
+%% ------------------------------------------------------------------------ %%
+
+\begin{abstract}
+  Statistical flood frequency analysis is commonly performed based on a set of annual maximum discharge values which are derived from stage measurements via a stage-discharge rating curve model. Such design flood estimation techniques often ignore the uncertainty in the underlying rating curve model. Using data from eight gauging stations in Norway, we investigate the effect of curve and sample uncertainty on design flood estimation by combining results from a Bayesian multi-segment rating curve model and a Bayesian flood frequency analysis. We find that sample uncertainty is the main contributor to the design flood estimation uncertainty. However, under extrapolation of the rating curve, the uncertainty bounds for both the rating curve model and the flood frequency analysis are highly skewed and ignoring these features may underestimate the potential risk of flooding. We expect this effect to be even more pronounced in arid and semi-arid climates with a higher variability in floods.  
+\end{abstract}
+
+
+%% ------------------------------------------------------------------------ %%
+%  BEGIN ARTICLE
+%% ------------------------------------------------------------------------ %%
+
+\begin{article}
+
+
+
+\section{Introduction}\label{sec:intro}
+
+The aim of flood frequency analysis is to estimate the streamflow quantiles, or design floods, for given exceedance probabilities or return periods, e.g. the 100-year flood. The design flood estimation forms the basis for hazard management related to flood risk and is a legal obligation when building infrastructure such as dams, bridges and roads close to water bodies. Flood inundation maps used for land use planning are also produced based on design flood estimates. The streamflow quantile estimates required for these applications might range from estimates of the mean annual flood to quantiles higher than the 1000-year flood. 
+
+The estimation of design floods is influenced by a range of uncertainties.  Traditionally, three important sources of uncertainty are the uncertainty in the choice of a model or a distribution, the estimation uncertainty due to a small data sample, and the uncertainty in flood observations.  Furthermore, the observation uncertainties contribute in a two-fold way since the observations are used both for estimating and evaluating the statistical model.  In this paper, we investigate how such uncertainties influence the resulting design flood estimation with a focus on the data-related sources of uncertainty. 
+ 
+Applications commonly require design flood estimates for return periods longer than the sample size, resulting in estimates that may be based on a large degree of extrapolation. This is one of the main contributors to a large sample uncertainty and estimates that are sensitive to the particular data used for the estimation, with large and highly skewed uncertainty bounds. To improve the robustness of design flood estimates, linear moment estimators \citep[e.g.][]{Hosking&etal1985}, penalized maximum likelihood \citep{Coles&Dixon1999, Martins&Stedinger2000} and Bayesian model formulation with informative priors \citep[e.g.][]{Renard2011} have been proposed. The estimation uncertainty was originally assessed using asymptotic theory for the maximum likelihood under a normal approximation \citep[e.g.][]{Madsen&etal1997,Rosbjerg&Madsen1995}.  However, resampling methods such as bootstrap or jackknife better account for the skewness of the uncertainty bounds \citep[e.g.][]{Engeland&etal2005, Hall&etal2004, Kysely2008}. More recently, Bayesian methods have been used to estimate uncertainty intervals as well as the predictive distribution of the flood quantiles \citep[e.g.][]{Lee&Kim2008, Renard&etal2006, Renard&etal2013}. 
+
+Recently, estimation of uncertainties in streamflow data has received increased attention in the literature, see \cite{Coxon&2015}, \cite{Baldassarre&Montanari2009}, \cite{LeCoz&etal2014}, \cite{Moyeed&Clarke2005}, \cite{Reitan&PetersenOverleir2009, Reitan&PetersenOverleir2011} and \cite{Westerberg&etal2011}.  Streamflow observations are derived from water level measurements by using a rating curve model to translate the measured water level to streamflow.  Consequently, uncertainties in streamflow data stem from two sources.  A random uncertainty relates to the accuracy of the water level measurements while uncertainty in the rating curve model translates into a systematic, or correlated, uncertainty in the output \citep{Neppel&etal2010}.  We will focus on this latter source of uncertainty. 
+ 
+In a natural river profile, the rating curve model is estimated using regression-like techniques based on simultaneous measurements of streamflows and water levels using a power law model with one or several profile segments or water level intervals. Important sources of uncertainty include random errors in the streamflow measurements and systematic errors related to the specification of the model, that is, the method for extrapolating beyond the observations as well as the inclusion of seasonality, temporal drift and step changes in the water level/discharge relationship \citep{Coxon&2015}.  In particular, the extrapolation uncertainty might be large since it is not possible to know whether the model should include a new segment beyond the observed values \citep{Lang&etal2010, Reitan&PetersenOverleir2009}.  For this reason, \cite{LeCoz&etal2014} use hydraulic modeling to aid the extrapolation. Temporal changes can be caused by erosion or deposition of river sediments, or a seasonal effect due to vegetation growth in summer and/or ice in winter.  In Norway, the effect of ice is a major modeling challenge and the streamflow data influenced by ice are systematically adjusted (ice-reduced). The changes in river profile is accounted for by using different curves for different periods or by estimation non-stationary rating curve models \citep{Reitan&PetersenOverleir2011}. \cite{PetersenOverleir&etal2009} show that for 581 gauging stations in Norway, more than 93 \% of the rating curves have a relative uncertainty of 10 \% or larger for high flows.  
+
+In hydrological modeling there is an increasing attention to explicitly accounting for different sources of uncertainty. The effects of uncertainty in streamflow observations have been investigated in the context of precipitation-runoff modeling \citep[e.g.][]{McMillan&etal2010} and in the estimation of hydrological indices and signatures \citep[e.g.][]{Clarke1999, Clarke&etal2000, Westerberg&McMillan2015}. For flood frequency analysis, the observational uncertainty is commonly estimated separately \citep{Kuczera1996, Lang&etal2010,Neppel&etal2010} while one study performs an integrated analysis where the rating curve parameters and the flood frequency distribution are estimated jointly \citep{PetersenOverleir&Reitan2009}.  This study concludes that the rating curve error has an important influence on the quality and the variance of the quantile estimates. Furthermore, the systematic errors caused by the rating curve model might have a larger influence on the resulting quantile estimates than random errors in water level observations \citep{Lang&etal2010, Neppel&etal2010}.   
+
+The results discussed above demonstrate that it is important to account for rating curve uncertainty in flood frequency estimation, and we believe there is a need to better understand both the marginal and the joint effects of sample and rating curve uncertainty. Furthermore, it is essential to assess the importance of critical data when estimating flood quantiles, i.e. to assess the added value of streamflow measurements during high floods. Such measurements may reduce the extrapolation uncertainty in the rating curve model and, subsequently, reduce the uncertainty of design flood estimates.  To gain a better insight into the effect of sample and rating curve uncertainties in flood frequency estimation, we aim to answer the following research questions:
+\begin{enumerate}
+\item[(i)] How large is the contribution of the sample uncertainty and the rating curve uncertainty, individually and combined, when estimating design floods?
+\item[(ii)] What is the effect of length of the annual maximum series on the design flood estimation uncertainty?
+\item[(iii)] What is the added value of large streamflow measurements at the high end of the rating curve and in the annual maximum data series?
+\end{enumerate}
+
+The remainder of the paper is organized as follows. A description of the rating curve model and the techniques used for the flood frequency estimation is given in Section 2. In the next Section 3, data and results for eight gauged catchments in Norway are presented. The paper closes with a discussion in Section 4 and details of the estimation algorithms are provided in the appendix.  
+
+\section{Methods}
+
+We employ Bayesian inference techniques to investigate the uncertainty associated with parameter estimation in statistical models for stage-discharge rating curves and the subsequent flood frequency analysis.  The general framework for such an analysis may be described as follows. Denote the available data set by $\mathcal{W} = (w_1, \ldots, w_n)$. The data is assumed to be independent and identically distributed such that the likelihood, or the sampling density, is given by 
+\begin{linenomath*}
+\[
+p(\mathcal{W} \, | \, \boldsymbol \gamma) = \prod_{i=1}^n p(w_i \, | \, \boldsymbol \gamma),
+\] 
+\end{linenomath*}
+where $\boldsymbol \gamma = (\gamma_1, \ldots, \gamma_k)$ denotes the vector of unknown parameters. 
+
+The parameter vector $\boldsymbol \gamma$ is associated with a prior distribution $p(\boldsymbol \gamma)$ and, subsequently, we calculate the posterior distribution of the parameters given the data,
+\begin{linenomath*}
+\[
+p(\boldsymbol \gamma \, | \, \mathcal{W}) = \frac{p(\mathcal W \, | \, \boldsymbol \gamma) p(\boldsymbol \gamma)}{\int p(\mathcal W \, | \, \boldsymbol \gamma) p(\boldsymbol \gamma) \textup{d} \boldsymbol \gamma}.  
+\]
+\end{linenomath*}
+The posterior distribution is commonly not available in a closed form which requires the use of e.g. Markov chain Monte Carlo (MCMC) simulation techniques \citep{RobertCasella2004}.  The posterior distribution, either directly or as represented by a sample, may then be used to infer the parameter uncertainty given the statistical model and the data $\mathcal{W}$. Similarly, we may use the information provided by the posterior distribution to assess the uncertainty of the quantiles of the sampling distribution, or any other function of the parameters. 
+
+Below, we outline the specific uses of this general framework for the rating curve model of \citet{Reitan&PetersenOverleir2009} and for flood frequency analysis using the two parameter Gumbel distribution and the three parameter generalized extreme value (GEV) distribution. We have chosen the rating curve model of \citet{Reitan&PetersenOverleir2009} as this model is implemented for use in Norway and as it is one of only a few models under which a discharge uncertainty quantification has been performed for a large number of gauging stations \citep{PetersenOverleir&etal2009, Coxon&2015}. Similarly, we employ the Gumbel and the GEV models as these are the recommended models for use in Norway \citep{Midttomme&2011}.  
+
+\subsection{Stage-discharge rating curves}\label{sec:curves}
+Observed streamflow data are usually given by instantaneous stage measurements which measure the water surface height at a gauging station. These data are then converted to discharge using a stage-discharge rating curve. It is common to assume a power law relationship between the stage $h$ and the discharge $Q$, that is, 
+\begin{linenomath*}
+\begin{equation*}\label{eq:simple stage-discharge}
+Q = \begin{cases} 0 & \quad \textup{if } h \leq h_0 \\
+\exp(a) (h - h_0)^b & \quad \textup{if } h > h_0, \\
+\end{cases}
+\end{equation*}
+\end{linenomath*}
+where $h_0$ is a cease-to-flow stage parameter and the parameters $a$ and $b$ determine the shape of the rating curve.  A more general model assumes that the profile of the river consists of multiple segments with the shape of the rating curve changing for each segment. \citet{Reitan&PetersenOverleir2009} consider a multi-segment model with log-normal measurement errors. That is,
+\begin{linenomath*}
+\begin{align}\label{eq:stage-discharge}
+\log(Q) = \sum_{j=1}^k & \mathbbm{1}\{ h_{s,j-1} \leq h < h_{s,j}\} \\
+& \times \left( a_j + b_j \log( h - h_{0,j}) \right) + \varepsilon, \nonumber
+\end{align}
+\end{linenomath*}
+where $(Q,h)$ is an instantaneous stage-discharge measurement, $\mathbbm{1}$ denotes the indicator function, $h_{s,j}$ determines the transition between segments $j$ and $j+1$ for $j = 1, \ldots, k-1$ with $h_{s,0} = -\infty$, $h_{s,k}=\infty$ and the error term $\varepsilon$ is assumed to fulfill $\varepsilon \sim \mathcal{N}(0, \sigma^2)$. The parameters $a_j$ for $j > 1$ are determined by the first segment $a_1$ and continuity from one segment to the next such that $a_j + b_j \log(h_{s,j} - h_{0,j}) = a_{j+1} + b_{j+1} \log (h_{s,j} - h_{0,j+1})$.
+
+\citet{Reitan&PetersenOverleir2009} propose a Bayesian inference procedure for the model in \eqref{eq:stage-discharge} which has been implemented as a part of the national hydrological database system at the Norwegian Water Resources and Energy Directorate. Throughout, we refer to this framework as the Bayesian multi-segment software or the Bayesian multi-segment model. The Bayesian inference procedure estimates the number of segments, the model parameters for each segment and the measurement error variance $\sigma^2$. However, when forming the resulting discharge estimates, we form best estimates under the likelihood and thus, focus on the mean value in \eqref{eq:stage-discharge} which means ignoring $\varepsilon$ using $E(\varepsilon)=0$ as this term represents stage-discharge measurement noise rather than uncertainty in the real stage-discharge relationship. 
+
+Denote by $\boldsymbol \theta$ the vector of regression parameters in \eqref{eq:stage-discharge}, including the number of segments $k$, 
+\begin{linenomath*}
+\begin{align}\label{eq:theta}
+\boldsymbol \theta = (& k, a_1, b_1, \ldots, b_k, \\
+& h_{0,1}, \ldots, h_{0,k}, h_{s,1}, \ldots, h_{s,k-1}).  \nonumber
+\end{align}
+\end{linenomath*}
+Given a set of training data $\mathcal{D}$ consisting of $d$ pairs of instantaneous stage and discharge measurements, $\mathcal{D} = \{ (Q_1, h_1), \ldots, (Q_d,h_d)\}$, the Bayesian multi-segment software returns a sample $\boldsymbol \theta^{(1)}, \ldots, \boldsymbol \theta^{(n)}$ from the posterior distribution of the regression parameters, $p(\boldsymbol \theta | \mathcal{D})$. The multi-segment model described here is used for inference within the stage-discharge measurement set, while the process model in \cite{Reitan&PetersenOverleir2009} is used for handling the extra uncertainty regarding new segments outside the measurement set. Note that the number of segments, $k$, is sampled together with the rest of the regression parameters. This sample, together with a series of instantaneous stage measurements $\{h_{t,l}\}_{t=1,l=1}^{T,L}$ over $T$ years with $L$ measurements per year, may now be used to infer a sample of instantaneous discharge values by setting 
+\begin{linenomath*}
+\begin{align}\label{eq:x}
+Q_{t,l}^{(i)} = \exp \Bigg( \sum_{j=1}^k & \mathbbm{1}\{ h^{(i)}_{s,j-1} \leq h_{t,l} < h^{(i)}_{s,j}\}  \\
+& \left( a^{(i)}_j + b^{(i)}_j \log( h_{t,l} - h^{(i)}_{0,j}) \right) \Bigg) \nonumber 
+\end{align}
+\end{linenomath*}
+for $t = 1, \ldots, T$, $l= 1, \ldots, L$ and $i = 1, \ldots, n$. From these instantaneous values, we may then further infer a sample of annual maximum daily average values $Q_1^{(i)}, \ldots, Q_{T}^{(i)}$ by forming daily averages and, subsequently, finding the maximum value in each year. 
+
+In addition, the Bayesian multi-segment software issues a single set of values $\hat{\boldsymbol Q} = (\hat{Q}_1, \ldots, \hat{Q}_T)$ which are considered the best estimate for the actual unobserved annual maximum daily average discharge. These values are based on a set of parameter estimates $\hat{\boldsymbol \theta}$ given as the mode of the multivariate posterior distribution $p(\boldsymbol\theta|\mathcal D)$.  
+
+
+\subsection{Modeling annual maximum discharge}\label{sec:ffa} 
+The generalized extreme value (GEV) distribution is commonly used to model block maxima such as the annual maxima, see e.g. \citet{Coles2001}.  Denote by $y$ the maximum yearly daily average discharge $Q$ normalized by the catchment area $A$, $y = Q/A$. We assume that $y$ follows a GEV distribution, $y \sim \textup{GEV}(\mu, \kappa, \xi)$, with density
+\begin{linenomath*}
+\begin{equation}\label{eq:GEV density}
+p(y \, | \, \boldsymbol \eta = (\mu, \kappa, \xi)) = \kappa \, \alpha(y)^{(\xi + 1)} \exp \left( -\alpha(y)\right)
+\end{equation}
+\end{linenomath*}
+where 
+\begin{linenomath*}
+\begin{equation}\label{eq:GEV kernel}
+\alpha(y) = \begin{cases} \left( 1 + \xi \kappa (y - \mu)\right)^{-1/\xi} & \quad \textup{if } \xi \neq 0 \\
+ \exp\left(- \kappa (y - \mu) \right) & \quad \textup{if } \xi = 0 \\
+\end{cases} 
+\end{equation}
+\end{linenomath*}
+and $(1 + \xi \kappa (y - \mu)) > 0$ for $\xi \neq 0$. The GEV distribution has three parameters that in our parameterization are location $\mu \in \mathbbm{R}$, inverse scale $\kappa \in \mathbbm{R}_+$, and shape $\xi \in \mathbbm{R}$. The distribution is often parameterized using the scale $\sigma = 1/\kappa$ rather than the inverse scale \citep[e.g.][]{Coles2001}. However, the current parameterization is common in Bayesian contexts \citep{Rueetal2009, Dyrrdal&2015}, and is chosen because derivations related to posterior densities are considerably easier in this representation. 
+
+The tail behavior of the GEV distribution is driven by the value of the shape parameter $\xi$ and generally falls in three classes: the Fr\'echet type ($\xi > 0$) has a heavy upper tail, the Gumbel tail ($\xi \rightarrow 0$) is characterized by a light upper tail, and the Weibull type ($\xi < 0$) is bounded from above. The shape parameter thus provides vital information on the statistical properties of the discharge and is, concurrently, difficult to estimate because of the involved parametric form of the density in \eqref{eq:GEV density} as a function of $\xi$.  For this reason, the guidelines for flood estimation in Norway \citep{Midttomme&2011} recommend the use of the three parameter GEV distribution for local flood frequency analysis only if 50 or more observations are available at the location. For 30-50 observations, the two parameter Gumbel distribution should be used, that is, the particular case in \eqref{eq:GEV density} and \eqref{eq:GEV kernel} where $\xi = 0$.  For less than 30 observations, it is recommended to complement the local data with regional information.  
+
+We consider both the Gumbel distribution and the more general GEV distribution. That is, under the GEV model we have  $\boldsymbol \eta = (\mu, \kappa, \xi)$ while for the Gumbel model, the parameter vector becomes $\boldsymbol \eta = (\mu, \kappa)$.  To assess the uncertainty in the parameter estimation, we employ the Bayesian inference techniques described in the appendix.  We denote by $p(\boldsymbol \eta \, | \, \hat{\mathcal{Y}})$ the posterior distribution under the best estimate for the rating curve model, $\hat{\boldsymbol \theta}$, resulting in the data $\hat{\mathcal{Y}} = (\hat{y}_1,\ldots,\hat{y}_T) = (\hat{Q}_1/A, \ldots, \hat{Q}_T/A)$. Similarly, for $\mathcal{Y}^{(i)} = (y_1^{(i)},\ldots,y_T^{(i)})$ based on a rating curve model with parameters $\boldsymbol \theta^{(i)}$, we denote the posterior distribution by $p(\boldsymbol \eta \, | \, \mathcal{Y}^{(i)})$ for $i = 1,\ldots,n$. To assess the combined uncertainty of estimating both $\boldsymbol \theta$ and $\boldsymbol \eta$, we consider the mixture distribution
+\begin{linenomath*}
+\begin{equation}\label{eq:posterior mixture}
+p(\boldsymbol \eta \, | \, \mathcal{Y} ) = \frac{1}{n} \sum_{i=1}^n p(\boldsymbol \eta \, | \, \mathcal{Y}^{(i)}),
+\end{equation}
+\end{linenomath*}
+where $\mathcal{Y} = \{ \mathcal{Y}^{(i)} \}_{i=1}^n$. Denote by $\mathcal{H}$ those instantaneous stage measurements that are transformed to annual maximum daily average discharge by the Bayesian multi-segment model \eqref{eq:x}. Then the mixture distribution in \eqref{eq:posterior mixture} is an approximation of the marginal posterior distribution of $\boldsymbol \eta$ given the data $\mathcal{D}$ and $\mathcal{H}$,
+\begin{linenomath*}
+\begin{align*}
+p(\boldsymbol \eta \, | \, \mathcal{D}, \mathcal{H}) & = \int p(\boldsymbol \eta, \boldsymbol \theta \, | \, \mathcal{D}, \mathcal{H} ) \textup{d} \boldsymbol \theta \\
+& = \int p(\boldsymbol \eta \, | \, \boldsymbol \theta, \mathcal{H}) p(\boldsymbol \theta \, | \, \mathcal{D}) \textup{d} \boldsymbol \theta. 
+\end{align*}
+\end{linenomath*}
+
+Alternatively, to isolate the effects of the parameter uncertainty in the rating curve model on the resulting flood frequency analysis, we employ a flood frequency estimation technique that returns a single best estimate. For ease of comparison with the Bayesian inference discussed above, we use maximum likelihood estimation for this purpose. That is, we obtain a maximum likelihood estimate $\hat{\boldsymbol \eta}^{(i)}$ for every data set $\mathcal Y^{(i)}$ in $\mathcal{Y}$ and use the variability of $\hat{\boldsymbol \eta}^{(1)}, \ldots, \hat{\boldsymbol \eta}^{(n)}$ to infer the effects of the uncertainty in the rating curve model only. The overall model framework is illustrated in Figure \ref{fig:model}. 
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.5\textwidth]{FIG1-modelIllustration3.png}
+\caption{An overview of the modeling framework. $\mathcal D$ denotes the data used for estimating the parameters $\boldsymbol\theta$ in the stage-discharge rating curve relation and $\mathcal H$ denotes the stage measurements behind the annual maximum daily average discharge values. Given $\mathcal H$ and $\boldsymbol \theta$, we obtain $\mathcal Y$, the annual maximum discharge normalized by the catchment area $A$. After estimating $\boldsymbol \eta$, the parameters of the flood frequency analysis, the return value estimates $z_\tau$ are obtained from the quantile function $F^{-1}(1-\tau; \cdot)$ accounting for both curve and sample uncertainty (left), curve uncertainty only (center), or sample uncertainty only (right). }
+\label{fig:model}
+\end{figure}
+
+\subsection{Return levels}\label{sec:return levels}
+
+ The goal of flood frequency analysis is usually to construct estimates of design floods for given return periods. The return level $z_\tau$ associated with return period $1/\tau$ is the quantile of the sampling distribution that has probability $\tau$ of being exceeded in a particular year. For the GEV density in \eqref{eq:GEV density}, it is given by 
+\begin{linenomath*}
+\begin{equation}\label{eq:GEV quantiles}
+z_\tau = \begin{cases} \mu - (\kappa \xi)^{-1} \left[ 1 - (- \log (1 - \tau))^{-\xi}\right]  &  \quad \textup{if } \xi \neq 0 \\
+\mu - \kappa^{-1} \log( -\log(1 - \tau)) & \quad \textup{if } \xi = 0 \\
+\end{cases}
+\end{equation}
+\end{linenomath*}
+which is the quantile function of the GEV distribution function for the quantile $1-\tau$. For the Gumbel model, the return level is given by the special case in \eqref{eq:GEV quantiles} where $\xi = 0$.  Given a sample $\boldsymbol \eta^{(1)},\ldots, \boldsymbol \eta^{(m)}$ from $p(\boldsymbol \eta \, | \, \hat{\mathcal Y})$ or $p(\boldsymbol \eta \, | \, \mathcal Y)$ it is then straightforward to construct a posterior sample $z_\tau^{(1)}, \ldots, z_\tau^{(m)}$ from $p(z_\tau \, | \, \hat{\mathcal Y})$ or $p(z_\tau \, | \, \mathcal Y)$, respectively,  using \eqref{eq:GEV quantiles} by setting 
+\begin{linenomath*}
+\[
+z_\tau^{(i)} = \mu^{(i)} - (\kappa^{(i)} \xi^{(i)})^{-1} \left[ 1 - (- \log (1 - \tau))^{-\xi^{(i)}}\right]  
+\]
+\end{linenomath*}
+if $\xi^{(i)} \neq 0$ and similar for $\xi^{(i)} = 0$. 
+
+Our main focus is on the uncertainty assessment associated with the return level estimation. As illustrated in Figure \ref{fig:model}, the samples from $p(z_\tau \, | \, \mathcal Y)$ have a two-fold uncertainty as they incorporate both the uncertainty related to the parameter estimation of the stage-discharge rating curve (curve uncertainty) and the flood frequency analysis (sample uncertainty), while $p(z_\tau \, | \, \hat{\mathcal Y})$ includes only the sample uncertainty and $\hat{z}_\tau^{(1)},\ldots,\hat{z}_\tau^{(n)}$ based on the maximum likelihood estimates  $\hat{\boldsymbol \eta}^{(1)},\ldots, \hat{\boldsymbol \eta}^{(n)}$ includes only the curve uncertainty.  Given a sample $z_\tau^{(1)}, \ldots, z_\tau^{(m)}$ we may assess the uncertainty of the return level estimate by calculating credible intervals, e.g. the 80\% credible interval is given by the interval $[\gamma_1, \gamma_2]$ where 10\% of the sample are smaller than $\gamma_1$ and 10\% of the sample are larger than $\gamma_2$. 
+
+\section{Data}
+In order to investigate the three research questions stated in the introduction, we analyze data from gauging stations at eight unregulated catchments in Norway using the methodology described in the previous section.  All data were extracted from the national hydrological data base at the Norwegian Water Resource and Energy Directorate. 
+
+\begin{figure}[!htbp]
+\centering
+%\includegraphics[width=0.5\textwidth]{forslag_kart.pdf}
+\includegraphics[width=0.5\textwidth]{FIG2-NR_map_catchments.pdf}
+\caption{Map of Norway with the eight gauged catchments used in the analysis.}
+\label{fig:map}
+\end{figure}
+
+The locations of the catchments are shown in Figure~\ref{fig:map}, see also Table~\ref{tab:stations} for information on the size of the catchment areas. We analyze two data sets from each gauging station. A data set denoted by $\mathcal{D}$ consists of simultaneous stage and discharge measurements; this data is used to estimate the parameters of the Bayesian multi-segment rating curve model described in Section~\ref{sec:curves}. The second data set, $\mathcal H$, contains those stage measurements that are transformed to normalized annual maximum daily average discharge values via the Bayesian multi-segment rating curve model before they are used as an input in the flood frequency analysis described in Section~\ref{sec:ffa}. 
+
+\begin{table*}[!htbp]
+\caption{Gauging stations, size of catchment areas (in km$^2$) and data availability. $|\mathcal{D}|$ indicates the number of instantaneous stage-discharge measurements used for estimating the rating curve and $\max(\mathbf Q)$ (in 1000 $l/s$) is the largest discharge measurement. The extrapolation degree indicates the percentage of values in the full stage measurement series that exceed the largest value in $\mathcal{D}$ (in \%). $|\mathcal{H}|$ denotes the number of annual maximum daily average values used in the flood frequency analysis with $\max(\widehat{\mathbf Q})$ (in 1000 $l/s$) the largest value. Due to missing data, $|\mathcal{H}|$ might not equal the length of the data period.  The last column lists the number of daily average values in $\mathcal{H}$ that exceed the largest instantaneous value in $\mathcal D$. \label{tab:stations}}
+\centering
+\begin{tabular}{@{\extracolsep{4pt}}lrcrrrrrr@{}}
+  \toprule
+  &  & \multicolumn{3}{c}{Instantaneous} & \multicolumn{3}{c}{Annual Max. Daily Average}   & \\
+\cline{3-5} \cline{6-8} \noalign{\vskip 1mm}
+Station  & \multicolumn{1}{c}{Area} &  $|\mathcal{D}|$  & $\max(\mathbf Q)$  & Extrap. & \multicolumn{1}{c}{Period} &  
+\multicolumn{1}{c}{\, $|\mathcal{H}|$} & $\max(\widehat{\mathbf Q})$  & \#$ (\widehat{\mathbf Q}> \mathbf Q)$ \\
+\midrule
+Atnasj\o         &  463  & 38 & 139  & 0.018 &1985-2014  & 30 & 159   & 1  \\ 
+Bulken (I)       &  1092 & 64 & 368  & 0.177 &1892-1990  & 97 & 598   & 29 \\ 
+Bulken (II)      &  1092 & 31 & 705  & 0.000 &1991-2014  & 24 & 680   & 0  \\
+Driva            &  745  & 67 & 191  & 0.134 &1936-2013  & 78 & 467   & 25 \\ 
+Femundsenden     &  1792 & 83 & 87   & 0.780 &1909-2013  &103 & 134   & 17  \\ 
+Refsvatn         &  53   & 31 & 54   & 0.000 &1984-2014  & 30 &  53   & 0    \\ 
+Skarsvatn (I)    &  145  & 19 & 54   & 0.128 &1985-2002  & 17 & 101   & 4    \\ 
+Skarsvatn (II)   &  145  & 33 & 55   & 0.085 &2003-2014  & 11 &  60   & 2    \\ 
+Stordalsvatn     & 130   & 62 & 101  & 0.040 &1913-2014  &101 & 227   & 11   \\
+Tingvatn         &  272  & 51 & 128  & 0.026 &1995-2014  & 20 & 138   & 2     \\
+\bottomrule
+\end{tabular}
+%\tablenotetext{a}{Footnote text here.}
+\end{table*}
+
+The amount of available data and the time periods for which the annual maximum series are available are listed in Table~\ref{tab:stations}. As can be seen from Table~\ref{tab:stations}, many of the annual maximum series have a few missing values. We have not accounted for this in our analysis. The stage measurements in the two data sets $\mathcal D$ and $\mathcal H$ may partly overlap for a given location, indicating that discharge measurements were performed at the station during the annual maximum flood. However, it is common that the largest observed stage values exceed measurements for which corresponding discharge measurements are available, requiring an extrapolation of the rating curve. Table~\ref{tab:stations} lists the extrapolation degree for our data series which is given by the percentage of all available stage measurements at the station requiring an extrapolation of the rating curve.  While instantaneous and daily average values cannot be directly compared, we also list the number of daily average annual maximum values in the data series that are larger than the maximum instantaneous measurement at the station as a further indication for the level of extrapolation. For three stations (Bulken, Driva and Skarsvatn), over 20\% of the daily average data used for the flood frequency analysis are larger than the maximum measured instantaneous discharge indicating a considerable degree of extrapolation in these data sets. 
+
+For two stations, Bulken and Skarsvatn, two separate data series are listed. At Bulken, structural changes to the river profile were performed in 1990, requiring a new rating curve model. Similarly, the river profile changed in 2002 at Skarsvatn. For the subsequent flood frequency analysis at these stations, we combine the two annual maximum series and perform a single analysis. 
+
+\section{Results and discussion}
+
+\subsection{Contribution of sample/curve uncertainty}\label{sec:results1}
+
+To estimate the parameter uncertainty in the Bayesian multi-segment rating curve model, we draw 10,000 MCMC samples from the posterior parameter distribution. Figure~\ref{fig:Bulken} shows the estimates for the annual maximum discharge at Bulken based on the Bayesian multi-segment model. For the first data period, 1892-1990, approximately 30\% of the daily average values are greater than the maximum measured instantaneous discharge, indicating a considerable degree of extrapolation of the rating curve. This results in high variability in the discharge estimates, particularly for the largest floods. Furthermore, the credible intervals are highly skewed with a heavy upper tail. Conversely, for the second data period, 1991-2014, both stage and discharge were measured during the largest floods, resulting in significantly reduced uncertainty even though only about half as many data points are used for the parameter estimation compared to the first data period, see Table~\ref{tab:stations}.   
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{FIG3-Bulken.pdf}
+\caption{Estimated annual maximum discharge (in 1000 $l/s$) at Bulken from 1892 to 2014. The black dots show the best estimate and the red lines indicate the 99.5\% credible intervals for the discharge values based on 10,000 MCMC simulations. Due to structural changes in the river profile, two separate rating curves are estimated, prior to and from 1991.}
+\label{fig:Bulken}
+\end{figure}
+
+As outlined in Figure~\ref{fig:model}, we use three different approaches to obtain design flood estimates with uncertainty assessment. Firstly, for each sample ${\boldsymbol \theta}^{(i)}$, for $i = 1,\ldots, 10,000$, we obtain 3,000 MCMC samples from the posterior parameter distribution of the flood frequency model (GEV or Gumbel) under the data $\mathcal{Y}^{(i)}$. This results in a sample of 30,000,000 design flood estimates where both curve and sample uncertainty are taken into account. Secondly, we obtain a maximum likelihood estimate $\hat{\boldsymbol \eta}^{(i)}$ for the flood frequency parameters under each data set $\mathcal{Y}^{(i)}$. This results in a sample of 10,000 design flood estimates where only the curve uncertainty is taken into account. For three stations, Driva, Femundsenden and Stordalsvatn, it was not possible to obtain maximum likelihood estimates $\hat{\boldsymbol \eta}^{(i)}$ for all data sets $\mathcal{Y}^{(i)}$ due to numerical issues. However, this affected less than 1\% of the samples (72 samples at Femundsenden, 4 at Stordalsvatn and 2 at Driva) and thus, does not affect the results presented here. Using probability weighted moments rather than maximum likelihood did not solve this issue. In a third approach, we obtain 10,000 MCMC samples from the posterior parameter distribution of the flood frequency model for a single best estimate of the normalized annual maximum series, $\hat{\mathcal Y}$. For this approach we computed one million design flood estimates from the posterior given $\hat{\mathcal Y}$ where only sample uncertainty is accounted for.
+
+We focus on design floods with return periods of 20, 200 and 1000 years which we have chosen as they commonly feature in Norwegian flood safety standards. For instance, unoccupied facilities in flood risk areas must be built to withstand the estimated 20-year design flood while the limit for common occupied facilities, bridges and culverts is the 200-year design flood. Similarly, dam safety regulations and building regulations for critical infrastructure require estimates of floods with a 1000 year return period, see also \cite{Stenius&2015} and references therein.  
+
+Figure~\ref{fig:intervals} shows 80\% credible intervals for design floods with return periods of 20, 200 and 1000 years under both the GEV and the Gumbel model for the three uncertainty settings described above. Corresponding tables are given in the online supplementary information. As expected, the credible intervals are generally considerably narrower under the two parameter Gumbel model than for the three parameter GEV model. Furthermore, the difference in the design flood estimates between the two models is directly linked to the estimates of the shape parameter $\xi$ in the GEV model, cf. Figure~\ref{fig:xi}. That is, $\xi$ estimates centered around 0 yield similar design flood estimates (Femundsenden and Refsvatn in our data set), when the bulk of the posterior distribution is above 0, GEV returns higher estimates than Gumbel (Atnasj\o, Driva, Skarsvatn and Stordalsvatn) while the opposite holds when the bulk of the distribution is below 0 (Bulken and Tingvatn). 
+
+\begin{figure}[!htbp]
+\includegraphics[width=0.48\textwidth]{FIG4-Results_all-LOG.pdf}
+\caption{Estimated 80\% credible intervals for return values with return periods of 20, 200 and 1000 years under curve uncertainty (light/dark green), sample uncertainty (orange/brown) and both (light/dark blue) under the GEV (lighter colors) and the Gumbel (darker colors) models for normalized annual maximum discharge. The best estimate for each instance is indicated by a black line. The return values are given on a logarithmic scale of the unit $l/s/km^2$.}\label{fig:intervals}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.48\textwidth]{FIG5-posteriorXi2.pdf}
+\caption{Posterior distributions for the shape parameter $\xi$ in the GEV model under sample uncertainty ($\mathrm{SU})$ and both curve and sample uncertainty ($\mathrm{CU}$ \& $\mathrm{SU}$).}
+\label{fig:xi}
+\end{figure}
+
+Overall, we obtain the largest uncertainty when both curve and sample uncertainty are accounted for, see Table~\ref{tab:ratios}. The length of a credible interval for a return value under sample uncertainty ranges from 52\% to 94\% of the length of the corresponding interval under combined curve and sample uncertainty for all the eight stations considered here. For the Gumbel model, the relative difference between curve or sample uncertainty only and combined curve and sample uncertainty is similar for six out of eight stations.  At Refsvatn, the curve uncertainty is very small compared to the other two settings; this is also the only station with no rating curve extrapolation, cf. Table~\ref{tab:stations}. The opposite holds for Stordalsvatn for which curve uncertainty yields wider intervals than sample uncertainty due to a considerable degree of extrapolation.
+
+For the GEV model, the results are more sensitive to differences between the data sets.  We observe large sample uncertainty for stations which have less than 50 measurements in $\mathcal H$ (Atnasj\o, Refsvatn, Skarsvatn and Tingvatn), where the GEV model is not recommended \citep{Wilson&2011}. We observe that a low extrapolation degree is connected to a small shift in the posterior distribution of the $\xi$ parameter when comparing estimates under sample uncertainty to estimates under both curve and sample uncertainty (Figure~\ref{fig:xi}). This results in relatively narrow credible intervals for the floods (Atnasj\o, Refsvatn and Tingvatn).  Similarly, for the longer data series (Bulken, Driva, Femundsenden and Stordalsvatn), the posterior distribution for $\xi$ is somewhat sharper under the single data set $\hat{\mathcal Y}$ than for the mixture in \eqref{eq:posterior mixture}. 
+
+At Skarsvatn, in particular, the combination of a considerable extrapolation of the rating curve and a small sample size in $\mathcal H$ causes extremely large uncertainty for the combined setting. This is made clear in Table~\ref{tab:relativeLength}, where Skarsvatn has the largest relative uncertainty for all model cases. At Bulken, the curve uncertainty exceeds the sample uncertainty. Here, $\mathcal H$ contains over 100 data points while for the first part of the series, considerable extrapolation of the rating curve is necessary, see Table~\ref{tab:stations} and Figure~\ref{fig:Bulken}.   
+ 
+\begin{table}[!htbp]
+\caption{Ratio of 80\% credible interval lengths for the 1000-year design flood. We compare, on the one hand, curve uncertainty vs. both curve and sample uncertainty ($\mathrm{CU} / \mathrm{CU} \& \mathrm{SU}$) and, on the other hand, sample uncertainty vs. both curve and sample uncertainty ($\mathrm{SU} / \mathrm{CU} \& \mathrm{SU}$). \label{tab:ratios}}
+\centering
+\begin{tabular}{lcc@{\extracolsep{2mm}}cc}
+\toprule
+& \multicolumn{2}{c}{GEV} & \multicolumn{2}{c}{Gumbel} \\ 
+\cline{2-3} \cline{4-5} \noalign{\vskip 1mm}
+%Station & $\frac{\boldsymbol \theta}{\boldsymbol \theta \& \boldsymbol \eta}$ & $\frac{\boldsymbol \eta}{\boldsymbol \theta \& \boldsymbol \eta}$ &  $\frac{\boldsymbol \theta}{\boldsymbol \theta \& \boldsymbol \eta}$ & $\frac{\boldsymbol \eta}{CU \& \boldsymbol \eta}$ \\
+Station & $\frac{\mathrm{CU}}{\mathrm{CU} \& \mathrm{SU}}$ & $\frac{\mathrm{SU}}{\mathrm{CU} \& \mathrm{SU}}$ &  $\frac{\mathrm{CU}}{\mathrm{CU} \& \mathrm{SU}}$ & $\frac{\mathrm{SU}}{\mathrm{CU} \& \mathrm{SU}}$ \\
+\midrule
+Atnasj\o        &  0.28 & 0.94 & 0.57 & 0.81 \\
+Bulken       & 0.77 & 0.56 & 0.63 & 0.74 \\
+Driva              & 0.51 & 0.73 & 0.58 & 0.82 \\
+Femundsenden & 0.65 & 0.67 & 0.62 & 0.75 \\
+Refsvatn          & 0.26 & 0.91 & 0.35 & 0.92 \\
+Skarsvatn     & 0.33 & 0.69 & 0.57 & 0.64 \\
+Stordalsvatn &0.71 &0.63 &0.84 &0.52 \\
+Tingvatn          & 0.45 & 0.78 & 0.55 & 0.80 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Ratios of 80\% credible interval length and corresponding best estimate for the 1000-year design flood under sample uncertainty ($\mathrm{SU}$), curve uncertainty ($\mathrm{CU}$), and both curve and sample uncertainty ($\mathrm{CU}$ \& $\mathrm{SU}$) in the GEV and the Gumbel model.\label{tab:relativeLength}} 
+\centering
+\begin{tabular}{lccc@{\extracolsep{2mm}}ccc}
+\toprule
+& \multicolumn{3}{c}{GEV} & \multicolumn{3}{c}{Gumbel} \\ 
+\cline{2-4} \cline{5-7} \noalign{\vskip 1mm}
+Station & $\mathrm{CU}$ & $\mathrm{SU}$ & ${\mathrm{CU} \& \mathrm{SU}}$ 
+& $\mathrm{CU}$ & $\mathrm{SU}$ & ${\mathrm{CU} \& \mathrm{SU}}$  \\
+\midrule
+Atnasj\o&  0.56 & 2.20 & 2.36 & 0.19 & 0.29 & 0.34\\
+Bulken& 0.35 & 0.23 & 0.45 & 0.10 & 0.12 & 0.16\\
+Driva&0.46 & 0.72 & 0.99 & 0.13 & 0.18 & 0.23\\
+Femundsenden&0.31 & 0.38 & 0.60 & 0.13 & 0.13 & 0.19\\
+Refsvatn&0.14 & 1.11 & 1.18 & 0.09 & 0.26 & 0.27\\
+Skarsvatn&1.06 & 2.66 & 3.85 & 0.24 & 0.28 & 0.40\\
+Stordalsvatn & 0.41 & 0.49 & 0.71 & 0.21 & 0.14 & 0.25 \\
+Tingvatn&0.20 & 0.82 & 0.93 & 0.18 & 0.27 & 0.33\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Length of annual maximum discharge series} 
+
+In order to investigate the effect of the length of the annual maximum discharge series in $\mathcal H$ on the design flood estimation uncertainty, we focus on the data from Femundsenden, where we have a long data series comprising 103 values derived from a single rating curve model shown in Figure~\ref{fig:FemundsendenReturnLevel}. We separately analyze the first 20 years of the series, the first 60 years and the full series. The resulting return levels under the GEV model are given in Figure~\ref{fig:FemundsendenReturnLevel} with a more detailed view of the results for return periods of 20 and 1000 years under both the GEV and the Gumbel model shown in Figure~\ref{fig:BoxPlot-leaveOut}. 
+
+\begin{figure}[!htbp]
+\centering
+%\includegraphics[width=0.5\textwidth]{FemundsendenCIstagedischarge.pdf} \\
+%\includegraphics[width=0.5\textwidth]{FemundsendenReturnLevel.pdf}
+\includegraphics[width=0.5\textwidth]{FIG6-Femundsenden.pdf}
+\caption{Upper panel: Estimated stage-discharge curve (solid line) at Femundsenden with 90 \% credible interval (dashed lines). Red dots show the observations used for estimating the curve. Lower panel: Estimated return level curves at Femundsenden under the GEV model with 90 \% credible intervals (dashed lines) under curve uncertainty (green), sample uncertainty (black) and both (blue). The red lines show the 90 \% credible intervals for the discharge values based on 10,000 simulations from the Bayesian multi-segment model with corresponding best estimates (red dots).}
+\label{fig:FemundsendenReturnLevel}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+%\includegraphics[width=0.5\textwidth]{FemundsendenLeaveOut-BoxPlot.pdf} \\
+%\includegraphics[width=0.5\textwidth]{GUMBELFemundsendenLeaveOut-BoxPlot.pdf}
+\includegraphics[width=0.5\textwidth]{FIG7-FemundsendenLeaveOut-BoxPlot.pdf}
+\caption{Box plots of estimated return levels with return periods of 20 and 1000 years at Femundsenden, based on 20, 60 and 103 years of maximum annual discharge data under the GEV (upper) and the Gumbel (lower) model. For each setting, we compare results under curve uncertainty ($\mathrm{CU}$), sample uncertainty ($\mathrm{SU}$) and both ($\mathrm{CU}$\&$\mathrm{SU}$).}
+\label{fig:BoxPlot-leaveOut}
+\end{figure}
+
+While there is a general tendency of decreased estimation uncertainty as we include more data in the analysis, the opposite holds for the 1000 year return level in the GEV model when only curve uncertainty is accounted for, see Figure~\ref{fig:BoxPlot-leaveOut}. Due to extrapolation, there is significantly larger uncertainty in the discharge estimation if the annual maximum flood is unusually large. At Femundsenden, the estimation of the four largest daily average discharge values is considerably more uncertain that the estimation of the remaining values. These floods occurred in 1927, 1944, 1967 and 1995. For any additional data period, we thus also include more large values with a large degree of uncertainty. However, when sample uncertainty is accounted for, this effect somewhat cancels out by the additional benefit of having more data for the frequency analysis. The estimated level also changes as we add more data under both models. These results indicate, in particular, that the GEV distribution is not appropriate when only 20 data points are available for the parameter estimation. 
+
+\subsection{Added value of large measurements} 
+
+Here, we consider the added value of large measurements, both at the high end of the rating curve and in the annual maximum data series. For this, we study the latter part of the data series from Bulken, the data from 1991-2014. Originally, $\mathcal D$ contains 30 measurements which we compare to using a smaller data set $\mathcal D^{-}$ with the three highest stage measurements removed. Similarly, we consider the full data set $\mathcal H$ as well as $\mathcal H^{-}$ comprising the data from 1991-2013, leaving out the large flood in 2014 (cf. Figure~\ref{fig:Bulken}). The resulting estimates and the associated uncertainty for 1000 year return levels are given in Figure~\ref{fig:BoxPlot-Remove}.
+
+Without extrapolation of the rating curve, the curve uncertainty is minimal. This propagates forward to a lower uncertainty for the combined setting, particularly for the Gumbel model which is the more appropriate model given the length of the annual maximum series. An inclusion of the 2014 measurement in $\mathcal H$, on the other hand, increases the resulting estimation uncertainty. The reason is that this flood is considerably larger than the other floods in the data set (cf. Figure~\ref{fig:Bulken}), and the effect of increased sample size on reducing estimation uncertainty is more than compensated by the effect of larger variability in $\mathcal H$.  
+
+An additional effect is a significant shift: The 1000 year return level estimates are notably lower without the 2014 observation to the extend that some of the estimates are below the 2014 flood value. Similarly, the estimates vary considerably for the three uncertainty settings when the inference in the rating curve model is performed with the smaller data set $\mathcal D^{-}$. The best estimate under curve uncertainty is higher than that under sample uncertainty. This may be explained as follows: The discharge values for the highest stage measurements follow highly skew distributions with heavy upper tails.  The higher the stage, the more skewed is the distribution for discharge. Consequently, several of the data sets $\mathcal Y^{(1)}, \ldots, \mathcal Y^{(10000)}$ include more high values than $\hat{\mathcal Y}$, and the distribution of annual maximum streamflows becomes more skewed for several of the rating curves.  This results in posterior parameter distributions shifted towards higher values with heavy upper tails, cf. Figure~\ref{fig:BulkenPostParam}, and higher estimates of return levels. The effect of using $\mathcal D^{-}$ is less pronounced when we use $\mathcal H^{-}$ (largest flood removed), since we then exclude one observations with a large associated uncertainty. 
+
+This numerical experiment with the data from Bulken, indicates that a direct streamflow measurement at the highest flood peaks has the potential to improve both estimation bias and estimation uncertainty for the return levels and is therefore a very valuable information. On the other hand, one large observation in $\mathcal H$ that is based on an extrapolation of the rating curve is the most challenging case.  Accounting for rating curve uncertainties then seems to result in a large over-estimation of return levels at Bulken. This effect might be reduced if we perform a joint estimation of the parameters in the rating curve and the distribution function since the estimation then would put more constraints on the likely size of the largest floods. The challenge of high outliers in extreme data has been discussed in the literature, see e.g. \cite{Hosking&etal1985}. In our study we used estimators that are sensitive to outliers in data in order to expose the effect of data uncertainty on estimates. For more robust estimates we could have included prior information.
+
+\begin{figure}[!htbp]
+\centering
+%\includegraphics[width=0.5\textwidth]{BulkenRemove-BoxPlot.pdf}\\
+%\includegraphics[width=0.5\textwidth]{GUMBELBulkenRemove-BoxPlot.pdf}
+\includegraphics[width=0.5\textwidth]{FIG8-BulkenRemove-BoxPlot.pdf}
+\caption{Box plots of 1000 year return level estimates at Bulken under the GEV (top) and the Gumbel (bottom) model, based on combinations of a full training set $\mathcal D$, a complete set of annual maximum discharge $\mathcal H$, a set $\mathcal D^{-}$ with the three highest measurements removed and a reduced set $\mathcal H^{-}$ without the 2014 flood.  For each setting, we compare results under curve uncertainty ($\mathrm{CU}$), sample uncertainty ($\mathrm{SU}$) and both ($\mathrm{CU}$\&$\mathrm{SU}$). The results are based on the data series from 1991-2014 only. The 2014 annual maximum flood is indicated by a dark gray line.}
+\label{fig:BoxPlot-Remove}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{FIG9-GUMBELposteriorParamBulken.pdf}
+\caption{Posterior distributions of the parameters of the Gumbel distribution for data from 1991-2014 at Bulken under sample uncertainty ($\mathrm{SU}$) and both curve and sample uncertainty ($\mathrm{CU} \& \mathrm{SU}$) using $\mathcal D$ and $\mathcal H$ (top panel) or $\mathcal D^{-}$ and $\mathcal H$ (bottom panel). The first column shows the distributions for the location parameter $\mu$ and the second column the distributions for the scale parameter $\sigma = 1 / \kappa$. }
+\label{fig:BulkenPostParam}
+\end{figure}
+
+\subsection{Limitations of the uncertainty assessment}
+
+In this study, we have made the assumption that the Bayesian multi-segment model of \cite{Reitan&PetersenOverleir2009} and the Gumbel or the GEV distribution are appropriate models for our data sets. This assumption allows us to focus solely on the parameter uncertainty in the models and to make statements regarding the proportionate parameter uncertainty for each of the models.
+
+While we see this as an important step in the understanding of the total uncertainty associated with design flood estimation, we acknowledge that other sources of uncertainty may play a significant role as well. In the Bayesian multi-segment model, the out-of-sample discharge estimation in \eqref{eq:x} is performed without accounting for the error term in \eqref{eq:stage-discharge}. The error in \eqref{eq:stage-discharge} may be interpreted as measurement error. However, this interpretation again relies on the assumption of appropriateness of the model itself and, generally, the measurement error may be confounded by an additional model error. Changes in the river profile caused by erosion and seasonal effects (such as vegetation and ice) may influence the error term, as well as hysteresis and/or congestion which may result in a non-stationary relationship between stage and discharge. Generally, it is not possible to separate between the various sources of error. Due to the form of the model in \eqref{eq:stage-discharge}, where the logarithm of discharge is assigned a normal error, the error distribution on the discharge itself has a heavy upper tail. Inclusion of the error term would thus likely result in wider intervals of a similar shape as those reported in Figure~\ref{fig:Bulken}.
+
+The results of this study are based on a data set that is representative for Norway where the variability of flood data is relatively moderate. Using the growth curve for characterizing the variability, we see from a previous study of regional curves that $z_{1/1000}/z_{1/20}$ is in the range 1.5-2.4 in Norway \citep{Midttomme&2011}. Growth curves of similar magnitudes are also found in the UK \citep{RobsonReed1999} which indicates that this variability of floods might be expected in a humid temperate climate. In arid and semi-arid climates the variability of floods is larger, and \cite{Farquharson&1992} show that $z_{1/1000}/z_{1/20}$ is higher than 6.0. More examples are given in \cite{Rosbjerg&2013}. We believe that our results and conclusions cannot be generalized to regions with a higher variability in flood values since we might expect (i) increased degree of extrapolation of the rating curve and (ii) heavier tails in the distribution of floods. Consequently, the importance of the rating curve uncertainty will increase \citep{Rahman&2015}. 
+
+In cases where a large extrapolation of the rating curve is necessary, hydraulic models may be used to derive the stage-discharge relationship or provide inputs on the location of the change points for a multi-segment statistical model \citep[e.g.][]{LeCoz&etal2014}. Especially for locations with irregular river profiles, this can substantially decrease potential biases in the discharge estimation. However, it is often difficult to assess the uncertainty in such models. As the focus of the current work is to assess the estimation uncertainty, we have refrained from considering this issue here. 
+
+Similarly, our study only considers local flood frequency analysis under the Gumbel and the GEV distributions. Other distributions \citep[see e.g.][]{Midttomme&2011} or a regional approach might yield somewhat different results. However, a comprehensive comparison study by \cite{Renard&etal2013} finds local implementations of flood frequency analysis to have a more reliable quantification of uncertainty than regional alternatives. An alternative approach to design flood estimation involves employing a continuous simulation approach, where a rainfall-runoff model is calibrated using the discharge series affected by rating curve error \citep[e.g.][]{Paquet&2013}. While it is equally important to investigate the effects of model parameter and rating curve uncertainty for these models, we believe that the experimental set-up employed here cannot be directly transferred to such models due to their parameter and computational complexity. 
+
+%\cite{Coxon&2015} quantified different source uncertainties in 500 UK gauging stations, focusing on errors in data, natural condiations, rating-curve approximation and 
+
+\section{Conclusions}
+
+In this paper, we investigate the propagation of rating curve uncertainty in design flood estimation by combining results from a Bayesian multi-segment rating curve model and Bayesian flood frequency analysis under the GEV and the Gumbel distribution. This allows us to consider curve/sample uncertainty both separately and combined. Concerning our original research questions stated in Section~\ref{sec:intro}, we conclude that 
+\begin{enumerate}
+\item[(i)] The sample uncertainty is generally the main contributor to uncertainty in design flood estimation. However, curve uncertainty may play an important role when extrapolation of the rating curve is necessary. 
+\item[(ii) ]The sample uncertainty generally decreases with a longer data series. However, if a new data point has an unusually large value, the opposite may hold.  
+\item[(iii)]An additional high direct streamflow measurement will reduce the extrapolation degree and the rating curve uncertainty, and most likely reduce estimation biases in the return levels. A high annual maximum flood observation might, if combined with a large extrapolation degree, introduce estimation biases for return levels since the estimation is based on combining two highly skewed distributions. 
+\end{enumerate}
+The conclusions above are based on results from eight gauging stations in Norway, that represent different degree of skewness in the annual maximum flood and different extrapolation information (see Table~\ref{tab:stations}). However, compared to the full data base of all gauging stations in Norway, our data examples are of good quality, where all the eight catchments are relatively large (greater than 50 km$^2$) and have more than 20 years of data. Our case examples exclude very unstable rating curves or hysteresis effects where the rating curve errors might be even more important. It is thus likely that the curve uncertainty in the data used in this study is somewhat lower than Norwegian data in general. For this reason, we perform a separate study of the data series from Bulken where we re-estimate the rating curve with the three largest measurements removed. This yields a large degree of extrapolation and the curve uncertainty substantially effects the design flood estimates for the 1000 year flood resulting in both a bias and a significantly increased uncertainty in the estimates. The conclusions of this study cannot be generalized to other regions with widely different climates. Especially in arid and semi-arid climates with a higher variability in floods, we expect a greater importance of the rating curve uncertainty.
+
+The results in our study indicate that including the rating curve uncertainty can increase design flood estimates as well as their uncertainty bounds. Under current practice, only the design flood estimate combined with a safety factor is used for safety assessment of dams, and the inclusion of rating curve errors will therefore increase the size of flood defenses. We believe there is a potential to also include the uncertainty bounds. In particular, dam safety has to be re-assessed every 15-20 year including a new flood frequency analysis. If the safety requirements are not fulfilled, the dam crest has to be re-constructed. Adding the uncertainty of the design flood estimate might help the dam-owner to make a better decision if re-construction is needed in order to reduce the risk of re-construction in the next safety assessment 15-20 years ahead. Assessment of residual risk might also be improved by accounting for the uncertainties.
+
+Our study can be extended in several ways. In the analysis, we have used non-informative prior distributions for the model parameters. However, the use of informative priors can improve the estimation uncertainty when additional information is available, see e.g. \cite{ParentBernier2002} and \cite{ReisStedinger2005}. In our context it seems particularly promising to include prior information directly on the return levels, see e.g. \cite{ColesTawn1996}. Further, a single hierarchical model can be constructed to investigate the combined curve and sample uncertainty following the structure given in Figure~\ref{fig:model}. While this may be somewhat more appropriate from a statistical viewpoint and would potentially lower the combined estimation uncertainty, we consider such a construction outside the scope of the current paper. 
+
+%  APPENDIX
+\appendix
+\section{Bayesian inference in flood frequency analysis}
+We use Bayesian inference to obtain posterior distributions for the flood frequency parameters specified in \eqref{eq:GEV density} and \eqref{eq:GEV kernel} via Markov chain Monte Carlo sampling \citep{RobertCasella2004}. In particular, we use a Metropolis-Hastings algorithm where each parameter in $\boldsymbol \eta$ is updated in turn. The source code for Bayesian inference is implemented in the R-package SpatialGEVBMA available at GitHub (https://github.com/cran/spatial.gev.bma).
+
+Assume we are analyzing the data set $\mathbf y$. We update a parameter, say $\mu$, by drawing a new value $\mu^\prime$ from a proposal distribution $p(\mu \, | \, \mu^\prime, \cdot)$ and accept the proposal with the probability $\min\{r,1\}$, where
+\begin{linenomath*}
+\begin{equation}
+  r = \frac{p(\boldsymbol y\, | \, \mu^{\prime},\cdot) p(\mu^{\prime} \, | \, \cdot) p(\mu^{\prime} \, | \, \mu,\cdot)}{p(\boldsymbol y \, | \, \mu,\cdot) p(\mu\, | \, \cdot) p(\mu \, | \, \mu^{\prime},\cdot)}.
+\end{equation}
+\end{linenomath*}
+Here, $p(\boldsymbol y \, | \, \mu,\cdot)$ denotes the likelihood and $p(\mu^{\prime}\, | \, \cdot)$ the prior distribution, both of which may depend on other parameters. The remaining parameters in $\boldsymbol \eta$, $\nu = \log \kappa$ and $\xi$ are then updated in a similar manner. We use a Gaussian prior distribution with mean $\mu_0 = 0$ and standard deviation $\sigma_0 = 100$ for all three parameters. 
+
+The efficiency of the Metropolis-Hastings algorithm heavily depends on the choice of the proposal distribution.  We follow e.g. \citet{Dyrrdal&2015} and \citet{Rueetal2009} and employ a Gaussian approximation to the log-posterior density as the proposal density. If we write the marginal posterior distribution as $p(\mu^{\prime}|\, \mathbf y, \cdot) \propto \exp(f(\mu^{\prime}))$, a second-order Taylor expansion around the current stage $\mu$ is given by the Gaussian distribution $\mathcal{N} (c_1/c_2,1/c_2)$,
+where 
+\begin{linenomath*}
+\begin{align*}
+  c_1 & =f^{\prime}(\mu)-f^{\prime \prime}(\mu) \mu \\
+  c_2 & =-f^{\prime\prime}(\mu)
+\end{align*}
+\end{linenomath*}
+(see Chapter 4.4 of \citet{Rueetal2009}).  That is, 
+\begin{linenomath*}
+\begin{align*}
+  f^{\prime}(\mu) &= - \frac{\mu-\mu_0}{\sigma_0} + \sum_{t=1}^{T} \frac{\partial}{\partial \mu} \log p(y_t|\mu,\cdot) \\
+  f^{\prime\prime}(\mu) &= - \frac{1}{\sigma_0} + \sum_{t=1}^{T} \frac{\partial^2}{\partial \mu^2} \log p(y_t|\mu,\cdot), 
+\end{align*}
+\end{linenomath*}
+under the $\mathcal{N}(\mu_0, \sigma_0^2)$ prior distribution. Similar calculations hold for $\nu = \log \kappa$ and $\xi$.  Explicit formulas for the derivatives $f^{\prime}(\cdot)$ and $f^{\prime\prime}(\cdot)$ are given below.
+
+\subsection{The case $\xi \neq 0$}
+Set $\alpha_t = 1 + \xi e^\nu (y_t - \mu)$. For $\xi \neq 0$, we obtain
+\begin{linenomath*}
+\begin{align*}
+  f^{\prime}(\mu) &=  - \frac{\mu-\mu_0}{\sigma_0} + e^\nu \sum_{t=1}^{T} \alpha_t^{-1} (\xi+1 - \alpha_t^{-1/\xi})\\
+  f^{\prime\prime}(\mu) &= - \frac{1}{\sigma_0} + (\xi+1) e^{2 \nu}\sum_{t=1}^{T}   \alpha_t^{-2} ( \xi-\alpha_t^{-1/\xi}).
+\end{align*}
+\end{linenomath*}
+The derivatives for the log-inverse scale parameter, $\nu=\log(\kappa)$, are
+\begin{linenomath*}
+\begin{align*}
+  f^{\prime}(\nu) &=   - \frac{\nu-\mu_0}{\sigma_0} + T  \\
+& \qquad + \xi^{-1} \sum_{t=1}^{T}  \alpha_t^{-1} (\alpha_t - 1 )\Big\{\alpha_t^{-1/\xi}-(\xi+1)\Big\},\\
+  f^{\prime\prime}(\nu)&= - \frac{1}{\sigma_0} + \xi^{-1}  \sum_{t=1}^{T} \alpha_t^{-2} (\alpha_t - 1)  \\
+& \qquad \qquad \times \Big\{(\xi + 1) ( \alpha_t^{-1/\xi} - 1 ) - \xi^{-1} \alpha_t^{2/\xi} \Big\}.
+\end{align*}
+\end{linenomath*}
+Set $\epsilon_t=y_t-\mu$. The first derivative for $\xi$ is given by 
+\begin{linenomath*}
+\[
+f^{\prime}(\xi)=  - \frac{\xi-\mu_0}{\sigma_0} + D_1 + D_2
+\]
+\end{linenomath*}
+where
+\begin{linenomath*}
+\begin{align*}
+  D_1 &=  \sum_{t=1}^{T} \xi^{-1} \Big\{\xi^{-1}\log(\alpha_t) - (\xi+1) e^\nu\epsilon_t \alpha_t^{-1} \Big\}\\
+  D_2 &=  \sum_{t=1}^{T}  \xi^{-1}\alpha_t^{-1/\xi_t}  \Big\{e^\nu \epsilon_t \alpha_t^{-1} - \xi^{-1} \log(\alpha_t) \Big\}.
+\end{align*}
+\end{linenomath*}
+The second derivative for $\xi$ is given by 
+\begin{linenomath*}
+\[ 
+f^{\prime\prime}(\xi) =  - \frac{1}{\sigma_0} + \dot{D}_1 + \dot{D}_2 + \dot{D}_3 + \dot{D}_4
+\]
+\end{linenomath*}
+with
+\begin{linenomath*}
+\begin{align*}
+\dot{D}_1 & = \sum_{t=1}^{T}  \xi^{-2}\Big\{ e^\nu \epsilon_t \alpha_t^{-1} - 2\xi^{-1}  \log(\alpha_t)  \Big\}\\
+\dot{D}_2 & = \sum_{t=1}^{T} \xi^{-1}e^\nu \epsilon_t\alpha_t^{-1}\Big\{\xi^{-1}  + (\xi+1)e^\nu\epsilon_t  \alpha_t^{-1} \Big\} \\
+\dot{D}_3 &= \sum_{t=1}^{T}  \alpha_t^{-1/3} \xi^{-2}\Big\{ \xi^{-1}\log(\alpha_t) (2-\xi^{-1}\log(\alpha_t)) \\
+& \qquad \qquad + e^{\nu}\epsilon_t\alpha_t^{-1}(\xi^{-1}\log(\alpha_t)-1) \Big\}\\
+\dot{D}_4 &= \sum_{t=1}^{T} \xi^{-2} e^\nu \epsilon_t\alpha_t^{-1/\xi-1} \Big\{\xi^{-1}\log(\alpha_t) - (\xi+1)e^\nu \epsilon_t\alpha_t -1  \Big\}.
+\end{align*}
+\end{linenomath*}
+
+\subsection{The case $\xi = 0$}
+When $\xi =0$, we set $\alpha_t = \exp(- e^\nu (y-\mu))$ and obtain
+\begin{linenomath*}
+\begin{align*}
+  f^{\prime}(\mu) &=  - \frac{\mu-\mu_0}{\sigma_0} + e^\nu \sum_{t=1}^{T}  (1-\alpha_t)\\
+  f^{\prime\prime}(\mu) &= - \frac{1}{\sigma_0} - e^{2 \nu} \sum_{t=1}^{T}  \alpha_t \\
+  f^{\prime}(\nu) &=  - \frac{\nu-\mu_0}{\sigma_0} + T + \sum_{t=1}^{T} \log(\alpha_t)(1-\alpha_t)\\
+  f^{\prime\prime}(\nu) &= - \frac{1}{\sigma_0} + \sum_{t=1}^{T}\log(\alpha_t)\left(1 - \alpha_t - \alpha_t\log(\alpha_t)\right).
+\end{align*}
+\end{linenomath*}
+
+
+
+
+%  ACKNOWLEDGMENTS
+\begin{acknowledgments}
+The authors thank two anonymous reviewers and an associate editor whose comments and recommendations substantially improved the manuscript. This work was jointly funded by The Research Council of Norway and Energy Norway through grant ES519956 (FlomQ). The data were extracted from the national hydrological database at the Norwegian Water Resources and Energy Directorate and are listed in the supplementary materials. The source code for estimating rating curve uncertainty is a part of the national hydrological data base system at the Norwegian Water resources and Energy Directorate and is available on request hydrology@nve.no. The main part of this source code is also available at \url{http://folk.uio.no/trondr/hydrasub/ratingcurve.html}. The source code for estimating the flood frequency distributions is implemented in the statistical programming language {\tt R} (\url{http://www.R-project.org}) as a part of the {\tt R}-package {\tt SpatGEVBMA} which is available on GitHub at \url{http://github.com/NorskRegnesentral/SpatGEVBMA}.
+\end{acknowledgments}
+
+%%  REFERENCE LIST AND TEXT CITATIONS
+% 5\bibliographystyle{../BibTeX/agufull08}
+\bibliographystyle{agufull08}
+% \bibliography{ref.bib}
+% Please use ONLY \citet and \citep for reference citations.
+
+\begin{thebibliography}{37}
+%%   Before submitting: copy all the contents into the .bbl LaTeX file here
+%%   and run latex again
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{\textit{Clarke}(1999)}]{Clarke1999}
+Clarke, R. (1999), Uncertainty in the estimation of mean annual flood due to
+  rating-curve indefinition., \textit{J. Hydrol.}, \textit{222}, 185--190,
+  \doi{doi:10.1016/S0022-1694(99)00097-9}.
+
+\bibitem[{\textit{Clarke et~al.}(2000)\textit{Clarke, Mendiondo, and
+  Bruca}}]{Clarke&etal2000}
+Clarke, R., E.~Mendiondo, and L.~Bruca (2000), Uncertainties in mean discharges
+  from two large south american rivers due to rating curve variability,
+  \textit{Hydrol. Sci. J.}, \textit{45}, 221--236,
+  \doi{doi:10.1080/02626660009492321}.
+
+\bibitem[{\textit{Coles}(2001)}]{Coles2001}
+Coles, S.~G. (2001), \textit{{An Introduction to Statistical Modeling of
+  Extreme values}}, Springer Series in Statistics.
+
+\bibitem[{\textit{Coles and Dixon}(1999)}]{Coles&Dixon1999}
+Coles, S.~G., and M.~J. Dixon (1999), Likelihood-based inference for extreme
+  value models, \textit{Extremes}, \textit{2}(1), 5--23.
+
+\bibitem[{\textit{Coles and Tawn}(1996)}]{ColesTawn1996}
+Coles, S.~G., and J.~A. Tawn (1996), A {B}ayesian analysis of extreme rainfall
+  data, \textit{Journal of the Royal Statistical Society, Series C},
+  \textit{45}(4), 463--478.
+
+\bibitem[{\textit{Coxon et~al.}(2015)\textit{Coxon, Freer, Westerberg, Wagener,
+  Woods, and Smith}}]{Coxon&2015}
+Coxon, G., J.~Freer, I.~Westerberg, T.~Wagener, R.~Woods, and P.~Smith (2015),
+  A novel framework for discharge uncertainty quantification applied to 500 {UK}
+  gauging stations, \textit{Water Resour. Res.}, \textit{51}, 5531--5546,
+  \doi{10.1002/2014WR016532}.
+
+\bibitem[{\textit{Di~Baldassarre and
+  Montanari}(2009)}]{Baldassarre&Montanari2009}
+Di~Baldassarre, G., and A.~Montanari (2009), Uncertainty in river discharge
+  observations: a quantitative analysis, \textit{Hydrol. Earth Syst. Sci.},
+  \textit{13}, 913--921, \doi{doi:10.5194/hess-13-913}.
+
+\bibitem[{\textit{Dyrrdal et~al.}(2015)\textit{Dyrrdal, Lenkoski,
+  Thorarinsdottir, and Stordal}}]{Dyrrdal&2015}
+Dyrrdal, A.~V., A.~Lenkoski, T.~L. Thorarinsdottir, and F.~Stordal (2015),
+  Bayesian hierarchical modeling of extreme hourly precipitation in norway,
+  \textit{Environmetrics}, \textit{26}, 89--106.
+
+\bibitem[{\textit{Engeland et~al.}(2005)\textit{Engeland, Hisdal, and
+  Frigessi}}]{Engeland&etal2005}
+Engeland, K., H.~Hisdal, and A.~Frigessi (2005), Practical extreme value
+  modelling of hydrological floods and droughts: A case study,
+  \textit{Extremes}, \textit{7}, 5--30.
+
+\bibitem[{\textit{Farquharson et~al.}(1992)\textit{Farquharson, Meight, and
+      Sutcliffe}}]{Farquharson&1992}
+  Farquharson, F.~A.~K., J.~R. Meight and J.~V. Sutcliffe (1992), Regional flood
+  frequency analysis in arid and semi-arid areas, \textit{Journal of Hydrology},
+  \textit{138}(3-4), 487--501, \doi{doi:10.1016/0022-1694(92)90132-F}.
+      
+\bibitem[{\textit{Hall et~al.}(2004)\textit{Hall, Boogaard, Fernando, and
+  Mynett}}]{Hall&etal2004}
+Hall, M., H.~v.~d. Boogaard, R.~Fernando, and A.~Mynett (2004), The
+  construction of confidence intervals for frequency analysis using resampling
+  techniques, \textit{Hydrol. Earth Syst. Sci.}, \textit{8}, 235--246.
+
+\bibitem[{\textit{Hosking et~al.}(1985)\textit{Hosking, Wallis, and
+  Wood}}]{Hosking&etal1985}
+Hosking, J., J.~Wallis, and E.~Wood (1985), Estimation of the generalized
+  extreme-value distribution by the method of probability-weighted moments,
+  \textit{Technometrics}, \textit{27}, 251--261.
+
+\bibitem[{\textit{Kuczera}(1996)}]{Kuczera1996}
+Kuczera, G. (1996), Correlated rating curve error in flood frequency inference,
+  \textit{Water Resour. Res.}, \textit{32}, 2119--2127,
+  \doi{doi:10.1029/96WR00804}.
+
+\bibitem[{\textit{Kysel{\'y}}(2008)}]{Kysely2008}
+Kysel{\'y}, J. (2008), A cautionary note on the use of nonparametric bootstrap
+  for estimating uncertainties in extreme-value models, \textit{J. Appl.
+  Meteorol. Climatol.}, \textit{47}, 3236--3251,
+  \doi{doi:10.1175/2008JAMC1763.1}.
+
+\bibitem[{\textit{Lang et~al.}(2010)\textit{Lang, Pobanz, Renard, Renouf, and
+  Sauquet}}]{Lang&etal2010}
+Lang, M., K.~Pobanz, B.~Renard, E.~Renouf, and E.~Sauquet (2010), Extrapolation
+  of rating curves by hydraulic modelling, with application to flood frequency
+  analysis, \textit{Hydrol. Sci. J.}, \textit{55}, 883--898,
+  \doi{doi:10.1080/02626667.2010.504186}.
+
+\bibitem[{\textit{Le~Coz et~al.}(2014)\textit{Le~Coz, Renard, Bonnifait,
+  Branger, and Le~Boursicaud}}]{LeCoz&etal2014}
+Le~Coz, J., B.~Renard, L.~Bonnifait, F.~Branger, and R.~Le~Boursicaud (2014),
+  Combining hydraulic knowledge and uncertain gaugings in the estimation of
+  hydrometric rating curves: A bayesian approach, \textit{J. Hydrol.}, pp.
+  573--587, \doi{doi:10.1016/j.jhydrol.2013.11.016}.
+
+\bibitem[{\textit{Lee and Kim}(2008)}]{Lee&Kim2008}
+Lee, K., and S.~Kim (2008), Identification of uncertainty in low flow frequency
+  analysis using bayesian mcmc method, \textit{Hydrol. Process.}, \textit{22},
+  1949--1964, \doi{doi:10.1002/hyp.6778}.
+
+\bibitem[{\textit{Madsen et~al.}(1997)\textit{Madsen, Rasmussen, and
+  Rosbjerg}}]{Madsen&etal1997}
+Madsen, H., P.~Rasmussen, and D.~Rosbjerg (1997), Comparison of annual maximum
+  series and partial duration series methods for modeling extreme hydrologic
+  events: 1 at-site modeling, \textit{Water Resour. Res.}, \textit{33},
+  747--757, \doi{doi:10.1029/96WR03848}.
+
+\bibitem[{\textit{Martins and Stedinger}(2000)}]{Martins&Stedinger2000}
+Martins, E., and J.~Stedinger (2000), Generalized maximum-likelihood
+  generalized extreme-value quantile estimators for hydrologic data,
+  \textit{Water Resour. Res.}, \textit{36}, 737--744,
+  \doi{doi:10.1029/1999WR900330}.
+
+\bibitem[{\textit{McMillan et~al.}(2010)\textit{McMillan, Freer, Pappenberger,
+  Krueger, and Clark}}]{McMillan&etal2010}
+McMillan, H., J.~Freer, F.~Pappenberger, T.~Krueger, and M.~Clark (2010),
+  Impacts of uncertain river flow data on rainfall-runoff model calibration and
+  discharge predictions, \textit{Hydrol. Process.}, \textit{24}, 1270--1284,
+  \doi{doi:10.1002/hyp.7587}.
+
+\bibitem[{\textit{Midtt{\o}mme et~al.}(2011)\textit{Midtt{\o}mme, Pettersson,
+  Holmqvist, N{\o}tsund, Hisdal, and Sivertsg{\aa}rd}}]{Midttomme&2011}
+Midtt{\o}mme, G., L.~Pettersson, E.~Holmqvist, {\O}.~N{\o}tsund, H.~Hisdal, and
+  R.~Sivertsg{\aa}rd (2011), \textit{Retningslinjer for flomberegninger}, NVE,
+  retningslinjer nr. 4/2011.
+
+\bibitem[{\textit{Moyeed and Clarke}(2005)}]{Moyeed&Clarke2005}
+Moyeed, R., and R.~Clarke (2005), The use of bayesian methods for fitting
+  rating curves, with case studies, \textit{Adv. Water Resour.}, \textit{28},
+  807--818, \doi{doi:10.1016/j.advwatres.2005.02.005}.
+
+\bibitem[{\textit{Neppel et~al.}(2010)\textit{Neppel, Renard, Lang, Ayral,
+  Coeur, Gaume, Jacob, Payrastre, Pobanz, and Vinet}}]{Neppel&etal2010}
+Neppel, L., B.~Renard, M.~Lang, P.-A. Ayral, D.~Coeur, E.~Gaume, N.~Jacob,
+  O.~Payrastre, K.~Pobanz, and F.~Vinet (2010), Flood frequency analysis using
+  historical data: accounting for random and systematic errors, \textit{Hydrol.
+  Sci. J.}, \textit{55}, 192--208, \doi{doi:10.1080/02626660903546092}.
+
+\bibitem[{\textit{Paquet et~al.}(2013)\textit{Paquet, Garavaglia, Gar\c{c}on,
+      and Gailhard }}]{Paquet&2013}
+  Paquet, E., F.~Garavaglia, R.~Gar\c{c}on, and J.~Gailhard (2013), The SCHADEX
+  method: A semi-continuous rainfall-runoff simulation for extreme flood estimation,
+  \textit{Journal of Hydrology}, \textit{495}, 23--37.
+
+\bibitem[{\textit{Parent and Bernier}(2002)}]{ParentBernier2002}
+Parent, E., and J.~Bernier (2002), Bayesian {POT} modelling for historical
+  data, \textit{Journal of Hydrology}, \textit{274}, 95--108.
+
+\bibitem[{\textit{Petersen-{\O}verleir and
+  Reitan}(2009)}]{PetersenOverleir&Reitan2009}
+Petersen-{\O}verleir, A., and T.~Reitan (2009), Accounting for rating curve
+  imprecision in flood frequency analysis using likelihoode-based methods,
+  \textit{J. Hydrol.}, \textit{366}, 89--100,
+  \doi{doi:10.1016/j.jhydrol.2008.12.014}.
+
+\bibitem[{\textit{Petersen-{\O}verleir
+  et~al.}(2009)\textit{Petersen-{\O}verleir, Soot, and
+  Reitan}}]{PetersenOverleir&etal2009}
+Petersen-{\O}verleir, A., A.~Soot, and T.~Reitan (2009), Bayesian rating curve
+  inference as a streamflow data quality assessment tool, \textit{Water Resour.
+  Manag.}, pp. 1835--1842, \doi{doi:10.1007/s11269-008-9354-5}.
+
+\bibitem[{\textit{Rahman et~al.}(2015)\textit{Rahman, Haddad, Haque,
+      Kuczera and Weinmann}}]{Rahman&2015}
+  Rahman, A., K. Haddad, M~.N. Haque, G. Kuczera, and E. Weinmann (2015),
+  \textit{Australian rainfall and runoff project 5: Regional flood methods:
+    Stage 3 Report}, 145 pp. Engineers Australia, Barton, Australia.
+      
+\bibitem[{\textit{Reis and Stedinger}(2005)}]{ReisStedinger2005}
+Reis, D., and J.~Stedinger (2005), Bayesian {MCMC} flood frequency analysis
+  with historical information, \textit{Journal of Hydrology}, \textit{313},
+  97--116.
+
+\bibitem[{\textit{Reitan and
+  Petersen-{\O}verleir}(2009)}]{Reitan&PetersenOverleir2009}
+Reitan, T., and A.~Petersen-{\O}verleir (2009), Bayesian methods for estimating
+  multi-segment discharge rating curves, \textit{Stoch. Environ Res Risk
+  Assess}, \textit{23}, 627--642, \doi{10.1007/s00477-008-0248-0}.
+
+\bibitem[{\textit{Reitan and
+  Petersen-{\O}verleir}(2011)}]{Reitan&PetersenOverleir2011}
+Reitan, T., and A.~Petersen-{\O}verleir (2011), Dynamic rating curve assessment
+  in unstable rivers using ornstein-uhlenbeck processes, \textit{Water Resour.
+  Res.}, \textit{47}, n/a--n/a, \doi{doi:10.1029/2010WR009504}.
+
+\bibitem[{\textit{Renard}(2011)}]{Renard2011}
+Renard, B. (2011), A bayesian hierarchical approach to regional frequency
+  analysis, \textit{Water Resour. Res.}, \textit{47}, W11,513,
+  \doi{doi:10.1029/ 2010WR010089}.
+
+\bibitem[{\textit{Renard et~al.}(2006)\textit{Renard, Lang, and
+  Bois}}]{Renard&etal2006}
+Renard, B., M.~Lang, and P.~Bois (2006), Statistical analysis of extreme events
+  in a non-stationary context via a bayesian framework: case study with
+  peak-over-threshold data, \textit{Stoch. Environ. Res. Risk Assess.},
+  \textit{21}, 97--112, \doi{doi:10.1007/s00477-006-0047-4}.
+
+\bibitem[{\textit{Renard et~al.}(2013)\textit{Renard, Kochanek, Lang,
+  Garavaglia, Paquet, Neppel, Najib, Carreau, Arnaud, Aubert, Borchi,
+  Soubeyroux, Jourdain, Veysseire, Sauquet, Cipriani, and
+  Auffray}}]{Renard&etal2013}
+Renard, B., K.~Kochanek, M.~Lang, F.~Garavaglia, E.~Paquet, L.~Neppel,
+  K.~Najib, J.~Carreau, P.~Arnaud, Y.~Aubert, F.~Borchi, J.-M. Soubeyroux,
+  S.~Jourdain, J.-M. Veysseire, E.~Sauquet, T.~Cipriani, and a.~Auffray (2013),
+  Data-based comparison of frequency analysis methods: A general framework,
+  \textit{Water Resour. Res.}, \textit{49}, 825--843,
+  \doi{doi:10.1002/wrcr.20087}.
+
+\bibitem[{\textit{Robert and Casella}(2004)}]{RobertCasella2004}
+Robert, C.~P., and G.~Casella (2004), \textit{Monte Carlo Statistical Methods},
+  2nd ed., Springer, New York.
+
+\bibitem[{\textit{Robson and Reed}(1999)}]{RobsonReed1999}
+  Robson, A., and D. Reed (1999), \textit{Statistical Procedures for Flood
+    Frequency Estimation, Flood Estimation Handbook Volume 3}, Institute of
+  hydrology, Wallingford, UK. 
+
+\bibitem[{\textit{Rosbjerg et~al.}(2013)\textit{Rosbjerg, Blöschl, Burn,
+      Castellarin, Croke, Di Baldassarre, Iacobellis, Kjeldsen, Kuczera, Merz,
+      Montanari, Morris, Ouarda, Ren, Rogger, Salinas, Toth, and Viglione}}]{Rosbjerg&2013}
+  Rosbjerg, D., G. Blöschl, D.~H. Burn, A. Castellarin, B. Croke, G. di Baldassarre,
+  V. Iacobellis, T.~R. Kjeldsen, G. Kuczera, R. Merz, A. Montanari, D. Morris,
+  T.~B.~M.~J. Ouarda, L. Ren, M. Rogger, J.~L. Salinas, E. Toth, and A. Viglione
+  (2013), Prediction of floods in ungauged basins, in \textit{Runoff Prediction in
+    Ungauged Basins}, edited by G. Bloschl, M. Sivapalan, T. Wagener, A. Viglione,
+  and H. Savenije, pp. 189–226, Cambridge University Press, Cambridge,
+  \doi{doi:10.1017/CBO9781139235761.012}. 
+      
+\bibitem[{\textit{Rosbjerg and Madsen}(1995)}]{Rosbjerg&Madsen1995}
+Rosbjerg, D., and H.~Madsen (1995), Uncertainty measures of regional flood
+  frequency estimators, \textit{J. Hydrol.}, \textit{167}, 209--224,
+  \doi{doi:10.1016/0022-1694(94)02624-K}.
+
+\bibitem[{\textit{Rue et~al.}(2009)\textit{Rue, Martino, and
+  Chopin}}]{Rueetal2009}
+Rue, H., S.~Martino, and N.~Chopin (2009), {Approximate {B}ayesian Inference
+  for Latent {G}aussian Models Using Integrated Nested {L}aplace Approximations
+  (with Discussion)}, \textit{Journal of the Royal Statistical Society, Series
+  B}, \textit{71}, 319--392.
+
+\bibitem[{\textit{Stenius et~al.}(2011)\textit{Stenius, Glad, Wang, and
+      V{\ae}ringstad}}]{Stenius&2015}
+  Stenius, S., P.~A.~Glad, T.~K.~Wang, and T.~V{\ae}ringstad (2015),
+  \textit{Veileder for flomberegninger i sm{\aa} uregulerte felt}, NVE,
+  veileder nr. 7-2015.
+
+\bibitem[{\textit{Westerberg and McMillan}(2015)}]{Westerberg&McMillan2015}
+Westerberg, I., and H.~McMillan (2015), Uncertainty in hydrological signatures,
+  \textit{Hydrol. Earth Syst. Sci.}, \textit{19}, 3951--3968,
+  \doi{doi:10.5194/hess-19-3951-2015}.
+
+\bibitem[{\textit{Westerberg et~al.}(2011)\textit{Westerberg, Guerrero,
+  Seibert, Beven, and Halldin}}]{Westerberg&etal2011}
+Westerberg, I., J.~Guerrero, J.~Seibert, K.~Beven, and S.~Halldin (2011),
+  Stage-discharge uncertainty derived with a non-stationary rating curve in the
+  choluteca river, honduras, \textit{Hydrol. Process.}, \textit{25}, 603--613,
+  \doi{doi:10.1002/hyp.7848}.
+
+\bibitem[{\textit{Wilson et~al.}(2011)\textit{Wilson, Fleig, Lawrence, Hisdal,
+  Pettersson, and Holmqvist}}]{Wilson&2011}
+Wilson, D., A.~Fleig, D.~Lawrence, H.~Hisdal, L.-E. Pettersson, and
+  E.~Holmqvist (2011), A review of {NVE}'s flood frequency estimation
+  procedures, \textit{Tech. Rep. 9:2011}, NVE, Oslo.
+
+
+
+
+\end{thebibliography}
+
+%% ------------------------------------------------------------------------ %%
+%  END ARTICLE
+%% ------------------------------------------------------------------------ %%
+\end{article}
+
+%% Enter Figures and Tables here:
+
+\end{document}
