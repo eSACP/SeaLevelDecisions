@@ -37,11 +37,11 @@
 % \altaffilmark will produce footnote;
 % matching \altaffiltext will appear at bottom of page.
 
-\authors{T. Thorarinsdottir.\altaffilmark{1}, P. Guttorp.\altaffilmark{1},...}
+\authors{N.N.\altaffilmark{1}, N.N.\altaffilmark{2,3},...}
 
-\altaffiltext{1}{Norwegian Computing Centere}
+\altaffiltext{1}{Affiliation one}
 
-\altaffiltext{2}{Danish Technological University}
+\altaffiltext{2}{Affiliation two}
 
 \altaffiltext{3}{Affiliation three}
 
@@ -68,18 +68,7 @@
 
 \subsection{Limitations of the sea level projections}
 
-<<<<<<< HEAD
-\subsubsection{Global sea level}
-
-\subsubsection{Local sea level}
-
-\subsubsection{Uncertainty assessment}
-
-
-\subsubsection{Limitations of the sea level projections}
-=======
 \section{Decision tools {\color{blue} (KdB, MD, TT)}}
->>>>>>> origin/master
 
 \subsection{Timing of adaptation measures}
 
@@ -103,6 +92,8 @@ Here, the expression on the left describes the benefits of the delay while the e
   r C > d_1^1 - d_1^0.
   \]
   \end{linenomath*}
+
+
 
 \subsection{Limitations of the decision framework}
 
