@@ -37,7 +37,7 @@
 % \altaffilmark will produce footnote;
 % matching \altaffiltext will appear at bottom of page.
 
-\authors{T. Thorarinsdottir.\altaffilmark{1}, P. Guttorp.\altaffilmark{1},...}
+\authors{T. Thorarinsdottir\altaffilmark{1}, P. Guttorp\altaffilmark{1}, M. Drews\altaffilmark{2}}
 
 \altaffiltext{1}{Norwegian Computing Centere}
 
@@ -69,13 +69,32 @@
 
 
 \subsection{Global sea level}
+Most climate models do not explicitly provide sea level as an output of the calculations. 
+
+We will use the empirical approach of Rahmstorf and collaborators \citep{Rahmstorf07,Rahmstorf11}, employing the statistical modeling of \citet{Bolin2014a} to relate global annual mean temperature anomalies \citep{giss} to global mean sea level anomalies \citep{csiro}. 
+
+%Figure showing historical relationship
+
+We then apply the estimated historical relationship to projected temperatures from the CMIP5 experiment \citep{cmip5} to obtain projected global annual mean sea level. 
+%Figure with sea level projections & IPCC projections
+
 
 \subsection{Local sea level}
+In order to get from global sea level projections to local ones, it is important to note that sea level rise not is uniform over the globe. Glacial and land ice melting affect the local sea level differently depending on where the melted ice is located.
+%Gravitaional effects
+Another major effect in Fennoskandia is the land rise due to isostatic effects of the glaciers from the last ice age.
+Again, we will use historical data to relate global sea level to isostatically corrected local sea level using a time series regression model. 
+%Figure showing corrected and uncorrected Bergen data and regression model.
+
+The local sea level projections are then obtained by first relating projected temperature to global sea level, and then relating the global sea level to the local one. Each climate model temperature projection yields a different local sea level projection.
 
 \subsection{Uncertainty assessment}
+Following the approach of \citet{Guttorp2014} we assess the uncertainty in the local sea level projections taking into account the variability between the climate projections used, the uncertainties in the regressuions of global mean temperature on global mean sealevel and of global on local sea level. We express the sea level projection uncertainty in terms of a confidence band that is simultaneously of the intended  level  for all projection years. This allows us, for example, to get a confidence band for the years when a given sea level rise is obtained.
 
+%Figure showing Bergen and Copenhagen slr projections
 
 \subsection{Limitations of the sea level projections}
+The main assumption is using historical relationships in statistical projections of the type used in this paper is that there is no major change in how temperature relates to sea level, globally and locally. Among the factors that may invalidate this approach are changes in water storage on land, changes in the rates of glacial and land ice melt, and changes in Earth's gravitational field due to transfer of mass from land ice to ocean water. For example, the rate of ice melt on Greenland may suddenly increase substantially due to intense warming of both air and sea water. Our current climate models are not able to resolve the ice processes sufficiently to include such so called tipping points into the projections.
 
 \section{Decision tools {\color{blue} (KdB, MD, TT)}}
 
@@ -138,22 +157,55 @@ This work was funded by NordForsk through project number 74456 ``Statistical Ana
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 
+\bibitem[{Bolin et~al.(2014)}]{Bolin2014a}
+Bolin, D., P. Guttorp, A. Januzzi, M. Novak, H. Podschwit, L. Richardson, C. Sowder, A. S\"{a}rkk\"{a} and A. Zimmerman (2014), Statistical prediction of global sea level from
+  global temperature. \textit{Statistica Sinica},~{\em25}, 351--367.
+  
+\bibitem[{Church and White (2011)}]{csiro}
+Church, J. and N.~White (2011),
+Sea-level rise from the late 19th to the early 21st century.
+{\em Surveys in Geophysics\/}~{\em 32}, 585--602.
+
 \bibitem[{\textit{Fankhauser et~al.}(1999)}]{Fankhauser&1999}
   Fankhauser, S., J.~B.~Smith, and R.~S.~J.~Tol (1999), {Weathering climate
     change: some simple rules to guide adaptation decisions},
   \textit{Ecological Economics}, \textit{30}, 67--78.
   
-\bibitem[{\textit{Robert and Casella}(2004)}]{RobertCasella2004}
+ \bibitem[{Guttorp et~al. (2014)}]{Guttorp2014}
+Guttorp, P., D. Bolin, A. Januzzi, D. Jones, M. Novak, H. Podschwit, L. Richardson, A.S\"{a}rkk\"{a}, C. Sowder and A Zimmerman (2014), Assessing the uncertainty in projecting localmean sea level from global temperature. \textit{Journal of Applied Meteorology and Climatology}.\textit{53}, 2163--2170.
+  
+  \bibitem[{Hansen et~al.} (2001)]{giss}
+Hansen, J., R.~Rued, M.~Sato, M.~Imhoff, W.~Lawrence, D.~Easterling,
+  T.~Peterson, and T.~Karl (2001),
+A closer look at {U}nited {S}tates and global surface temperature
+  change. {\em J. Geophys. Res.\/}~{\em 106}, 23947--23963.
+
+  
+ \bibitem[{Rahmstorf}{2007}]{Rahmstorf07}
+Rahmstorf, S. (2007).
+\newblock {A} semi-empirical approach to projecting future sea-level rise.
+\newblock {\em Science\/}~{\em 315}, 368--370.
+
+\bibitem[{Rahmstorf, Perrette, and Vermeer}{Rahmstorf
+  et~al.}{2011}]{Rahmstorf11}
+Rahmstorf, S., M.~Perrette, and M.~Vermeer (2011),
+Testing the robustness of semi-empirical sea level projections.
+  climate dynamics.
+{\em Climate Dynamics}~{\em 39}, 861--875.
+
+\bibitem[{Robert and Casella}(2004)]{RobertCasella2004}
 Robert, C.~P., and G.~Casella (2004), \textit{Monte Carlo Statistical Methods},
   2nd ed., Springer, New York.
 
-\bibitem[{\textit{Rue et~al.}(2009)\textit{Rue, Martino, and
-  Chopin}}]{Rueetal2009}
+\bibitem[{Rue et~al.}(2009)]{Rueetal2009}
 Rue, H., S.~Martino, and N.~Chopin (2009), {Approximate {B}ayesian Inference
   for Latent {G}aussian Models Using Integrated Nested {L}aplace Approximations
   (with Discussion)}, \textit{Journal of the Royal Statistical Society, Series
   B}, \textit{71}, 319--392.
 
+\bibitem[{Taylor et~al.(2012)Taylor, Stouffer, and Meehl}]{cmip5}
+Taylor, K., R.~Stouffer, and G.~Meehl, 2012: An overview of {CMIP}5 and the
+  experiment design. \textit{Bull. Amer. Meteor. Soc.}, \textbf{93}, 485--498.
 
 \end{thebibliography}
 
