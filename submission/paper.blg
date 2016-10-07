@@ -2,55 +2,46 @@ This is BibTeX, Version 0.99d (TeX Live 2013)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper.aux
 The style file: agufull08.bst
-I found no \bibdata command---while reading file paper.aux
-Warning--I didn't find a database entry for "rahmstorf2007"
-Warning--I didn't find a database entry for "rahmstorf2011"
-Warning--I didn't find a database entry for "bolin2014a"
-Warning--I didn't find a database entry for "giss"
-Warning--I didn't find a database entry for "csiro"
-Warning--I didn't find a database entry for "cmip5"
-Warning--I didn't find a database entry for "Guttor2014"
-Warning--I didn't find a database entry for "Fankhauser&1999"
+Database file #1: ref.bib.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 0 entries,
+You've used 8 entries,
             3076 wiz_defined-function locations,
-            1076 strings with 9402 characters,
-and the built_in function-call counts, 33 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 1
-* -- 2
-:= -- 10
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 1
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+            1124 strings with 10804 characters,
+and the built_in function-call counts, 8915 in all, are:
+= -- 984
+> -- 333
+< -- 2
++ -- 153
+- -- 94
+* -- 551
+:= -- 846
+add.period$ -- 8
+call.type$ -- 8
+change.case$ -- 33
+chr.to.int$ -- 9
+cite$ -- 8
+duplicate$ -- 984
+empty$ -- 474
+format.name$ -- 117
+if$ -- 1779
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 7
-num.names$ -- 0
-pop$ -- 0
+missing$ -- 95
+newline$ -- 31
+num.names$ -- 32
+pop$ -- 405
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 25
 quote$ -- 0
-skip$ -- 1
+skip$ -- 484
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 400
+swap$ -- 851
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 72
 warning$ -- 0
-while$ -- 0
+while$ -- 40
 width$ -- 0
-write$ -- 6
-(There was 1 error message)
+write$ -- 94

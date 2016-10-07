@@ -1,8 +1,56 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
+
+\bibitem[{\textit{Bolin et~al.}(2014)\textit{Bolin, Guttorp, Januzzi, Novak,
+  Podschwit, Richardson, Sowder, S\"{a}rkk\"{a}, and Zimmerman}}]{Bolin2014a}
+Bolin, D., P.~Guttorp, A.~Januzzi, M.~Novak, H.~Podschwit, L.~Richardson,
+  C.~Sowder, A.~S\"{a}rkk\"{a}, and A.~Zimmerman (2014), Statistical prediction
+  of global sea level from global temperature, \textit{Statistica Sinica},
+  \textit{25}, 351--367.
+
+\bibitem[{\textit{Church and White}(2011)}]{csiro}
+Church, J., and N.~White (2011), Sea-level rise from the late 19th to the early
+  21st century, \textit{Surveys in Geophysics}, \textit{32}, 585--602.
+
+\bibitem[{\textit{Fankhauser et~al.}(1999)\textit{Fankhauser, Smith, and
+  Tol}}]{Fankhauser&1999}
+Fankhauser, S., J.~Smith, and R.~S.~J. Tol (1999), Weathering climate change:
+  some simple rules to guide adaptation decisions, \textit{Ecological
+  Economics}, \textit{30}, 67--78.
+
+\bibitem[{\textit{Guttorp et~al.}(2014)\textit{Guttorp, Bolin, Januzzi, Jones,
+  Novak, Podschwit, Richardson, S\"{a}rkk\"{a}, Sowder, and
+  Zimmerman}}]{Guttorp2014}
+Guttorp, P., D.~Bolin, A.~Januzzi, D.~Jones, M.~Novak, H.~Podschwit,
+  L.~Richardson, A.~S\"{a}rkk\"{a}, C.~Sowder, and A.~Zimmerman (2014),
+  Assessing the uncertainty in projecting local mean sea level from global
+  temperature, \textit{Journal of Applied Meteorology and Climatology},
+  \textit{53}, 2163--2170.
+
+\bibitem[{\textit{Hansen et~al.}(2001)\textit{Hansen, Rued, Sato, Imhoff,
+  Lawrence, Easterling, Peterson, and Karl}}]{giss}
+Hansen, J., R.~Rued, M.~Sato, M.~Imhoff, W.~Lawrence, D.~Easterling,
+  T.~Peterson, and T.~Karl (2001), A closer look at {U}nited {S}tates and
+  global surface temperature change, \textit{J. Geophys. Res.}, \textit{106},
+  23,947--23,963.
+
+\bibitem[{\textit{Rahmstorf}(2007)}]{Rahmstorf07}
+Rahmstorf, S. (2007), {A} semi-empirical approach to projecting future
+  sea-level rise, \textit{Science}, \textit{315}, 368--370.
+
+\bibitem[{\textit{Rahmstorf et~al.}(2011)\textit{Rahmstorf, Perrette, and
+  Vermeer}}]{Rahmstorf11}
+Rahmstorf, S., M.~Perrette, and M.~Vermeer (2011), Testing the robustness of
+  semi-empirical sea level projections, \textit{Climate Dynamics}, \textit{39},
+  861--875.
+
+\bibitem[{\textit{Taylor et~al.}(2012)\textit{Taylor, Stouffer, and
+  Meehl}}]{cmip5}
+Taylor, K., R.~Stouffer, and G.~Meehl (2012), An overview of {CMIP}5 and the
+  experiment design, \textit{Bull. Amer. Meteor. Soc.}, \textit{93}, 485--498.
 
 \end{thebibliography}
