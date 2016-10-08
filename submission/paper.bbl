@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -48,9 +48,26 @@ Rahmstorf, S., M.~Perrette, and M.~Vermeer (2011), Testing the robustness of
   semi-empirical sea level projections, \textit{Climate Dynamics}, \textit{39},
   861--875.
 
+\bibitem[{\textit{Stocker et~al.}(2013)\textit{Stocker, Qin, Plattner, Tignor,
+  Allen, Boschung, Nauels, Xia, Bex, and Midgley}}]{ipcc}
+Stocker, T., D.~Qin, G.-K. Plattner, M.~Tignor, S.~K. Allen, J.~Boschung,
+  A.~Nauels, Y.~Xia, V.~Bex, and P.~Midgley (2013), \textit{Climate Change
+  2013: The Physical Science Basis. Contribution of Working Group I to the
+  {F}ifth {A}ssessment {R}eport of the {I}intergovernmental {P}abel on
+  {C}limate {C}hang}, Cambridge University Press.
+
 \bibitem[{\textit{Taylor et~al.}(2012)\textit{Taylor, Stouffer, and
   Meehl}}]{cmip5}
 Taylor, K., R.~Stouffer, and G.~Meehl (2012), An overview of {CMIP}5 and the
   experiment design, \textit{Bull. Amer. Meteor. Soc.}, \textit{93}, 485--498.
+
+\bibitem[{\textit{van Vuuren et~al.}(2011)\textit{van Vuuren, Edmonds, Kainuma,
+  Riahi, Thomson, Hibbard, Hurtt, Kram, Krey, Lamarque, Masui, Meinshausen,
+  Nakicenovic, Smith, and Rose}}]{change}
+van Vuuren, D.~P., J.~Edmonds, M.~Kainuma, K.~Riahi, A.~Thomson, K.~Hibbard,
+  G.~C. Hurtt, T.~Kram, V.~Krey, J.-F. Lamarque, T.~Masui, M.~Meinshausen,
+  N.~Nakicenovic, S.~J. Smith, and S.~K. Rose (2011), The representative
+  concentration pathways: an overview, \textit{Clim. Change}, \textit{109},
+  5--31.
 
 \end{thebibliography}
