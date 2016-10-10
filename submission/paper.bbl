@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -11,6 +11,10 @@ Bolin, D., P.~Guttorp, A.~Januzzi, M.~Novak, H.~Podschwit, L.~Richardson,
   C.~Sowder, A.~S\"{a}rkk\"{a}, and A.~Zimmerman (2014), Statistical prediction
   of global sea level from global temperature, \textit{Statistica Sinica},
   \textit{25}, 351--367.
+
+\bibitem[{\textit{Box and Jenkins}(1970)}]{boxjenkins}
+Box, G., and G.~Jenkins (1970), \textit{Time series analysis: Forecasting and
+  control}, Holden-Day.
 
 \bibitem[{\textit{Church and White}(2011)}]{csiro}
 Church, J., and N.~White (2011), Sea-level rise from the late 19th to the early

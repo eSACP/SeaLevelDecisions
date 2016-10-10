@@ -83,8 +83,15 @@ We then apply the estimated historical relationship to projected temperatures fr
 In order to get from global sea level projections to local ones, it is important to note that sea level rise not is uniform over the globe. Glacial and land ice melting affect the local sea level differently depending on where the melted ice is located.
 %Gravitaional effects
 Another major effect in Fennoskandia is the land rise due to isostatic rebound from the glaciers of the last ice age. 
-Again, we will use historical data to relate global sea level to isostatically corrected local sea level using a time series regression model. 
-%Figure showing corrected and uncorrected Bergen data and regression model.
+Again, we will use historical data to relate global sea level to isostatically corrected local sea level using a time series regression model. Figure \ref{fig:obs} shows uncorrected and corrected Bergen sea level data, and the relationship between the corrected Bergen data and the global sea level data. The time series regression uses an ARMA(1,1)-model \citep{boxjenkins}.
+\begin{figure}
+\begin{center}
+\includegraphics[width=39pc]{bergenfit.png}
+\caption{ The left figure shows raw (black)and gia-corrected (red) sea level data from Bergen, The right figure relates the gia-corrected Bergen sea level to the global sea level series of \citet{csiro}. The straight line is the time series regression line.}
+\label{fig:obs}
+\end{center}
+\end{figure}
+
 
 The local sea level projections are then obtained by first relating projected temperature to global sea level, and then relating the global sea level to the local one. Each climate model temperature projection yields a different local sea level projection.
 
@@ -92,7 +99,14 @@ The local sea level projections are then obtained by first relating projected te
 \label{unc_ass}
 Following the approach of \citet{Guttorp2014} we assess the uncertainty in the local sea level projections taking into account the variability between the climate projections used, the uncertainties in the regressions of global mean temperature on global mean sea level and of global on local sea level. We express the sea level projection uncertainty in terms of a confidence band that is simultaneously of the intended  level  for all projection years. This allows us, for example, to get a confidence band for the years when a given sea level rise is obtained.
 
-%Figure showing Bergen and Copenhagen slr projections
+\begin{figure}
+\begin{center}
+\includegraphics[width=39pc]{bergen_ci.png}
+\caption{ }
+\label{fig:ci}
+\end{center}
+\end{figure}
+
 
 \subsection{Limitations of the sea level projections}
 The main assumption is using historical relationships in statistical projections of the type used in this paper is that there is no major change in how temperature relates to sea level, globally and locally. Among the factors that may invalidate this approach are changes in water storage on land (removing water from the oceans), excessive siphoning of groundwater (resulting in land subsidence), changes in the rates of glacial and land ice melt, and changes in Earth's gravitational field due to transfer of mass from land ice to ocean water. For example, the rate of ice melt on Greenland may suddenly increase substantially due to intense warming of both air and sea water. Our current climate models are not able to resolve the ice processes sufficiently to include such so called tipping points into the projections. Also, the IPCC scenarios do not include changes in water usage \citep{change}.
