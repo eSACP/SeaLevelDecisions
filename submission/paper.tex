@@ -28,7 +28,8 @@
 %  TITLE
 %% ------------------------------------------------------------------------ %%
 
-\title{I don't know, are you sure you want to do this?}
+\title{I don't know, are you sure we want to do this?\
+Sea level adaptation decisions under uncertainty}
 
 %% ------------------------------------------------------------------------ %%
 %  AUTHORS AND AFFILIATIONS
@@ -72,10 +73,14 @@
 Most climate models do not explicitly provide sea level as an output of the calculations. Rather, the IPCC AR5 report \citep[ch.~13]{ipcc} combines the heat expansion of the ocean with temperature forced models for glacial melt, Greenland ice melt, and Antarctic ice melt and with land rise due to rebound from the last ice age. Judging from the supplementary material to \citet[ch.~13]{ipcc}, the uncertainty assessment is only based on the spread of the ensemble of temperature projections, not on the additional uncertainty in the ice models used.
 
 We will instead use the empirical approach of Rahmstorf and collaborators \citep{Rahmstorf07,Rahmstorf11}, employing the statistical modeling of \citet{Bolin2014a} to relate global annual mean temperature anomalies \citep{giss} to global mean sea level anomalies \citep{csiro}. 
-
 %Figure showing historical relationship?
 
 We then apply the estimated historical relationship to projected temperatures from the CMIP5 experiment \citep{cmip5} to obtain projected global annual mean sea level, taking into account the uncertainty in the statistical model as well as the spread of the temperature projection ensemble (see subsection \ref{unc_ass}). 
+For the i'th temperature projection $T_t^i$ we estimate the corresponding global mean sea level as
+
+\[H_t^{gl,i} = \int\limits_{{t_0}}^t {{\hat a} (T_u^i - {{\hat T}_0}} )du + {\varsigma _t}\]
+where ${\hat a}$ and ${\hat T}_0$ are regression parameters of observed global sea level on observed global temperature and $\varsigma_t$ the integrated time series regression error.
+
 %Figure with sea level projections & IPCC projections?
 
 
@@ -93,14 +98,15 @@ Again, we will use historical data to relate global sea level to isostatically c
 \end{figure}
 
 
-The local sea level projections are then obtained by first relating projected temperature to global sea level, and then relating the global sea level to the local one. Each climate model temperature projection yields a different local sea level projection.
-%Equation
+The local sea level projections are then obtained by first relating projected temperature to global sea level, and then relating the global sea level to the local one. Each climate model temperature projection yields a different local sea level projection. The local sea level projection based on the i'th climate model for years beyond 2000 is estimated as
+\[H_t^{loc,i} + \gamma (t -2000 ) = {\hat b} H_t^{gl,i}  + {\varepsilon _t}\]
+where $\gamma$ ie the annual land rise rate, t and $ {\hat b} $ is the regression coefficient relating global to local sea level.
+
+
 
 \subsection{Uncertainty assessment}
 \label{unc_ass}
-Following the approach of \citet{Guttorp2014} we assess the uncertainty in the local sea level projections taking into account the variability between the climate projections used, the uncertainties in the regressions of global mean temperature on global mean sea level and of global on local sea level. We express the sea level projection uncertainty in terms of a confidence band that is simultaneously of the intended  level  for all projection years. This allows us, for example, to get a confidence band for the years when a given sea level rise is obtained.
-%equation
-
+Following the approach of \citet{Guttorp2014} we assess the uncertainty in the local sea level projections taking into account the variability between the climate projections used, the uncertainties in the regressions of global mean temperature on global mean sea level and of global on local sea level. We express the sea level projection uncertainty in terms of a confidence band that is simultaneously of the intended  level  for all projection years. This allows us, for example, to get a confidence band for the years when a given sea level rise is obtained. 
 \begin{figure}
 \begin{center}
 \includegraphics[width=39pc]{bergen_ci.png}
@@ -111,7 +117,7 @@ Following the approach of \citet{Guttorp2014} we assess the uncertainty in the l
 
 
 \subsection{Limitations of the sea level projections}
-The main assumption is using historical relationships in statistical projections of the type used in this paper is that there is no major change in how temperature relates to sea level, globally and locally. Among the factors that may invalidate this approach are changes in water storage on land (removing water from the oceans), excessive siphoning of groundwater (resulting in land subsidence), changes in the rates of glacial and land ice melt, and changes in Earth's gravitational field due to transfer of mass from land ice to ocean water. For example, the rate of ice melt on Greenland may suddenly increase substantially due to intense warming of both air and sea water. Our current climate models are not able to resolve the ice processes sufficiently to include such so called tipping points into the projections. Also, the IPCC scenarios \citep{change} do not include changes in water usage.
+The main assumption is using historical relationships in statistical projections of the type used in this paper is that there is no major change in how temperature relates to sea level, globally and locally. Among the factors that may invalidate this approach are changes in water storage on land (in essence removing water from the oceans), excessive siphoning of groundwater (resulting in land subsidence), changes in the rates of glacial and land ice melt, and changes in Earth's gravitational field due to transfer of mass from land ice to ocean water. For example, the rate of ice melt on Greenland may suddenly increase substantially due to intense warming of both air and sea water. Our current climate models are not able to resolve the ice processes sufficiently to include such so called tipping points into the projections. Also, the IPCC scenarios \citep{change} do not include changes in water usage.
 
 \section{Decision tools {\color{blue} (KdB, MD, TT)}}
 
