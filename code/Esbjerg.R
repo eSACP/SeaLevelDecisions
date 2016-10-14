@@ -134,7 +134,7 @@ x = seq(from=0,to=50,length.out = 1000)
 year = 51
 
 
-plot(c(0,50), c(0,0.25), xlab="Anomaly (cm)",ylab="Density",main="Bergen 2050 RCP 8.5",type="n")
+plot(c(0,50), c(0,0.25), xlab="Anomaly (cm)",ylab="Density",main="Esbjerg 2050 RCP 8.5",type="n")
 v1=apply(matrix(unlist(cis$pred),ncol=101,byrow=T),2,median)[year]
 segments(v1,0,v1,0.25,lwd=2)
 hist(mu[,year],xlim=c(0,50), breaks=(0:51), ylim=c(0,0.50),freq=FALSE,add=T,lwd=2)
