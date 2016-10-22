@@ -1,3 +1,37 @@
+dim(bcsim)
+lo=hi=NULL#
+for (i in 1:165)#
+{lo=quantile(bcsim[i,],.025)#
+hi=quantile(bcsim[i,],.975)}
+quartz()
+plot(berkeley.years,berkeley,type="l",lwd=2)
+lines(berkeley.years,berkeley.bc,col="red",lwd=2)
+lines(berkeley.years,hi,col="red")
+length(hi)
+lo=hi=NULL#
+for (i in 1:165)#
+{lo=c(lo,quantile(bcsim[i,],.025))#
+hi=c(hi,quantile(bcsim[i,],.975))}
+lines(berkeley.years,hi,col="red")
+lines(berkeley.years,lo,col="red")
+N=10000#
+bcsim=NULL#
+for(i in 1:N){tryCatch(#
+{inn=sample(innov)#
+path=arima.sim(list(ar=c(-0.3259366, 0.3886687, 0.1176103 ,0.2811755),ma=0.8170118),n=length(berkeley),n.start=2000,#
+innov=inn)#
+path=predict(berk.gls2,newdata=data.frame(yrs))+berkeley.sd*inn#
+#
+bcar=bentcable.ar(path,p=4,init.cable=c(-1.2677,0.0004864,0.0135112,99,66.4))#
+bctmp=NULL#
+for(i in 0:164) bctmp=c(bctmp,fullcable.t(i,bcar$cable$est[1],bcar$cable$est[2],bcar$cable$est[3],bcar$cable$est[4],bcar$cable$est[5]))#
+bcsim=cbind(bcsim,bctmp)#
+})}#
+#
+lo=hi=NULL#
+for (i in 1:165)#
+{lo=c(lo,quantile(bcsim[i,],.025))#
+hi=c(hi,quantile(bcsim[i,],.975))}
 par(mfrow=c(1,1))
 plot(range(berkeley.years),range(c(berkeley-2*berkeley.sd,berkeley+2*berkeley.sd)),type="n",xlab="Year",ylab="Temperature anomaly (°C)")#
 lines(berkeley.years,berkeley,lwd=2)
@@ -717,6 +751,13 @@ lines(norwaydata[[i]]$years,norwaydata[[i]]$data)#
 lines(norwaydata[[i]]$years,newdata,col="red")#
 }
 i
+plot(c(0,50), c(0,0.25), xlab="Anomaly (cm)",ylab="Density",main="Esbjerg 2050 RCP 8.5",type="n")#
+v1=apply(matrix(unlist(cis$pred),ncol=101,byrow=T),2,median)[year]#
+segments(v1,0,v1,0.25,lwd=2)#
+hist(mu[,year],xlim=c(0,50), breaks=(0:51), ylim=c(0,0.50),freq=FALSE,add=T,lwd=2)#
+#
+lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd.g[year]),col="red",lwd=2)#
+lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col="blue",lwd=2)
 setwd("~/GitHub/SeaLevelDecisions/code")#
 require(maps)#
 require(maptools)#
@@ -728,16 +769,17 @@ require(chron)#
 require(zoo)#
 source('~/GitHub/SeaLevelProjections/Sealevel_functions.R')#
 source('~/GitHub/SeaLevelDecisions/code/ci_bergen.R')#
-norway=read.table("~/GitHub/SeaLevelProjections/Norway_sea_level/Norway.PSMSL.txt")#All Norwegian sea level stations with current data#
+denmark=read.table("~/GitHub/SeaLevelProjections/denmark_sea_level/denmark.PSMSL.txt")#All Danish sea level stations with current data]#
 #from PSMSL.org#
-norway[,1]=as.character(norway[,1])#
-norwayurl=paste("http://www.psmsl.org/data/obtaining/rlr.monthly.data/",norway[,2],".rlrdata",sep="")#
+denmark[,1]=as.character(denmark[,1])#
 #
-N=length(norway[,2])#
-norwaydata=list(N,NULL)#
+denmarkurl=paste("http://www.psmsl.org/data/obtaining/rlr.monthly.data/",denmark[,2],".rlrdata",sep="")#
 #
-for (i in 1:N){#
-	tmp=read.table(norwayurl[i],na.strings="-99999",sep=";")#
+N=length(denmark[,2])#
+denmarkdata=list(N,NULL)#
+for(i in 1:N){#
+#
+	tmp=read.table(denmarkurl[i],na.strings="-99999",sep=";")#
 	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmp[,2:4])#
 #
 	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year#
@@ -751,54 +793,33 @@ for (i in 1:N){#
 	tmp.ann=apply(tmp.rlr,1,"mean")/10 #cm#
 	tmp.yrs=unique(floor(tmp[,1]))#
 	tmp.ann=tmp.ann-mean(tmp.ann[which(is.element(tmp.yrs,1970:1999))],na.rm=T)#
-	norwaydata[i]=list(data.frame(years=unique(floor(tmp[,1])),data=tmp.ann))#
+	denmarkdata[i]=list(data.frame(years=unique(floor(tmp[,1])),data=tmp.ann))#
 	}#
-#deal with Bergen missing data 1941-42#
-#use average difference between Bergen and all stations#
-#in 1940 and 1943 to estimate vaues for 1941 and 1942#
+	gia.DK=giase.DK=rep(NA,N)#
+	index=c(1,2,4,5,6,14) #with gia #
+	gia.DK[index]=c(-.012,-.306,-.028,-.009,-.010,0.06)#
+	giase.DK[index]=c(.01,.14,.008,.01,.01,.02)#
 #
-tmp0=tmp1=tmp2=tmp3=NULL#
-for (i in 1:N)#
-{#
-	tmp0=c(tmp0,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1940))])#
-tmp1=c(tmp1,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1941))])#
-tmp2=c(tmp2,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1942))])#
-tmp3=c(tmp3,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1943))])#
-}#
-m0=mean(tmp0,na.rm=T)#
-m1=mean(tmp1,na.rm=T)#
-m2=mean(tmp2,na.rm=T)#
-m3=mean(tmp3,na.rm=T)#
-adj=mean(c(norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1940))]-m0,norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1943))]-m3))#
-norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1941))]=m1-adj#
-norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1942))]=m2-adj#
-#
-index=c(2,4,8,9,11,13,16,20)#sufficient data + having gia #
-gia.NO=rep(NA,N)#
-giase.NO=rep(NA,N)#
-gia.NO[index]=c(0.17,0.27,0.26,0.42,0.39,0.18,0.26,0.54)#
-giase.NO[index]=c(0.06,0.029,0.114,0.031,0.033,0.06,0.07,0.06)#
 #Get global model, data and CMIP5 output #
 load('~/GitHub/SeaLevelProjections/data&global.Rdata')#
 #
-pdf("bergen_90.pdf")#
+pdf("esbjerg_90.pdf")#
 par(mfrow=c(1,2),pty="s")#
-i=16#
-#
-	m=length(norwaydata[[i]]$data)-1#
+i=14#
+m=length(denmarkdata[[i]]$data)-1#
  reg=0:m#
- adj=mean(reg[which(is.element(norwaydata[[i]]$years,1970:1999))])#
+ adj=mean(reg[which(is.element(denmarkdata[[i]]$years,1970:1999))])#
 reg=reg-adj#
-	newdata=norwaydata[[i]]$data+gia.NO[i]*reg#
-	xlim=range(norwaydata[[i]]$years)#
-	ylim=range(c(norwaydata[[i]]$data,newdata))#
+	newdata=denmarkdata[[i]]$data+gia.DK[i]*reg#
+	xlim=range(denmarkdata[[i]]$years)#
+	ylim=range(c(denmarkdata[[i]]$data,newdata))#
 #
 plot(xlim,ylim,type="n",xlab="Year",ylab="Sea level anomaly (cm)")#
-lines(norwaydata[[i]]$years,norwaydata[[i]]$data,lwd=2)#
-lines(norwaydata[[i]]$years,newdata,lwd=2,col="red")#
+lines(denmarkdata[[i]]$years,denmarkdata[[i]]$data,lwd=2)#
+lines(denmarkdata[[i]]$years,newdata,lwd=2,col="red")#
 #
-	sta=list(data=norwaydata[[i]]$data,name=norway[i,1],years=norwaydata[[i]]$years,gia=gia.NO[i],se.gia=giase.NO[i])#
-####
+	sta=list(data=denmarkdata[[i]]$data,name=denmark[i,1],years=denmarkdata[[i]]$years,gia=gia.DK[i],se.gia=giase.DK[i])#
+	####
 ### Estimate local relationship from data#
 ####
 #
@@ -835,8 +856,11 @@ cis=ci_bergen(models,sta,stafit,sta.common.years,alpha)#
 par(mfrow=c(1,1))#
 	xlim=c(1950,2100)#
 	ylim=c(-25,115)#
+#
+par(mfrow=c(1,1))#
 plot(xlim,ylim,xlim=xlim,ylim=ylim,type='n',xlab="Year",	ylab="Anomaly (cm)",main="RCP 8.5")#
 lines(sta$years[begin:max(sta$years)],sta$data[begin:max(sta$years)],col='blue')#
+#
 for(ii in 1:K){#
 	lines(2000:2100,cis$pred[[ii]],col=2,lwd=0.5)#
 }#
@@ -847,90 +871,27 @@ lines(2000:2100,cis$res$a.marginal,col="purple",lty=3)#
 lines(2000:2100,cis$res$b.marginal,col="purple",lty=3)#
 #
 F.20 = F.40 = rep(0,101)#
-for(k in 1:18){#
-	F.20 = F.20 + cis$res.20[[k]]$F/18#
-	F.40 = F.40 + cis$res.40[[k]]$F/18#
+for(k in 1:K){#
+	F.20 = F.20 + cis$res.20[[k]]$F/K#
+	F.40 = F.40 + cis$res.40[[k]]$F/K#
 }#
 #
 plot(range(2000,2100),c(0,1),type="n",col=1,xlab="Year",ylab="Probability",main="P(Y(s)<20, s<t)")#
-lines(2000:2100,F.20,col=4)#
-lines(2000:2100,F.40,col=2)#
+lines(2000:2100,F.20,col=4,lwd=2)#
+lines(2000:2100,F.40,col=2,lwd=2)#
 legend(2000,0, c("20 cm","40 cm"), #
 lty=c(1,1), lwd=c(2.5,2.5),col=c(2,4),xjust=0,yjust=0) #
 mu=NULL#
-for (i in 1:18)#
+for (i in 1:K)#
 mu=rbind(mu,cis$pred[[i]])#
-x = seq(from=0,to=40,length.out = 1000)#
+x = seq(from=0,to=50,length.out = 1000)#
 year = 51#
-plot(c(0,45), c(0,0.4), xlab="Anomaly (cm)",ylab="Density",main="2050 RCP 8.5",type="n")#
+plot(c(0,50), c(0,0.25), xlab="Anomaly (cm)",ylab="Density",main="Esbjerg 2050 RCP 8.5",type="n")#
 v1=apply(matrix(unlist(cis$pred),ncol=101,byrow=T),2,median)[year]#
-segments(v1,0,v1,0.35,lwd=2)#
-hist(mu[,year],xlim=c(0,40), breaks=0.5*(0:81), ylim=c(0,0.50),freq=FALSE,add=T)#
+segments(v1,0,v1,0.25,lwd=2)#
+hist(mu[,year],xlim=c(0,50), breaks=(0:51), ylim=c(0,0.50),freq=FALSE,add=T,lwd=2)#
 #
 lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd.g[year]),col="red",lwd=2)#
-lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col=77,lwd=2)#
+lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col="blue",lwd=2)#
 dev.off()
-plot(c(0,45), c(0,0.4), xlab="Anomaly (cm)",ylab="Density",main="2050 RCP 8.5",type="n")
-v1=apply(matrix(unlist(cis$pred),ncol=101,byrow=T),2,median)[year]
-segments(v1,0,v1,0.35,lwd=2)
-hist(mu[,year],xlim=c(0,40), breaks=(0:41), ylim=c(0,0.50),freq=FALSE,add=T)
-hist(mu[,year],xlim=c(0,40), breaks=(0:41), ylim=c(0,0.50),freq=FALSE,add=T,lwd=2)
-lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd.g[year]),col="red",lwd=2)
-lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col=77,lwd=2)
-plot(c(0,45), c(0,0.2), xlab="Anomaly (cm)",ylab="Density",main="2050 RCP 8.5",type="n")#
-v1=apply(matrix(unlist(cis$pred),ncol=101,byrow=T),2,median)[year]#
-segments(v1,0,v1,0.2,lwd=2)#
-hist(mu[,year],xlim=c(0,40), breaks=(0:41), ylim=c(0,0.50),freq=FALSE,add=T,lwd=2)#
-#
-lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd.g[year]),col="red",lwd=2)#
-lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col=77,lwd=2)
-pdf("bergen_90.pdf")#
-par(mfrow=c(1,2),pty="s")#
-i=16#
-#
-	m=length(norwaydata[[i]]$data)-1#
- reg=0:m#
- adj=mean(reg[which(is.element(norwaydata[[i]]$years,1970:1999))])#
-reg=reg-adj#
-	newdata=norwaydata[[i]]$data+gia.NO[i]*reg#
-	xlim=range(norwaydata[[i]]$years)#
-	ylim=range(c(norwaydata[[i]]$data,newdata))#
-#
-plot(xlim,ylim,type="n",xlab="Year",ylab="Sea level anomaly (cm)")#
-lines(norwaydata[[i]]$years,norwaydata[[i]]$data,lwd=2)#
-lines(norwaydata[[i]]$years,newdata,lwd=2,col="red")
-plot(seal$sealevel[sea.common.years],stafit$data[sta.common.years],xlab="Global sea level anomaly (cm)",ylab="Local sea level anomaly (cm)")
-abline(a3,a4,lwd=2)
-par(mfrow=c(1,1))#
-	xlim=c(1950,2100)#
-	ylim=c(-25,115)#
-plot(xlim,ylim,xlim=xlim,ylim=ylim,type='n',xlab="Year",	ylab="Anomaly (cm)",main="RCP 8.5")#
-lines(sta$years[begin:max(sta$years)],sta$data[begin:max(sta$years)],col='blue')#
-for(ii in 1:K){#
-	lines(2000:2100,cis$pred[[ii]],col=2,lwd=0.5)#
-}#
-#
-lines(2000:2100,cis$res$b,lwd=2)#
-lines(2000:2100,cis$res$a,lwd=2)#
-lines(2000:2100,cis$res$a.marginal,col="purple",lty=3)#
-lines(2000:2100,cis$res$b.marginal,col="purple",lty=3)#
-#
-F.20 = F.40 = rep(0,101)#
-for(k in 1:18){#
-	F.20 = F.20 + cis$res.20[[k]]$F/18#
-	F.40 = F.40 + cis$res.40[[k]]$F/18#
-}#
-#
-plot(range(2000,2100),c(0,1),type="n",col=1,xlab="Year",ylab="Probability",main="P(Y(s)<20, s<t)")#
-lines(2000:2100,F.20,col=4)#
-lines(2000:2100,F.40,col=2)#
-legend(2000,0, c("20 cm","40 cm"), #
-lty=c(1,1), lwd=c(2.5,2.5),col=c(2,4),xjust=0,yjust=0)
-plot(c(0,45), c(0,0.2), xlab="Anomaly (cm)",ylab="Density",main="2050 RCP 8.5",type="n")#
-v1=apply(matrix(unlist(cis$pred),ncol=101,byrow=T),2,median)[year]#
-segments(v1,0,v1,0.2,lwd=2)#
-hist(mu[,year],xlim=c(0,40), breaks=(0:41), ylim=c(0,0.50),freq=FALSE,add=T,lwd=2)#
-#
-lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd.g[year]),col="red",lwd=2)#
-lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col=77,lwd=2)
-dev.off()
+q()
