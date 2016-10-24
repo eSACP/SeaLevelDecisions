@@ -16,6 +16,7 @@
 \usepackage{paralist, booktabs}
 \usepackage{url}
 \usepackage{color}
+\usepackage{comment}
 
 
 \usepackage{lineno}
@@ -125,6 +126,42 @@ The main assumption is using historical relationships in statistical projections
 
 We consider adaptation decision making related to the timing of proactive adaptation measures. That is, the goal is to adapt to sea level rise before major damages occur. In a cost-benefit framework, an investment should be delayed as long as the benefits of delay (avoided investment costs) are greater than the associated costs (higher climate change damages) \citep{Fankhauser&1999}.
 
+We assume that damages related to sea level rise coincide with damages due to storm surges and that the accumulated annual damages are independent between years. More specifically, we model the distribution of annual damage, $F_{\textup{d}}$, by the three parameter Burr distribution \citep{Burr1942} with density
+\begin{linenomath*}
+  \begin{equation}\label{eq:Burr}
+  f_{\textup{d}} (x) = \frac{\alpha \gamma (x/ \theta)^{\gamma}}{x [ 1 + (x/ \theta)^{\gamma}]^{\alpha + 1}}
+  \end{equation}
+\end{linenomath*}
+for $x > 0$, where $\alpha$ and $\gamma$ are shape parameters with $\alpha, \gamma > 0$, and $\theta >0$ is a scale parameter. The Burr distribution has a heavy upper tail and is commonly used to model damage loss, see e.g. \cite{Klugman&2012}.
+
+Under a constant sea level, we can obtain a sample trajectory $\{d_{t_1}, d_{t_2}, \ldots, d_{t_{85}}\}$ of future annual damages for $t_1 = 2016, \ldots, t_{85} = 2100$ by drawing $85$ i.i.d. values from the estimated damage distribution for $t_0 = 2015$, $\hat{F}_{\textup{d}, t_0}$.  By repeating this process $J$ times, we obtain an empirial damage distribution for each future year $t_i$ given by
+\begin{linenomath*}
+  \[
+  \hat{F}_{\textup{d}, t_i} (x) = \frac{1}{J} \sum_{j=1}^J \mathbbm{1}\{d_{t_i}^{(j)} \leq x \}
+  \]
+\end{linenomath*}
+for $i = 1, \ldots, 85$. Similarly, we obtain an empirial distribution of the total damage over the period $2016-2100$ by considering $d_{\textup{total}}^{(j)} = \sum_{i=1}^{85} d_{t_i}^{(j)}$.  
+
+Now assume we are given a large sample of projections $\{s_{t_1}^{(j)}, \ldots, s_{t_{85}}^{(j)} \}_{j=1}^J$ for annual sea level rise anomalies compared to the 2015 value for the same time period. We model the relationship between the change in damage and change in sea level by a monotonic positive function $g(s| \boldsymbol \beta )$ with parameters $\boldsymbol \beta$, where $g(s|\boldsymbol \beta ) > 1$ for $s>0$ and $g(s|\boldsymbol \beta ) < 1$ for $s < 0$. We may further incorporate uncertainty in the shape of the function $g$ through the values of the parameters $\boldsymbol \beta$. An empirical damage distribution for the future year $t_i$ that accounts for uncertainty in damage, sea level rise and change in damage due to sea level rise is then given by
+\begin{linenomath*}
+  \begin{equation}\label{eq:FutureDamage}
+    \hat{F}_{\textup{d}, t_i} (x) = \frac{1}{J} \sum_{j=1}^J \mathbbm{1}\{g(s_{t_i}^{(j)}| \boldsymbol \beta^{(j)}) d_{t_i}^{(j)} \leq x \}.
+  \end{equation}
+\end{linenomath*}
+
+The distribution in \eqref{eq:FutureDamage} describes the projected damage distribution with no adaptation measures. In addition, we can incorporate an adaptation measure that protects against $K$ cm of increased sea level from year $t_k$ onwards. This results in a damage distribution given by
+\begin{linenomath*}
+  \[
+  \hat{F}_{\textup{d}, t_i} (x) =
+    \begin{cases}
+      \frac{1}{J} \sum_{j=1}^J \mathbbm{1}\{g(s_{t_i}^{(j)}| \boldsymbol \beta^{(j)}) d_{t_i}^{(j)} \leq x \}, & t_i < t_k \\
+      \frac{1}{J} \sum_{j=1}^J \mathbbm{1}\{g(s_{t_i}^{(j)} - K| \boldsymbol \beta^{(j)}) d_{t_i}^{(j)} \leq x \}, & t_i \geq t_k. \\
+    \end{cases}
+  \]
+\end{linenomath*}
+
+
+\begin{comment}
 \cite{Fankhauser&1999} describe a deterministic framework where an adaptation investment of $C^0$ now (at time $n=0$) leads to unmitigated damage of $d_0^0$ in period $0$, and a stream of partially mitigated damages $d_t^0$ in periods $t=1,2,\ldots$. If $r$ is the discount rate, the net present value damage, $D^0$, associated with this investment is
 \begin{linenomath*}
 \begin{equation}\label{eq:deterministic damage}
@@ -143,6 +180,8 @@ Here, the expression on the left describes the benefits of the delay while the e
   r C > d_1^1 - d_1^0.
   \]
   \end{linenomath*}
+\end{comment}
+
 
 \subsection{Limitations of the decision framework}
 
@@ -151,9 +190,39 @@ Here, the expression on the left describes the benefits of the delay while the e
 \subsection{Data {\color{blue} (PG)}}
 We use local tide gauge data from the Permanent Service for Mean Sea Level, UK, which is the worldwide repository for national sea level data. Climate projections are from the fifth climate model intercomparison project, CMIP5. 
 
+For the case study of sea level rise in Bergen, we use reported annual damage numbers from the Norwegian Natural Perils Pool which are available at \url{https://www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/}. 
+
 \subsection{Timing of adaptation measures {\color{blue} (KdB, TT)}}
 
-A case study focusing on and comparing different cities in Norway.
+We estimate a damage distribution for Bergen in 2015 using annual data on storm surge damage from Hordaland and Rogaland counties over the period 1980-2015 obtained from the Norwegian Natural Perils Pool (NPP). The NPP data is aggregated to a county level and while only about 55\% of the total population of Hordaland lives in Bergen, we do not correct for this as a substantial part of the remaining population lives away from the coast\footnote{TLT: Need to improve this discussion. Also, some of this discussion should probably be moved to the section on data.}. In order to improve the parameter estimation, we include the data from Rogaland county which is the county directly south of Hordaland. Rogaland has a similar geography to Hordaland and a slightly smaller population with its main city, Stavanger, also located on the coast. The damage data prior to 2015 is adjusted to the 2015 level using the consumer price index for Norway. After the adjustment, we assume stationarity over the period and fit a single Burr distribution to the data, cf. \eqref{eq:Burr}.  The histogram of the observed annual damages and the estimated distribution are given in Figure~\ref{fig:BergenDamageDist}. The parameter estimates for the Burr distribution are $\hat{\alpha} = 1.27$, $\hat{\gamma} = 0.51$ and $\hat{\theta} = 0.002$. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=39pc]{DamageDistribution.png}
+\caption{ The estimated distribution of annual storm surge damage in Bergen for 2015 (red) based on observed annual damage in Hordaland and Rogaland 1980-2015 (gray bars). }
+\label{fig:BergenDamageDist}
+\end{center}
+\end{figure}
+
+For modelling the relationship between the change in damage and change in sea level we use the results of \cite{Hallegatte&2013} for 15 European cites: Amsterdam, Athens, Barcelona, Dublin, Glasgow, Hamburg, Helsinki, Copenhagen, Lisbon, London, Marseille, Naples, Porto, Rotterdam and Stockholm. \cite{Hallegatte&2013} estimate the mean annual flood damage in these cities in 2050 under no sea level change, 20 cm increase and 40 cm increase in sea level. We standardize their results for each city and consider the relative change for 20 and 40 cm increase. We then perform a linear extrapolation to obtain estimated relative changes in damage for a large interval of changes in sea level rise, see Figure~\ref{fig:ChangeInDamage}. Finally, the function $g$ is obtained by sampling from this ensemble of functions with all 15 ensemble members considered equally probable. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=39pc]{EuropeanIncreaseLossExtrapolationUncertainty.png}
+\caption{ Relative change in mean annual damage as a function of sea level rise for 15 European cites as estimated by \cite{Hallegatte&2013} (black circles) with linearly extrapolated values indicated by gray lines. The median change and the corresponding extrapolation are indicated in red.}
+\label{fig:ChangeInDamage}
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=39pc]{AccumulatedFutureLoss.png}
+\caption{Distribution of log  accumulated future loss 2016-2100 under RCP 8.5 and no adaptation measures.} 
+\label{fig:NoAction}
+\end{center}
+\end{figure}
+
 
 \subsection{Selection of adaptation measures(?) {\color{blue} (MD)}}
 
