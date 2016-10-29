@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -56,6 +56,10 @@ Hansen, J., R.~Rued, M.~Sato, M.~Imhoff, W.~Lawrence, D.~Easterling,
   Willmot}}]{Klugman&2012}
 Klugman, S.~A., H.~H. Panjer, and G.~E. Willmot (2012), \textit{Loss models:
   from data to decisions}, vol. 715, 3rd ed., John Wiley \& Sons, Hoboken, NJ.
+
+\bibitem[{\textit{Mosteller and Tukey}(1977)}]{medpol}
+Mosteller, F., and J.~W. Tukey (1977), \textit{Data Analysis and Regression},
+  Addison-Wesley, Reading, MA.
 
 \bibitem[{\textit{Rahmstorf}(2007)}]{Rahmstorf07}
 Rahmstorf, S. (2007), {A} semi-empirical approach to projecting future

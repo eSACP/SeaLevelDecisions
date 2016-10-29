@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  24 OCT 2016 13:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 OCT 2016 12:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -421,48 +421,47 @@ LaTeX Font Info:    Try loading font information for U+bbm on input line 126.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [6]
-<bergenfit.png, id=36, 505.89pt x 505.89pt>
+) [6] [7]
+<bergenfit.png, id=40, 505.89pt x 505.89pt>
 File: bergenfit.png Graphic file (type png)
  <use bergenfit.png>
-Package pdftex.def Info: bergenfit.png used on input line 182.
+Package pdftex.def Info: bergenfit.png used on input line 188.
 (pdftex.def)             Requested size: 468.0pt x 468.01038pt.
 
-Overfull \hbox (12.135pt too wide) in paragraph at lines 182--183
+Overfull \hbox (12.135pt too wide) in paragraph at lines 188--189
  [] 
  []
 
-<bergen_ci.png, id=37, 505.89pt x 505.89pt>
+<bergen_ci.png, id=41, 505.89pt x 505.89pt>
 File: bergen_ci.png Graphic file (type png)
  <use bergen_ci.png>
-Package pdftex.def Info: bergen_ci.png used on input line 191.
+Package pdftex.def Info: bergen_ci.png used on input line 197.
 (pdftex.def)             Requested size: 468.0pt x 468.01038pt.
 
-Overfull \hbox (12.135pt too wide) in paragraph at lines 191--192
+Overfull \hbox (12.135pt too wide) in paragraph at lines 197--198
  [] 
  []
 
-[7] <DamageDistribution.png, id=42, 481.8pt x 481.8pt>
+[8] <DamageDistribution.png, id=45, 481.8pt x 481.8pt>
 File: DamageDistribution.png Graphic file (type png)
 
 <use DamageDistribution.png>
-Package pdftex.def Info: DamageDistribution.png used on input line 205.
+Package pdftex.def Info: DamageDistribution.png used on input line 209.
 (pdftex.def)             Requested size: 468.0pt x 468.01443pt.
 
-Overfull \hbox (12.135pt too wide) in paragraph at lines 205--206
+Overfull \hbox (12.135pt too wide) in paragraph at lines 209--210
  [] 
  []
 
-[8]
 <EuropeanIncreaseLossExtrapolationUncertainty.png, id=46, 481.8pt x 481.8pt>
 File: EuropeanIncreaseLossExtrapolationUncertainty.png Graphic file (type png)
 
 <use EuropeanIncreaseLossExtrapolationUncertainty.png>
 Package pdftex.def Info: EuropeanIncreaseLossExtrapolationUncertainty.png used 
-on input line 215.
+on input line 219.
 (pdftex.def)             Requested size: 468.0pt x 468.01443pt.
 
-Overfull \hbox (12.135pt too wide) in paragraph at lines 215--216
+Overfull \hbox (12.135pt too wide) in paragraph at lines 219--220
  [] 
  []
 
@@ -470,25 +469,25 @@ Overfull \hbox (12.135pt too wide) in paragraph at lines 215--216
 File: AccumulatedFutureLoss.png Graphic file (type png)
 
 <use AccumulatedFutureLoss.png>
-Package pdftex.def Info: AccumulatedFutureLoss.png used on input line 224.
+Package pdftex.def Info: AccumulatedFutureLoss.png used on input line 228.
 (pdftex.def)             Requested size: 468.0pt x 468.01443pt.
 
-Overfull \hbox (12.135pt too wide) in paragraph at lines 224--225
+Overfull \hbox (12.135pt too wide) in paragraph at lines 228--229
  [] 
  []
 
-(./paper.bbl [9] [10]) [11] [12 <./bergenfit.png>] [13 <./bergen_ci.png>]
+[9] (./paper.bbl [10]) [11] [12 <./bergenfit.png>] [13 <./bergen_ci.png>]
 [14 <./DamageDistribution.png (PNG copy)>] [15 <./EuropeanIncreaseLossExtrapola
 tionUncertainty.png (PNG copy)>] [16 <./AccumulatedFutureLoss.png>]
 (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 3615 strings out of 493315
- 48349 string characters out of 6137904
- 128884 words of memory out of 5000000
- 7005 multiletter control sequences out of 15000+600000
+ 3616 strings out of 493315
+ 48357 string characters out of 6137904
+ 128926 words of memory out of 5000000
+ 7006 multiletter control sequences out of 15000+600000
  17148 words of font info for 61 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,11n,26p,1360b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,11n,26p,1360b,432s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/peter/Library/texlive/2013/texmf-var/fonts/pk/ljfour/pu
 blic/bbm/bbm12.600pk></usr/local/texlive/2013/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsf
@@ -504,7 +503,7 @@ pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pf
 b></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on paper.pdf (16 pages, 305270 bytes).
+Output written on paper.pdf (16 pages, 306239 bytes).
 PDF statistics:
  123 PDF objects out of 1000 (max. 8388607)
  83 compressed objects within 1 object stream

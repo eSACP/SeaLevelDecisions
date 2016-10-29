@@ -174,9 +174,15 @@ Here, the expression on the left describes the benefits of the delay while the e
 \section{Case studies}
 
 \subsection{Data {\color{blue} (PG)}}
-Historical global mean temperature is obtained from \citet{giss}. Climate projections of global mean temperature are from the fifth climate model intercomparison project, CMIP5 \citep{cmip5}. The global mean sea level series is obtained from \citet{csiro}. We use local tide gauge data from the Permanent Service for Mean Sea Level, UK, which is the worldwide repository for national sea level data. Glacial isostatic adjustment for Bergen is obtained from \citet{Simpson2014}. 
- 
-Figure \ref{fig:obs} shows uncorrected and corrected Bergen sea level data, and the relationship between the corrected Bergen data and the global sea level data. The time series regression uses an ARMA(1,1)-model \citep{boxjenkins}. 
+The historical global mean temperature series is obtained from \citet{giss}. Climate projections of global mean temperature are from the fifth climate model intercomparison project, CMIP5 \citep{cmip5}. The global mean sea level series is obtained from \citet{csiro}. We use local tide gauge data from the Permanent Service for Mean Sea Level, UK, which is the worldwide repository for national sea level data. Glacial isostatic adjustment for Bergen is obtained from \citet{Simpson2014}. 
+
+The Bergen monthly series is missing data for 62 months, including all of the years 1942--43. To deal with occasional short stretches of missing data (most one or two months) we use median polish replacement \citep{medpol}. For the years 1942-43, we use use the average difference between Bergen and the average of all other Norwegian stations in 1940 and 1943 to estimate values for 1941 and 1942, using the average of all other stations corrected by the average difference. 
+
+For the case study of sea level rise in Bergen, we use reported annual damage numbers from the Norwegian Natural Perils Pool which are available at \url{https://www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/}. 
+
+\subsection{Sea level rise in Bergen}
+
+Figure \ref{fig:obs} shows uncorrected and corrected Bergen sea level data, and the relationship between the corrected Bergen data and the global sea level data. The time series regression uses an ARMA(1,1)-model \citep{boxjenkins}, with AR parameter 0.82 (0.13), and MA parameter --0.61 (0.17). The regression slope is 1.30 (0.12).
 \begin{figure}
 \begin{center}
 \includegraphics[width=39pc]{bergenfit.png}
@@ -185,7 +191,7 @@ Figure \ref{fig:obs} shows uncorrected and corrected Bergen sea level data, and 
 \end{center}
 \end{figure}
 
-Figure \ref{fig:ci} shows the simultaneous 90 \% confidence region for Bergen sea level rise relative to 1999.
+For the relationship between global annual mean temperature and global annual mean sea level rise we use the results from \citet{Bolin2014a}. Figure \ref{fig:ci} shows the simultaneous 90 \% confidence region for Bergen sea level rise relative to 1999 under scenario RCP 8.5, which is the scenario Norwegian authorities recommend for planning purposes.
 \begin{figure}
 \begin{center}
 \includegraphics[width=39pc]{bergen_ci.png}
@@ -193,8 +199,6 @@ Figure \ref{fig:ci} shows the simultaneous 90 \% confidence region for Bergen se
 \label{fig:ci}
 \end{center}
 \end{figure}
-
-For the case study of sea level rise in Bergen, we use reported annual damage numbers from the Norwegian Natural Perils Pool which are available at \url{https://www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/}. 
 
 \subsection{Timing of adaptation measures {\color{blue} (KdB, TT)}}
 
