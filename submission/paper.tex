@@ -1,55 +1,35 @@
-%\documentclass[wrr]{agutex}
-\documentclass[wrr, draft]{agutex}
-% Author names in capital letters:
-\authorrunninghead{THORARINSDOTTIR ET AL.}
+%% To submit your paper:
+\documentclass[draft,linenumbers]{agujournal}
+\draftfalse
 
-% Shorter version of title entered in capital letters:
-\titlerunninghead{ADAPTING TO UNCERTAIN SEA LEVEL RISE}
+%% For final version.
+% \documentclass{agujournal}
 
-%Corresponding author mailing address and e-mail address:
-\authoraddr{Corresponding author: Name, Address. (email)}
+\journalname{Water Resources Research}
 
-\usepackage{bbm, amsmath}
-%\usepackage[dvips]{graphicx}
-\usepackage{graphicx}
-\setkeys{Gin}{draft=false}
-\usepackage{paralist, booktabs}
-\usepackage{url}
-\usepackage{color}
-\usepackage{comment}
-
-
-\usepackage{lineno}
- \linenumbers*[1]
-%  To add line numbers to lines with equations:
+\usepackage{url, bbm, comment}
 
 \begin{document}
 
-%% ------------------------------------------------------------------------ %%
-%  TITLE
-%% ------------------------------------------------------------------------ %%
 
 \title{I don't know, are you sure we want to do this?\
 Sea level adaptation decisions under uncertainty}
 
-%% ------------------------------------------------------------------------ %%
-%  AUTHORS AND AFFILIATIONS
-%% ------------------------------------------------------------------------ %%
+\authors{T. L. Thorarinsdottir\affil{1}, P. Guttorp\affil{1}, M. Drews\affil{2}, and K. de Bruin\affil{3,4}}
 
-% \altaffilmark will produce footnote;
-% matching \altaffiltext will appear at bottom of page.
+\affiliation{1}{Norwegian Computing Center, Oslo, Norway}
+\affiliation{2}{Technical University of Denmark, Copenhagen, Denmark}
+\affiliation{3}{Center for International Climate and Environmental Research, Oslo, Norway}
+\affiliation{4}{Wageningen Environmental Research, Wageningen, The Netherlands}
 
-\authors{T. Thorarinsdottir\altaffilmark{1}, P. Guttorp\altaffilmark{1}, M. Drews\altaffilmark{2}}
+\correspondingauthor{T. L. Thorarinsdottir}{thordis@nr.no}
 
-\altaffiltext{1}{Norwegian Computing Centere}
+\begin{keypoints}
+\item Keypoint 1
+\item Keypoint 2
+\item Keypoint 3
+\end{keypoints}
 
-\altaffiltext{2}{Technical University of Denmark}
-
-\altaffiltext{3}{Affiliation three}
-
-%% ------------------------------------------------------------------------ %%
-%  ABSTRACT
-%% ------------------------------------------------------------------------ %%
 
 \begin{abstract}
 ...
@@ -59,9 +39,6 @@ Sea level adaptation decisions under uncertainty}
 %% ------------------------------------------------------------------------ %%
 %  BEGIN ARTICLE
 %% ------------------------------------------------------------------------ %%
-
-\begin{article}
-
 
 
 \section{Introduction}\label{sec:intro}
@@ -245,7 +222,7 @@ This work was funded by NordForsk through project number 74456 ``Statistical Ana
 
 %%  REFERENCE LIST AND TEXT CITATIONS
 % 5\bibliographystyle{../BibTeX/agufull08}
-\bibliographystyle{agufull08}
+
 \bibliography{ref.bib}
 % Please use ONLY \citet and \citep for reference citations.
 
@@ -261,10 +238,6 @@ This work was funded by NordForsk through project number 74456 ``Statistical Ana
 
 %\end{thebibliography}
 
-%% ------------------------------------------------------------------------ %%
-%  END ARTICLE
-%% ------------------------------------------------------------------------ %%
-\end{article}
 
 %% Enter Figures and Tables here:
 
