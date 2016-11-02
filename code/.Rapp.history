@@ -1,10 +1,3 @@
-dim(bcsim)
-lo=hi=NULL#
-for (i in 1:165)#
-{lo=quantile(bcsim[i,],.025)#
-hi=quantile(bcsim[i,],.975)}
-quartz()
-plot(berkeley.years,berkeley,type="l",lwd=2)
 lines(berkeley.years,berkeley.bc,col="red",lwd=2)
 lines(berkeley.years,hi,col="red")
 length(hi)
@@ -751,13 +744,27 @@ lines(norwaydata[[i]]$years,norwaydata[[i]]$data)#
 lines(norwaydata[[i]]$years,newdata,col="red")#
 }
 i
-plot(c(0,50), c(0,0.25), xlab="Anomaly (cm)",ylab="Density",main="Esbjerg 2050 RCP 8.5",type="n")#
-v1=apply(matrix(unlist(cis$pred),ncol=101,byrow=T),2,median)[year]#
-segments(v1,0,v1,0.25,lwd=2)#
-hist(mu[,year],xlim=c(0,50), breaks=(0:51), ylim=c(0,0.50),freq=FALSE,add=T,lwd=2)#
-#
-lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd.g[year]),col="red",lwd=2)#
-lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col="blue",lwd=2)
+K
+models=models8.5#
+K=length(models)
+K
+setps(ch1.fig8,pointsize=8,h=2)#
+plot(c(-.5,4.5),c(-1.5,2.5),type="n",axes=F,xlab="",ylab="")#
+segments(0,0,4,0)#
+segments(1,1,4,1)#
+segments(1,1,1,-1)#
+segments(2,2,2,-1)#
+segments(3,2,3,-1)#
+text(-0.1,0,"1",adj=1)#
+text(1,-1.25,"1",adj=0.5)#
+text(1,1.25,"1",adj=0.5)#
+text(2,2.25,"1",adj=0.5)#
+text(2,-1.25,"0",adj=0.5)#
+text(3,-1.25,"0",adj=0.5)#
+text(3,2.25,"1",adj=0.5)#
+text(4.1,1,"1",adj=0)#
+text(4.1,0,"0",adj=0)#
+points(c(0,1,1,1,2,2,2,2,,3,3,3,3,4,4),c(0,1,0,-1,2,1,0,-1,2,1,0,-1,1,0))
 setwd("~/GitHub/SeaLevelDecisions/code")#
 require(maps)#
 require(maptools)#
@@ -769,22 +776,22 @@ require(chron)#
 require(zoo)#
 source('~/GitHub/SeaLevelProjections/Sealevel_functions.R')#
 source('~/GitHub/SeaLevelDecisions/code/ci_bergen.R')#
-denmark=read.table("~/GitHub/SeaLevelProjections/denmark_sea_level/denmark.PSMSL.txt")#All Danish sea level stations with current data]#
+norway=read.table("~/GitHub/SeaLevelProjections/Norway_sea_level/Norway.PSMSL.txt")#All Norwegian sea level stations with current data#
 #from PSMSL.org#
-denmark[,1]=as.character(denmark[,1])#
+norway[,1]=as.character(norway[,1])#
+norwayurl=paste("http://www.psmsl.org/data/obtaining/rlr.monthly.data/",norway[,2],".rlrdata",sep="")#
 #
-denmarkurl=paste("http://www.psmsl.org/data/obtaining/rlr.monthly.data/",denmark[,2],".rlrdata",sep="")#
+N=length(norway[,2])#
+norwaydata=list(N,NULL)#
 #
-N=length(denmark[,2])#
-denmarkdata=list(N,NULL)#
-for(i in 1:N){#
-#
-	tmp=read.table(denmarkurl[i],na.strings="-99999",sep=";")#
+for (i in 1:N){#
+	tmp=read.table(norwayurl[i],na.strings="-99999",sep=";")#
 	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmp[,2:4])#
 #
 	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year#
 	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year#
-	if(tmp[N,2]<12) tmp=tmp[-((N+1-tmp[N,2]):N),]#delete final year if not full#
+	NN=dim(tmp)[1]#
+	if(tmp[NN,2]<12) tmp=tmp[-((NN+1-tmp[NN,2]):NN),]#delete final year if not full#
 	tmp.rlr=tmp[,3]#
 	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)#
 	tmp.mp=medpolish(tmp.rlr,na.rm=T)#
@@ -793,33 +800,54 @@ for(i in 1:N){#
 	tmp.ann=apply(tmp.rlr,1,"mean")/10 #cm#
 	tmp.yrs=unique(floor(tmp[,1]))#
 	tmp.ann=tmp.ann-mean(tmp.ann[which(is.element(tmp.yrs,1970:1999))],na.rm=T)#
-	denmarkdata[i]=list(data.frame(years=unique(floor(tmp[,1])),data=tmp.ann))#
+	norwaydata[i]=list(data.frame(years=tmp.yrs,data=tmp.ann))#
 	}#
-	gia.DK=giase.DK=rep(NA,N)#
-	index=c(1,2,4,5,6,14) #with gia #
-	gia.DK[index]=c(-.012,-.306,-.028,-.009,-.010,0.06)#
-	giase.DK[index]=c(.01,.14,.008,.01,.01,.02)#
+#deal with Bergen missing data 1942-43#
+#use average difference between Bergen and all stations#
+#in 1941 and 1944 to estimate vaues for 1942 and 1943#
 #
+tmp0=tmp1=tmp2=tmp3=NULL#
+for (i in 1:N)#
+{#
+	tmp0=c(tmp0,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1941))])#
+tmp1=c(tmp1,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1942))])#
+tmp2=c(tmp2,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1943))])#
+tmp3=c(tmp3,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1944))])#
+}#
+m0=mean(tmp0,na.rm=T)#
+m1=mean(tmp1,na.rm=T)#
+m2=mean(tmp2,na.rm=T)#
+m3=mean(tmp3,na.rm=T)#
+adj=mean(c(norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1941))]-m0,norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1944))]-m3))#
+norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1942))]=m1-adj#
+norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1943))]=m2-adj#
+#
+index=c(2,4,8,9,11,13,16,20)#sufficient data + having gia #
+gia.NO=rep(NA,N)#
+giase.NO=rep(NA,N)#
+gia.NO[index]=c(0.17,0.27,0.26,0.42,0.39,0.18,0.26,0.54)#
+giase.NO[index]=c(0.06,0.029,0.114,0.031,0.033,0.06,0.07,0.06)#
 #Get global model, data and CMIP5 output #
 load('~/GitHub/SeaLevelProjections/data&global.Rdata')#
 #
-pdf("esbjerg_90.pdf")#
+pdf("bergen_90.pdf")#
 par(mfrow=c(1,2),pty="s")#
-i=14#
-m=length(denmarkdata[[i]]$data)-1#
+i=16#
+#
+	m=length(norwaydata[[i]]$data)-1#
  reg=0:m#
- adj=mean(reg[which(is.element(denmarkdata[[i]]$years,1970:1999))])#
+ adj=mean(reg[which(is.element(norwaydata[[i]]$years,1970:1999))])#
 reg=reg-adj#
-	newdata=denmarkdata[[i]]$data+gia.DK[i]*reg#
-	xlim=range(denmarkdata[[i]]$years)#
-	ylim=range(c(denmarkdata[[i]]$data,newdata))#
+	newdata=norwaydata[[i]]$data+gia.NO[i]*reg#
+	xlim=range(norwaydata[[i]]$years)#
+	ylim=range(c(norwaydata[[i]]$data,newdata))#
 #
 plot(xlim,ylim,type="n",xlab="Year",ylab="Sea level anomaly (cm)")#
-lines(denmarkdata[[i]]$years,denmarkdata[[i]]$data,lwd=2)#
-lines(denmarkdata[[i]]$years,newdata,lwd=2,col="red")#
+lines(norwaydata[[i]]$years,norwaydata[[i]]$data,lwd=2)#
+lines(norwaydata[[i]]$years,newdata,lwd=2,col="red")#
 #
-	sta=list(data=denmarkdata[[i]]$data,name=denmark[i,1],years=denmarkdata[[i]]$years,gia=gia.DK[i],se.gia=giase.DK[i])#
-	####
+	sta=list(data=norwaydata[[i]]$data,name=norway[i,1],years=norwaydata[[i]]$years,gia=gia.NO[i],se.gia=giase.NO[i])#
+####
 ### Estimate local relationship from data#
 ####
 #
@@ -855,12 +883,11 @@ alpha=0.1#
 cis=ci_bergen(models,sta,stafit,sta.common.years,alpha)#
 par(mfrow=c(1,1))#
 	xlim=c(1950,2100)#
-	ylim=c(-25,115)#
-#
-par(mfrow=c(1,1))#
+	ylim=range(c(cis$res$a,cis$res$b,sta$data[begin:which(is.element(sta$years,max(sta$years)))]))
+m
+ylim
 plot(xlim,ylim,xlim=xlim,ylim=ylim,type='n',xlab="Year",	ylab="Anomaly (cm)",main="RCP 8.5")#
 lines(sta$years[begin:max(sta$years)],sta$data[begin:max(sta$years)],col='blue')#
-#
 for(ii in 1:K){#
 	lines(2000:2100,cis$pred[[ii]],col=2,lwd=0.5)#
 }#
@@ -884,14 +911,20 @@ lty=c(1,1), lwd=c(2.5,2.5),col=c(2,4),xjust=0,yjust=0) #
 mu=NULL#
 for (i in 1:K)#
 mu=rbind(mu,cis$pred[[i]])#
-x = seq(from=0,to=50,length.out = 1000)#
+x = seq(from=0,to=40,length.out = 1000)#
 year = 51#
-plot(c(0,50), c(0,0.25), xlab="Anomaly (cm)",ylab="Density",main="Esbjerg 2050 RCP 8.5",type="n")#
+plot(c(0,45), c(0,0.2), xlab="Anomaly (cm)",ylab="Density",main="Bergen 2050 RCP 8.5",type="n")#
 v1=apply(matrix(unlist(cis$pred),ncol=101,byrow=T),2,median)[year]#
-segments(v1,0,v1,0.25,lwd=2)#
-hist(mu[,year],xlim=c(0,50), breaks=(0:51), ylim=c(0,0.50),freq=FALSE,add=T,lwd=2)#
+segments(v1,0,v1,0.2,lwd=2)#
+hist(mu[,year],xlim=c(0,40), breaks=(0:41), ylim=c(0,0.50),freq=FALSE,add=T,lwd=2)#
 #
 lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd.g[year]),col="red",lwd=2)#
 lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col="blue",lwd=2)#
-dev.off()
-q()
+dev.off()#
+# #Simulate paths from model#
+# nsample = 10000#
+# k=sample(1:K,nsample,replace=T) #vector of nsample climate models#
+# sim=matrix(nrow=nsample,ncol=101)#
+# for (i in 1:nsample)#
+# sim[i,]=rnorm(101,mu[k[i],],sd)#
+# save(sim,file="Simulation.Rdata")

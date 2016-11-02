@@ -25,7 +25,8 @@ for (i in 1:N){
 
 	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year
 	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year
-	if(tmp[N,2]<12) tmp=tmp[-((N+1-tmp[N,2]):N),]#delete final year if not full
+	NN=dim(tmp)[1]
+	if(tmp[NN,2]<12) tmp=tmp[-((NN+1-tmp[NN,2]):NN),]#delete final year if not full
 	tmp.rlr=tmp[,3]
 	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)
 	tmp.mp=medpolish(tmp.rlr,na.rm=T)
@@ -34,29 +35,29 @@ for (i in 1:N){
 	tmp.ann=apply(tmp.rlr,1,"mean")/10 #cm
 	tmp.yrs=unique(floor(tmp[,1]))
 	tmp.ann=tmp.ann-mean(tmp.ann[which(is.element(tmp.yrs,1970:1999))],na.rm=T)
-	norwaydata[i]=list(data.frame(years=unique(floor(tmp[,1])),data=tmp.ann))
+	norwaydata[i]=list(data.frame(years=tmp.yrs,data=tmp.ann))
 	}
 	
 
-#deal with Bergen missing data 1941-42
+#deal with Bergen missing data 1942-43
 #use average difference between Bergen and all stations
-#in 1940 and 1943 to estimate vaues for 1941 and 1942
+#in 1941 and 1944 to estimate vaues for 1942 and 1943
 
 tmp0=tmp1=tmp2=tmp3=NULL
 for (i in 1:N)
 {
-	tmp0=c(tmp0,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1940))])
-tmp1=c(tmp1,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1941))])
-tmp2=c(tmp2,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1942))])
-tmp3=c(tmp3,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1943))])
+	tmp0=c(tmp0,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1941))])
+tmp1=c(tmp1,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1942))])
+tmp2=c(tmp2,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1943))])
+tmp3=c(tmp3,norwaydata[[i]]$data[which(is.element(norwaydata[[i]]$years,1944))])
 }
 m0=mean(tmp0,na.rm=T)
 m1=mean(tmp1,na.rm=T)
 m2=mean(tmp2,na.rm=T)
 m3=mean(tmp3,na.rm=T)
-adj=mean(c(norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1940))]-m0,norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1943))]-m3))
-norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1941))]=m1-adj
-norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1942))]=m2-adj
+adj=mean(c(norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1941))]-m0,norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1944))]-m3))
+norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1942))]=m1-adj
+norwaydata[[16]]$data[which(is.element(norwaydata[[16]]$years,1943))]=m2-adj
 
 index=c(2,4,8,9,11,13,16,20)#sufficient data + having gia 
 gia.NO=rep(NA,N)
@@ -121,7 +122,7 @@ alpha=0.1
 cis=ci_bergen(models,sta,stafit,sta.common.years,alpha)
 par(mfrow=c(1,1))
 	xlim=c(1950,2100)
-	ylim=c(-25,115)
+	ylim=range(c(cis$res$a,cis$res$b,sta$data[begin:which(is.element(sta$years,max(sta$years)))]))
 
 
 plot(xlim,ylim,xlim=xlim,ylim=ylim,type='n',xlab="Year",	ylab="Anomaly (cm)",main="RCP 8.5")
@@ -165,12 +166,12 @@ hist(mu[,year],xlim=c(0,40), breaks=(0:41), ylim=c(0,0.50),freq=FALSE,add=T,lwd=
 lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd.g[year]),col="red",lwd=2)
 lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col="blue",lwd=2)
 dev.off()
-#Simulate paths from model
-nsample = 10000
-k=sample(1:K,nsample,replace=T) #vector of nsample climate models
-sim=matrix(nrow=nsample,ncol=101)
-for (i in 1:nsample)
-sim[i,]=rnorm(101,mu[k[i],],sd)
-save(sim,file="Simulation.Rdata")
+# #Simulate paths from model
+# nsample = 10000
+# k=sample(1:K,nsample,replace=T) #vector of nsample climate models
+# sim=matrix(nrow=nsample,ncol=101)
+# for (i in 1:nsample)
+# sim[i,]=rnorm(101,mu[k[i],],sd)
+# save(sim,file="Simulation.Rdata")
 	
 	

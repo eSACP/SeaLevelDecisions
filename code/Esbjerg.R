@@ -23,8 +23,9 @@ for(i in 1:N){
 	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmp[,2:4])
 
 	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year
-	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year
-	if(tmp[N,2]<12) tmp=tmp[-((N+1-tmp[N,2]):N),]#delete final year if not full
+	#if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year
+	NN=dim(tmp)[1]
+	if(tmp[NN,2]<12) tmp=tmp[-((NN+1-tmp[NN,2]):N),]#delete final year if not full
 	tmp.rlr=tmp[,3]
 	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)
 	tmp.mp=medpolish(tmp.rlr,na.rm=T)
