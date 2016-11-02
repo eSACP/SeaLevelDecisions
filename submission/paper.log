@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  2 NOV 2016 11:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  2 NOV 2016 13:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -516,12 +516,7 @@ File: DamageDistribution.png Graphic file (type png)
 
 <use DamageDistribution.png>
 Package pdftex.def Info: DamageDistribution.png used on input line 165.
-(pdftex.def)             Requested size: 468.0pt x 468.01443pt.
-
-Overfull \hbox (70.51501pt too wide) in paragraph at lines 165--166
- [] 
- []
-
+(pdftex.def)             Requested size: 397.48499pt x 397.49725pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 166--166
 []\T1/ntxrx/bx/n/9 Figure  1. \T1/ntxrx/m/n/9 The es-ti-mated dis-tri-bu-tion o
@@ -532,12 +527,7 @@ f an-nual storm surge dam-age in Bergen for 2015 (red) based on
 File: bergenfit.png Graphic file (type png)
  <use bergenfit.png>
 Package pdftex.def Info: bergenfit.png used on input line 176.
-(pdftex.def)             Requested size: 468.0pt x 468.01038pt.
-
-Overfull \hbox (70.51501pt too wide) in paragraph at lines 176--177
- [] 
- []
-
+(pdftex.def)             Requested size: 397.48499pt x 397.49504pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 177--177
 []\T1/ntxrx/bx/n/9 Figure  2. \T1/ntxrx/m/n/9 The left fig-ure shows raw (black
@@ -554,121 +544,98 @@ al sea level se-ries of \T1/ntxrx/m/it/9 Church and White \T1/ntxrx/m/n/9 [2011
 <bergen_ci.png, id=36, 505.89pt x 505.89pt>
 File: bergen_ci.png Graphic file (type png)
  <use bergen_ci.png>
-Package pdftex.def Info: bergen_ci.png used on input line 185.
-(pdftex.def)             Requested size: 468.0pt x 468.01038pt.
-
-Overfull \hbox (70.51501pt too wide) in paragraph at lines 185--186
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--186
-[]\T1/ntxrx/bx/n/9 Figure  3. \T1/ntxrx/m/n/9 Si-mul-ta-ne-ous 90% con-fi-dence
- set (thick black lines) for Bergen sea level pro-jec-tions for the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--186
-\T1/ntxrx/m/n/9 years 2000-2100 us-ing RCP8.5. The sea level data are shown in 
-blue and end in 2015. The thin red lines are
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--186
-\T1/ntxrx/m/n/9 the pro-jec-tions with-out un-cer-tainty based on each of the c
-li-mate mod-els. The dashed pur-ple lines con-nect
- []
+Package pdftex.def Info: bergen_ci.png used on input line 187.
+(pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
 
 <esbjerg_ci.png, id=37, 505.89pt x 505.89pt>
 File: esbjerg_ci.png Graphic file (type png)
  <use esbjerg_ci.png>
-Package pdftex.def Info: esbjerg_ci.png used on input line 195.
-(pdftex.def)             Requested size: 468.0pt x 468.01038pt.
+Package pdftex.def Info: esbjerg_ci.png used on input line 193.
+(pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
 
-Overfull \hbox (70.51501pt too wide) in paragraph at lines 195--196
- [] 
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+[]\T1/ntxrx/bx/n/9 Figure  3. \T1/ntxrx/m/n/9 Si-mul-ta-ne-ous 90% con-fi-dence
+ set (thick black lines) for Bergen (left) and Es-b-jerg( right) sea
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--196
-[]\T1/ntxrx/bx/n/9 Figure  4. \T1/ntxrx/m/n/9 Si-mul-ta-ne-ous 90% con-fi-dence
- set (thick black lines) for Es-b-jerg sea level pro-jec-tions for the
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\T1/ntxrx/m/n/9 level pro-jec-tions for the years 2000-2100 us-ing RCP8.5. The 
+sea level data are shown in blue and end in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--196
-\T1/ntxrx/m/n/9 years 2000-2100 us-ing RCP8.5. The sea level data are shown in 
-blue and end in 2015. The thin red lines are
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\T1/ntxrx/m/n/9 2015. The thin red lines are the pro-jec-tions with-out un-cer-
+tainty based on each of the cli-mate mod-els. The
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 196--196
-\T1/ntxrx/m/n/9 the pro-jec-tions with-out un-cer-tainty based on each of the c
-li-mate mod-els. The dashed pur-ple lines con-nect
- []
-
-<EuropeanIncreaseLossExtrapolationUncertainty.png, id=38, 481.8pt x 481.8pt>
+[5 <./DamageDistribution.png (PNG copy)>] [6 <./bergenfit.png>]
+<EuropeanIncreaseLossExtrapolationUncertainty.png, id=44, 481.8pt x 481.8pt>
 File: EuropeanIncreaseLossExtrapolationUncertainty.png Graphic file (type png)
 
 <use EuropeanIncreaseLossExtrapolationUncertainty.png>
 Package pdftex.def Info: EuropeanIncreaseLossExtrapolationUncertainty.png used 
-on input line 211.
+on input line 213.
 (pdftex.def)             Requested size: 468.0pt x 468.01443pt.
 
-Overfull \hbox (70.51501pt too wide) in paragraph at lines 211--212
+Overfull \hbox (70.51501pt too wide) in paragraph at lines 213--214
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
-[]\T1/ntxrx/bx/n/9 Figure  5. \T1/ntxrx/m/n/9 Rel-a-tive change in mean an-nual
+Underfull \hbox (badness 10000) in paragraph at lines 214--214
+[]\T1/ntxrx/bx/n/9 Figure  4. \T1/ntxrx/m/n/9 Rel-a-tive change in mean an-nual
  dam-age as a func-tion of sea level rise for 15 Eu-ro-pean cites as
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
+Underfull \hbox (badness 10000) in paragraph at lines 214--214
 \T1/ntxrx/m/n/9 es-ti-mated by \T1/ntxrx/m/it/9 Hal-le-gatte et al. \T1/ntxrx/m
 /n/9 [2013] (black cir-cles) with lin-early ex-trap-o-lated val-ues in-di-cated
  by gray lines.
  []
 
-<AccumulatedFutureLoss.png, id=39, 481.8pt x 481.8pt>
+<AccumulatedFutureLoss.png, id=45, 481.8pt x 481.8pt>
 File: AccumulatedFutureLoss.png Graphic file (type png)
 
 <use AccumulatedFutureLoss.png>
-Package pdftex.def Info: AccumulatedFutureLoss.png used on input line 220.
+Package pdftex.def Info: AccumulatedFutureLoss.png used on input line 222.
 (pdftex.def)             Requested size: 468.0pt x 468.01443pt.
 
-Overfull \hbox (70.51501pt too wide) in paragraph at lines 220--221
+Overfull \hbox (70.51501pt too wide) in paragraph at lines 222--223
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--221
-[]\T1/ntxrx/bx/n/9 Figure  6. \T1/ntxrx/m/n/9 Dis-tri-bu-tion of log ac-cu-mu-l
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+[]\T1/ntxrx/bx/n/9 Figure  5. \T1/ntxrx/m/n/9 Dis-tri-bu-tion of log ac-cu-mu-l
 ated fu-ture loss 2016-2100 un-der RCP 8.5 and as-sum-ing that no
  []
 
-(./paper.bbl
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5]
-[6 <./DamageDistribution.png (PNG copy)>] [7 <./bergenfit.png>] [8 <./bergen_ci
-.png>] [9 <./esbjerg_ci.png>] [10 <./EuropeanIncreaseLossExtrapolationUncertain
-ty.png (PNG copy)>] [11 <./AccumulatedFutureLoss.png>]) [12] (./paper.aux)
+ [7 <./bergen_ci.png> <./esbjerg_ci.png>] [8 <./EuropeanIncreaseLossExtrapolati
+onUncertainty.png (PNG copy)>] [9 <./AccumulatedFutureLoss.png>] (./paper.bbl) 
+[10]
+(./paper.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  5346 strings out of 493315
- 70791 string characters out of 6137904
- 136454 words of memory out of 5000000
+ 70785 string characters out of 6137904
+ 134453 words of memory out of 5000000
  8587 multiletter control sequences out of 15000+600000
  83523 words of font info for 160 fonts, out of 8000000 for 9000
  963 hyphenation exceptions out of 8191
- 41i,11n,37p,1480b,378s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,37p,1480b,399s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/peter/Library/texlive/2013/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
 0.600pk>{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/l
 ocal/texlive/2013/texmf-dist/fonts/type1/public/newtx/ntxsups.pfb></usr/local/t
@@ -687,10 +654,10 @@ al/texlive/2013/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texl
 ive/2013/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (12 pages, 267361 bytes).
+Output written on paper.pdf (10 pages, 266545 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 120 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

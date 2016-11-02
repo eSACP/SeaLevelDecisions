@@ -63,7 +63,7 @@ where ${\hat a}$ and ${\hat T}_0$ are regression parameters of observed global s
 
 \subsection{Local sea level}
 In order to get from global sea level projections to local ones, it is important to note that sea level rise not is uniform over the globe. Glacial and land ice melting affect the local sea level differently depending on where the melted ice is located.
-%Gravitaional effects
+%Gravitational effects
 Another major effect in Fennoskandia is the land rise due to isostatic rebound from the glaciers of the last ice age. 
 Again, we will use historical data to relate global sea level to isostatically corrected local sea level using a time series regression model. 
 The local sea level projections are then obtained by first relating projected temperature to global sea level, and then relating the global sea level to the local one. Each climate model temperature projection yields a different local sea level projection. The local sea level projection based on the i'th climate model for years beyond 2000 is estimated as
@@ -162,7 +162,7 @@ We estimate a damage distribution for Bergen in 2015 using annual data on storm 
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=39pc]{DamageDistribution.png}
+\includegraphics[width=\linewidth]{DamageDistribution.png}
 \caption{ The estimated distribution of annual storm surge damage in Bergen for 2015 (red) based on observed annual damage in Hordaland and Rogaland 1980-2015 (gray bars). }
 \label{fig:BergenDamageDist}
 \end{center}
@@ -173,31 +173,33 @@ We estimate a damage distribution for Bergen in 2015 using annual data on storm 
 Figure \ref{fig:bergenobs} shows uncorrected and corrected Bergen sea level data, and the relationship between the corrected Bergen data and the global sea level data. The time series regression uses an ARMA(1,1)-model \citep{boxjenkins}, with AR parameter 0.82 (0.13), and MA parameter --0.61 (0.17). The regression slope is 1.30 (0.12).
 \begin{figure}
 \begin{center}
-\includegraphics[width=39pc]{bergenfit.png}
+\includegraphics[width=\linewidth]{bergenfit.png}
 \caption{ The left figure shows raw (black)and gia-corrected (red) sea level data from Bergen, The right figure relates the gia-corrected Bergen sea level to the global sea level series of \citet{csiro}. The straight line is the time series regression line.}
 \label{fig:bergenobs}
 \end{center}
 \end{figure}
 
-For the relationship between global annual mean temperature and global annual mean sea level rise we use the results from \citet{Bolin2014a}. Figure \ref{fig:bergenci} shows the simultaneous 90 \% confidence region for Bergen sea level rise relative to 1999 under scenario RCP 8.5, which is the scenario Norwegian authorities recommend for planning purposes.
+For the relationship between global annual mean temperature and global annual mean sea level rise we use the results from \citet{Bolin2014a}. The left panel of figure \ref{fig:ci} shows the simultaneous 90 \% confidence region for Bergen sea level rise relative to 1999 under scenario RCP 8.5, which is the scenario Norwegian authorities recommend for planning purposes.
 \begin{figure}
 \begin{center}
-\includegraphics[width=39pc]{bergen_ci.png}
-\caption{Simultaneous 90\% confidence set (thick black lines) for Bergen sea level projections for the years 2000-2100 using RCP8.5. The sea level data are shown in blue and end in 2015. The thin red lines are the projections without uncertainty based on each of the climate models. The dashed purple lines connect pointwise confidence intervals for each year. }
-\label{fig:bergenci}
+\begin{minipage}{.5\textwidth}
+
+ \includegraphics[width=\linewidth]{bergen_ci.png}
+ % \label{fig:bergenci}
+
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+
+    \includegraphics[width=\linewidth]{esbjerg_ci.png}
+ % \label{fig:esbjergci}
+
+\end{minipage}
+\caption{Simultaneous 90\% confidence set (thick black lines) for Bergen (left) and Esbjerg( right) sea level projections for the years 2000-2100 using RCP8.5. The sea level data are shown in blue and end in 2015. The thin red lines are the projections without uncertainty based on each of the climate models. The dashed purple lines connect pointwise confidence intervals for each year. }
+\label{fig:ci}
 \end{center}
 \end{figure}
 
-For Esbjerg, the time series regression model relating local to global sea level is an MA(1) model with parameter 0.17 (0.09). The regression slope is 1.02 (0.06). Figure \ref{fig:esbjergci} shows the simultaneous 90\% confidence region for sea level rise relative to 1999 under scenario RCP 8.5.
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=39pc]{esbjerg_ci.png}
-\caption{Simultaneous 90\% confidence set (thick black lines) for Esbjerg sea level projections for the years 2000-2100 using RCP8.5. The sea level data are shown in blue and end in 2015. The thin red lines are the projections without uncertainty based on each of the climate models. The dashed purple lines connect pointwise confidence intervals for each year. }
-\label{fig:esbjergci}
-\end{center}
-\end{figure}
-
+For Esbjerg, the time series regression model relating local to global sea level is an MA(1) model with parameter 0.17 (0.09). The regression slope is 1.02 (0.06). The right panel of figure \ref{fig:ci} shows the simultaneous 90\% confidence region for sea level rise relative to 1999 under scenario RCP 8.5.
 
 
 \subsection{Timing of adaptation measures {\color{blue} (KdB, TT)}}
