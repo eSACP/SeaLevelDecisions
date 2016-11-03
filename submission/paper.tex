@@ -42,6 +42,9 @@ Sea level adaptation decisions under uncertainty}
 
 
 \section{Introduction}\label{sec:intro}
+The potential impact of climate change on local sea level, yielding effects such as frequent flooding, inundation and backflow of storm drainage and sewer systems, destructive erosion and contamination of wetlands and other habitats, requires city planners to make decisions in the presence of substantial uncertainty.
+
+In this paper we illustrate the uncertainty of sea level projections, and combine this with the a simplified decision problem where planners want to know how early they should implement costly adaptation measures.
 
 \section{Sea level projections {\color{blue} (PG)}}
 
@@ -136,7 +139,7 @@ In comparison, postponing the adaptation investment to time period $n=1$ would l
 C^0 - \frac{C^1}{(1+r)} > (d_0^1 - d_0^0) + \frac{d_1^1 - d_1^0}{1+r} + \frac{d_2^1 - d_2^0}{(1+r)^2} + \cdots
 \]
 \end{linenomath*}
-Here, the expression on the left describes the benefits of the delay while the expression on the right describes the cost of the delay. In the simplest case, there is no change in investment costs ($C^0 = C^1 = C$) and the delay has no lasting effects beyond period 1 ($d_t^1 = d_t^0$ for $t > 1$). In this case, the comparison is between the expected return $r$ earned on the captial while implementation is delayed and one addtional time period of unmitigated damage,
+Here, the expression on the left describes the benefits of the delay while the expression on the right describes the cost of the delay. In the simplest case, there is no change in investment costs ($C^0 = C^1 = C$) and the delay has no lasting effects beyond period 1 ($d_t^1 = d_t^0$ for $t > 1$). In this case, the comparison is between the expected return $r$ earned on the capital while implementation is delayed and one additional time period of unmitigated damage,
 \begin{linenomath*}
   \[
   r C > d_1^1 - d_1^0.
@@ -150,27 +153,16 @@ Here, the expression on the left describes the benefits of the delay while the e
 \section{Case studies}
 
 \subsection{Data {\color{blue} (PG)}}
-The historical global mean temperature series is obtained from \citet{giss}. Climate projections of global mean temperature are from the fifth climate model intercomparison project, CMIP5 \citep{cmip5}. The global mean sea level series is obtained from \citet{csiro}. We use local tide gauge data from the Permanent Service for Mean Sea Level, UK, which is the worldwide repository for national sea level data. Glacial isostatic adjustment for Bergen is obtained from \citet{Simpson2014}. 
+The historical global mean temperature series is obtained from \citet{giss}. Climate projections of global mean temperature are from the fifth climate model intercomparison project, CMIP5 \citep{cmip5}. The global mean sea level series is obtained from \citet{csiro}. We use local tide gauge data from the Permanent Service for Mean Sea Level, UK, which is the worldwide repository for national sea level data. Glacial isostatic adjustment for Bergen is obtained from \citet{Simpson2014}, and for Esbjerg in personal communication from Peter Thejll at the Danish Meteorological Institute. 
 
 The Bergen monthly series is missing data for 62 months, including all of the years 1942--43. To deal with occasional short stretches of missing data (most one or two months) we use median polish replacement \citep{medpol} and then compute annual averages. For the years 1942-43, we use use the average difference between Bergen and the average of all other Norwegian stations in 1940 and 1943 to estimate values for 1941 and 1942, using the average of all other Norwegian stations corrected by the average difference. 
 
 The Esbjerg monthly series is missing data for 19 months. Here, too, we use median polish to fill in missing data and then compute annual averages.
 
-For the case study of sea level rise in Bergen, we use reported annual damage numbers from the Norwegian Natural Perils Pool which are available at \url{https://www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/}. 
-
-We estimate a damage distribution for Bergen in 2015 using annual data on storm surge damage from Hordaland and Rogaland counties over the period 1980-2015 obtained from the Norwegian Natural Perils Pool (NPP;  data are available at \url{https://www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/}). The NPP data are aggregated to a county level, and while only about 55\% of the total population of Hordaland lives in Bergen, we do not correct for this as a substantial part of the remaining population lives away from the coast\footnote{TLT: Need to improve this discussion. Also, some of this discussion should probably be moved to the section on data.}. In order to improve the parameter estimation, we include the data from Rogaland county which is the county directly south of Hordaland. Rogaland has a similar geography to Hordaland and a slightly smaller population with its main city, Stavanger, also located on the coast. The damage data prior to 2015 is adjusted to the 2015 level using the consumer price index for Norway. After the adjustment, we assume stationarity over the period and fit a single Burr distribution to the data, cf. \eqref{eq:Burr}.  The histogram of the observed annual damages and the estimated distribution are given in Figure~\ref{fig:BergenDamageDist}. The parameter estimates for the Burr distribution are $\hat{\alpha} = 1.27$, $\hat{\gamma} = 0.51$ and $\hat{\theta} = 0.002$. 
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=\linewidth]{DamageDistribution.png}
-\caption{ The estimated distribution of annual storm surge damage in Bergen for 2015 (red) based on observed annual damage in Hordaland and Rogaland 1980-2015 (gray bars). }
-\label{fig:BergenDamageDist}
-\end{center}
-\end{figure}
-
+We estimate a damage distribution for Bergen in 2015 using reported annual data on storm surge damage from Hordaland and Rogaland counties over the period 1980-2015 obtained from the Norwegian Natural Perils Pool (NPP;  data are available at \url{https://www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/}). The NPP data are aggregated to a county level, and while only about 55\% of the total population of Hordaland lives in Bergen, we do not correct for this as a substantial part of the remaining population lives away from the coast\footnote{TLT: Need to improve this discussion. Also, some of this discussion should probably be moved to the section on data.}. In order to improve the parameter estimation, we include the data from Rogaland county which is the county directly south of Hordaland. Rogaland has a similar geography to Hordaland and a slightly smaller population with its main city, Stavanger, also located on the coast. The damage data prior to 2015 is adjusted to the 2015 level using the consumer price index for Norway. After the adjustment, we assume stationarity over the period and fit a single Burr distribution to the data, cf. \eqref{eq:Burr}.  
 \subsection{Sea level rise in Bergen and Esbjerg}
 
-Figure \ref{fig:bergenobs} shows uncorrected and corrected Bergen sea level data, and the relationship between the corrected Bergen data and the global sea level data. The time series regression uses an ARMA(1,1)-model \citep{boxjenkins}, with AR parameter 0.82 (0.13), and MA parameter --0.61 (0.17). The regression slope is 1.30 (0.12).
+Figure \ref{fig:bergenobs} shows uncorrected and corrected Bergen sea level data, and the relationship between the corrected Bergen data and the global sea level data. The glacial isostatic adjustment is 0.26 (0.07) cm/yr. The time series regression uses an ARMA(1,1)-model \citep{boxjenkins}, with AR parameter 0.82 (0.13), and MA parameter --0.61 (0.17). The regression slope is 1.30 (0.12).
 \begin{figure}
 \begin{center}
 \includegraphics[width=\linewidth]{bergenfit.png}
@@ -184,13 +176,13 @@ For the relationship between global annual mean temperature and global annual me
 \begin{center}
 \begin{minipage}{.5\textwidth}
 
- \includegraphics[width=\linewidth]{bergen_ci.png}
+ \includegraphics[width=\linewidth]{bergen_ci.pdf}
  % \label{fig:bergenci}
 
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
 
-    \includegraphics[width=\linewidth]{esbjerg_ci.png}
+    \includegraphics[width=\linewidth]{esbjerg_ci.pdf}
  % \label{fig:esbjergci}
 
 \end{minipage}
@@ -199,18 +191,27 @@ For the relationship between global annual mean temperature and global annual me
 \end{center}
 \end{figure}
 
-For Esbjerg, the time series regression model relating local to global sea level is an MA(1) model with parameter 0.17 (0.09). The regression slope is 1.02 (0.06). The right panel of figure \ref{fig:ci} shows the simultaneous 90\% confidence region for sea level rise relative to 1999 under scenario RCP 8.5.
+For Esbjerg, the glacial isostatic adjustment is 0.06 (0.03) cm/yr. The time series regression model relating gia-corrected local to global sea level is an MA(1) model with parameter 0.17 (0.09). The regression slope is 1.02 (0.06). The right panel of figure \ref{fig:ci} shows the simultaneous 90\% confidence region for sea level rise relative to 1999 under scenario RCP 8.5.
 
 
 \subsection{Timing of adaptation measures {\color{blue} (KdB, TT)}}
 
+The histogram of the observed annual damages and the estimated distribution are given in Figure~\ref{fig:BergenDamageDist}. The parameter estimates for the Burr distribution are $\hat{\alpha} = 1.27$, $\hat{\gamma} = 0.51$ and $\hat{\theta} = 0.002$. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\linewidth]{DamageDistribution.png}
+\caption{ The estimated distribution of annual storm surge damage in Bergen for 2015 (red) based on observed annual damage in Hordaland and Rogaland 1980-2015 (gray bars). }
+\label{fig:BergenDamageDist}
+\end{center}
+\end{figure}
 
 
 For modelling the relationship between the change in damage and change in sea level we use the results of \cite{Hallegatte&2013} for 15 European cites: Amsterdam, Athens, Barcelona, Dublin, Glasgow, Hamburg, Helsinki, Copenhagen, Lisbon, London, Marseille, Naples, Porto, Rotterdam and Stockholm. \cite{Hallegatte&2013} estimate the mean annual flood damage in these cities in 2050 under no sea level change, 20 cm increase and 40 cm increase in sea level. We standardize their results for each city and consider the relative change for 20 and 40 cm increase. We then perform a linear extrapolation to obtain estimated relative changes in damage for a large interval of changes in sea level rise, see Figure~\ref{fig:ChangeInDamage}. Finally, the function $g$ is obtained by sampling from this ensemble of functions with all 15 ensemble members considered equally probable. 
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=39pc]{EuropeanIncreaseLossExtrapolationUncertainty.png}
+\includegraphics[width=\linewidth]{EuropeanIncreaseLossExtrapolationUncertainty.png}
 \caption{ Relative change in mean annual damage as a function of sea level rise for 15 European cites as estimated by \cite{Hallegatte&2013} (black circles) with linearly extrapolated values indicated by gray lines. The median change and the corresponding extrapolation are indicated in red.}
 \label{fig:ChangeInDamage}
 \end{center}
@@ -219,7 +220,7 @@ For modelling the relationship between the change in damage and change in sea le
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=39pc]{AccumulatedFutureLoss.png}
+\includegraphics[width=\linewidth]{AccumulatedFutureLoss.png}
 \caption{Distribution of log  accumulated future loss 2016-2100 under RCP 8.5 and assuming that no adaptation measures are implemented.} 
 \label{fig:NoAction}
 \end{center}
