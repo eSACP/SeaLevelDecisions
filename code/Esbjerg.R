@@ -40,7 +40,7 @@ for(i in 1:N){
 	gia.DK=giase.DK=rep(NA,N)
 	index=c(1,2,4,5,6,14) #with gia 
 	gia.DK[index]=c(-.012,-.306,-.028,-.009,-.010,0.06)
-	giase.DK[index]=c(.01,.14,.008,.01,.01,.02)
+	giase.DK[index]=c(.01,.14,.008,.01,.01,.03)
 
 #Get global model, data and CMIP5 output 
 load('~/GitHub/SeaLevelProjections/data&global.Rdata')

@@ -12,7 +12,7 @@
 \begin{document}
 
 
-\title{I don't know, are you sure we want to do this?\
+\title{I don't know, are you sure we want to do this?\\
 Sea level adaptation decisions under uncertainty}
 
 \authors{T. L. Thorarinsdottir\affil{1}, P. Guttorp\affil{1}, M. Drews\affil{2}, and K. de Bruin\affil{3,4}}
@@ -44,16 +44,19 @@ Sea level adaptation decisions under uncertainty}
 \section{Introduction}\label{sec:intro}
 The potential impact of climate change on local sea level, yielding effects such as frequent flooding, inundation and backflow of storm drainage and sewer systems, destructive erosion and contamination of wetlands and other habitats, requires city planners to make decisions in the presence of substantial uncertainty.
 
-In this paper we illustrate the uncertainty of sea level projections, and combine this with the a simplified decision problem where planners want to know how early they should implement costly adaptation measures.
+In this paper we illustrate the uncertainty of sea level projections, and combine this with a simplified decision problem where planners want to know how early they should implement costly adaptation measures.
+
+Section \ref{sealevelproj} describes our approach to projecting sea level. In section \ref{decision_tools} we describe the type of decision problem that we are going to attack. We apply these tools to a sea level projection for Bergen, Norway, %and for Esbjerg, Denmark 
+in section \ref{cases}.  In the final section \ref{unc}  we demonstrate the consequences of ignoring the uncertainty in the projections.
 
 \section{Sea level projections {\color{blue} (PG)}}
 
-
+\label{sealevelproj}
 
 \subsection{Global sea level}
 Most climate models do not explicitly provide sea level as an output of the calculations. Rather, the IPCC AR5 report \citep[ch.~13]{ipcc} combines the heat expansion of the ocean with temperature forced models for glacial melt, Greenland ice melt, and Antarctic ice melt and with land rise due to rebound from the last ice age. Judging from the supplementary material to \citet[ch.~13]{ipcc}, the uncertainty assessment is only based on the spread of the ensemble of temperature projections, not on the additional uncertainty in the ice models used.
 
-We will instead use the empirical approach of Rahmstorf and collaborators \citep{Rahmstorf07,Rahmstorf11}, employing the statistical modeling of \citet{Bolin2014a} to relate global annual mean temperature anomalies \citep{giss} to global mean sea level anomalies \citep{csiro}. 
+We will instead use the empirical approach of Rahmstorf and collaborators \citep{Rahmstorf07,Rahmstorf11}, employing the statistical modeling of \citet{Bolin2014a} to relate global annual mean temperature anomalies to global mean sea level anomalies. 
 
 
 We then apply the estimated historical relationship to projected temperatures from the CMIP5 experiment \citep{cmip5} to obtain projected global annual mean sea level, taking into account the uncertainty in the statistical model as well as the spread of the temperature projection ensemble (see subsection \ref{unc_ass}). 
@@ -86,6 +89,7 @@ Following the approach of \citet{Guttorp2014} we assess the uncertainty in the l
 The main assumption is using historical relationships in statistical projections of the type used in this paper is that there is no major change in how temperature relates to sea level, globally and locally. Among the factors that may invalidate this approach are changes in water storage on land (in essence removing water from the oceans), excessive siphoning of groundwater (resulting in land subsidence), changes in the rates of glacial and land ice melt, and changes in Earth's gravitational field due to transfer of mass from land ice to ocean water. For example, the rate of ice melt on Greenland may suddenly increase substantially due to intense warming of both air and sea water. Our current climate models are not able to resolve the ice processes sufficiently to include such so called tipping points into the projections. Also, the IPCC scenarios \citep{change} do not include changes in water usage.
 
 \section{Decision tools {\color{blue} (KdB, MD, TT)}}
+\label{decision_tools}
 
 \subsection{Timing of adaptation measures}
 
@@ -151,6 +155,7 @@ Here, the expression on the left describes the benefits of the delay while the e
 \subsection{Limitations of the decision framework}
 
 \section{Case studies}
+\label{cases}
 
 \subsection{Data {\color{blue} (PG)}}
 The historical global mean temperature series is obtained from \citet{giss}. Climate projections of global mean temperature are from the fifth climate model intercomparison project, CMIP5 \citep{cmip5}. The global mean sea level series is obtained from \citet{csiro}. We use local tide gauge data from the Permanent Service for Mean Sea Level, UK, which is the worldwide repository for national sea level data. Glacial isostatic adjustment for Bergen is obtained from \citet{Simpson2014}, and for Esbjerg in personal communication from Peter Thejll at the Danish Meteorological Institute. 
@@ -231,7 +236,23 @@ For modelling the relationship between the change in damage and change in sea le
 
 A case study focusing on Denmark. 
 
-\section{Conclusions}
+\section{The value of including uncertainty}
+\label{unc}
+
+In many cases sea level rise projections are given as a single number for each scenario, usually the mean or median of the ensemble of projections from different climate models (e.g. \citet{climateimpactgroup}). Sometimes the spread of the ensemble is used to assess the uncertainty in the projections (e.g., the Norwegian Environmental Agency recommends using the upper ensemble value for RCP 8.5 as the basis for planning decision, pers. comm. from Even Nilsson, Norwegian Mapping Authority). In our analysiis there are two more sources of uncertainty, namely the two regression models. Figure \ref{fig:unc} shows the single number (vertical black line), the ensemble spread (histogram), the uncertainty including the global model (red) and the full uncertainty (blue) for Bergen projections of sea level rise relative to 1999 under RCP 8.5.
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\linewidth]{unc.pdf}
+\caption{2050 Bergen sea level projections with uncertainty due to different sources for RCP 8.5. The black line is the median projection (with no uncertainty), while the grey histogram corresponds to the spread of the climate models, the red curve adds the uncertainty due to the relation between global temperature and global sea level, and the blue line that due to downscaling global sea level to Bergen. } 
+\label{fig:unc}
+\end{center}
+\end{figure}
+
+
+
+
 
 %  ACKNOWLEDGMENTS
 \begin{acknowledgments}
