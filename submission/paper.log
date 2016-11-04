@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  4 NOV 2016 13:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  4 NOV 2016 14:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -643,7 +643,7 @@ ue to the re-la-tion be-tween global tem-per-a-ture and
  []
 
 (./paper.bbl
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4805) has occurred while \output is active []
 
  [7 <./bergen_ci.pdf> <./esbjerg_ci.pdf>] [8 <./DamageDistribution.png (PNG cop
 y)>]
@@ -680,7 +680,7 @@ al/texlive/2013/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texl
 ive/2013/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (12 pages, 259449 bytes).
+Output written on paper.pdf (12 pages, 259512 bytes).
 PDF statistics:
  149 PDF objects out of 1000 (max. 8388607)
  104 compressed objects within 2 object streams
