@@ -168,7 +168,7 @@ We estimate a damage distribution for Bergen in 2015 using reported annual data 
 \subsection{Sea level rise in Bergen and Esbjerg}
 
 Figure \ref{fig:bergenobs} shows uncorrected and corrected Bergen sea level data, and the relationship between the corrected Bergen data and the global sea level data. The glacial isostatic adjustment is 0.26 (0.07) cm/yr. The time series regression uses an ARMA(1,1)-model \citep{boxjenkins}, with AR parameter 0.82 (0.13), and MA parameter --0.61 (0.17). The regression slope is 1.30 (0.12).
-\begin{figure}
+\begin{figure}[!hbpt]
 \begin{center}
 \includegraphics[width=\linewidth]{bergenfit.png}
 \caption{ The left figure shows raw (black)and gia-corrected (red) sea level data from Bergen, The right figure relates the gia-corrected Bergen sea level to the global sea level series of \citet{csiro}. The straight line is the time series regression line.}
@@ -177,7 +177,7 @@ Figure \ref{fig:bergenobs} shows uncorrected and corrected Bergen sea level data
 \end{figure}
 
 For the relationship between global annual mean temperature and global annual mean sea level rise we use the results from \citet{Bolin2014a}. The left panel of figure \ref{fig:ci} shows the simultaneous 90 \% confidence region for Bergen sea level rise relative to 1999 under scenario RCP 8.5, which is the scenario Norwegian authorities recommend for planning purposes.
-\begin{figure}
+\begin{figure}[!hbpt]
 \begin{center}
 \begin{minipage}{.5\textwidth}
 
@@ -214,7 +214,7 @@ The histogram of the observed annual damages and the estimated distribution are 
 
 For modelling the relationship between the change in damage and change in sea level we use the results of \cite{Hallegatte&2013} for 15 European cites: Amsterdam, Athens, Barcelona, Dublin, Glasgow, Hamburg, Helsinki, Copenhagen, Lisbon, London, Marseille, Naples, Porto, Rotterdam and Stockholm. \cite{Hallegatte&2013} estimate the mean annual flood damage in these cities in 2050 under no sea level change, 20 cm increase and 40 cm increase in sea level. We standardize their results for each city and consider the relative change for 20 and 40 cm increase. We then perform a linear extrapolation to obtain estimated relative changes in damage for a large interval of changes in sea level rise, see Figure~\ref{fig:ChangeInDamage}. Finally, the function $g$ is obtained by sampling from this ensemble of functions with all 15 ensemble members considered equally probable. 
 
-\begin{figure}
+\begin{figure}[!hbpt]
 \begin{center}
 \includegraphics[width=\linewidth]{EuropeanIncreaseLossExtrapolationUncertainty.png}
 \caption{ Relative change in mean annual damage as a function of sea level rise for 15 European cites as estimated by \cite{Hallegatte&2013} (black circles) with linearly extrapolated values indicated by gray lines. The median change and the corresponding extrapolation are indicated in red.}
@@ -223,7 +223,7 @@ For modelling the relationship between the change in damage and change in sea le
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[!hbpt]
 \begin{center}
 \includegraphics[width=\linewidth]{AccumulatedFutureLoss.png}
 \caption{Distribution of log  accumulated future loss 2016-2100 under RCP 8.5 and assuming that no adaptation measures are implemented.} 
@@ -242,7 +242,7 @@ A case study focusing on Denmark.
 In many cases sea level rise projections are given as a single number for each scenario, usually the mean or median of the ensemble of projections from different climate models (e.g. \citet{climateimpactgroup}). Sometimes the spread of the ensemble is used to assess the uncertainty in the projections (e.g., the Norwegian Environmental Agency recommends using the upper ensemble value for RCP 8.5 as the basis for planning decision, pers. comm. from Even Nilsson, Norwegian Mapping Authority). In our analysiis there are two more sources of uncertainty, namely the two regression models. Figure \ref{fig:unc} shows the single number (vertical black line), the ensemble spread (histogram), the uncertainty including the global model (red) and the full uncertainty (blue) for Bergen projections of sea level rise relative to 1999 under RCP 8.5. We see that the ensemble range is about 16 cm, whereas the overall uncertainty range is about 40 cm.
 
 
-\begin{figure}
+\begin{figure}[!hbpt]
 \begin{center}
 \includegraphics[width=\linewidth]{unc.pdf}
 \caption{2050 Bergen sea level projections with uncertainty due to different sources for RCP 8.5. The black line is the median projection (with no uncertainty), while the grey histogram corresponds to the spread of the climate models, the red curve adds the uncertainty due to the relation between global temperature and global sea level, and the blue line that due to downscaling global sea level to Bergen. } 
