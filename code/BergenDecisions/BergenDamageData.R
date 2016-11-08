@@ -34,7 +34,7 @@ sf.damage[ind] <- 0.1
 
 log.lik <- function(theta)
 {
-    res <- sum(dburr(sf.damage, shape1=theta[1], shape2=theta[2], rate=theta[3], log=TRUE))
+    res <- sum(dburr(sf.damage/1e3, shape1=theta[1], shape2=theta[2], rate=theta[3], log=TRUE))
     return(-res)
 }
 
@@ -43,11 +43,11 @@ theta.start <- c(0.2, 1.5, 1.5)
 optim.out <- optim(theta.start, fn=log.lik, method="BFGS", control=list(maxit=1000))
 
 ## plot data and fitted distribution
-png(file="DamageDistribution.png", width=480, height=480, points=12)
-# pdf(file="DamageDistribution.pdf", width=5, height=5, points=12)
+## png(file="../../submission/DamageDistribution.png", width=480, height=480, points=12)
+pdf(file="../../submission/DamageDistribution.pdf", width=5, height=5, points=12)
 par(mex=0.75)
-hist(sf.damage, main="", xlab="Amount (1000 NOK)", col="gray60", breaks=50, xlim=c(0,65000), freq=FALSE)
-x <- seq(0, 65000, by=10)
+hist(sf.damage/1e3, main="", xlab="Amount (million NOK)", col="gray60", breaks=50, xlim=c(0,65), freq=FALSE)
+x <- seq(0, 65, by=0.01)
 y <- dburr(x, shape1=optim.out$par[1], shape2=optim.out$par[2], rate=optim.out$par[3])
 lines(x,y,col="red",lwd=2)
 dev.off()
@@ -83,10 +83,11 @@ lines(z, res$coef[1] + z * res$coef[2], col="red", lwd=2)
 dev.off()
 
 ## Uncertainty assessment by performing linear extrapolation per city
-png(file="EuropeanIncreaseLossExtrapolationUncertainty.png", width=480, height=480, points=14)
+pdf(file="../../submission/EuropeanIncreaseLossExtrapolationUncertainty.pdf", width=5, height=5, points=12)
+## png(file="EuropeanIncreaseLossExtrapolationUncertainty.png", width=480, height=480, points=14)
 par(mex=0.75)
 x <- c(0,20,40)
-plot(x, E[1, 2:4], type="o", col="black", xlim=c(-100,130), ylim=c(-180,1000),  xlab="Sea level anomaly compared to 2015 level (cm)", ylab="Relative mean annual damage", main=" ", axes=FALSE)
+plot(x, E[1, 2:4], type="o", col="black", xlim=c(-100,130), ylim=c(-180,1000),  xlab="Sea level anomaly (cm)", ylab="Relative mean annual damage", main=" ", axes=FALSE)
 box()
 axis(1)
 axis(2, at=c(-200, 1, 200, 400, 600, 800, 1000), labels=c(0.005, 1, 200, 400, 600, 800, 1000))
@@ -111,6 +112,7 @@ lines(z, res$coef[1] + z * res$coef[2], col="red", lwd=2)
 dev.off()
 
 ## Getting all slopes
+x <- c(0,20,40)
 low.slope <- rep(NA, 15)
 high.slope <- rep(NA, 15)
 for(i in 1:15)
@@ -132,12 +134,12 @@ get.damage.mult <- function(x, k)
 ## Get sea level rise projections for Bergen 
 load("Simulation.Rdata")
 
-## Calculate yearly damage distributions 
-yearly.damage <- array(NA, dim=c(10000, 85))
-orig.damage <- array(rburr(10000*85, shape1=optim.out$par[1], shape2=optim.out$par[2], rate=optim.out$par[3]), dim=c(10000, 85))
-damage.scenario <- sample(1:15, 10000, replace=TRUE)
-
-for(i in 1:10000)
+## Calculate yearly damage distributions under local sea level projections
+I <- 10000
+yearly.damage <- array(NA, dim=c(I, 85))
+orig.damage <- array(rburr(I*85, shape1=optim.out$par[1], shape2=optim.out$par[2], rate=optim.out$par[3]), dim=c(I, 85))
+damage.scenario <- sample(1:15, I, replace=TRUE)
+for(i in 1:I)
 {
     for(j in 1:85)
     {
@@ -145,6 +147,17 @@ for(i in 1:10000)
     }
 }
 
+## Calculate yearly damage distributions under no-change compared to 2015 level
+constant.damage <- array(NA, dim=c(I, 85))
+for(i in 1:I)
+{
+    for(j in 1:85)
+    {
+        constant.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, 16], damage.scenario[i])
+    }
+}
+
+## Various related plots 
 x11()
 median.damage <- upper.damage <- lower.damage <- rep(NA, 85)
 median.damage <- apply(yearly.damage, 2, median)
@@ -167,8 +180,6 @@ dev.off()
 png(file="AccumulatedFutureLoss.png", width=480, height=480, points=14)
 par(mex=0.75)
 cum.damage <- apply(yearly.damage,1,sum)
-## upper.lim <- quantile(cum.damage, 0.95)
-## ind <- which(cum.damage < upper.lim)
 hist(log(cum.damage/1000), main="", xlab="Total damage 2016-2100 (log 1e6 NOK)", col="gray60", breaks=100, freq=FALSE, xlim=c(5, 25)) 
 dev.off()
 
@@ -196,11 +207,32 @@ plot(2016:2100, log(upper.cumsum/1000),type="l", ylim=c(0,15), xlab="Year", ylab
 lines(2016:2100, log(lower.cumsum/1000))
 dev.off()
 
-## Cumulated damate costs without sea level rise 
-orig.damage <- array(rburr(10000*85, shape1=optim.out$par[1], shape2=optim.out$par[2], rate=optim.out$par[3]), dim=c(10000, 85))
-cumsum.damage <- array(NA, dim=dim(orig.damage))
-for(i in 1:dim(orig.damage)[1]) 
-    cumsum.damage[i,] <- cumsum(orig.damage[i,])
-
 ## Cumulated additional damage cost due to sea level rise
-add.damage <- 
+add.damage <- yearly.damage - constant.damage
+cumsum.add.damage <- array(NA, dim=dim(add.damage))
+for(i in 1:dim(add.damage)[1]) 
+    cumsum.add.damage[i,] <- cumsum(add.damage[i,])
+upper.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)
+lower.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)
+
+png(file="CumulatedFutureAdditionalLoss5_95.png", width=480, height=480, points=14)
+par(mex=0.75)
+plot(2016:2100, upper.add.cumsum/1e6/(1:85),type="l", ylim=c(0,15), xlab="Year",
+     ylab="Accumulated damage in billion NOK", main="")
+lines(2016:2100, lower.add.cumsum/1e6/(1:85))
+dev.off()
+
+png(file="CumulatedFutureAdditionalLoss5_95.png", width=480, height=480, points=14)
+par(mex=0.75)
+x11()
+plot(2016:2100, upper.add.cumsum/1e3/1.02^(1:85),type="l", ylim=c(0,15), xlab="Year",
+      ylab="Accumulated damage in billion NOK", main="")
+lines(2016:2100, lower.add.cumsum/1e3/1.02^(1:85))
+lines(2016:2100, 1.1/1.02^(1:85), col="red")
+dev.off()
+
+x11()
+plot(2016:2100, upper.add.cumsum/1e3/1.02^(1:85),type="l", ylim=c(0,20), xlab="Year",
+      ylab="Accumulated damage in billion NOK", main="", xlim=c(2016,2040))
+lines(2016:2100, lower.add.cumsum/1e3/1.02^(1:85))
+lines(2016:2100, 1.1/1.02^(1:85), col="red")
