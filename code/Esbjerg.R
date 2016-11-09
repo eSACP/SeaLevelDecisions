@@ -77,6 +77,13 @@ sta.un=sta$data #uncorrected station series
 stafit=arsta(seal,sta)
 
 summary(stafit$ar)
+# Series: sta$data[sta.common.years] 
+# ARIMA(0,0,1) with zero mean     
+
+# Coefficients:
+         # ma1  as.matrix(seal$sealevel[sea.common.years])
+      # 0.1746                                      1.0228
+# s.e.  0.0939                                      0.0638
 
 plot(seal$sealevel[sea.common.years],stafit$data[sta.common.years],xlab="Global sea level anomaly (cm)",ylab="Local sea level anomaly (cm)")
 
@@ -144,3 +151,10 @@ lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd.g[yea
 lines(x,Fmix.pdf(x,matrix(unlist(cis$pred),ncol=101,byrow=T)[,year],cis$sd[year]),col="blue",lwd=2)
 dev.off()
 
+ #Simulate paths from model
+nsample = 10000
+k=sample(1:K,nsample,replace=T) #vector of nsample climate models
+sim=matrix(nrow=nsample,ncol=101)
+for (i in 1:nsample)
+sim[i,]=rnorm(101,mu[k[i],],sd)
+save(sim,file="EsbjergSim.Rdata")
