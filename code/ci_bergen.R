@@ -78,16 +78,16 @@ for(k in 1:K){
 res <- simconf.mixture(alpha=alpha, mu = mu.pred, Q = Q, w = w)
 
 
-print(c("8.5","20cm",min((2000:2100)[res$b>20]),min((2000:2100)[apply(matrix(unlist(mu.pred),ncol=101,byrow=T), 2, mean, na.rm=T)>20]),min((2000:2100)[res$a>20])))
-print(c("8.5","40cm",min((2000:2100)[res$b>40]),min((2000:2100)[apply(matrix(unlist(mu.pred),ncol=101,byrow=T), 2, mean, na.rm=T)>40]),min((2000:2100)[res$a>40])))
+print(c("8.5","25cm",min((2000:2100)[res$b>25]),min((2000:2100)[apply(matrix(unlist(mu.pred),ncol=101,byrow=T), 2, mean, na.rm=T)>25]),min((2000:2100)[res$a>25])))
+#print(c("8.5","40cm",min((2000:2100)[res$b>40]),min((2000:2100)[apply(matrix(unlist(mu.pred),ncol=101,byrow=T), 2, mean, na.rm=T)>40]),min((2000:2100)[res$a>40])))
 
- res.20 = res.40 = NULL
+ res.25= NULL
 for(k in 1:K){
 	
-	res.20[[k]] = excursions(mu = mu.pred[[k]],Q=Q.pred,ind = 1:101,
-						   u=20, alpha=1,type='<')
-		res.40[[k]] = excursions(mu = mu.pred[[k]],Q=Q.pred,ind = 1:101,
-						   u=40, alpha=1,type='<')
+	res.25[[k]] = excursions(mu = mu.pred[[k]],Q=Q.pred,ind = 1:101,
+						   u=25, alpha=1,type='<')
+		# res.40[[k]] = excursions(mu = mu.pred[[k]],Q=Q.pred,ind = 1:101,
+						   # u=40, alpha=1,type='<')
 }
 #Calculate standard deviations for global sea level
 Sigma.g = a4^2*Sigma.i2
@@ -101,6 +101,6 @@ sd.g = sqrt(diag(Sigma.g.pred))
 
 
 
-return(list(pred=mu.pred,res=res,res.20=res.20,res.40=res.40,sd=sd,sd.g=sd.g))
+return(list(pred=mu.pred,res=res,res.25=res.25,sd=sd,sd.g=sd.g))
 }
 

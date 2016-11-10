@@ -138,17 +138,16 @@ lines(2000:2100,cis$res$a,lwd=2)
 lines(2000:2100,cis$res$a.marginal,col="purple",lty=3)
 lines(2000:2100,cis$res$b.marginal,col="purple",lty=3)
 
-F.20 = F.40 = rep(0,101)
+F.25 =  rep(0,101)
 for(k in 1:K){
-	F.20 = F.20 + cis$res.20[[k]]$F/K
-	F.40 = F.40 + cis$res.40[[k]]$F/K
-}
+	F.25 = F.25 + cis$res.25[[k]]$F/K
+	}
 
-plot(range(2000,2100),c(0,1),type="n",col=1,xlab="Year",ylab="Probability",main="P(Y(s)<20, s<t)")
-lines(2000:2100,F.20,col=4,lwd=2)
-lines(2000:2100,F.40,col=2,lwd=2)
-legend(2000,0, c("20 cm","40 cm"), 
-lty=c(1,1), lwd=c(2.5,2.5),col=c(2,4),xjust=0,yjust=0) 
+plot(range(2000,2100),c(0,1),type="n",col=1,xlab="Year",ylab="Probability",main="P(Y(s)<25, s<t)")
+lines(2000:2100,F.25,col=4,lwd=2)
+#lines(2000:2100,F.40,col=2,lwd=2)
+#legend(2000,0, c("25 cm"), 
+#lty=c(1,1), lwd=c(2.5,2.5),col=c(2,4),xjust=0,yjust=0) 
 
 
 mu=NULL
