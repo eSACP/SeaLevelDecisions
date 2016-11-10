@@ -212,8 +212,13 @@ add.damage <- yearly.damage - constant.damage
 cumsum.add.damage <- array(NA, dim=dim(add.damage))
 for(i in 1:dim(add.damage)[1]) 
     cumsum.add.damage[i,] <- cumsum(add.damage[i,])
-upper.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)
-lower.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)
+upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)
+lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)
+upper.90.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)
+lower.10.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)
+median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)
+
+discount.rate <- c( rep(1.04, 40), rep(1.03, 35), rep(1.02, 10)) 
 
 png(file="CumulatedFutureAdditionalLoss5_95.png", width=480, height=480, points=14)
 par(mex=0.75)
@@ -222,17 +227,19 @@ plot(2016:2100, upper.add.cumsum/1e6/(1:85),type="l", ylim=c(0,15), xlab="Year",
 lines(2016:2100, lower.add.cumsum/1e6/(1:85))
 dev.off()
 
-png(file="CumulatedFutureAdditionalLoss5_95.png", width=480, height=480, points=14)
+png(file="CumulativeAdditionalDamageCosts.png", width=480, height=480, points=14)
 par(mex=0.75)
-x11()
-plot(2016:2100, upper.add.cumsum/1e3/1.02^(1:85),type="l", ylim=c(0,15), xlab="Year",
-      ylab="Accumulated damage in billion NOK", main="")
-lines(2016:2100, lower.add.cumsum/1e3/1.02^(1:85))
-lines(2016:2100, 1.1/1.02^(1:85), col="red")
+plot(2016:2100, upper.90.add.cumsum/1e3/cumprod(discount.rate),type="l", ylim=c(0,7), xlab="Year",
+      ylab="Accumulated damage (billion NOK)", main="", lty=2)
+lines(2016:2100, lower.10.add.cumsum/1e3/cumprod(discount.rate), lty=2)
+lines(2016:2100, upper.95.add.cumsum/1e3/cumprod(discount.rate), lty=3)
+lines(2016:2100, lower.5.add.cumsum/1e3/cumprod(discount.rate), lty=3)
+lines(2016:2100, median.add.cumsum/1e3/cumprod(discount.rate), lwd=2)
+# lines(2016:2100, 1.1/CPI$CPI[8]/cumprod(discount.rate), col="red", lwd=2)
 dev.off()
 
 x11()
-plot(2016:2100, upper.add.cumsum/1e3/1.02^(1:85),type="l", ylim=c(0,20), xlab="Year",
-      ylab="Accumulated damage in billion NOK", main="", xlim=c(2016,2040))
-lines(2016:2100, lower.add.cumsum/1e3/1.02^(1:85))
+plot(2016:2100, upper.add.cumsum/1e3/cumprod(discount.rate),type="l", ylim=c(0,20), xlab="Year",
+      ylab="Accumulated damage (billion NOK)", main="", xlim=c(2016,2040))
+lines(2016:2100, lower.add.cumsum/1e3/cumprod(discount.rate))
 lines(2016:2100, 1.1/1.02^(1:85), col="red")
