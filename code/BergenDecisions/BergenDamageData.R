@@ -1,13 +1,117 @@
 rm(list=ls())
-A <- read.csv("StormfloYearFylkeAntall.csv", header=TRUE)
-A <- A[-37,] ## remove 2016 as data not complete
-V <- read.csv("StormfloYearFylkeVerdi.csv", header=TRUE)
-V <- V[-37,] ## remove 2016 as data not complete
-CPI <- read.csv("KPI.csv", header=TRUE)
-CPI <- CPI[-1,] ## remove 2016 as data not yet available
-CPI$CPI <- CPI$CPI/CPI$CPI[1] ## normalize according to 2015 
 
-## plot data for Hordaland and Rogaland
+### Read in damage data. 
+A <- read.csv("StormfloYearFylkeAntall.csv", header=TRUE)
+A <- A[-37,] ## Remove 2016 as data not complete
+V <- read.csv("StormfloYearFylkeVerdi.csv", header=TRUE)
+V <- V[-37,] ## Remove 2016 as data not complete
+
+### Read in consumer price index (CPI).
+CPI <- read.csv("KPI.csv", header=TRUE)
+CPI <- CPI[-1,] ## Remove 2016 as data not yet available
+CPI$CPI <- CPI$CPI/CPI$CPI[1] ## Normalize to 2015 
+
+### Combine Hordaland and Rogaland data; standardize costs to 2015 values.
+sf.nr <- c(A$Hordaland, A$Rogaland)
+sf.damage <- c(V$Hordaland/CPI$CPI[1:36], V$Rogaland/CPI$CPI[1:36])
+sf.damage <- sf.damage/1e3 ## Normalize to million NOK. 
+
+### Fit Burr distribution to damage data.  
+library(actuar)
+ind <- which(sf.damage==0)
+sf.damage[ind] <- 1e-04 ## Improves numerical stability of estimates. 
+log.lik <- function(theta)
+{
+  res <- sum(dburr(sf.damage, 
+                   shape1=theta[1], 
+                   shape2=theta[2], 
+                   rate=theta[3], 
+                   log=TRUE))
+  return(-res)
+}
+theta.start <- c(5, 0.5, 0.05)
+optim.out <- optim(theta.start, 
+                   fn=log.lik, 
+                   method="BFGS", 
+                   control=list(maxit=1000))
+
+### Get Hallegatte et al. (2010) data on relation between change in damage 
+### cost and change in sea level.
+E <- read.csv("EuropeanLossData.csv", header=TRUE)
+E[,2:4] <- E[,2:4]/E[,2] 
+
+### Hallegatte et al. (2010) provide data for 0, 20, 40 cm sea level rise.
+### Conservative extrapolation: Linear extrapolation of [20,40] beyond 40
+### and [0,20] below 0. 
+x <- c(0, 20, 40)
+low.slope <- rep(NA, 15)
+high.slope <- rep(NA, 15)
+for(i in 1:15)
+{
+  res <- lm(apply(E[i,2:3],2,mean)~x[1:2])
+  low.slope[i] <- res$coef[2]
+  res <- lm(apply(E[i,3:4],2,mean)~x[2:3])
+  high.slope[i] <- res$coef[2]
+}
+
+### Function that calculates the multiplicative change in damage for sea level x 
+### and ensemble member k 
+get.damage.mult <- function(x, k)
+{
+  if(x < 0) return(-1/(x * low.slope[k]))
+  else if(x < 20) return(x * low.slope[k])
+  else return(E[k,3] + x * high.slope[k])
+}
+
+### Get sea level rise projections for Bergen. 
+load("Simulation.Rdata")
+
+### Calculate yearly damage distributions. 
+I <- 10000
+orig.damage <- array(rburr(I*85, 
+                           shape1=optim.out$par[1], 
+                           shape2=optim.out$par[2], 
+                           rate=optim.out$par[3]), 
+                     dim=c(I, 85))
+damage.scenario <- sample(1:15, I, replace=TRUE)
+### Damage under local sea level projections.
+yearly.damage <- array(NA, dim=c(I, 85))
+for(i in 1:I)
+{
+  for(j in 1:85)
+  {
+    yearly.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, (j+16)],
+                                                             damage.scenario[i])
+  }
+}
+### Damage under no-change compared to 2015 level.
+constant.damage <- array(NA, dim=c(I, 85))
+for(i in 1:I)
+{
+  for(j in 1:85)
+  {
+    constant.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, 16], 
+                                                               damage.scenario[i])
+  }
+}
+### Cumulated additional damage due to sea level rise.
+add.damage <- yearly.damage - constant.damage
+cumsum.add.damage <- array(NA, dim=dim(add.damage))
+for(i in 1:dim(add.damage)[1]) 
+  cumsum.add.damage[i,] <- cumsum(add.damage[i,])
+upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)
+lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)
+upper.90.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)
+lower.10.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)
+median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)
+
+### Discount rate based on Norwegian government recommendations. 
+discount.rate <- c( rep(1.04, 40), rep(1.03, 35), rep(1.02, 10)) 
+
+
+#######################################################################
+#######################################################################
+## Plot damage data for Hordaland and Rogaland.
 png(file="DamagesAmounts.png", width=720, height=480, points=18)
 par(mfrow=c(2,3),mex=0.75)
 plot(A$Hordaland, V$Hordaland/CPI$CPI[1:36], main="Hordaland 1980-2015", xlab="Nr. of damages", ylab="Amount (1000 NOK)", ylim=c(0,65000), xlim=c(0,500))
@@ -19,28 +123,8 @@ hist(A$Rogaland, main="Rogaland 1980-2015", xlab="Nr. of damages", col="gray60",
 hist(V$Rogaland/CPI$CPI[1:36], main="Rogaland 1980-2015", xlab="Amount (1000 NOK)", col="gray60", breaks=50, xlim=c(0,65000), ylim=c(0,22)) 
 dev.off()
 
-### Combine Hordaland and Rogaland data
-sf.nr <- c(A$Hordaland, A$Rogaland)
-sf.damage <- c(V$Hordaland/CPI$CPI[1:36], V$Rogaland/CPI$CPI[1:36])
 x11()
 hist(sf.damage, main="Rogaland and Hordaland 1980-2015", xlab="Damage amount per year (1000 NOK)", col="gray60", breaks=50) 
-
-#######################################################################
-## Fitting Burr distribution to combined damage data from Hordaland and Rogaland
-library(actuar)
-
-ind <- which(sf.damage==0)
-sf.damage[ind] <- 0.1
-
-log.lik <- function(theta)
-{
-    res <- sum(dburr(sf.damage/1e3, shape1=theta[1], shape2=theta[2], rate=theta[3], log=TRUE))
-    return(-res)
-}
-
-theta.start <- c(0.2, 1.5, 1.5)
-
-optim.out <- optim(theta.start, fn=log.lik, method="BFGS", control=list(maxit=1000))
 
 ## plot data and fitted distribution
 ## png(file="../../submission/DamageDistribution.png", width=480, height=480, points=12)
@@ -52,11 +136,6 @@ y <- dburr(x, shape1=optim.out$par[1], shape2=optim.out$par[2], rate=optim.out$p
 lines(x,y,col="red",lwd=2)
 dev.off()
 
-#######################################################################
-## Get data on change in damage cost as a function for sea level rise from Hallegatte et al. (2013)
-E <- read.csv("EuropeanLossData.csv", header=TRUE)
-E[,2:4] <- E[,2:4]/E[,2]
-
 png(file="EuropeanIncreaseLoss.png", width=480, height=480, points=14)
 par(mex=0.75)
 x <- c(0,20,40)
@@ -66,8 +145,6 @@ points(20, mean(E[,3]), col="red", pch=15)
 points(40, mean(E[,4]), col="red", pch=15)
 dev.off()
 
-## Conservative extrapolation: Linear extrapolation of the increase from 20 to 40 cm
-## and the decrease for below 0 cm 
 res <- lm(apply(E[,3:4],2,mean)~x[2:3])
 
 png(file="EuropeanIncreaseLossExtrapolation.png", width=720, height=480, points=14)
@@ -111,51 +188,6 @@ z <- c(20,130)
 lines(z, res$coef[1] + z * res$coef[2], col="red", lwd=2)
 dev.off()
 
-## Getting all slopes
-x <- c(0,20,40)
-low.slope <- rep(NA, 15)
-high.slope <- rep(NA, 15)
-for(i in 1:15)
-{
-    res <- lm(apply(E[i,2:3],2,mean)~x[1:2])
-    low.slope[i] <- res$coef[2]
-    res <- lm(apply(E[i,3:4],2,mean)~x[2:3])
-    high.slope[i] <- res$coef[2]
-}
-
-## Function that calculates the multiplicative change in damage for sea level x and ensemble member k 
-get.damage.mult <- function(x, k)
-{
-    if(x < 0) return(-1/(x * low.slope[k]))
-    else if(x < 20) return(x * low.slope[k])
-    else return(E[k,3] + x * high.slope[k])
-}
-
-## Get sea level rise projections for Bergen 
-load("Simulation.Rdata")
-
-## Calculate yearly damage distributions under local sea level projections
-I <- 10000
-yearly.damage <- array(NA, dim=c(I, 85))
-orig.damage <- array(rburr(I*85, shape1=optim.out$par[1], shape2=optim.out$par[2], rate=optim.out$par[3]), dim=c(I, 85))
-damage.scenario <- sample(1:15, I, replace=TRUE)
-for(i in 1:I)
-{
-    for(j in 1:85)
-    {
-        yearly.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, (j+16)], damage.scenario[i])
-    }
-}
-
-## Calculate yearly damage distributions under no-change compared to 2015 level
-constant.damage <- array(NA, dim=c(I, 85))
-for(i in 1:I)
-{
-    for(j in 1:85)
-    {
-        constant.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, 16], damage.scenario[i])
-    }
-}
 
 ## Various related plots 
 x11()
@@ -207,18 +239,6 @@ plot(2016:2100, log(upper.cumsum/1000),type="l", ylim=c(0,15), xlab="Year", ylab
 lines(2016:2100, log(lower.cumsum/1000))
 dev.off()
 
-## Cumulated additional damage cost due to sea level rise
-add.damage <- yearly.damage - constant.damage
-cumsum.add.damage <- array(NA, dim=dim(add.damage))
-for(i in 1:dim(add.damage)[1]) 
-    cumsum.add.damage[i,] <- cumsum(add.damage[i,])
-upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)
-lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)
-upper.90.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)
-lower.10.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)
-median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)
-
-discount.rate <- c( rep(1.04, 40), rep(1.03, 35), rep(1.02, 10)) 
 
 png(file="CumulatedFutureAdditionalLoss5_95.png", width=480, height=480, points=14)
 par(mex=0.75)
