@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  10 NOV 2016 14:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  20 NOV 2016 12:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -617,22 +617,23 @@ File: AccumulatedFutureLoss.png Graphic file (type png)
 
 <use AccumulatedFutureLoss.png>
 Package pdftex.def Info: AccumulatedFutureLoss.png used on input line 228.
-(pdftex.def)             Requested size: 397.48499pt x 397.49725pt.
+(pdftex.def)             Requested size: 198.7425pt x 198.7376pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 229--229
 []\T1/ntxrx/bx/n/9 Figure  5. \T1/ntxrx/m/n/9 Dis-tri-bu-tion of log ac-cu-mu-l
 ated fu-ture loss 2016-2100 un-der RCP 8.5 and as-sum-ing that no
  []
 
-
+[8 <./EuropeanIncreaseLossExtrapolationUncertainty.pdf> <./AccumulatedFutureLos
+s.png>]
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./unc.pdf): PDF inclusion: f
 ound PDF version <1.6>, but at most version <1.5> allowed
-<unc.pdf, id=69, 505.89pt x 505.89pt>
+<unc.pdf, id=80, 505.89pt x 505.89pt>
 File: unc.pdf Graphic file (type pdf)
  <use unc.pdf>
 Package pdftex.def Info: unc.pdf used on input line 247.
-(pdftex.def)             Requested size: 397.48499pt x 397.49504pt.
+(pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 248--248
 []\T1/ntxrx/bx/n/9 Figure  6. \T1/ntxrx/m/n/9 2050 Bergen sea level pro-jec-tio
@@ -651,11 +652,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 248--248
 ue to the re-la-tion be-tween global tem-per-a-ture and
  []
 
-(./paper.bbl
-Underfull \vbox (badness 1077) has occurred while \output is active []
-
- [8 <./EuropeanIncreaseLossExtrapolationUncertainty.pdf>] [9 <./AccumulatedFutu
-reLoss.png>] [10 <./unc.pdf>]) [11] (./paper.aux)
+(./paper.bbl [9 <./unc.pdf>]) [10] (./paper.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -664,7 +661,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  5358 strings out of 493315
  70953 string characters out of 6137904
- 134565 words of memory out of 5000000
+ 134564 words of memory out of 5000000
  8598 multiletter control sequences out of 15000+600000
  83523 words of font info for 160 fonts, out of 8000000 for 9000
  963 hyphenation exceptions out of 8191
@@ -687,10 +684,10 @@ al/texlive/2013/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texl
 ive/2013/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (11 pages, 235058 bytes).
+Output written on paper.pdf (10 pages, 235191 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 155 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
