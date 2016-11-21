@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{18}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -29,6 +29,11 @@ Church, J., and N.~White (2011), Sea-level rise from the late 19th to the early
 Fankhauser, S., J.~Smith, and R.~S.~J. Tol (1999), Weathering climate change:
   some simple rules to guide adaptation decisions, \textit{Ecological
   Economics}, \textit{30}, 67--78.
+
+\bibitem[{\textit{Grieg~Foundation}(2009)}]{bergenreport}
+Grieg~Foundation, v. (2009), Regional havstigning -- prosjektrapport,
+  \textit{Tech. rep.}, Grieg Foundation, Visjon Vest and G0 Rieber Fondene,
+  Bergen.
 
 \bibitem[{\textit{Guttorp et~al.}(2014)\textit{Guttorp, Bolin, Januzzi, Jones,
   Novak, Podschwit, Richardson, S\"{a}rkk\"{a}, Sowder, and
