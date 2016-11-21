@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  20 NOV 2016 20:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  21 NOV 2016 10:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -483,13 +483,9 @@ Overfull \hbox (4.3578pt too wide) in paragraph at lines 63--64
 s to global mean sea level anoma- 
  []
 
-[2]
-Underfull \vbox (badness 5064) has occurred while \output is active []
-
- [3]
+[2] [3]
 LaTeX Font Info:    Try loading font information for U+bbm on input line 113.
-
-(/usr/local/texlive/2013/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+ (/usr/local/texlive/2013/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
 
@@ -659,11 +655,11 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 5361 strings out of 493315
- 71013 string characters out of 6137904
- 134603 words of memory out of 5000000
- 8601 multiletter control sequences out of 15000+600000
- 83523 words of font info for 160 fonts, out of 8000000 for 9000
+ 5371 strings out of 493315
+ 71183 string characters out of 6137904
+ 134823 words of memory out of 5000000
+ 8610 multiletter control sequences out of 15000+600000
+ 83790 words of font info for 161 fonts, out of 8000000 for 9000
  963 hyphenation exceptions out of 8191
  41i,11n,37p,1237b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/peter/Library/texlive/2013/texmf-var/fonts/pk/ljfour/public/bbm/bbm1
@@ -680,14 +676,15 @@ txfonts/t1xtt.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/newtx/
 txex-bar.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/txfonts/txe
 x.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/txfonts/txsy.pfb><
 /usr/local/texlive/2013/texmf-dist/fonts/type1/public/newtx/txsy5.pfb></usr/loc
-al/texlive/2013/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texl
-ive/2013/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/t
-exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/
-fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (11 pages, 236290 bytes).
+al/texlive/2013/texmf-dist/fonts/type1/public/newtx/txsy7.pfb></usr/local/texli
+ve/2013/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013
+/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (11 pages, 244141 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 162 PDF objects out of 1000 (max. 8388607)
+ 115 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
