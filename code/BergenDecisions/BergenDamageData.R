@@ -139,7 +139,7 @@ for(k in 1:85)
     }    
 }
 
-save(yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")
+save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")
 
 
 ### Cumulated additional damage due to sea level rise.
@@ -228,6 +228,7 @@ lines(z, res$coef[1] + z * res$coef[2], col="red", lwd=2)
 dev.off()
 
 pdf(file="../../submission/CumulativeDamageCostsBergen.pdf", width=5, height=5, points=12)
+png(file="CumulativeDamageCostsBergen.png", width=480, height=480, points=12)
 par(mex=0.75)
 ### Cumulative additional damage costs without adaptation compared to no sea level rise
 plot(2016:2100, upper.90.add.cumsum/1e3,type="l", ylim=c(0,10), xlab="Year",
