@@ -123,6 +123,7 @@ adapted.damage <- array(NA, dim=c(85, I, 85))
 adaptation.cost <- 1000/CPI$CPI[8] ## Cost was 1000 MNOK in 2009 
 for(k in 1:85)
 {
+    print(k)
     adapted.slr <- c( rep(0, k-1), rep(75, 85-k+1) )
     for(i in 1:I)
     {
@@ -145,15 +146,27 @@ save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damag
 ### Cumulated additional damage due to sea level rise.
 add.damage <- yearly.damage - constant.damage
 cumsum.add.damage <- array(NA, dim=dim(add.damage))
+cumsum.yearly.damage <- array(NA, dim=dim(add.damage))
+cumsum.constant.damage <- array(NA, dim=dim(add.damage))
 for(i in 1:dim(add.damage)[1]) 
-  cumsum.add.damage[i,] <- cumsum(add.damage[i,])
+{
+    cumsum.add.damage[i,] <- cumsum(add.damage[i,])
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])
+    cumsum.constant.damage[i,] <- cumsum(constant.damage[i,])
+}
 upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)
 lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)
 upper.90.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)
 lower.10.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)
 median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)
+upper.95.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.95)
+lower.5.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.05)
+median.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.5)
+upper.95.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.95)
+lower.5.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.05)
+median.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.5)
 
-
+ 
 ### Cumulated damage for various adaptation options
 cumsum.adapt.damage <- array(NA, dim=dim(adapted.damage))
 for(i in 1:85)
@@ -179,13 +192,24 @@ adapt.lower.10 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.1)
 ### adaptation in 2044 (most cost effective adaptation). 
 add.damage.2044 <- adapted.damage[29,,] - constant.damage
 cumsum.add.damage.2044 <- array(NA, dim=dim(add.damage.2044))
-for(i in 1:dim(add.damage.2044)[1]) 
-  cumsum.add.damage.2044[i,] <- cumsum(add.damage.2044[i,])
+cumsum.adapt.damage.2044 <- array(NA, dim=dim(add.damage.2044))
+for(i in 1:dim(add.damage.2044)[1])
+{
+    cumsum.add.damage.2044[i,] <- cumsum(add.damage.2044[i,])
+    cumsum.adapt.damage.2044[i,] <- cumsum(adapted.damage[29,i,])
+}
 upper.95.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.95)
 lower.5.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.05)
 upper.90.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.9)
 lower.10.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.1)
 median.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.5)
+upper.95.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,
+                                    2,quantile,0.95)
+lower.5.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,
+                                   2,quantile,0.05)
+median.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,
+                                  2,quantile,0.5)
+
 
 #######################################################################
 ### Plots for paper
@@ -240,6 +264,27 @@ lines(2016:2100, upper.90.add.cumsum.2044/1e3, lty=2, col="red")
 lines(2016:2100, lower.10.add.cumsum.2044/1e3, lty=2, col="red")
 lines(2016:2100, median.add.cumsum.2044/1e3, lwd=2, col="red")
 dev.off()
+
+pdf(file="../../submission/CumDamageCostsBergen.pdf", width=5, height=5, points=12)
+png(file="CumDamageCostsBergen.png", width=480, height=480, points=12)
+par(mex=0.75)
+### Cumulative damage costs without adaptation, with adaptation in
+### 2044 and under no sea level rise
+plot(2016:2100, upper.95.yearly.cumsum/1e3,type="l",
+     ylim=c(0,14), xlab="Year",
+      ylab="Accumulated damage (log billion NOK)", main="", lty=2)
+lines(2016:2100, lower.5.yearly.cumsum/1e3, lty=2)
+lines(2016:2100, median.yearly.cumsum/1e3, lwd=2)
+### Cumulative damage costs for adaptation in 2044 
+lines(2016:2100, upper.95.adapt.cumsum.2044/1e3, lty=2, col="red")
+lines(2016:2100, lower.5.adapt.cumsum.2044/1e3, lty=2, col="red")
+lines(2016:2100, median.adapt.cumsum.2044/1e3, lwd=2, col="red")
+### Cumulative damage costs for no sea level rise 
+lines(2016:2100, upper.95.constant.cumsum/1e3, lty=2, col="gray40")
+lines(2016:2100, lower.5.constant.cumsum/1e3, lty=2, col="gray40")
+lines(2016:2100, median.constant.cumsum/1e3, lwd=2, col="gray40")
+dev.off()
+
 
 library(ggplot2)
 
