@@ -140,8 +140,8 @@ for(k in 1:85)
     }    
 }
 
-save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")
-
+# save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")
+# load("calculatedDamage.RData")
 
 ### Cumulated additional damage due to sea level rise.
 add.damage <- yearly.damage - constant.damage
@@ -251,55 +251,52 @@ z <- c(20,130)
 lines(z, res$coef[1] + z * res$coef[2], col="red", lwd=2)
 dev.off()
 
-pdf(file="../../submission/CumulativeDamageCostsBergen.pdf", width=5, height=5, points=12)
-png(file="CumulativeDamageCostsBergen.png", width=480, height=480, points=12)
-par(mex=0.75)
-### Cumulative additional damage costs without adaptation compared to no sea level rise
-plot(2016:2100, upper.90.add.cumsum/1e3,type="l", ylim=c(0,10), xlab="Year",
-      ylab="Accumulated damage (billion NOK)", main="", lty=2)
-lines(2016:2100, lower.10.add.cumsum/1e3, lty=2)
-lines(2016:2100, median.add.cumsum/1e3, lwd=2)
-### Cumulative additional damage costs for adaptation in 2044 compared to no sea level rise 
-lines(2016:2100, upper.90.add.cumsum.2044/1e3, lty=2, col="red")
-lines(2016:2100, lower.10.add.cumsum.2044/1e3, lty=2, col="red")
-lines(2016:2100, median.add.cumsum.2044/1e3, lwd=2, col="red")
-dev.off()
-
+## Plot comparing accumulated damage costs under various scenarios
 pdf(file="../../submission/CumDamageCostsBergen.pdf", width=5, height=5, points=12)
-png(file="CumDamageCostsBergen.png", width=480, height=480, points=12)
+## png(file="CumDamageCostsBergen.png", width=480, height=480, points=12)
 par(mex=0.75)
-### Cumulative damage costs without adaptation, with adaptation in
-### 2044 and under no sea level rise
+### Cumulative damage costs without adaptation 
 plot(2016:2100, upper.95.yearly.cumsum/1e3,type="l",
      ylim=c(0,14), xlab="Year",
-      ylab="Accumulated damage (log billion NOK)", main="", lty=2)
-lines(2016:2100, lower.5.yearly.cumsum/1e3, lty=2)
-lines(2016:2100, median.yearly.cumsum/1e3, lwd=2)
-### Cumulative damage costs for adaptation in 2044 
-lines(2016:2100, upper.95.adapt.cumsum.2044/1e3, lty=2, col="red")
-lines(2016:2100, lower.5.adapt.cumsum.2044/1e3, lty=2, col="red")
-lines(2016:2100, median.adapt.cumsum.2044/1e3, lwd=2, col="red")
-### Cumulative damage costs for no sea level rise 
-lines(2016:2100, upper.95.constant.cumsum/1e3, lty=2, col="gray40")
-lines(2016:2100, lower.5.constant.cumsum/1e3, lty=2, col="gray40")
+     ylab="Accumulated damage (billion NOK)", main="", lty=3)
+### Cumulative damage costs for no sea level rise
+polygon(c(2016:2100, rev(2016:2100)),
+        c(upper.95.constant.cumsum/1e3, rev(lower.5.constant.cumsum/1e3)),
+        col="gray80", border="gray80")
 lines(2016:2100, median.constant.cumsum/1e3, lwd=2, col="gray40")
+### Cumulative damage costs without adaptation 
+lines(2016:2100, lower.5.yearly.cumsum/1e3, lty=3)
+lines(2016:2100, median.yearly.cumsum/1e3, lwd=2)
+### Cumulative damage costs for adaptation in 2044
+lines(2016:2100, upper.95.adapt.cumsum.2044/1e3, lty=3, col="red")
+lines(2016:2100, lower.5.adapt.cumsum.2044/1e3, lty=3, col="red")
+lines(2016:2100, median.adapt.cumsum.2044/1e3, lwd=2, col="red")
 dev.off()
 
-
-library(ggplot2)
-
-
-png(file="TotalDamageCostsAdaptation.png", width=480, height=480, points=14)
+## Plot comparing total damage cost under different adaptation timings
+pdf(file="../../submission/TotalDamageCostsAdaptation.pdf", width=10, height=5, points=12)
 par(mex=0.75)
-plot(2016:2100, adapt.median/1e3, type="l", ylim=c(0,10), xlab="Year of adaptation measure",
-      ylab="Total damage 2016-2100 (billion NOK)", main="")
-lines(2016:2100, adapt.lower.10/1e3, type="l",lty=2)
-lines(2016:2100, adapt.upper.90/1e3, type="l",lty=2)
 a <- median(cumsum.yearly.damage[,85])/1e3
-lines(c(2016,2100),c(a,a), col="red") 
+plot(c(2016,2100), c(a,a), type="l", ylim=c(0,14), xlab="Year of adaptation measure",
+      ylab="Total damage 2016-2100 (billion NOK)", main="")
+year <- (2016:2100)
+k <- 0.35
+for(i in 1:85)
+{
+    a <- year[i]
+    b <- adapt.upper.95[i]/1e3
+    c <- adapt.lower.05[i]/1e3
+    polygon(c(a-k, a+k, a+k, a-k), c(c, c, b, b), col="gray80", border="gray80")
+    d <- adapt.median[i]/1e3
+    lines(c(a-k, a+k), c(d,d), lwd=2, col="red")
+}
+a <- median(cumsum.yearly.damage[,85])/1e3
+lines(c(2016-k,2100+k),c(a,a), col="black", lwd=2)
+a <- quantile(cumsum.yearly.damage[,85], 0.95)/1e3
+lines(c(2016-k,2100+k),c(a,a), col="black", lty=3)
+a <- quantile(cumsum.yearly.damage[,85], 0.05)/1e3
+lines(c(2016-k,2100+k),c(a,a), col="black", lty=3)
 dev.off()
-
-
 
 
 #######################################################################
