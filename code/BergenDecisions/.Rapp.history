@@ -1,0 +1,1966 @@
+points(finland[,4],finland[,3],col="blue")#
+text(finland[,4],finland[,3],finland[,1],pos=4)
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="Finland")#
+ points(finland[,4],finland[,3],col="blue")#
+text(finland[,4],finland[,3],finland[,1],pos=4,cex=0.5)
+finlandurl=paste("http://www.psmsl.org/data/obtaining/rlr.monthly.data/",finland[,2],".rlrdata",sep="")#
+#
+N=length(finland[,2])#
+finlanddata=list(N,NULL)#
+#
+for (i in 1:N){#
+	tmp=read.table(finlandurl[i],na.strings="-99999",sep=";")#
+	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmpi[,2:4])#
+	tmp.rlr=tmp[,3]#
+	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)#
+	tmp.mp=medpolish(tmp.rlr,na.rm=T)#
+	tmp.mppred=(kemi.mp$overall+outer(kemi.mp$row,kemi.mp$col,"+"))#
+	for(j in 1:12) tmp.rlr[which(is.na(tmp.rlr[,j])),j]=tmp.mppred[which(is.na(tmp.rlr[,j])),j]#
+	tmp.ann=apply(tmp.rlr,1,"mean")#
+	finlanddata[i]=list(data.frame(name=finland[i,1],years=unique(floor(tmp[,1])),data=tmp.ann)#
+	}
+for (i in 1:N){#
+	tmp=read.table(finlandurl[i],na.strings="-99999",sep=";")#
+	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmpi[,2:4])#
+	tmp.rlr=tmp[,3]#
+	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)#
+	tmp.mp=medpolish(tmp.rlr,na.rm=T)#
+	tmp.mppred=(kemi.mp$overall+outer(kemi.mp$row,kemi.mp$col,"+"))#
+	for(j in 1:12) tmp.rlr[which(is.na(tmp.rlr[,j])),j]=tmp.mppred[which(is.na(tmp.rlr[,j])),j]#
+	tmp.ann=apply(tmp.rlr,1,"mean")#
+	finlanddata[i]=list(data.frame(name=finland[i,1],years=unique(floor(tmp[,1])),data=tmp.ann))#
+	}
+for (i in 1:N){#
+	tmp=read.table(finlandurl[i],na.strings="-99999",sep=";")#
+	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmp[,2:4])#
+	tmp.rlr=tmp[,3]#
+	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)#
+	tmp.mp=medpolish(tmp.rlr,na.rm=T)#
+	tmp.mppred=(tmp.mp$overall+outer(kemi.mp$row,kemi.mp$col,"+"))#
+	for(j in 1:12) tmp.rlr[which(is.na(tmp.rlr[,j])),j]=tmp.mppred[which(is.na(tmp.rlr[,j])),j]#
+	tmp.ann=apply(tmp.rlr,1,"mean")#
+	finlanddata[i]=list(data.frame(name=finland[i,1],years=unique(floor(tmp[,1])),data=tmp.ann))#
+	}
+for (i in 1:N){#
+	tmp=read.table(finlandurl[i],na.strings="-99999",sep=";")#
+	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmp[,2:4])#
+	tmp.rlr=tmp[,3]#
+	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)#
+	tmp.mp=medpolish(tmp.rlr,na.rm=T)#
+	tmp.mppred=(tmp.mp$overall+outer(tmp.mp$row,tmp.mp$col,"+"))#
+	for(j in 1:12) tmp.rlr[which(is.na(tmp.rlr[,j])),j]=tmp.mppred[which(is.na(tmp.rlr[,j])),j]#
+	tmp.ann=apply(tmp.rlr,1,"mean")#
+	finlanddata[i]=list(data.frame(name=finland[i,1],years=unique(floor(tmp[,1])),data=tmp.ann))#
+	}
+par(mfrow=c(3,4))
+N
+for(i in 1:N) plot(finlanddata[i]$years,finlanddata[i]$data,type="l",main=finlanddata[i]$name)
+finlanddata[1]
+for(i in 1:N) plot(finlanddata[[i]]$years,finlanddata[[i]]$data,type="l",main=finlanddata[[i]]$name)
+par(mfrow=c(2,2)
+)
+for (i in 1:4) plot(finlanddata[[i]]$years,finlanddata[[i]]$data,type="l",main=finlanddata[[i]]$name)
+for (i in 1:4) plot(finlanddata[[i]]$years,finlanddata[[i]]$data,type="l",main=finlanddata[[i]]$name[1])
+for (i in 1:4) plot(finlanddata[[i]]$years,finlanddata[[i]]$data,type="l")
+i
+plot(finlanddata[[i]]$years,finlanddata[[i]]$data,type="l",main=finlanddata[[i]]$name[1]
+)
+finlanddata[[i]]$years
+finlanddata[[i]]$data
+par(mfrow=c(1,1)
+)
+plot(finlanddata[[i]]$years,finlanddata[[i]]$data,type="l")
+finlanddata[[i]]$name
+finlanddata[[i]]$name[1]
+title(main=finlanddata[[i]]$name[1])
+library(maps)#
+library(maptools)#
+mymap=map("world",regions="Finland")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="Finland")#
+ points(finland[,4],finland[,3],col="blue")#
+text(finland[,4],finland[,3],finland[,1],pos=4,cex=0.5)
+require(forecast)#
+require(excursions)#
+require(Matrix)#
+require(chron)#
+require(zoo)#
+source('~/GitHub/SeaLevelProjections/Sealevel_functions.R', chdir = TRUE)#
+source('~/GitHub/SeaLevelProjections/ci.R', chdir = TRUE)#
+pdf("norway.pdf")#
+norway=read.table("~/GitHub/SeaLevelProjections/Norway_sea_level/Norway.PSMSL.txt")#All Norwegian sea level stations with current data]#
+#from PSMSL.org#
+norway[,1]=as.character(norway[,1])#
+#
+mymap=map("world",regions="norway")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)
+require(forecast)#
+require(excursions)#
+require(Matrix)#
+require(chron)#
+require(zoo)#
+source('~/GitHub/SeaLevelProjections/Sealevel_functions.R', chdir = TRUE)#
+source('~/GitHub/SeaLevelProjections/ci.R', chdir = TRUE)#
+#pdf("norway.pdf")#
+norway=read.table("~/GitHub/SeaLevelProjections/Norway_sea_level/Norway.PSMSL.txt")#All Norwegian sea level stations with current data]#
+#from PSMSL.org#
+norway[,1]=as.character(norway[,1])#
+#
+mymap=map("world",regions="norway")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)
+require(maps)#
+require(maptools)#
+require(ncdf4)#
+require(forecast)#
+require(excursions)#
+require(Matrix)#
+require(chron)#
+require(zoo)#
+source('~/GitHub/SeaLevelProjections/Sealevel_functions.R', chdir = TRUE)#
+source('~/GitHub/SeaLevelProjections/ci.R', chdir = TRUE)#
+#pdf("norway.pdf")#
+norway=read.table("~/GitHub/SeaLevelProjections/Norway_sea_level/Norway.PSMSL.txt")#All Norwegian sea level stations with current data]#
+#from PSMSL.org#
+norway[,1]=as.character(norway[,1])#
+#
+mymap=map("world",regions="norway")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)
+mymap=map("world",regions=""Norway(?!:Svalbard")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="Norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)
+mymap=map("world",regions="Norway!:Svalbard")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="Norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)
+mymap=map("world",regions="Norway(?!:Svalbard")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="Norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)
+mymap=map("world",regions="Norway(?!:Svalbard")
+mymap=map("world",regions="Norway(?!:Svalbard)")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="Norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)
+norwayurl=paste("http://www.psmsl.org/data/obtaining/rlr.monthly.data/",norway[,2],".rlrdata",sep="")#
+#
+N=length(norway[,2])#
+norwaydata=list(N,NULL)#
+#
+for (i in 1:N){#
+	tmp=read.table(norwayurl[i],na.strings="-99999",sep=";")#
+	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmp[,2:4])#
+#
+	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year#
+	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year#
+	if(tmp[N,2]<12) tmp=tmp[-((N+1-tmp[N,2]):N),]#delete final year if not full#
+	tmp.rlr=tmp[,3]#
+	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)#
+	tmp.mp=medpolish(tmp.rlr,na.rm=T)#
+	tmp.mppred=(tmp.mp$overall+outer(tmp.mp$row,tmp.mp$col,"+"))#
+	for(j in 1:12) tmp.rlr[which(is.na(tmp.rlr[,j])),j]=tmp.mppred[which(is.na(tmp.rlr[,j])),j]#
+	tmp.ann=apply(tmp.rlr,1,"mean")/10 #cm#
+	tmp.yrs=unique(floor(tmp[,1]))#
+	tmp.ann=tmp.ann-mean(tmp.ann[which(is.element(tmp.yrs,1970:1999))],na.rm=T)#
+	norwaydata[i]=list(data.frame(years=unique(floor(tmp[,1])),data=tmp.ann))#
+	}
+warnings()
+tmp
+tmp.ann
+u=0.5
+1/(u-1)
+-6-6/(u-2)
+u=4/3
+1/(4/3-1)
+-6-6/(u-2)
+3*(2/3)9
+3*(2/3)^9
+t=1:100
+215*t-16*t^2
+t=t/100215*t-16*t^2
+t
+t=(1:100)/100
+215*t-16*t^2
+t[32]
+t=1:100
+215*t-16*t^2
+t=(1200:1400)/100
+215*t-16*t^2
+t(113)
+t[113]
+t=13.12
+215*t-16*t^2
+t=(1200:1400)/100
+t[98]
+t=12.97
+t=(1200:1400)/100
+t=12.97215*t-16*t^2
+t=12.97
+215*t-16*t^2
+t=0.32
+215*t-16*t^2
+t=0.47
+215*t-16*t^2
+require(maps)#
+require(maptools)#
+require(ncdf4)#
+require(forecast)#
+require(excursions)#
+require(Matrix)#
+require(chron)#
+require(zoo)#
+source('~/GitHub/SeaLevelProjections/Sealevel_functions.R', chdir = TRUE)#
+source('~/GitHub/SeaLevelProjections/ci.R', chdir = TRUE)#
+#pdf("norway.pdf")#
+norway=read.table("~/GitHub/SeaLevelProjections/Norway_sea_level/Norway.PSMSL.txt")#All Norwegian sea level stations with current data]#
+#from PSMSL.org#
+norway[,1]=as.character(norway[,1])#
+#
+mymap=map("world",regions="Norway(?!:Svalbard)")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="Norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)#
+#
+norwayurl=paste("http://www.psmsl.org/data/obtaining/rlr.monthly.data/",norway[,2],".rlrdata",sep="")#
+#
+N=length(norway[,2])#
+norwaydata=list(N,NULL)#
+#
+for (i in 1:N){#
+	tmp=read.table(norwayurl[i],na.strings="-99999",sep=";")#
+	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmp[,2:4])#
+#
+	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year#
+	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year#
+	if(tmp[N,2]<12) tmp=tmp[-((N+1-tmp[N,2]):N),]#delete final year if not full#
+	tmp.rlr=tmp[,3]#
+	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)#
+	tmp.mp=medpolish(tmp.rlr,na.rm=T)#
+	tmp.mppred=(tmp.mp$overall+outer(tmp.mp$row,tmp.mp$col,"+"))#
+	for(j in 1:12) tmp.rlr[which(is.na(tmp.rlr[,j])),j]=tmp.mppred[which(is.na(tmp.rlr[,j])),j]#
+	tmp.ann=apply(tmp.rlr,1,"mean")/10 #cm#
+	tmp.yrs=unique(floor(tmp[,1]))#
+	tmp.ann=tmp.ann-mean(tmp.ann[which(is.element(tmp.yrs,1970:1999))],na.rm=T)#
+	norwaydata[i]=list(data.frame(years=unique(floor(tmp[,1])),data=tmp.ann))#
+	}#
+	#Check for missing years#
+for(i in 1:N) print(c(i,sum(is.na(norwaydata[[i]]$data))))
+for(i in 1:N) print(c(i,sum(is.na(norwaydata[[i]]$data)),norwaydata[[i]]$years[1]))
+t=1:100
+45-5*t-5*t^2
+t=(200:300)/100
+45-5*t-5*t^2
+t(55)
+t[55]
+t=(100:200)/100
+45-5*t-5*t^2
+N
+for(i in 1:N)#
+plot(finlanddata[[i]]$years,finlanddata[[i]]$data,type="l",xlab="",ylab=finland[i,1]
+)
+par(mfrow=c(4,3))#
+for(i in 1:N)#
+plot(norwaydata[[i]]$years,norwaydata[[i]]$data,type="l",xlab="",ylab=norway[i,1])
+par(mfrow=c(4,3))#
+for(i in 1:N)#
+plot(norwaydata[[i]]$years,norwaydata[[i]]$data,type="l",xlab="",ylab="")
+par("mar")
+par(mar=c(1,1,1,1))
+for(i in 1:N)#
+plot(norwaydata[[i]]$years,norwaydata[[i]]$data,type="l",xlab="",ylab="")
+norway[,1]
+index=c(4,11,13,16,17,20)
+for(i in 1:N) print(c(i,sum(is.na(norwaydata[[i]]$data)),norwaydata[[i]]$years[1]))
+#deal with Oslo missing data before 1916#
+sta.years=norwaydata[[20]]$years#
+sta=norwaydata[[20]]$data#
+sta.range=which(is.element(sta.years,1916:2013))#
+sta.years=sta.years[sta.range] #
+sta=sta[sta.range]#
+norwaydata[[20]]$data=sta#
+norwaydata[[20]]$years=sta.years#
+#
+	#Check for missing years#
+for(i in 1:N) print(c(i,sum(is.na(norwaydata[[i]]$data)),norwaydata[[i]]$years[1]))#
+#
+index=c(4,11,13,16,20)#sufficient data + having gia #
+gia.NO=c(0.3,0.45,0.18,0.26,0.54)#
+giase.NO=c(0.06,0.07,0.06,0.07,0.06)#
+#
+for(i in index)#
+ {m=length(finlanddata[[i]]$data)-1#
+ reg=0:m#
+ adj=mean(reg[which(is.element(finlanddata[[i]]$years,1970:1999))])#
+reg=reg-adj#
+	newdata=finlanddata[[i]]$data+gia.FI[i]*reg#
+plot(range(finlanddata[[i]]$years),range(c(finlanddata[[i]]$data,newdata),na.rm=T),type="n",xlab="Year",ylab=finland[i,1])#
+lines(finlanddata[[i]]$years,finlanddata[[i]]$data)#
+lines(finlanddata[[i]]$years,newdata,col="red")#
+}
+require(maps)#
+require(maptools)#
+require(ncdf4)#
+require(forecast)#
+require(excursions)#
+require(Matrix)#
+require(chron)#
+require(zoo)#
+source('~/GitHub/SeaLevelProjections/Sealevel_functions.R', chdir = TRUE)#
+source('~/GitHub/SeaLevelProjections/ci.R', chdir = TRUE)#
+#pdf("norway.pdf")#
+norway=read.table("~/GitHub/SeaLevelProjections/Norway_sea_level/Norway.PSMSL.txt")#All Norwegian sea level stations with current data]#
+#from PSMSL.org#
+norway[,1]=as.character(norway[,1])#
+#
+mymap=map("world",regions="Norway(?!:Svalbard)")#
+plot(mymap,type="l",axes=F,xlab="",ylab="",main="Norway")#
+points(norway[,4],norway[,3],col="blue")#
+text(norway[,4],norway[,3],norway[,1],pos=4,cex=0.5)#
+#
+norwayurl=paste("http://www.psmsl.org/data/obtaining/rlr.monthly.data/",norway[,2],".rlrdata",sep="")#
+#
+N=length(norway[,2])#
+norwaydata=list(N,NULL)#
+#
+for (i in 1:N){#
+	tmp=read.table(norwayurl[i],na.strings="-99999",sep=";")#
+	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmp[,2:4])#
+#
+	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year#
+	if(tmp[1,2]>1) tmp=tmp[-(1:(13-tmp[1,2])),]#start at first full year#
+	if(tmp[N,2]<12) tmp=tmp[-((N+1-tmp[N,2]):N),]#delete final year if not full#
+	tmp.rlr=tmp[,3]#
+	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)#
+	tmp.mp=medpolish(tmp.rlr,na.rm=T)#
+	tmp.mppred=(tmp.mp$overall+outer(tmp.mp$row,tmp.mp$col,"+"))#
+	for(j in 1:12) tmp.rlr[which(is.na(tmp.rlr[,j])),j]=tmp.mppred[which(is.na(tmp.rlr[,j])),j]#
+	tmp.ann=apply(tmp.rlr,1,"mean")/10 #cm#
+	tmp.yrs=unique(floor(tmp[,1]))#
+	tmp.ann=tmp.ann-mean(tmp.ann[which(is.element(tmp.yrs,1970:1999))],na.rm=T)#
+	norwaydata[i]=list(data.frame(years=unique(floor(tmp[,1])),data=tmp.ann))#
+	}#
+	par(mfrow=c(4,3))#
+for(i in 1:N)#
+plot(norwaydata[[i]]$years,norwaydata[[i]]$data,type="l",xlab="",ylab="")#
+#
+#deal with Oslo missing data before 1916#
+sta.years=norwaydata[[20]]$years#
+sta=norwaydata[[20]]$data#
+sta.range=which(is.element(sta.years,1916:2013))#
+sta.years=sta.years[sta.range] #
+sta=sta[sta.range]#
+norwaydata[[20]]$data=sta#
+norwaydata[[20]]$years=sta.years#
+#
+	#Check for missing years#
+for(i in 1:N) print(c(i,sum(is.na(norwaydata[[i]]$data)),norwaydata[[i]]$years[1]))#
+#
+index=c(4,11,13,16,20)#sufficient data + having gia #
+gia.NO=c(0.3,0.45,0.18,0.26,0.54)#
+giase.NO=c(0.06,0.07,0.06,0.07,0.06)#
+#
+for(i in index)#
+ {m=length(norwaydata[[i]]$data)-1#
+ reg=0:m#
+ adj=mean(reg[which(is.element(norwaydata[[i]]$years,1970:1999))])#
+reg=reg-adj#
+	newdata=norwaydata[[i]]$data+gia.FI[i]*reg#
+plot(range(norwaydata[[i]]$years),range(c(norwaydata[[i]]$data,newdata),na.rm=T),type="n",xlab="Year",ylab=norway[i,1])#
+lines(norwaydata[[i]]$years,norwaydata[[i]]$data)#
+lines(norwaydata[[i]]$years,newdata,col="red")#
+}
+#deal with Oslo missing data before 1916#
+sta.years=norwaydata[[20]]$years#
+sta=norwaydata[[20]]$data#
+sta.range=which(is.element(sta.years,1916:2013))#
+sta.years=sta.years[sta.range] #
+sta=sta[sta.range]#
+norwaydata[[20]]=list(data=sta,years=sta,years#
+#
+	#Check for missing years#
+for(i in 1:N) print(c(i,sum(is.na(norwaydata[[i]]$data)),norwaydata[[i]]$years[1]))#
+#
+index=c(4,11,13,16,20)#sufficient data + having gia #
+gia.NO=c(0.3,0.45,0.18,0.26,0.54)#
+giase.NO=c(0.06,0.07,0.06,0.07,0.06)#
+#
+for(i in index)#
+ {m=length(norwaydata[[i]]$data)-1#
+ reg=0:m#
+ adj=mean(reg[which(is.element(norwaydata[[i]]$years,1970:1999))])#
+reg=reg-adj#
+	newdata=norwaydata[[i]]$data+gia.NO[i]*reg#
+plot(range(norwaydata[[i]]$years),range(c(norwaydata[[i]]$data,newdata),na.rm=T),type="n",xlab="Year",ylab=norway[i,1])#
+lines(norwaydata[[i]]$years,norwaydata[[i]]$data)#
+lines(norwaydata[[i]]$years,newdata,col="red")#
+}
+sta.years=norwaydata[[20]]$years#
+sta=norwaydata[[20]]$data#
+sta.range=which(is.element(sta.years,1916:2013))#
+sta.years=sta.years[sta.range] #
+sta=sta[sta.range]#
+norwaydata[[20]]=list(data=sta,years=sta,years)#
+#
+	#Check for missing years#
+for(i in 1:N) print(c(i,sum(is.na(norwaydata[[i]]$data)),norwaydata[[i]]$years[1]))#
+#
+index=c(4,11,13,16,20)#sufficient data + having gia #
+gia.NO=c(0.3,0.45,0.18,0.26,0.54)#
+giase.NO=c(0.06,0.07,0.06,0.07,0.06)#
+#
+for(i in index)#
+ {m=length(norwaydata[[i]]$data)-1#
+ reg=0:m#
+ adj=mean(reg[which(is.element(norwaydata[[i]]$years,1970:1999))])#
+reg=reg-adj#
+	newdata=norwaydata[[i]]$data+gia.NO[i]*reg#
+plot(range(norwaydata[[i]]$years),range(c(norwaydata[[i]]$data,newdata),na.rm=T),type="n",xlab="Year",ylab=norway[i,1])#
+lines(norwaydata[[i]]$years,norwaydata[[i]]$data)#
+lines(norwaydata[[i]]$years,newdata,col="red")#
+}
+norwaydata[20]=list(data.frame((data=sta,years=sta,years)))
+norwaydata[20]=list(data.frame((data=sta,years=sta.years)))
+norwaydata[[20]]=list(data=sta,years=sta.years)
+for(i in index)#
+ {m=length(norwaydata[[i]]$data)-1#
+ reg=0:m#
+ adj=mean(reg[which(is.element(norwaydata[[i]]$years,1970:1999))])#
+reg=reg-adj#
+	newdata=norwaydata[[i]]$data+gia.NO[i]*reg#
+plot(range(norwaydata[[i]]$years),range(c(norwaydata[[i]]$data,newdata),na.rm=T),type="n",xlab="Year",ylab=norway[i,1])#
+lines(norwaydata[[i]]$years,norwaydata[[i]]$data)#
+lines(norwaydata[[i]]$years,newdata,col="red")#
+}
+i
+K
+models=models8.5#
+K=length(models)
+K
+setps(ch1.fig8,pointsize=8,h=2)#
+plot(c(-.5,4.5),c(-1.5,2.5),type="n",axes=F,xlab="",ylab="")#
+segments(0,0,4,0)#
+segments(1,1,4,1)#
+segments(1,1,1,-1)#
+segments(2,2,2,-1)#
+segments(3,2,3,-1)#
+text(-0.1,0,"1",adj=1)#
+text(1,-1.25,"1",adj=0.5)#
+text(1,1.25,"1",adj=0.5)#
+text(2,2.25,"1",adj=0.5)#
+text(2,-1.25,"0",adj=0.5)#
+text(3,-1.25,"0",adj=0.5)#
+text(3,2.25,"1",adj=0.5)#
+text(4.1,1,"1",adj=0)#
+text(4.1,0,"0",adj=0)#
+points(c(0,1,1,1,2,2,2,2,,3,3,3,3,4,4),c(0,1,0,-1,2,1,0,-1,2,1,0,-1,1,0))
+?fac
+??fac
+??factorial
+factorial(5)
+binomial
+?choose
+p=function(i,j,m,lambda){#
+	sum=NULL#
+	for (k in (0:min(i,j)) sum=sum+lambda^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i-k)#
+	som=sum*exp(-lambda)}#
+	p(1,1,0.5,2)
+p=function(i,j,m,lambda){#
+	sum=NULL#
+	for (k in (0:min(i,j)) sum=sum+lambda^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i-k)#
+	sum=sum*exp(-lambda)}#
+	p(1,1,0.5,2)
+p=function(i,j,m,lambda){#
+	sum=NULL#
+	for (k in (0:min(i,j)) sum=sum+lambda^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i-k)#
+	sum=sum*exp(-lambda)#
+	}
+p
+p=function(i,j,m,lambda){#
+	sum=NULL#
+	for (k in (0:min(i,j)) {sum=sum+lambda^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i-k)}#
+	sum=sum*exp(-lambda)#
+	}
+p=function(i,j,m,mu){#
+	sum=0#
+	for (k in (0:min(i,j)) {sum=sum+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)}#
+	sum=sum*exp(-lambda)#
+	}#
+	p(1,1,0.5,2)
+p=function(i,j,m,mu){#
+	sum=0#
+	for (k in (0:min(i,j)) {sum=sum+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)}#
+	sum=sum*exp(-mu*(1-m))#
+	}
+p=function(i,j,m,mu){#
+	sum=0#
+	for (k in (0:min(i,j)) {sum=sum+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)}#
+	sum=sum*exp(-mu*(1-m))#
+	return(sum)#
+	}
+p=function(i,j,m,mu){#
+	sum=0#
+	for (k in (0:min(i,j)) sum=sum+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)#
+	sum=sum*exp(-mu*(1-m))#
+	return(sum)#
+	}
+p<-function(i,j,m,mu){#
+	sum=0#
+	for (k in (0:min(i,j)) sum=sum+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)#
+	sum=sum*exp(-mu*(1-m))#
+	return(sum)#
+	}
+p<-function(i,j,m,mu){#
+	sum<-0#
+	for (k in (0:min(i,j)) sum<-sum+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)#
+	sum<-sum*exp(-mu*(1-m))#
+	return(sum)#
+	}
+p<-function(i,j,m,mu){#
+	sum<-0#
+	for (k in (0:min(i,j)) #
+#
+		sum<-sum+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)#
+	sum<-sum*exp(-mu*(1-m))#
+	return(sum)#
+	}
+sum
+p<-function(i,j,m,mu){#
+	s<-0#
+	for (k in (0:min(i,j)) #
+#
+		s<-s+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)#
+	s<-s*exp(-mu*(1-m))#
+	return(s)#
+	}
+s
+p
+?for
+??
+for(k in 0:min(1,1)) print(k)
+p<-function(i,j,m,mu){#
+	s<-0#
+	for (k in 0:min(i,j)) #
+#
+		s<-s+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)#
+	s<-s*exp(-mu*(1-m))#
+	return(s)#
+	}
+p<-function(i,j,m,mu){#
+	s<-0#
+	for (k in (0:min(i,j)) )#
+#
+		s<-s+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)#
+	s<-s*exp(-mu*(1-m))#
+	return(s)#
+	}
+s=0
+i=1
+j=1
+for (k in (0:min(i,j)) )#
+)
+mu=1
+m=0.5
+for (k in (0:min(i,j)) )#
+#
+		s<-s+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)
+min(i,j)
+s
+for(k in 0:1) s<-s+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)
+?for
+?
+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)
+s
+s+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2k)
+mu^(j-k)
+factorial(j-k)
+choose(i,k)
+m^k*(1-m)^(i+j-2k)
+m^k
+(1-m)^(i+j-2k)
+i+j-2k
+p<-function(i,j,m,mu){#
+	s<-0#
+	for (k in 0:min(i,j) )#
+#
+		s<-s+mu^(j-k)/factorial(j-k)*choose(i,k)*m^k*(1-m)^(i+j-2*k)#
+	s<-s*exp(-mu*(1-m))#
+	return(s)#
+	}
+p(1,1,0.5,2)
+p(0,0,.5,2)
+p(1,2,.5,2)
+p(0,0,.5,3)
+p(4,7,.5,2)
+ped=matrix(byrow=T,data=c(67,24,6,1,0,0,0,0,23,3,46,11,2,0,0,0,7,41,58,25,5,0,0,0,1,16,18,23,7,5,0,0,0,1,7,8,7,2,0,1,0,0,1,1,5,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0),ncol=8)
+ped
+ped=matrix(byrow=T,data=c(67,24,6,1,0,0,0,0,23,83,46,11,2,0,0,0,7,41,58,25,5,0,0,0,1,16,18,23,7,5,0,0,0,1,7,8,7,2,0,1,0,0,1,1,5,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0),ncol=8)
+ped
+sum(ped)
+L(mu,m)<-function(mu,m){#
+ll=0		#
+for(i in 0:7){#
+	for(j in 0:7) {#
+		ll=ll+ped(i+1,j+1)*p(i,j,mu,m)#
+		}#
+		}#
+		return(ll)#
+		}
+L<-function(mu,m){#
+ll=0		#
+for(i in 0:7){#
+	for(j in 0:7) {#
+		ll=ll+ped(i+1,j+1)*p(i,j,mu,m)#
+		}#
+		}#
+		return(ll)#
+		}
+?contour
+LL=matrix(0,21,81)#
+for(i in 1:21)#
+for(j in 1:81)#
+LL=L(mu[j],m[i])
+L<-function(mu,m){#
+ll=0		#
+for(i in 0:7){#
+	for(j in 0:7) {#
+		ll=ll+ped[i+1,j+1]*p(i,j,mu,m)#
+		}#
+		}#
+		return(ll)#
+		}#
+m=(60:80)/100#
+mu=	(120:200)/100#
+#
+LL=matrix(0,21,81)#
+for(i in 1:21)#
+for(j in 1:81)#
+LL=L(mu[j],m[i])
+Lmax=max(LL)
+Lmax
+contour(m,mu,LL,levels=c(Lmax-2.3,Lmax-3))
+dim(LL)
+LL=matrix(0,21,81)#
+for(i in 1:21)#
+for(j in 1:81)#
+LL[j,i]=L(mu[j],m[i])#
+#
+ Lmax=max(LL)
+dim(LL)
+length(mu)
+kength(m)
+length(m)
+LL=matrix(0,81,21)#
+for(i in 1:21)#
+for(j in 1:81)#
+LL[j,i]=L(mu[j],m[i])#
+#
+ Lmax=max(LL)#
+ contour(m,mu,LL,levels=c(Lmax-2.3,Lmax-3))
+dim(L)
+dim(LL)
+Lmax
+length(mu0
+))
+length(mu)
+contour(mu,m,LL)
+contour(m,mu,LL)
+contour(m,mu,t(LL))
+m=(50:90)/100#
+mu=	(120:400)/100#
+#
+LL=matrix(0,41,281)#
+for(i in 1:41)#
+for(j in 1:281)#
+LL[i,j]=L(mu[j],m[i])#
+#
+ Lmax=max(LL)#
+ contour(m,mu,LL,levels=c(Lmax-2.3,Lmax-3))
+Lmax
+LL
+L<-function(mu,m){#
+ll=0		#
+for(i in 0:7){#
+	for(j in 0:7) {#
+		ll=ll+log(ped[i+1,j+1])*p(i,j,mu,m)#
+		}#
+		}#
+		return(ll)#
+		}#
+m=(50:90)/100#
+mu=	(120:400)/100#
+#
+LL=matrix(0,41,281)#
+for(i in 1:41)#
+for(j in 1:281)#
+LL[i,j]=L(mu[j],m[i])#
+#
+ Lmax=max(LL)#
+ contour(m,mu,LL,levels=c(Lmax-2.3,Lmax-3))
+Lmax
+LL
+L<-function(mu,m){#
+ll=0		#
+for(i in 0:7){#
+	for(j in 0:7) {#
+		ll=ll+ped[i+1,j+1]*log(p(i,j,mu,m))#
+		}#
+		}#
+		return(ll)#
+		}#
+m=(50:90)/100#
+mu=	(120:400)/100#
+#
+LL=matrix(0,41,281)#
+for(i in 1:41)#
+for(j in 1:281)#
+LL[i,j]=L(mu[j],m[i])#
+#
+ Lmax=max(LL)#
+ contour(m,mu,LL,levels=c(Lmax-2.3,Lmax-3))
+Lmax
+LL
+warnings()
+i,j
+i
+j
+mu[i]
+m[j]
+mu[j]
+m[i]
+p(i,j,mu[j],m[i])
+warnings()
+ped(8,8)
+ped[8,8]
+ped[1,1]
+p(0,0,mu[1],m[1])
+mu[1]
+m[1]
+p(0,0,m[1],mu[1])
+m=(60:75)/100#
+mu=	(120:200)/100#
+#
+LL=matrix(0,16,81)#
+for(i in 1:16)#
+for(j in 1:81)#
+LL[i,j]=L(mu[j],m[i])#
+#
+ Lmax=max(LL)
+Lmax
+LL
+L<-function(mu,m){#
+ll=0		#
+for(i in 0:7){#
+	for(j in 0:7) {#
+		ll=ll+ped[i+1,j+1]*log(p(i,j,m,mu))#
+		}#
+		}#
+		return(ll)#
+		}#
+m=(60:75)/100#
+mu=	(120:200)/100#
+#
+LL=matrix(0,16,81)#
+for(i in 1:16)#
+for(j in 1:81)#
+LL[i,j]=L(mu[j],m[i])#
+#
+ Lmax=max(LL)
+Lmax
+contour(m,mu,LL,levels=c(Lmax-2.3,Lmax-3))
+mu
+mu[40]
+m
+m[9]
+m[10]
+point(m[10],mu[40])
+points(m[10],mu[40])
+LL=matrix(0,150,801)#
+for(i in 1:150)#
+for(j in 1:801)#
+LL[i,j]=L(mu[j],m[i])#
+#
+ Lmax=max(LL)#
+ contour(m,mu,LL,levels=c(Lmax-2.3,Lmax-3))
+Lmax
+sum(is.na(LL))
+150*801
+LL=matrix(0,16,81)#
+for(i in 1:16)#
+for(j in 1:81)#
+LL[i,j]=L(mu[j],m[i])#
+#
+ Lmax=max(LL)#
+ contour(m,mu,LL,levels=c(Lmax-2.3,Lmax-3))#
+ points(m[10],mu[40])
+?contour
+rm(list=ls())#
+#
+### Read in damage data obtained from Finance Norway's website:#
+### www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/#
+A <- read.csv("StormfloYearFylkeAntall.csv", header=TRUE)#
+A <- A[-37,] ## Remove 2016 as data not complete#
+V <- read.csv("StormfloYearFylkeVerdi.csv", header=TRUE)#
+V <- V[-37,] ## Remove 2016 as data not complete#
+#
+### Read in consumer price index (CPI).#
+CPI <- read.csv("KPI.csv", header=TRUE)#
+CPI <- CPI[-1,] ## Remove 2016 as data not yet available#
+CPI$CPI <- CPI$CPI/CPI$CPI[1] ## Normalize to 2015 #
+#
+### Combine Hordaland and Rogaland data.#
+### Standardize costs to 2015 values using CPI. #
+sf.nr <- c(A$Hordaland, A$Rogaland)#
+sf.damage <- c(V$Hordaland/CPI$CPI[1:36], V$Rogaland/CPI$CPI[1:36])#
+sf.damage <- sf.damage/1e3 ## Normalize to million NOK. #
+#
+### Fit Burr distribution to damage data (in MNOK)  #
+library(actuar)#
+ind <- which(sf.damage==0)#
+sf.damage[ind] <- 1e-04 ## Improves numerical stability of estimates. #
+log.lik <- function(theta)#
+{#
+  res <- sum(dburr(sf.damage, #
+                   shape1=theta[1], #
+                   shape2=theta[2], #
+                   rate=theta[3], #
+                   log=TRUE))#
+  return(-res)#
+}#
+theta.start <- c(5, 0.5, 0.05)#
+optim.out <- optim(theta.start, #
+                   fn=log.lik, #
+                   method="BFGS", #
+                   control=list(maxit=1000))#
+#
+### Get Hallegatte et al. (2013) data on relation between change in damage #
+### cost and change in sea level (csv files copied manually from#
+### online supplementary information).   #
+E <- read.csv("EuropeanLossData.csv", header=TRUE)#
+E[,2:4] <- E[,2:4]/E[,2] #
+#
+### Hallegatte et al. (2013) provide data for 0, 20, 40 cm sea level rise.#
+### Conservative extrapolation: Linear extrapolation of [20,40] beyond 40#
+### and [0,20] below 0. #
+x <- c(0, 20, 40)#
+low.slope <- rep(NA, 15)#
+high.slope <- rep(NA, 15)#
+for(i in 1:15)#
+{#
+  res <- lm(apply(E[i,2:3],2,mean)~x[1:2])#
+  low.slope[i] <- res$coef[2]
+rm(list=ls())#
+#
+### Read in damage data obtained from Finance Norway's website:#
+### www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/#
+A <- read.csv("StormfloYearFylkeAntall.csv", header=TRUE)#
+A <- A[-37,] ## Remove 2016 as data not complete#
+V <- read.csv("StormfloYearFylkeVerdi.csv", header=TRUE)#
+V <- V[-37,] ## Remove 2016 as data not complete#
+#
+### Read in consumer price index (CPI).#
+CPI <- read.csv("KPI.csv", header=TRUE)#
+CPI <- CPI[-1,] ## Remove 2016 as data not yet available#
+CPI$CPI <- CPI$CPI/CPI$CPI[1] ## Normalize to 2015 #
+#
+### Combine Hordaland and Rogaland data.#
+### Standardize costs to 2015 values using CPI. #
+sf.nr <- c(A$Hordaland, A$Rogaland)#
+sf.damage <- c(V$Hordaland/CPI$CPI[1:36], V$Rogaland/CPI$CPI[1:36])#
+sf.damage <- sf.damage/1e3 ## Normalize to million NOK. #
+#
+### Fit Burr distribution to damage data (in MNOK)  #
+library(actuar)#
+ind <- which(sf.damage==0)#
+sf.damage[ind] <- 1e-04 ## Improves numerical stability of estimates. #
+log.lik <- function(theta)#
+{#
+  res <- sum(dburr(sf.damage, #
+                   shape1=theta[1], #
+                   shape2=theta[2], #
+                   rate=theta[3], #
+                   log=TRUE))#
+  return(-res)#
+}#
+theta.start <- c(5, 0.5, 0.05)#
+optim.out <- optim(theta.start, #
+                   fn=log.lik, #
+                   method="BFGS", #
+                   control=list(maxit=1000))#
+#
+### Get Hallegatte et al. (2013) data on relation between change in damage #
+### cost and change in sea level (csv files copied manually from#
+### online supplementary information).   #
+E <- read.csv("EuropeanLossData.csv", header=TRUE)#
+E[,2:4] <- E[,2:4]/E[,2] #
+#
+### Hallegatte et al. (2013) provide data for 0, 20, 40 cm sea level rise.#
+### Conservative extrapolation: Linear extrapolation of [20,40] beyond 40#
+### and [0,20] below 0. #
+x <- c(0, 20, 40)#
+low.slope <- rep(NA, 15)#
+high.slope <- rep(NA, 15)#
+for(i in 1:15)#
+{#
+  res <- lm(apply(E[i,2:3],2,mean)~x[1:2])#
+  low.slope[i] <- res$coef[2]
+res <- lm(apply(E[i,3:4],2,mean)~x[2:3])#
+  high.slope[i] <- res$coef[2]#
+}#
+#
+### Function that calculates the multiplicative change in damage for sea level x #
+### and Hallegatte et al. (2013) estimates for city k.  #
+get.damage.mult <- function(x, k)#
+{#
+  if(x < 0) return(-1/(x * low.slope[k]))#
+  else if(x < 20) return(x * low.slope[k])#
+  else return(E[k,3] + x * high.slope[k])#
+}#
+#
+### Read in sea level rise projections for Bergen. #
+load("Simulation.Rdata")#
+#
+### Discount rate based on Norwegian government recommendations. #
+discount.rate <- c( rep(1.04, 40), rep(1.03, 35), rep(1.02, 10)) #
+accum.discount.rate <- cumprod(discount.rate)#
+#
+### Sample damage distributions for each year 2016-2100 (85 years)#
+### under various settings. #
+#
+### Sample 10 000 iid damage costs for each year 2016-2100#
+### This sample is used for all subsequent scenarios #
+I <- 10000#
+orig.damage <- array(rburr(I*85, #
+                           shape1=optim.out$par[1], #
+                           shape2=optim.out$par[2], #
+                           rate=optim.out$par[3]), #
+                     dim=c(I, 85))#
+#
+### Sample 10 000 damage change profiles#
+### This sample is used for all subsequent scenarios #
+damage.scenario <- sample(1:15, I, replace=TRUE)#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections #
+yearly.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    yearly.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, (j+16)],#
+                                                             damage.scenario[i])#
+  }#
+  yearly.damage[i,] <- yearly.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections assuming all subsequent years are like 2016. #
+constant.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    constant.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, 16], #
+                                                               damage.scenario[i])#
+  }#
+  constant.damage[i,] <- constant.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections under adaptation. Adaptation measure is assumed#
+### to reduce 50% of the yearly damages to damages under 75 cm#
+### lower sea level.  #
+adapted.damage <- array(NA, dim=c(85, I, 85))#
+adaptation.cost <- 1000/CPI$CPI[8] ## Cost was 1000 MNOK in 2009 #
+for(k in 1:85)#
+{#
+    print(k)#
+    adapted.slr <- c( rep(0, k-1), rep(75, 85-k+1) )#
+    for(i in 1:I)#
+    {#
+        for(j in 1:85)#
+        {#
+            adapted.damage[k,i,j] <- orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)], damage.scenario[i]) +#
+                orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)]-adapted.slr[j], damage.scenario[i])#
+        }#
+        m <- which(adapted.slr==75)[1]#
+        adapted.damage[k,i,m] <- adapted.damage[k,i,m] + adaptation.cost#
+        adapted.damage[k,i,] <- adapted.damage[k,i,]/accum.discount.rate#
+    }    #
+}#
+#
+# save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")#
+# load("calculatedDamage.RData")#
+#
+### Cumulated additional damage due to sea level rise.#
+add.damage <- yearly.damage - constant.damage#
+cumsum.add.damage <- array(NA, dim=dim(add.damage))#
+cumsum.yearly.damage <- array(NA, dim=dim(add.damage))#
+cumsum.constant.damage <- array(NA, dim=dim(add.damage))#
+for(i in 1:dim(add.damage)[1]) #
+{#
+    cumsum.add.damage[i,] <- cumsum(add.damage[i,])#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+    cumsum.constant.damage[i,] <- cumsum(constant.damage[i,])#
+}#
+upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)#
+lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)#
+upper.90.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)#
+lower.10.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)#
+median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)#
+upper.95.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.95)#
+lower.5.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.05)#
+median.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.5)#
+upper.95.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.95)#
+lower.5.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.05)#
+median.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.5)
+### Cumulated damage for various adaptation options#
+cumsum.adapt.damage <- array(NA, dim=dim(adapted.damage))#
+for(i in 1:85)#
+{#
+    for(j in 1:I)#
+    {#
+        cumsum.adapt.damage[i,j,] <- cumsum(adapted.damage[i,j,])#
+    }#
+}#
+cumsum.yearly.damage <- array(NA, dim=dim(yearly.damage))#
+for(i in 1:I)#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+#
+### Calculate summary statistics for total damages for various#
+### adaptation options#
+adapt.median <- apply(cumsum.adapt.damage[,,85],1,median)#
+adapt.upper.95 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.95)#
+adapt.upper.90 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.9)#
+adapt.lower.05 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.05)#
+adapt.lower.10 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.1)#
+#
+### Cumulated additional damage due to sea level rise with#
+### adaptation in 2044 (most cost effective adaptation). #
+add.damage.2044 <- adapted.damage[29,,] - constant.damage#
+cumsum.add.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+cumsum.adapt.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+for(i in 1:dim(add.damage.2044)[1])#
+{#
+    cumsum.add.damage.2044[i,] <- cumsum(add.damage.2044[i,])#
+    cumsum.adapt.damage.2044[i,] <- cumsum(adapted.damage[29,i,])#
+}#
+upper.95.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.95)#
+lower.5.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.05)#
+upper.90.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.9)#
+lower.10.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.1)#
+median.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.5)#
+upper.95.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                    2,quantile,0.95)#
+lower.5.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                   2,quantile,0.05)#
+median.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                  2,quantile,0.5)
+rm(list=ls())#
+#
+### Read in damage data obtained from Finance Norway's website:#
+### www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/#
+A <- read.csv("StormfloYearFylkeAntall.csv", header=TRUE)#
+A <- A[-37,] ## Remove 2016 as data not complete#
+V <- read.csv("StormfloYearFylkeVerdi.csv", header=TRUE)#
+V <- V[-37,] ## Remove 2016 as data not complete#
+#
+### Read in consumer price index (CPI).#
+CPI <- read.csv("KPI.csv", header=TRUE)#
+CPI <- CPI[-1,] ## Remove 2016 as data not yet available#
+CPI$CPI <- CPI$CPI/CPI$CPI[1] ## Normalize to 2015 #
+#
+### Combine Hordaland and Rogaland data.#
+### Standardize costs to 2015 values using CPI. #
+sf.nr <- c(A$Hordaland, A$Rogaland)#
+sf.damage <- c(V$Hordaland/CPI$CPI[1:36], V$Rogaland/CPI$CPI[1:36])#
+sf.damage <- sf.damage/1e3 ## Normalize to million NOK. #
+#
+### Fit Burr distribution to damage data (in MNOK)  #
+library(actuar)#
+ind <- which(sf.damage==0)#
+sf.damage[ind] <- 1e-04 ## Improves numerical stability of estimates. #
+log.lik <- function(theta)#
+{#
+  res <- sum(dburr(sf.damage, #
+                   shape1=theta[1], #
+                   shape2=theta[2], #
+                   rate=theta[3], #
+                   log=TRUE))#
+  return(-res)#
+}#
+theta.start <- c(5, 0.5, 0.05)#
+optim.out <- optim(theta.start, #
+                   fn=log.lik, #
+                   method="BFGS", #
+                   control=list(maxit=1000))#
+#
+### Get Hallegatte et al. (2013) data on relation between change in damage #
+### cost and change in sea level (csv files copied manually from#
+### online supplementary information).   #
+E <- read.csv("EuropeanLossData.csv", header=TRUE)#
+E[,2:4] <- E[,2:4]/E[,2] #
+#
+### Hallegatte et al. (2013) provide data for 0, 20, 40 cm sea level rise.#
+### Conservative extrapolation: Linear extrapolation of [20,40] beyond 40#
+### and [0,20] below 0. #
+x <- c(0, 20, 40)#
+low.slope <- rep(NA, 15)#
+high.slope <- rep(NA, 15)#
+for(i in 1:15)#
+{#
+  res <- lm(apply(E[i,2:3],2,mean)~x[1:2])#
+  low.slope[i] <- res$coef[2]#
+  res <- lm(apply(E[i,3:4],2,mean)~x[2:3])#
+  high.slope[i] <- res$coef[2]#
+}#
+#
+### Function that calculates the multiplicative change in damage for sea level x #
+### and Hallegatte et al. (2013) estimates for city k.  #
+get.damage.mult <- function(x, k)#
+{#
+  if(x < 0) return(-1/(x * low.slope[k]))#
+  else if(x < 20) return(x * low.slope[k])#
+  else return(E[k,3] + x * high.slope[k])#
+}#
+#
+### Read in sea level rise projections for Bergen. #
+load("Simulation.Rdata")#
+#
+### Discount rate based on Norwegian government recommendations. #
+discount.rate <- c( rep(1.04, 40), rep(1.03, 35), rep(1.02, 10)) #
+accum.discount.rate <- cumprod(discount.rate)#
+#
+### Sample damage distributions for each year 2016-2100 (85 years)#
+### under various settings. #
+#
+### Sample 10 000 iid damage costs for each year 2016-2100#
+### This sample is used for all subsequent scenarios #
+I <- 10000#
+orig.damage <- array(rburr(I*85, #
+                           shape1=optim.out$par[1], #
+                           shape2=optim.out$par[2], #
+                           rate=optim.out$par[3]), #
+                     dim=c(I, 85))#
+#
+### Sample 10 000 damage change profiles#
+### This sample is used for all subsequent scenarios #
+damage.scenario <- sample(1:15, I, replace=TRUE)#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections #
+yearly.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    yearly.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, (j+16)],#
+                                                             damage.scenario[i])#
+  }#
+  yearly.damage[i,] <- yearly.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections assuming all subsequent years are like 2016. #
+constant.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    constant.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, 16], #
+                                                               damage.scenario[i])#
+  }#
+  constant.damage[i,] <- constant.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections under adaptation. Adaptation measure is assumed#
+### to reduce 50% of the yearly damages to damages under 75 cm#
+### lower sea level.  #
+adapted.damage <- array(NA, dim=c(85, I, 85))#
+adaptation.cost <- 1000/CPI$CPI[8] ## Cost was 1000 MNOK in 2009 #
+for(k in 1:85)#
+{#
+    print(k)#
+    adapted.slr <- c( rep(0, k-1), rep(75, 85-k+1) )#
+    for(i in 1:I)#
+    {#
+        for(j in 1:85)#
+        {#
+            adapted.damage[k,i,j] <- orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)], damage.scenario[i]) +#
+                orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)]-adapted.slr[j], damage.scenario[i])#
+        }#
+        m <- which(adapted.slr==75)[1]#
+        adapted.damage[k,i,m] <- adapted.damage[k,i,m] + adaptation.cost#
+        adapted.damage[k,i,] <- adapted.damage[k,i,]/accum.discount.rate#
+    }    #
+}#
+#
+# save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")#
+# load("calculatedDamage.RData")#
+#
+### Cumulated additional damage due to sea level rise.#
+add.damage <- yearly.damage - constant.damage#
+cumsum.add.damage <- array(NA, dim=dim(add.damage))#
+cumsum.yearly.damage <- array(NA, dim=dim(add.damage))#
+cumsum.constant.damage <- array(NA, dim=dim(add.damage))#
+for(i in 1:dim(add.damage)[1]) #
+{#
+    cumsum.add.damage[i,] <- cumsum(add.damage[i,])#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+    cumsum.constant.damage[i,] <- cumsum(constant.damage[i,])#
+}#
+upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)#
+lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)#
+upper.90.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)#
+lower.10.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)#
+median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)#
+upper.95.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.95)#
+lower.5.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.05)#
+median.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.5)#
+upper.95.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.95)#
+lower.5.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.05)#
+median.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.5)#
+### Cumulated damage for various adaptation options#
+cumsum.adapt.damage <- array(NA, dim=dim(adapted.damage))#
+for(i in 1:85)#
+{#
+    for(j in 1:I)#
+    {#
+        cumsum.adapt.damage[i,j,] <- cumsum(adapted.damage[i,j,])#
+    }#
+}#
+cumsum.yearly.damage <- array(NA, dim=dim(yearly.damage))#
+for(i in 1:I)#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+#
+### Calculate summary statistics for total damages for various#
+### adaptation options#
+adapt.median <- apply(cumsum.adapt.damage[,,85],1,median)#
+adapt.upper.95 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.95)#
+adapt.upper.90 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.9)#
+adapt.lower.05 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.05)#
+adapt.lower.10 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.1)#
+#
+### Cumulated additional damage due to sea level rise with#
+### adaptation in 2044 (most cost effective adaptation). #
+add.damage.2044 <- adapted.damage[29,,] - constant.damage#
+cumsum.add.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+cumsum.adapt.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+for(i in 1:dim(add.damage.2044)[1])#
+{#
+    cumsum.add.damage.2044[i,] <- cumsum(add.damage.2044[i,])#
+    cumsum.adapt.damage.2044[i,] <- cumsum(adapted.damage[29,i,])#
+}#
+upper.95.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.95)#
+lower.5.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.05)#
+upper.90.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.9)#
+lower.10.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.1)#
+median.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.5)#
+upper.95.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                    2,quantile,0.95)#
+lower.5.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                   2,quantile,0.05)#
+median.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                  2,quantile,0.5)
+}}}}
+rm(list=ls())#
+#
+### Read in damage data obtained from Finance Norway's website:#
+### www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/#
+A <- read.csv("StormfloYearFylkeAntall.csv", header=TRUE)#
+A <- A[-37,] ## Remove 2016 as data not complete#
+V <- read.csv("StormfloYearFylkeVerdi.csv", header=TRUE)#
+V <- V[-37,] ## Remove 2016 as data not complete#
+#
+### Read in consumer price index (CPI).#
+CPI <- read.csv("KPI.csv", header=TRUE)#
+CPI <- CPI[-1,] ## Remove 2016 as data not yet available#
+CPI$CPI <- CPI$CPI/CPI$CPI[1] ## Normalize to 2015 #
+#
+### Combine Hordaland and Rogaland data.#
+### Standardize costs to 2015 values using CPI. #
+sf.nr <- c(A$Hordaland, A$Rogaland)#
+sf.damage <- c(V$Hordaland/CPI$CPI[1:36], V$Rogaland/CPI$CPI[1:36])#
+sf.damage <- sf.damage/1e3 ## Normalize to million NOK. #
+#
+### Fit Burr distribution to damage data (in MNOK)  #
+library(actuar)#
+ind <- which(sf.damage==0)#
+sf.damage[ind] <- 1e-04 ## Improves numerical stability of estimates. #
+log.lik <- function(theta)#
+{#
+  res <- sum(dburr(sf.damage, #
+                   shape1=theta[1], #
+                   shape2=theta[2], #
+                   rate=theta[3], #
+                   log=TRUE))#
+  return(-res)#
+}#
+theta.start <- c(5, 0.5, 0.05)#
+optim.out <- optim(theta.start, #
+                   fn=log.lik, #
+                   method="BFGS", #
+                   control=list(maxit=1000))#
+#
+### Get Hallegatte et al. (2013) data on relation between change in damage #
+### cost and change in sea level (csv files copied manually from#
+### online supplementary information).   #
+E <- read.csv("EuropeanLossData.csv", header=TRUE)#
+E[,2:4] <- E[,2:4]/E[,2] #
+#
+### Hallegatte et al. (2013) provide data for 0, 20, 40 cm sea level rise.#
+### Conservative extrapolation: Linear extrapolation of [20,40] beyond 40#
+### and [0,20] below 0. #
+x <- c(0, 20, 40)#
+low.slope <- rep(NA, 15)#
+high.slope <- rep(NA, 15)#
+for(i in 1:15)#
+{#
+  res <- lm(apply(E[i,2:3],2,mean)~x[1:2])#
+  low.slope[i] <- res$coef[2]#
+  res <- lm(apply(E[i,3:4],2,mean)~x[2:3])#
+  high.slope[i] <- res$coef[2]#
+}#
+#
+### Function that calculates the multiplicative change in damage for sea level x #
+### and Hallegatte et al. (2013) estimates for city k.  #
+get.damage.mult <- function(x, k)#
+{#
+  if(x < 0) return(-1/(x * low.slope[k]))#
+  else if(x < 20) return(x * low.slope[k])#
+  else return(E[k,3] + x * high.slope[k])#
+}#
+#
+### Read in sea level rise projections for Bergen. #
+load("Simulation.Rdata")#
+#
+### Discount rate based on Norwegian government recommendations. #
+discount.rate <- c( rep(1.04, 40), rep(1.03, 35), rep(1.02, 10)) #
+accum.discount.rate <- cumprod(discount.rate)#
+#
+### Sample damage distributions for each year 2016-2100 (85 years)#
+### under various settings. #
+#
+### Sample 10 000 iid damage costs for each year 2016-2100#
+### This sample is used for all subsequent scenarios #
+I <- 10000#
+orig.damage <- array(rburr(I*85, #
+                           shape1=optim.out$par[1], #
+                           shape2=optim.out$par[2], #
+                           rate=optim.out$par[3]), #
+                     dim=c(I, 85))#
+#
+### Sample 10 000 damage change profiles#
+### This sample is used for all subsequent scenarios #
+damage.scenario <- sample(1:15, I, replace=TRUE)#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections #
+yearly.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    yearly.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, (j+16)],#
+                                                             damage.scenario[i])#
+  }#
+  yearly.damage[i,] <- yearly.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections assuming all subsequent years are like 2016. #
+constant.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    constant.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, 16], #
+                                                               damage.scenario[i])#
+  }#
+  constant.damage[i,] <- constant.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections under adaptation. Adaptation measure is assumed#
+### to reduce 50% of the yearly damages to damages under 75 cm#
+### lower sea level.  #
+adapted.damage <- array(NA, dim=c(85, I, 85))#
+adaptation.cost <- 1000/CPI$CPI[8] ## Cost was 1000 MNOK in 2009 #
+for(k in 1:85)#
+{#
+    print(k)#
+    adapted.slr <- c( rep(0, k-1), rep(75, 85-k+1) )#
+    for(i in 1:I)#
+    {#
+        for(j in 1:85)#
+        {#
+            adapted.damage[k,i,j] <- orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)], damage.scenario[i]) +#
+                orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)]-adapted.slr[j], damage.scenario[i])#
+        }#
+        m <- which(adapted.slr==75)[1]#
+        adapted.damage[k,i,m] <- adapted.damage[k,i,m] + adaptation.cost#
+        adapted.damage[k,i,] <- adapted.damage[k,i,]/accum.discount.rate#
+    }    #
+}#
+#
+# save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")#
+# load("calculatedDamage.RData")#
+#
+### Cumulated additional damage due to sea level rise.#
+add.damage <- yearly.damage - constant.damage#
+cumsum.add.damage <- array(NA, dim=dim(add.damage))#
+cumsum.yearly.damage <- array(NA, dim=dim(add.damage))#
+cumsum.constant.damage <- array(NA, dim=dim(add.damage))#
+for(i in 1:dim(add.damage)[1]) #
+{#
+    cumsum.add.damage[i,] <- cumsum(add.damage[i,])#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+    cumsum.constant.damage[i,] <- cumsum(constant.damage[i,])#
+}#
+upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)#
+lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)#
+upper.90.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)#
+lower.10.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)#
+median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)#
+upper.95.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.95)#
+lower.5.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.05)#
+median.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.5)#
+upper.95.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.95)#
+lower.5.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.05)#
+median.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.5)#
+### Cumulated damage for various adaptation options#
+cumsum.adapt.damage <- array(NA, dim=dim(adapted.damage))#
+for(i in 1:85)#
+{#
+    for(j in 1:I)#
+    {#
+        cumsum.adapt.damage[i,j,] <- cumsum(adapted.damage[i,j,])#
+    }#
+}#
+cumsum.yearly.damage <- array(NA, dim=dim(yearly.damage))#
+for(i in 1:I)#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+#
+### Calculate summary statistics for total damages for various#
+### adaptation options#
+adapt.median <- apply(cumsum.adapt.damage[,,85],1,median)#
+adapt.upper.95 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.95)#
+adapt.upper.90 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.9)#
+adapt.lower.05 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.05)#
+adapt.lower.10 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.1)#
+#
+### Cumulated additional damage due to sea level rise with#
+### adaptation in 2044 (most cost effective adaptation). #
+add.damage.2044 <- adapted.damage[29,,] - constant.damage#
+cumsum.add.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+cumsum.adapt.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+for(i in 1:dim(add.damage.2044)[1])#
+{#
+    cumsum.add.damage.2044[i,] <- cumsum(add.damage.2044[i,])#
+    cumsum.adapt.damage.2044[i,] <- cumsum(adapted.damage[29,i,])#
+}#
+upper.95.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.95)#
+lower.5.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.05)#
+upper.90.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.9)#
+lower.10.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.1)#
+median.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.5)#
+upper.95.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                    2,quantile,0.95)#
+lower.5.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                   2,quantile,0.05)#
+median.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                  2,quantile,0.5)
+rm(list=ls())#
+#
+### Read in damage data obtained from Finance Norway's website:#
+### www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/#
+A <- read.csv("StormfloYearFylkeAntall.csv", header=TRUE)#
+A <- A[-37,] ## Remove 2016 as data not complete#
+V <- read.csv("StormfloYearFylkeVerdi.csv", header=TRUE)#
+V <- V[-37,] ## Remove 2016 as data not complete#
+#
+### Read in consumer price index (CPI).#
+CPI <- read.csv("KPI.csv", header=TRUE)#
+CPI <- CPI[-1,] ## Remove 2016 as data not yet available#
+CPI$CPI <- CPI$CPI/CPI$CPI[1] ## Normalize to 2015 #
+#
+### Combine Hordaland and Rogaland data.#
+### Standardize costs to 2015 values using CPI. #
+sf.nr <- c(A$Hordaland, A$Rogaland)#
+sf.damage <- c(V$Hordaland/CPI$CPI[1:36], V$Rogaland/CPI$CPI[1:36])#
+sf.damage <- sf.damage/1e3 ## Normalize to million NOK. #
+#
+### Fit Burr distribution to damage data (in MNOK)  #
+library(actuar)#
+ind <- which(sf.damage==0)#
+sf.damage[ind] <- 1e-04 ## Improves numerical stability of estimates. #
+log.lik <- function(theta)#
+{#
+  res <- sum(dburr(sf.damage, #
+                   shape1=theta[1], #
+                   shape2=theta[2], #
+                   rate=theta[3], #
+                   log=TRUE))#
+  return(-res)#
+}#
+theta.start <- c(5, 0.5, 0.05)#
+optim.out <- optim(theta.start, #
+                   fn=log.lik, #
+                   method="BFGS", #
+                   control=list(maxit=1000))#
+#
+### Get Hallegatte et al. (2013) data on relation between change in damage #
+### cost and change in sea level (csv files copied manually from#
+### online supplementary information).   #
+E <- read.csv("EuropeanLossData.csv", header=TRUE)#
+E[,2:4] <- E[,2:4]/E[,2] #
+#
+### Hallegatte et al. (2013) provide data for 0, 20, 40 cm sea level rise.#
+### Conservative extrapolation: Linear extrapolation of [20,40] beyond 40#
+### and [0,20] below 0. #
+x <- c(0, 20, 40)#
+low.slope <- rep(NA, 15)#
+high.slope <- rep(NA, 15)#
+for(i in 1:15)#
+{#
+  res <- lm(apply(E[i,2:3],2,mean)~x[1:2])#
+  low.slope[i] <- res$coef[2]#
+  res <- lm(apply(E[i,3:4],2,mean)~x[2:3])#
+  high.slope[i] <- res$coef[2]#
+}#
+#
+### Function that calculates the multiplicative change in damage for sea level x #
+### and Hallegatte et al. (2013) estimates for city k.  #
+get.damage.mult <- function(x, k)#
+{#
+  if(x < 0) return(-1/(x * low.slope[k]))#
+  else if(x < 20) return(x * low.slope[k])#
+  else return(E[k,3] + x * high.slope[k])#
+}#
+#
+### Read in sea level rise projections for Bergen. #
+load("Simulation.Rdata")#
+#
+### Discount rate based on Norwegian government recommendations. #
+discount.rate <- c( rep(1.04, 40), rep(1.03, 35), rep(1.02, 10)) #
+accum.discount.rate <- cumprod(discount.rate)#
+#
+### Sample damage distributions for each year 2016-2100 (85 years)#
+### under various settings. #
+#
+### Sample 10 000 iid damage costs for each year 2016-2100#
+### This sample is used for all subsequent scenarios #
+I <- 10000#
+orig.damage <- array(rburr(I*85, #
+                           shape1=optim.out$par[1], #
+                           shape2=optim.out$par[2], #
+                           rate=optim.out$par[3]), #
+                     dim=c(I, 85))#
+#
+### Sample 10 000 damage change profiles#
+### This sample is used for all subsequent scenarios #
+damage.scenario <- sample(1:15, I, replace=TRUE)#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections #
+yearly.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    yearly.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, (j+16)],#
+                                                             damage.scenario[i])#
+  }#
+  yearly.damage[i,] <- yearly.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections assuming all subsequent years are like 2016. #
+constant.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    constant.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, 16], #
+                                                               damage.scenario[i])#
+  }#
+  constant.damage[i,] <- constant.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections under adaptation. Adaptation measure is assumed#
+### to reduce 50% of the yearly damages to damages under 75 cm#
+### lower sea level.  #
+adapted.damage <- array(NA, dim=c(85, I, 85))#
+adaptation.cost <- 1000/CPI$CPI[8] ## Cost was 1000 MNOK in 2009 #
+for(k in 1:85)#
+{#
+    print(k)#
+    adapted.slr <- c( rep(0, k-1), rep(75, 85-k+1) )#
+    for(i in 1:I)#
+    {#
+        for(j in 1:85)#
+        {#
+            adapted.damage[k,i,j] <- orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)], damage.scenario[i]) +#
+                orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)]-adapted.slr[j], damage.scenario[i])#
+        }#
+        m <- which(adapted.slr==75)[1]#
+        adapted.damage[k,i,m] <- adapted.damage[k,i,m] + adaptation.cost#
+        adapted.damage[k,i,] <- adapted.damage[k,i,]/accum.discount.rate#
+    }    #
+}#
+#
+# save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")#
+# load("calculatedDamage.RData")#
+#
+### Cumulated additional damage due to sea level rise.#
+add.damage <- yearly.damage - constant.damage#
+cumsum.add.damage <- array(NA, dim=dim(add.damage))#
+cumsum.yearly.damage <- array(NA, dim=dim(add.damage))#
+cumsum.constant.damage <- array(NA, dim=dim(add.damage))#
+for(i in 1:dim(add.damage)[1]) #
+{#
+    cumsum.add.damage[i,] <- cumsum(add.damage[i,])#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+    cumsum.constant.damage[i,] <- cumsum(constant.damage[i,])#
+}#
+upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)#
+lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)#
+upper.90.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)#
+lower.10.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)#
+median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)#
+upper.95.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.95)#
+lower.5.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.05)#
+median.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.5)#
+upper.95.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.95)#
+lower.5.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.05)#
+median.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.5)#
+### Cumulated damage for various adaptation options#
+cumsum.adapt.damage <- array(NA, dim=dim(adapted.damage))#
+for(i in 1:85)#
+{#
+    for(j in 1:I)#
+    {#
+        cumsum.adapt.damage[i,j,] <- cumsum(adapted.damage[i,j,])#
+    }#
+}#
+cumsum.yearly.damage <- array(NA, dim=dim(yearly.damage))#
+for(i in 1:I)#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+#
+### Calculate summary statistics for total damages for various#
+### adaptation options#
+adapt.median <- apply(cumsum.adapt.damage[,,85],1,median)#
+adapt.upper.95 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.95)#
+adapt.upper.90 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.9)#
+adapt.lower.05 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.05)#
+adapt.lower.10 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.1)#
+#
+### Cumulated additional damage due to sea level rise with#
+### adaptation in 2044 (most cost effective adaptation). #
+add.damage.2044 <- adapted.damage[29,,] - constant.damage#
+cumsum.add.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+cumsum.adapt.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+for(i in 1:dim(add.damage.2044)[1])#
+{#
+    cumsum.add.damage.2044[i,] <- cumsum(add.damage.2044[i,])#
+    cumsum.adapt.damage.2044[i,] <- cumsum(adapted.damage[29,i,])#
+}#
+upper.95.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.95)#
+lower.5.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.05)#
+upper.90.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.9)#
+lower.10.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.1)#
+median.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.5)#
+upper.95.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                    2,quantile,0.95)#
+lower.5.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                   2,quantile,0.05)#
+median.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                  2,quantile,0.5)
+rm(list=ls())#
+#
+### Read in damage data obtained from Finance Norway's website:#
+### www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/#
+A <- read.csv("StormfloYearFylkeAntall.csv", header=TRUE)#
+A <- A[-37,] ## Remove 2016 as data not complete#
+V <- read.csv("StormfloYearFylkeVerdi.csv", header=TRUE)#
+V <- V[-37,] ## Remove 2016 as data not complete#
+#
+### Read in consumer price index (CPI).#
+CPI <- read.csv("KPI.csv", header=TRUE)#
+CPI <- CPI[-1,] ## Remove 2016 as data not yet available#
+CPI$CPI <- CPI$CPI/CPI$CPI[1] ## Normalize to 2015 #
+#
+### Combine Hordaland and Rogaland data.#
+### Standardize costs to 2015 values using CPI. #
+sf.nr <- c(A$Hordaland, A$Rogaland)#
+sf.damage <- c(V$Hordaland/CPI$CPI[1:36], V$Rogaland/CPI$CPI[1:36])#
+sf.damage <- sf.damage/1e3 ## Normalize to million NOK. #
+#
+### Fit Burr distribution to damage data (in MNOK)  #
+library(actuar)#
+ind <- which(sf.damage==0)#
+sf.damage[ind] <- 1e-04 ## Improves numerical stability of estimates. #
+log.lik <- function(theta)#
+{#
+  res <- sum(dburr(sf.damage, #
+                   shape1=theta[1], #
+                   shape2=theta[2], #
+                   rate=theta[3], #
+                   log=TRUE))#
+  return(-res)#
+}#
+theta.start <- c(5, 0.5, 0.05)#
+optim.out <- optim(theta.start, #
+                   fn=log.lik, #
+                   method="BFGS", #
+                   control=list(maxit=1000))#
+#
+### Get Hallegatte et al. (2013) data on relation between change in damage #
+### cost and change in sea level (csv files copied manually from#
+### online supplementary information).   #
+E <- read.csv("EuropeanLossData.csv", header=TRUE)#
+E[,2:4] <- E[,2:4]/E[,2] #
+#
+### Hallegatte et al. (2013) provide data for 0, 20, 40 cm sea level rise.#
+### Conservative extrapolation: Linear extrapolation of [20,40] beyond 40#
+### and [0,20] below 0. #
+x <- c(0, 20, 40)#
+low.slope <- rep(NA, 15)#
+high.slope <- rep(NA, 15)#
+for(i in 1:15)#
+{#
+  res <- lm(apply(E[i,2:3],2,mean)~x[1:2])#
+  low.slope[i] <- res$coef[2]#
+  res <- lm(apply(E[i,3:4],2,mean)~x[2:3])#
+  high.slope[i] <- res$coef[2]#
+}#
+#
+### Function that calculates the multiplicative change in damage for sea level x #
+### and Hallegatte et al. (2013) estimates for city k.  #
+get.damage.mult <- function(x, k)#
+{#
+  if(x < 0) return(-1/(x * low.slope[k]))#
+  else if(x < 20) return(x * low.slope[k])#
+  else return(E[k,3] + x * high.slope[k])#
+}#
+#
+### Read in sea level rise projections for Bergen. #
+load("Simulation.Rdata")#
+#
+### Discount rate based on Norwegian government recommendations. #
+discount.rate <- c( rep(1.04, 40), rep(1.03, 35), rep(1.02, 10)) #
+accum.discount.rate <- cumprod(discount.rate)#
+#
+### Sample damage distributions for each year 2016-2100 (85 years)#
+### under various settings. #
+#
+### Sample 10 000 iid damage costs for each year 2016-2100#
+### This sample is used for all subsequent scenarios #
+I <- 10000#
+orig.damage <- array(rburr(I*85, #
+                           shape1=optim.out$par[1], #
+                           shape2=optim.out$par[2], #
+                           rate=optim.out$par[3]), #
+                     dim=c(I, 85))#
+#
+### Sample 10 000 damage change profiles#
+### This sample is used for all subsequent scenarios #
+damage.scenario <- sample(1:15, I, replace=TRUE)#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections #
+yearly.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    yearly.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, (j+16)],#
+                                                             damage.scenario[i])#
+  }#
+  yearly.damage[i,] <- yearly.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections assuming all subsequent years are like 2016. #
+constant.damage <- array(NA, dim=c(I, 85))#
+for(i in 1:I)#
+{#
+  for(j in 1:85)#
+  {#
+    constant.damage[i,j] <- orig.damage[i,j] * get.damage.mult(sim[i, 16], #
+                                                               damage.scenario[i])#
+  }#
+  constant.damage[i,] <- constant.damage[i,]/accum.discount.rate#
+}#
+#
+### Combine damage costs, damage change profiles and sea level#
+### projections under adaptation. Adaptation measure is assumed#
+### to reduce 50% of the yearly damages to damages under 75 cm#
+### lower sea level.  #
+adapted.damage <- array(NA, dim=c(85, I, 85))#
+adaptation.cost <- 1000/CPI$CPI[8] ## Cost was 1000 MNOK in 2009 #
+for(k in 1:85)#
+{#
+    print(k)#
+    adapted.slr <- c( rep(0, k-1), rep(75, 85-k+1) )#
+    for(i in 1:I)#
+    {#
+        for(j in 1:85)#
+        {#
+            adapted.damage[k,i,j] <- orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)], damage.scenario[i]) +#
+                orig.damage[i,j]/2 *#
+                get.damage.mult(sim[i, (j+16)]-adapted.slr[j], damage.scenario[i])#
+        }#
+        m <- which(adapted.slr==75)[1]#
+        adapted.damage[k,i,m] <- adapted.damage[k,i,m] + adaptation.cost#
+        adapted.damage[k,i,] <- adapted.damage[k,i,]/accum.discount.rate#
+    }    #
+}#
+#
+# save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")#
+# load("calculatedDamage.RData")#
+#
+### Cumulated additional damage due to sea level rise.#
+add.damage <- yearly.damage - constant.damage#
+cumsum.add.damage <- array(NA, dim=dim(add.damage))#
+cumsum.yearly.damage <- array(NA, dim=dim(add.damage))#
+cumsum.constant.damage <- array(NA, dim=dim(add.damage))#
+for(i in 1:dim(add.damage)[1]) #
+{#
+    cumsum.add.damage[i,] <- cumsum(add.damage[i,])#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+    cumsum.constant.damage[i,] <- cumsum(constant.damage[i,])#
+}#
+upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)#
+lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)#
+upper.90.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.9)#
+lower.10.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.1)#
+median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)#
+upper.95.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.95)#
+lower.5.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.05)#
+median.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.5)#
+upper.95.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.95)#
+lower.5.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.05)#
+median.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.5)#
+### Cumulated damage for various adaptation options#
+cumsum.adapt.damage <- array(NA, dim=dim(adapted.damage))#
+for(i in 1:85)#
+{#
+    for(j in 1:I)#
+    {#
+        cumsum.adapt.damage[i,j,] <- cumsum(adapted.damage[i,j,])#
+    }#
+}#
+cumsum.yearly.damage <- array(NA, dim=dim(yearly.damage))#
+for(i in 1:I)#
+    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+#
+### Calculate summary statistics for total damages for various#
+### adaptation options#
+adapt.median <- apply(cumsum.adapt.damage[,,85],1,median)#
+adapt.upper.95 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.95)#
+adapt.upper.90 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.9)#
+adapt.lower.05 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.05)#
+adapt.lower.10 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.1)#
+#
+### Cumulated additional damage due to sea level rise with#
+### adaptation in 2044 (most cost effective adaptation). #
+add.damage.2044 <- adapted.damage[29,,] - constant.damage#
+cumsum.add.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+cumsum.adapt.damage.2044 <- array(NA, dim=dim(add.damage.2044))#
+for(i in 1:dim(add.damage.2044)[1])#
+{#
+    cumsum.add.damage.2044[i,] <- cumsum(add.damage.2044[i,])#
+    cumsum.adapt.damage.2044[i,] <- cumsum(adapted.damage[29,i,])#
+}#
+upper.95.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.95)#
+lower.5.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.05)#
+upper.90.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.9)#
+lower.10.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.1)#
+median.add.cumsum.2044 <- apply(cumsum.add.damage.2044,2,quantile,0.5)#
+upper.95.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                    2,quantile,0.95)#
+lower.5.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                   2,quantile,0.05)#
+median.adapt.cumsum.2044 <- apply(cumsum.adapt.damage.2044,#
+                                  2,quantile,0.5)
+x <- c(0,20,40)#
+plot(x, E[1, 2:4], type="o", col="black", xlim=c(-100,130), ylim=c(-180,1000),#
+     xlab="Sea level anomaly (cm)", ylab="Relative mean annual damage", main="(b)", axes=FALSE)#
+box()#
+axis(1)#
+axis(2, at=c(-200, 1, 200, 400, 600, 800, 1000), labels=c(0.005, 1, 200, 400, 600, 800, 1000))#
+z <- c(40,130)#
+w <- c(-100,0)#
+for(i in 1:15)#
+{#
+    lines(x, E[i, 2:4], type="o", col="black")#
+    res <- lm(as.double(E[i,3:4])~x[2:3])#
+    lines(z, res$coef[1] + z * res$coef[2], col="gray70")#
+    res <- lm(as.double(E[i,2:3])~x[1:2])#
+    lines(w, res$coef[1] + w * res$coef[2], col="gray70")#
+}#
+points(20, median(E[,3]), col="red", pch=15)#
+points(40, median(E[,4]), col="red", pch=15)#
+res <- lm(apply(E[,2:3],2,median)~x[1:2])#
+w <- c(-100, 20)#
+lines(w, res$coef[1] + w * res$coef[2], col="red", lwd=2)#
+res <- lm(apply(E[,3:4],2,median)~x[2:3])#
+z <- c(20,130)#
+lines(z, res$coef[1] + z * res$coef[2], col="red", lwd=2)
+par(mex=0.75)#
+### Cumulative damage costs without adaptation #
+plot(2016:2100, upper.95.yearly.cumsum/1e3,type="l",#
+     ylim=c(0,14), xlab="Year",#
+     ylab="Accumulated damage (billion NOK)", main="", lty=3)#
+### Cumulative damage costs for no sea level rise#
+polygon(c(2016:2100, rev(2016:2100)),#
+        c(upper.95.constant.cumsum/1e3, rev(lower.5.constant.cumsum/1e3)),#
+        col="gray80", border="gray80")#
+lines(2016:2100, median.constant.cumsum/1e3, lwd=2, col="gray40")#
+### Cumulative damage costs without adaptation #
+lines(2016:2100, lower.5.yearly.cumsum/1e3, lty=3)#
+lines(2016:2100, median.yearly.cumsum/1e3, lwd=2)#
+### Cumulative damage costs for adaptation in 2044#
+lines(2016:2100, upper.95.adapt.cumsum.2044/1e3, lty=3, col="red")#
+lines(2016:2100, lower.5.adapt.cumsum.2044/1e3, lty=3, col="red")#
+lines(2016:2100, median.adapt.cumsum.2044/1e3, lwd=2, col="red")
+par(mex=0.75)#
+a <- median(cumsum.yearly.damage[,85])/1e3#
+plot(c(2016,2100), c(a,a), type="l", ylim=c(0,14), xlab="Year of adaptation measure",#
+      ylab="Total damage 2016-2100 (billion NOK)", main="")#
+year <- (2016:2100)#
+k <- 0.35#
+for(i in 1:85)#
+{#
+    a <- year[i]#
+    b <- adapt.upper.95[i]/1e3#
+    c <- adapt.lower.05[i]/1e3#
+    polygon(c(a-k, a+k, a+k, a-k), c(c, c, b, b), col="gray80", border="gray80")#
+    d <- adapt.median[i]/1e3#
+    lines(c(a-k, a+k), c(d,d), lwd=2, col="red")#
+}#
+a <- median(cumsum.yearly.damage[,85])/1e3#
+lines(c(2016-k,2100+k),c(a,a), col="black", lwd=2)#
+a <- quantile(cumsum.yearly.damage[,85], 0.95)/1e3#
+lines(c(2016-k,2100+k),c(a,a), col="black", lty=3)#
+a <- quantile(cumsum.yearly.damage[,85], 0.05)/1e3#
+lines(c(2016-k,2100+k),c(a,a), col="black", lty=3)
