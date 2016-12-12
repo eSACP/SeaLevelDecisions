@@ -1,47 +1,49 @@
-This is BibTeX, Version 0.99d (TeX Live 2013)
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper.aux
 The style file: agufull08.bst
 Database file #1: ref.bib.bib
+Warning--I didn't find a database entry for "Hallegatte&2012"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 21 entries,
+You've used 28 entries,
             3076 wiz_defined-function locations,
-            1198 strings with 13186 characters,
-and the built_in function-call counts, 18696 in all, are:
-= -- 1821
-> -- 842
-< -- 9
-+ -- 337
-- -- 236
-* -- 1264
-:= -- 1958
-add.period$ -- 21
-call.type$ -- 21
-change.case$ -- 87
-chr.to.int$ -- 22
-cite$ -- 21
-duplicate$ -- 1980
-empty$ -- 1099
-format.name$ -- 300
-if$ -- 3733
+            1246 strings with 14729 characters,
+and the built_in function-call counts, 26300 in all, are:
+= -- 2707
+> -- 1073
+< -- 14
++ -- 447
+- -- 300
+* -- 1725
+:= -- 2638
+add.period$ -- 28
+call.type$ -- 28
+change.case$ -- 117
+chr.to.int$ -- 29
+cite$ -- 28
+duplicate$ -- 2831
+empty$ -- 1519
+format.name$ -- 391
+if$ -- 5262
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 240
-newline$ -- 70
-num.names$ -- 84
-pop$ -- 773
+missing$ -- 315
+newline$ -- 91
+num.names$ -- 112
+pop$ -- 1088
 preamble$ -- 1
-purify$ -- 67
+purify$ -- 91
 quote$ -- 0
-skip$ -- 964
+skip$ -- 1428
 stack$ -- 0
-substring$ -- 666
-swap$ -- 1570
-text.length$ -- 2
+substring$ -- 1019
+swap$ -- 2326
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 177
+type$ -- 237
 warning$ -- 0
-while$ -- 92
+while$ -- 135
 width$ -- 0
-write$ -- 237
+write$ -- 314
+(There was 1 warning)

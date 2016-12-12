@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{28}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -9,6 +9,12 @@
 Bamber, J., and W.~Aspinall (2013), An expert judgement assessment of future
   sea level rise from the ice sheets, \textit{Nature Climate Change},
   \textit{3}, 424--427.
+
+\bibitem[{\textit{Bisaro et~al.}(2016)\textit{Bisaro, Swart, and
+  Hinkel}}]{BisaroSwartHinkel2016}
+Bisaro, A., R.~Swart, and J.~Hinkel (2016), Frontiers of solution-oriented
+  adaptation research, \textit{Regional Environmental Change}, \textit{16}(1),
+  123--136.
 
 \bibitem[{\textit{Bolin et~al.}(2014)\textit{Bolin, Guttorp, Januzzi, Novak,
   Podschwit, Richardson, Sowder, S\"{a}rkk\"{a}, and Zimmerman}}]{Bolin2014a}
@@ -25,9 +31,24 @@ Box, G., and G.~Jenkins (1970), \textit{Time series analysis: Forecasting and
 Burr, I.~W. (1942), Cumulative frequency functions, \textit{The Annals of
   Mathematical Statistics}, \textit{13}(2), 215--232.
 
+\bibitem[{\textit{Chambwera et~al.}(2014)\textit{Chambwera, Heal, Dubeux,
+  Hallegatte, Leclerc, Markandya, McCarl, Mechler, and
+  Neumann}}]{Chambwera&2014}
+Chambwera, M., G.~Heal, C.~Dubeux, S.~Hallegatte, L.~Leclerc, A.~Markandya,
+  B.~McCarl, R.~Mechler, and J.~Neumann (2014), \textit{Climate Change 2014:
+  Impacts, Adaptation, and Vulnerability. Part A: Global and Sectoral Aspects.
+  Contribution of Working Group II to the Fifth Assessment Report of the
+  Intergovernmental Panel on Climate Change}, chap. Economics of adaptation,
+  pp. 945--977, Cambridge University Press, NY, USA.
+
 \bibitem[{\textit{Church and White}(2011)}]{csiro}
 Church, J., and N.~White (2011), Sea-level rise from the late 19th to the early
   21st century, \textit{Surveys in Geophysics}, \textit{32}, 585--602.
+
+\bibitem[{\textit{Fankhauser and Soare}(2013)}]{FankhauserSoare2013}
+Fankhauser, S., and R.~Soare (2013), An economic approach to adaptation:
+  illustrations from europe, \textit{Climatic Change}, \textit{118}(2),
+  367--379.
 
 \bibitem[{\textit{Fankhauser et~al.}(1999)\textit{Fankhauser, Smith, and
   Tol}}]{Fankhauser&1999}
@@ -61,6 +82,11 @@ Hansen, J., R.~Rued, M.~Sato, M.~Imhoff, W.~Lawrence, D.~Easterling,
   T.~Peterson, and T.~Karl (2001), A closer look at {U}nited {S}tates and
   global surface temperature change, \textit{J. Geophys. Res.}, \textit{106},
   23,947--23,963.
+
+\bibitem[{\textit{Hinkel and Bisaro}(2016)}]{HinkelBisaro2016}
+Hinkel, J., and A.~Bisaro (2016), Methodological choices in solution-oriented
+  adaptation research: a diagnostic framework, \textit{Regional Environmental
+  Change}, \textit{16}(1), 7--20.
 
 \bibitem[{\textit{Jevrejeva et~al.}(2016)\textit{Jevrejeva, Jackson, Riva,
   Grinsted, and Moore}}]{jevrejeva2016}
@@ -128,5 +154,22 @@ Wada, Y., L.~P.~H. van Beek, F.~C. Sperna~Weiland, B.~F. Chao, Y.-H. Wu, and
   M.~F.~P. Bierkens (2012), Past and future contribution of global groundwater
   depletion to sea-level rise, \textit{Geophysical Research Letters},
   \textit{39}, \doi{10.1029/2012GL051230}.
+
+\bibitem[{\textit{Walker et~al.}(2013)\textit{Walker, Haasnoot, and
+  Kwakkel}}]{WalkerHaasnootKwakkel2013}
+Walker, W.~E., M.~Haasnoot, and J.~H. Kwakkel (2013), Adapt or perish: a review
+  of planning approaches for adaptation under deep uncertainty,
+  \textit{Sustainability}, \textit{5}(3), 955--979.
+
+\bibitem[{\textit{Watkiss et~al.}(2015)\textit{Watkiss, Hunt, Blyth, and
+  Dyszynski}}]{Watkiss&2015}
+Watkiss, P., A.~Hunt, W.~Blyth, and J.~Dyszynski (2015), The use of new
+  economic decision support tools for adaptation assessment: A review of
+  methods and applications, towards guidance on applicability, \textit{Climatic
+  Change}, \textit{132}(3), 401--416.
+
+\bibitem[{\textit{Wilby and Dessai}(2010)}]{WilbyDessai2010}
+Wilby, R.~L., and S.~Dessai (2010), Robust adaptation to climate change,
+  \textit{Weather}, \textit{65}(7), 180--185.
 
 \end{thebibliography}
