@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -70,6 +70,12 @@ Guttorp, P., D.~Bolin, A.~Januzzi, D.~Jones, M.~Novak, H.~Podschwit,
   temperature, \textit{Journal of Applied Meteorology and Climatology},
   \textit{53}, 2163--2170.
 
+\bibitem[{\textit{Hallegatte et~al.}(2012)\textit{Hallegatte, Shah, Lempert,
+  Brown, and Gill}}]{Hallegatte&2012}
+Hallegatte, S., A.~Shah, R.~Lempert, C.~Brown, and S.~Gill (2012),
+  \textit{Investment Decision Making Under Deep Uncertainty {A}pplication to
+  Climate Change}, The World Bank, Washington, D.C.
+
 \bibitem[{\textit{Hallegatte et~al.}(2013)\textit{Hallegatte, Green, Nicholls,
   and Corfee-Morlot}}]{Hallegatte&2013}
 Hallegatte, S., C.~Green, R.~J. Nicholls, and J.~Corfee-Morlot (2013), Future
@@ -109,6 +115,10 @@ Mosteller, F., and J.~W. Tukey (1977), \textit{Data Analysis and Regression},
 Mote, P., A.~Petersen, S.~Reeder, H.~Shipman, and L.~W. Binder (2008), Sea
   level rise in the coastal waters of {W}ashington {S}tate, \textit{Tech.
   rep.}, University of Washington Climate Impacts Group.
+
+\bibitem[{\textit{{R Core Team}}(2016)}]{R}
+{R Core Team} (2016), \textit{R: A Language and Environment for Statistical
+  Computing}, R Foundation for Statistical Computing, Vienna, Austria.
 
 \bibitem[{\textit{Rahmstorf}(2007)}]{Rahmstorf07}
 Rahmstorf, S. (2007), {A} semi-empirical approach to projecting future
