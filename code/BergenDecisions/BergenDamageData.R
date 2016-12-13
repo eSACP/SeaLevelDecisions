@@ -1,3 +1,7 @@
+### Decision analysis for Bergen. All the data files are located in the same
+### directory as this script. The R working directory should thus be set
+### to the current directory. 
+
 rm(list=ls())
 
 ### Read in damage data obtained from Finance Norway's website:
@@ -368,8 +372,8 @@ dev.off()
 
 ## Plot comparing distributions of total damage for various uncertainty settings
 pdf(file="../../submission/Uncertainty.pdf", width=10, height=5, points=12)
-par(mex=0.75)
-hist(log(total.damage/1e3, freq=FALSE), ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),
+par(mex=0.75, mar=c(5,4,2,2)+0.1)
+hist(total.damage/1e3, freq=FALSE, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),
      col="black", border="black", xlab="Total damage 2016-2100 (billion NOK)",
      ylab="Density", xaxs="i", yaxs="i", main="") # black
 hist(total.slr.damage/1e3, freq=FALSE, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),
@@ -383,35 +387,33 @@ abline(v=median(total.slr.damage/1e3), col="#7D26CD", lwd=3)
 abline(v=median(total.mf.damage/1e3), col="#4876FF", lwd=3)
 abline(v=median(total.dam.damage/1e3), col="#008B45", lwd=3)
 abline(v=sum(yearly.median.damage/1e3), col="yellow", lwd=3)
+legend("topright", legend=c("Full uncertainty","SLR uncertainty","Effect uncertainty","Damage uncertainty", "No uncertainty"),
+       col=c("black", "#7D26CD", "#4876FF", "#008B45", "yellow"), lty=1, lwd=2)
 box()
 dev.off()
 
+### Same as above but on a log-log scale
 pdf(file="../../submission/UncertaintyLog.pdf", width=10, height=5, points=12)
-par(mex=0.75)
-buckets <- seq(-7,5.2, by=0.05)
-my.hist <- hist(log(total.damage/1e3), breaks=buckets, plot=FALSE)
-, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),
-                col="black", border="black", xlab="Total damage 2016-2100 (billion NOK)",
-                ylab="Density", xaxs="i", yaxs="i", main="", plot=FALSE) # black
-my.slr.hist <- hist(log(total.slr.damage/1e3), freq=FALSE, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),
-                    col="#7D26CD50", border="#7D26CD", plot=FALSE) # purple
-my.mf.hist <- hist(log(total.mf.damage/1e3), freq=FALSE, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),
-                   col="#4876FF50", border="#4876FF", plot=FALSE) # blue
-my.dam.hist <- hist(log(total.dam.damage/1e3), freq=FALSE, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),
-                    col="#008B4550", border="#008B45", plot=FALSE) # green
-plot(my.hist$count, log="y", type="h", axes=FALSE)
-
-abline(v=median(total.damage/1e3), col="black", lwd=3)
-abline(v=median(total.slr.damage/1e3), col="#7D26CD", lwd=3)
-abline(v=median(total.mf.damage/1e3), col="#4876FF", lwd=3)
-abline(v=median(total.dam.damage/1e3), col="#008B45", lwd=3)
-abline(v=sum(yearly.median.damage/1e3), col="yellow", lwd=3)
-box()
+par(mex=0.75, mar=c(5,4,2,2)+0.1)
+buckets <- seq(log(50),log(165000), by=0.1)
+buckets <- exp(buckets)
+my.hist <- hist(total.damage, breaks=buckets, plot=FALSE)
+my.slr.hist <- hist(total.slr.damage, breaks=buckets, plot=FALSE)
+my.mf.hist <- hist(total.mf.damage, breaks=buckets, plot=FALSE)
+my.dam.hist <- hist(total.dam.damage, breaks=buckets, plot=FALSE)
+plot(log(my.slr.hist$breaks[-1]), log(my.slr.hist$counts), type="h", col="#7D26CD",
+     main="", ylab="Log frequency", xlab="Total damage 2016-2100 (log million NOK)", lwd=2)
+lines(log(my.hist$breaks[-1])+0.02, log(my.hist$counts), col="black", type="h", lwd=2)
+lines(log(my.mf.hist$breaks[-1])+0.04, log(my.mf.hist$counts), col="orange", type="h", lwd=2)
+lines(log(my.dam.hist$breaks[-1])+0.06, log(my.dam.hist$counts), col="#008B45", type="h", lwd=2)
+# abline(v=log(median(total.damage)), col="black", lty=2)
+# abline(v=log(median(total.slr.damage)), col="#7D26CD", lty=2)
+# abline(v=log(median(total.mf.damage)), col="orange", lty=2)
+# abline(v=log(median(total.dam.damage)), col="#008B45", lty=2)
+# abline(v=log(sum(yearly.median.damage)), col="gray50", lty=2)
+legend("topright", legend=c("Full uncertainty","SLR uncertainty","Effect uncertainty","Damage uncertainty"),
+       col=c("black", "#7D26CD", "orange", "#008B45"), lty=1, lwd=2)
 dev.off()
-
-
-plot(mydata_hist$count, log="y", type='h', lwd=10, lend=2)
-
 
 #######################################################################
 ### Other plots 
