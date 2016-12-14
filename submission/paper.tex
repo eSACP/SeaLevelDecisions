@@ -52,7 +52,7 @@ We illustrate the sea level rise projections and timing of adaptation measures f
  
 Section \ref{sealevelproj} describes our approach to projecting sea level. In section \ref{decision_tools} we describe the decision framework focused on the timing of proactive adaptation decision. We apply this framework to sea level projections and adaptation for Bergen, Norway, and for Esbjerg, Denmark in section \ref{cases}. In the final section \ref{unc} we demonstrate the consequences of ignoring the uncertainty in the projections.
 
-\section{Sea level projections {\color{blue} (PG)}}
+\section{Sea level projections}
 
 \label{sealevelproj}
 
@@ -211,8 +211,8 @@ The histogram of the observed annual damages and the estimated distribution are 
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.5\linewidth]{DamageDistribution.pdf}
-\caption{ The estimated distribution of annual storm surge damage in Bergen for 2015 (red) based on observed annual damage in Hordaland and Rogaland 1980-2015 (gray bars). }
+\includegraphics[width=\linewidth]{DecisionAnalysisBergen.pdf}
+\caption{Damage data used in the decision analysis for Bergen: (a) Estimated distribution of annual storm surge damage in Bergen for 2015 (red) based on observed annual damage in Hordaland and Rogaland 1980-2015 (gray bars); (b) Relative change in mean annual damage as a function of sea level rise for 15 European cites as estimated by \cite{Hallegatte&2013} (black circles) with linearly extrapolated values indicated by gray lines. The median change and the corresponding extrapolation are indicated in red.}
 \label{fig:BergenDamageDist}
 \end{center}
 \end{figure}
@@ -220,19 +220,11 @@ The histogram of the observed annual damages and the estimated distribution are 
 
 For modelling the relationship between the change in damage and change in sea level we use the results of \cite{Hallegatte&2013} for 15 European cites: Amsterdam, Athens, Barcelona, Dublin, Glasgow, Hamburg, Helsinki, Copenhagen, Lisbon, London, Marseille, Naples, Porto, Rotterdam and Stockholm. \cite{Hallegatte&2013} estimate the mean annual flood damage in these cities in 2050 under no sea level change, 20 cm increase and 40 cm increase in sea level. We standardize their results for each city and consider the relative change for 20 and 40 cm increase. We then perform a linear extrapolation to obtain estimated relative changes in damage for a large interval of changes in sea level rise, see Figure~\ref{fig:ChangeInDamage}. Finally, the function $g$ is obtained by sampling from this ensemble of functions with all 15 ensemble members considered equally probable. 
 
-\begin{figure}[!hbpt]
-\begin{center}
-\includegraphics[width=0.5\linewidth]{EuropeanIncreaseLossExtrapolationUncertainty.pdf}
-\caption{ Relative change in mean annual damage as a function of sea level rise for 15 European cites as estimated by \cite{Hallegatte&2013} (black circles) with linearly extrapolated values indicated by gray lines. The median change and the corresponding extrapolation are indicated in red.}
-\label{fig:ChangeInDamage}
-\end{center}
-\end{figure}
-
 
 \begin{figure}[!hbpt]
 \begin{center}
-\includegraphics[width=0.5\linewidth]{AccumulatedFutureLoss.png}
-\caption{Distribution of log  accumulated future loss 2016-2100 under RCP 8.5 and assuming that no adaptation measures are implemented.} 
+\includegraphics[width=0.5\linewidth]{CumDamageCostsBergen.pdf}
+\caption{Distribution of accumulated future loss 2016-2100 under RCP 8.5 and assuming that no adaptation measures are implemented.} 
 \label{fig:NoAction}
 \end{center}
 \end{figure}
