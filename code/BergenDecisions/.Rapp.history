@@ -1,3 +1,14 @@
+for (i in 1:N){#
+	tmp=read.table(finlandurl[i],na.strings="-99999",sep=";")#
+	tmp=cbind(floor(tmp[,1]),round(12*(tmp[,1]-floor(tmp[,1]))+.5),tmp[,2:4])#
+	tmp.rlr=tmp[,3]#
+	tmp.rlr=matrix(tmp.rlr,ncol=12,byrow=T)#
+	tmp.mp=medpolish(tmp.rlr,na.rm=T)#
+	tmp.mppred=(tmp.mp$overall+outer(tmp.mp$row,tmp.mp$col,"+"))#
+	for(j in 1:12) tmp.rlr[which(is.na(tmp.rlr[,j])),j]=tmp.mppred[which(is.na(tmp.rlr[,j])),j]#
+	tmp.ann=apply(tmp.rlr,1,"mean")#
+	finlanddata[i]=list(data.frame(name=finland[i,1],years=unique(floor(tmp[,1])),data=tmp.ann))#
+	}
 par(mfrow=c(3,4))
 N
 for(i in 1:N) plot(finlanddata[i]$years,finlanddata[i]$data,type="l",main=finlanddata[i]$name)
@@ -747,210 +758,15 @@ LL[i,j]=L(mu[j],m[i])#
  contour(m,mu,LL,levels=c(Lmax-2.3,Lmax-3))#
  points(m[10],mu[40])
 ?contour
-#setps(ch3.fig4b,w=4,h=4,pointsize=16)#
-#postscript("ch3.fig4b.ps",h=4,w=4)#
-# first order neighborhood #
-setwd("~/Dropbox/Stochastic modeling/Data & Figures")#
-readims2.1 <- #
-   function(file, ncol, nrow, frames, cap1 = "", cap2 = "", top = "", ...)#
-# file   contains the images which are ncol columns and nrow rows.#
-#        images are filled by row.#
-# frames is a vector which tells which images you would like plotted.#
-# cap1   is a vector of strings with lenght equal to the number of#
-#        images in file.  So file contains 10 images and you only plot#
-#        the 3rd and 5th images (frame<-c(3,5)), cap1 must still be of #
-#        length 10.#
-# cap2   not used.#
-{#
-        im <- matrix(scan(file), ncol = ncol, byrow = T)#
-        n <- dim(im)[1]#
-        m <- dim(im)[2]#
-        nf <- length(frames)    #browser()#
-        for(index in seq(1, nf)) {#
-                pic <- frames[[index]]#
-                i <- 1 + (pic - 1) * nrow#
-                a <- im[i:(i + nrow - 1),  ]#
-                if(mean(a) < 1.5)#
-                        a <- 3 - a#
-                image(a, axes = F, pty = "s", ...)#
-                if(index != nf) frame()#
-        }#
-}#
-imfile<-"ch4/ims32x321o.out"#
-# 122 32x32 images 2 each for beta in seq(0,1.5,length=61)#
-par(mfrow=c(4,4),pty="s")#
-bet<-seq(0,1.5,length=61)#
-bet<-matrix(bet,ncol=61,nrow=2,byrow=T)#
-cap<-paste("b =",as.vector(bet))#
-#cap<-paste(rep("",length(bet)))#
-readims2.1(imfile,32,32,seq(2,by=8,length=61)[1:16],cap1=cap)#,zlim=c(1,2))
+chdir("~/GitHub/SeaLevelDecisions/code/BergenDecisions")
+setdir("~/GitHub/SeaLevelDecisions/code/BergenDecisions")
+getdir()
+getwd()
 setwd("~/GitHub/SeaLevelDecisions/code/BergenDecisions")
-load("calculatedDamage.RData")
-add.damage <- yearly.damage - constant.damage#
-cumsum.add.damage <- array(NA, dim=dim(add.damage))#
-cumsum.yearly.damage <- array(NA, dim=dim(add.damage))#
-cumsum.constant.damage <- array(NA, dim=dim(add.damage))#
-for(i in 1:dim(add.damage)[1]) #
-{#
-    cumsum.add.damage[i,] <- cumsum(add.damage[i,])#
-    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
-    cumsum.constant.damage[i,] <- cumsum(constant.damage[i,])#
-}#
-upper.95.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.95)#
-lower.5.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.05)#
-median.add.cumsum <- apply(cumsum.add.damage,2,quantile,0.5)#
-upper.95.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.95)#
-lower.5.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.05)#
-median.yearly.cumsum <- apply(cumsum.yearly.damage,2,quantile,0.5)#
-upper.95.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.95)#
-lower.5.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.05)#
-median.constant.cumsum <- apply(cumsum.constant.damage,2,quantile,0.5)#
-### Cumulated damage for various adaptation options#
-cumsum.adapt.damage <- array(NA, dim=dim(adapted.damage))#
-for(i in 1:85)#
-{#
-    for(j in 1:I)#
-    {#
-        cumsum.adapt.damage[i,j,] <- cumsum(adapted.damage[i,j,])#
-    }#
-}#
-cumsum.yearly.damage <- array(NA, dim=dim(yearly.damage))#
-for(i in 1:I)#
-    cumsum.yearly.damage[i,] <- cumsum(yearly.damage[i,])#
+### Decision analysis for Bergen. All the data files are located in the same#
+### directory as this script. The R working directory should thus be set#
+### to the current directory. #
 #
-### Calculate summary statistics for total damages for various#
-### adaptation options#
-adapt.median <- apply(cumsum.adapt.damage[,,85],1,median)#
-adapt.upper.95 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.95)#
-adapt.lower.05 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.05)#
-#
-### Cumulated additional damage due to sea level rise with#
-### adaptation in 2047 (most cost effective adaptation). #
-add.damage.2047 <- adapted.damage[32,,] - constant.damage#
-cumsum.add.damage.2047 <- array(NA, dim=dim(add.damage.2047))#
-cumsum.adapt.damage.2047 <- array(NA, dim=dim(add.damage.2047))#
-for(i in 1:dim(add.damage.2047)[1])#
-{#
-    cumsum.add.damage.2047[i,] <- cumsum(add.damage.2047[i,])#
-    cumsum.adapt.damage.2047[i,] <- cumsum(adapted.damage[32,i,])#
-}#
-upper.95.add.cumsum.2047 <- apply(cumsum.add.damage.2047,2,quantile,0.95)#
-lower.5.add.cumsum.2047 <- apply(cumsum.add.damage.2047,2,quantile,0.05)#
-median.add.cumsum.2047 <- apply(cumsum.add.damage.2047,2,quantile,0.5)#
-upper.95.adapt.cumsum.2047 <- apply(cumsum.adapt.damage.2047,#
-                                    2,quantile,0.95)#
-lower.5.adapt.cumsum.2047 <- apply(cumsum.adapt.damage.2047,#
-                                   2,quantile,0.05)#
-median.adapt.cumsum.2047 <- apply(cumsum.adapt.damage.2047,#
-                                  2,quantile,0.5)
-z <- c(0, 20, 40)#
-y <- apply(E[,2:4], 2, median)#
-res <- lm(y[1:2]~z[1:2])#
-low.med.slope <- res$coef[2]#
-res <- lm(y[2:3]~z[2:3])#
-high.med.slope <- res$coef[2]#
-get.median.damage.mult <- function(x)#
-{#
-    if(x < 0) return(1/(1 + abs(x) * low.med.slope))#
-    else if(x < 20) return(1 + x * low.med.slope)#
-    else return(y[2] + x * high.med.slope)#
-}#
-#
-## Median sea level rise#
-median.sim <- apply(sim, 2, median)[17:101]#
-#
-## Median damage cost#
-median.damage <- apply(orig.damage, 2, median)#
-#
-## Putting the three together#
-yearly.median.damage <- rep(NA, 85)#
-for(j in 1:85)#
-  {#
-    yearly.median.damage[j] <- median.damage[j] * get.median.damage.mult(median.sim[j]) #
-  }#
-yearly.median.damage <- yearly.median.damage/accum.discount.rate#
-#
-## Uncertainty in damage mult. fct. only #
-yearly.mf.damage <- array(NA, dim=c(I, 85))#
-for(i in 1:I)#
-{#
-  for(j in 1:85)#
-  {#
-    yearly.mf.damage[i,j] <- median.damage[j] * get.damage.mult(median.sim[j],#
-                                                             damage.scenario[i])#
-  }#
-  yearly.mf.damage[i,] <- yearly.mf.damage[i,]/accum.discount.rate#
-}#
-total.mf.damage <- apply(yearly.mf.damage,1,sum)#
-#
-## Uncertainty in slr only #
-yearly.slr.damage <- array(NA, dim=c(I, 85))#
-for(i in 1:I)#
-{#
-  for(j in 1:85)#
-  {#
-    yearly.slr.damage[i,j] <- median.damage[j] * get.median.damage.mult(sim[i, (j+16)])#
-  }#
-  yearly.slr.damage[i,] <- yearly.slr.damage[i,]/accum.discount.rate#
-}#
-total.slr.damage <- apply(yearly.slr.damage,1,sum)#
-#
-## Uncertainty in damages only #
-yearly.dam.damage <- array(NA, dim=c(I, 85))#
-for(i in 1:I)#
-{#
-  for(j in 1:85)#
-  {#
-    yearly.dam.damage[i,j] <- orig.damage[i,j] * get.median.damage.mult(median.sim[j])#
-  }#
-  yearly.dam.damage[i,] <- yearly.dam.damage[i,]/accum.discount.rate#
-}#
-total.dam.damage <- apply(yearly.dam.damage,1,sum)#
-#
-total.damage <- apply(yearly.damage, 1, sum)
-I <- 10000
-yearly.mf.damage <- array(NA, dim=c(I, 85))#
-for(i in 1:I)#
-{#
-  for(j in 1:85)#
-  {#
-    yearly.mf.damage[i,j] <- median.damage[j] * get.damage.mult(median.sim[j],#
-                                                             damage.scenario[i])#
-  }#
-  yearly.mf.damage[i,] <- yearly.mf.damage[i,]/accum.discount.rate#
-}#
-total.mf.damage <- apply(yearly.mf.damage,1,sum)#
-#
-## Uncertainty in slr only #
-yearly.slr.damage <- array(NA, dim=c(I, 85))#
-for(i in 1:I)#
-{#
-  for(j in 1:85)#
-  {#
-    yearly.slr.damage[i,j] <- median.damage[j] * get.median.damage.mult(sim[i, (j+16)])#
-  }#
-  yearly.slr.damage[i,] <- yearly.slr.damage[i,]/accum.discount.rate#
-}#
-total.slr.damage <- apply(yearly.slr.damage,1,sum)#
-#
-## Uncertainty in damages only #
-yearly.dam.damage <- array(NA, dim=c(I, 85))#
-for(i in 1:I)#
-{#
-  for(j in 1:85)#
-  {#
-    yearly.dam.damage[i,j] <- orig.damage[i,j] * get.median.damage.mult(median.sim[j])#
-  }#
-  yearly.dam.damage[i,] <- yearly.dam.damage[i,]/accum.discount.rate#
-}#
-total.dam.damage <- apply(yearly.dam.damage,1,sum)#
-#
-total.damage <- apply(yearly.damage, 1, sum)#
-#
-########################################################################
-### Plots for paper
-## Median sea level rise#
-median.sim <- apply(sim, 2, median)[17:101]
 rm(list=ls())#
 #
 ### Read in damage data obtained from Finance Norway's website:#
@@ -1095,7 +911,7 @@ for(k in 1:85)#
 }#
 #
 # save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")#
-# load("calculatedDamage.RData")#
+#  load("calculatedDamage.RData")#
 #
 ### Cumulated additional damage due to sea level rise.#
 add.damage <- yearly.damage - constant.damage#
@@ -1227,61 +1043,9 @@ for(i in 1:I)#
 total.dam.damage <- apply(yearly.dam.damage,1,sum)#
 #
 total.damage <- apply(yearly.damage, 1, sum)
-par(mex=0.75)#
-### Cumulative damage costs without adaptation #
-plot(2016:2100, upper.95.yearly.cumsum/1e3,type="l",#
-     ylim=c(0,14), xlab="Year",#
-     ylab="Accumulated damage (billion NOK)", main="", lty=3)#
-### Cumulative damage costs for no sea level rise#
-polygon(c(2016:2100, rev(2016:2100)),#
-        c(upper.95.constant.cumsum/1e3, rev(lower.5.constant.cumsum/1e3)),#
-        col="gray80", border="gray80")#
-lines(2016:2100, median.constant.cumsum/1e3, lwd=2, col="gray40")#
-### Cumulative damage costs without adaptation #
-lines(2016:2100, lower.5.yearly.cumsum/1e3, lty=3)#
-lines(2016:2100, median.yearly.cumsum/1e3, lwd=2)#
-### Cumulative damage costs for adaptation in 2044#
-lines(2016:2100, upper.95.adapt.cumsum.2047/1e3, lty=3, col="red")#
-lines(2016:2100, lower.5.adapt.cumsum.2047/1e3, lty=3, col="red")#
-lines(2016:2100, median.adapt.cumsum.2047/1e3, lwd=2, col="red")
-x <- c(0,20,40)#
-plot(x, E[1, 2:4], type="o", col="black", xlim=c(-100,130), ylim=c(-180,1000),#
-     xlab="Sea level anomaly (cm)", ylab="Relative mean annual damage", main="(b)", axes=FALSE)#
-box()#
-axis(1)#
-axis(2, at=c(-200, 1, 200, 400, 600, 800, 1000), labels=c(0.005, 1, 200, 400, 600, 800, 1000))#
-z <- c(40,130)#
-w <- c(-100,0)#
-for(i in 1:15)#
-{#
-    lines(x, E[i, 2:4], type="o", col="black")#
-    res <- lm(as.double(E[i,3:4])~x[2:3])#
-    lines(z, res$coef[1] + z * res$coef[2], col="gray70")#
-    res <- lm(as.double(E[i,2:3])~x[1:2])#
-    lines(w, res$coef[1] + w * res$coef[2], col="gray70")#
-}#
-points(20, median(E[,3]), col="red", pch=15)#
-points(40, median(E[,4]), col="red", pch=15)#
-res <- lm(apply(E[,2:3],2,median)~x[1:2])#
-w <- c(-100, 20)#
-lines(w, res$coef[1] + w * res$coef[2], col="red", lwd=2)#
-res <- lm(apply(E[,3:4],2,median)~x[2:3])#
-z <- c(20,130)#
-lines(z, res$coef[1] + z * res$coef[2], col="red", lwd=2)
-?hist
-col="black", border="black", xlab="Total damage 2016-2100 (billion NOK)",#
-     ylab="Density", xaxs="i", yaxs="i", main="")
-hist(total.damage/1e3, freq=FALSE, ylim=c(0,5), xlim=c(0,10), xlog=T,ylog=T,breaks=seq(0,170,by=0.05),#
-     col="black", border="black", xlab="Total damage 2016-2100 (billion NOK)",#
-     ylab="Density", xaxs="i", yaxs="i", main="")
-hist(total.damage/1e3, freq=FALSE, xlog=T,ylog=T,breaks=seq(0,170,by=0.05),#
- col="black", border="black", xlab="Total damage 2016-2100 (billion NOK)",#
-ylab="Density", xaxs="i", yaxs="i", main="")
-range(total.damage/1e3)
-hist(total.damage/1e3, freq=FALSE, xlog=T,ylog=T,breaks=seq(0,570,by=0.5),#
-col="black", border="black", xlab="Total damage 2016-2100 (billion NOK)",#
-ylab="Density", xaxs="i", yaxs="i", main="")
-hist(log(total.damage/1e3, freq=FALSE), ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),#
+adapt.median
+par(mex=0.75, mar=c(5,4,2,2)+0.1)#
+hist(total.damage/1e3, freq=FALSE, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),#
      col="black", border="black", xlab="Total damage 2016-2100 (billion NOK)",#
      ylab="Density", xaxs="i", yaxs="i", main="") # black#
 hist(total.slr.damage/1e3, freq=FALSE, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),#
@@ -1295,4 +1059,72 @@ abline(v=median(total.slr.damage/1e3), col="#7D26CD", lwd=3)#
 abline(v=median(total.mf.damage/1e3), col="#4876FF", lwd=3)#
 abline(v=median(total.dam.damage/1e3), col="#008B45", lwd=3)#
 abline(v=sum(yearly.median.damage/1e3), col="yellow", lwd=3)#
+legend("topright", legend=c("Full uncertainty","SLR uncertainty","Effect uncertainty","Damage uncertainty", "No uncertainty"),#
+       col=c("black", "#7D26CD", "#4876FF", "#008B45", "yellow"), lty=1, lwd=2)#
 box()
+par(mex=0.75, mar=c(5,4,2,2)+0.1)#
+buckets <- seq(log(50),log(165000), by=0.1)#
+buckets <- exp(buckets)#
+my.hist <- hist(total.damage, breaks=buckets, plot=FALSE)#
+my.slr.hist <- hist(total.slr.damage, breaks=buckets, plot=FALSE)#
+my.mf.hist <- hist(total.mf.damage, breaks=buckets, plot=FALSE)#
+my.dam.hist <- hist(total.dam.damage, breaks=buckets, plot=FALSE)#
+plot(log(my.slr.hist$breaks[-1]), log(my.slr.hist$counts), type="h", col="#7D26CD",#
+     main="", ylab="Log frequency", xlab="Total damage 2016-2100 (million NOK)",#
+     lwd=2, axes=FALSE)#
+ticks <- c(50, 150, 500, 1500, 5000, 15000, 50000, 150000)#
+axis(1, at = log(ticks), labels=ticks)#
+axis(2)#
+box()
+lines(log(my.hist$breaks[-1])+0.02, log(my.hist$counts), col="black", type="h", lwd=2)#
+lines(log(my.mf.hist$breaks[-1])+0.04, log(my.mf.hist$counts), col="orange", type="h", lwd=2)#
+lines(log(my.dam.hist$breaks[-1])+0.06, log(my.dam.hist$counts), col="#008B45", type="h", lwd=2)#
+abline(v=log(sum(yearly.median.damage)),  col="gray50", lwd=2)#
+points(log(median(total.damage)), 7.8, col="black", pch=16)#
+points(log(median(total.slr.damage)),7.8,  col="#7D26CD", pch=16)#
+points(log(median(total.dam.damage)),7.8,  col="#008B45", pch=16)#
+points(log(sum(yearly.median.damage)),7.8,  col="gray50", pch=16)#
+points(log(median(total.mf.damage)),7.8,  col="orange", pch=16)#
+legend("topright",#
+       legend=c("Full uncertainty","SLR uncertainty","Effect uncertainty",#
+                "Damage uncertainty", "No uncertainty"),#
+       col=c("black", "#7D26CD", "orange", "#008B45", "gray50"), lty=1, lwd=2)#
+dev.off()
+par(mex=0.75, mar=c(5,4,2,2)+0.1)#
+buckets <- seq(log(50),log(165000), by=0.1)#
+buckets <- exp(buckets)#
+my.hist <- hist(total.damage, breaks=buckets, plot=FALSE)#
+my.slr.hist <- hist(total.slr.damage, breaks=buckets, plot=FALSE)#
+my.mf.hist <- hist(total.mf.damage, breaks=buckets, plot=FALSE)#
+my.dam.hist <- hist(total.dam.damage, breaks=buckets, plot=FALSE)#
+plot(log(my.slr.hist$breaks[-1]), log(my.slr.hist$counts), type="h", col="#7D26CD",#
+     main="", ylab="Log frequency", xlab="Total damage 2016-2100 (million NOK)",#
+     lwd=2, axes=FALSE)#
+ticks <- c(50, 150, 500, 1500, 5000, 15000, 50000, 150000)#
+axis(1, at = log(ticks), labels=ticks)#
+axis(2)#
+box()#
+lines(log(my.hist$breaks[-1])+0.02, log(my.hist$counts), col="black", type="h", lwd=2)#
+lines(log(my.mf.hist$breaks[-1])+0.04, log(my.mf.hist$counts), col="orange", type="h", lwd=2)#
+lines(log(my.dam.hist$breaks[-1])+0.06, log(my.dam.hist$counts), col="#008B45", type="h", lwd=2)#
+abline(v=log(sum(yearly.median.damage)),  col="gray50", lwd=2)#
+points(log(median(total.damage)), 7.8, col="black", pch=16)#
+points(log(median(total.slr.damage)),7.8,  col="#7D26CD", pch=16)#
+points(log(median(total.dam.damage)),7.8,  col="#008B45", pch=16)#
+points(log(sum(yearly.median.damage)),7.8,  col="gray50", pch=16)#
+points(log(median(total.mf.damage)),7.8,  col="orange", pch=16)#
+legend("topright",#
+       legend=c("Full uncertainty","SLR uncertainty","Effect uncertainty",#
+                "Damage uncertainty", "No uncertainty"),#
+       col=c("black", "#7D26CD", "orange", "#008B45", "gray50"), lty=1, lwd=2)
+sum(yearly.median.damage)
+range(buckets)
+range(total.damage)
+par(mex=0.75, mar=c(5,4,2,2)+0.1)#
+hist(total.damage/1e3, freq=FALSE, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,170,by=0.05),#
+     col="black", border="black", xlab="Total damage 2016-2100 (billion NOK)",#
+     ylab="Density", xaxs="i", yaxs="i", main="")
+range(total.damage/1e3)
+hist(total.damage/1e3, freq=FALSE, ylim=c(0,5), xlim=c(0,10), breaks=seq(0,555,by=0.5),#
+     col="black", border="black", xlab="Total damage 2016-2100 (billion NOK)",#
+     ylab="Density", xaxs="i", yaxs="i", main="")

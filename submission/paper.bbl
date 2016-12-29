@@ -1,4 +1,4 @@
-\begin{thebibliography}{31}
+\begin{thebibliography}{32}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -139,6 +139,11 @@ Rahmstorf, S., M.~Perrette, and M.~Vermeer (2011), Testing the robustness of
 Simpson, M. J.~R., K.~Breili, and H.~P. Kierulf (2014), Estimates of
   twenty-first century sea-level changes for norway, \textit{Climate Dynamics},
   pp. 1405--1424.
+
+\bibitem[{\textit{Sorensen et~al.}(2013)\textit{Sorensen, Madsen, and
+  Knudsen}}]{sealevel2012}
+Sorensen, C., H.~T. Madsen, and S.~B. Knudsen (2013), Hojvandsstatistikker
+  2012, \textit{Tech. rep.}, Kystdirektoratet, Lemvig.
 
 \bibitem[{\textit{Stocker et~al.}(2013)\textit{Stocker, Qin, Plattner, Tignor,
   Allen, Boschung, Nauels, Xia, Bex, and Midgley}}]{ipcc}
