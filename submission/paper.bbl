@@ -1,4 +1,4 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{31}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -115,6 +115,10 @@ Mosteller, F., and J.~W. Tukey (1977), \textit{Data Analysis and Regression},
 Mote, P., A.~Petersen, S.~Reeder, H.~Shipman, and L.~W. Binder (2008), Sea
   level rise in the coastal waters of {W}ashington {S}tate, \textit{Tech.
   rep.}, University of Washington Climate Impacts Group.
+
+\bibitem[{\textit{{Norwegian Ministry of Finance}}(2012)}]{DiscountRate}
+{Norwegian Ministry of Finance} (2012), Cost-benefit analysis, {Official
+  Norwegian Reports NOU 2012: 16}.
 
 \bibitem[{\textit{{R Core Team}}(2016)}]{R}
 {R Core Team} (2016), \textit{R: A Language and Environment for Statistical

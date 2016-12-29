@@ -146,7 +146,7 @@ for(k in 1:85)
 }
 
 # save(orig.damage, damage.scenario, yearly.damage, constant.damage, adapted.damage, file="calculatedDamage.RData")
-# load("calculatedDamage.RData")
+#  load("calculatedDamage.RData")
 
 ### Cumulated additional damage due to sea level rise.
 add.damage <- yearly.damage - constant.damage
@@ -288,18 +288,22 @@ total.damage <- apply(yearly.damage, 1, sum)
 #######################################################################
 
 ## Plots showing the underlying data used in the adaptation decision analysis
-pdf(file="../../submission/DecisionAnalysisBergen.pdf", width=10, height=5, points=12)
+pdf(file="../../submission/DecisionAnalysisBergenPartI.pdf", width=5, height=5, points=12)
 ### (a) Plot of damage data and fitted distribution
-par(mex=0.75, mfrow=c(1,2))
-hist(sf.damage, main="(a)", xlab="Amount (million NOK)", col="gray60", breaks=50, xlim=c(0,65),
+## par(mex=0.75, mfrow=c(1,2))
+par(mex=0.75, mar=c(5,4,2,2)+0.1)
+hist(sf.damage, main="", xlab="Amount (million NOK)", col="gray60", breaks=50,  xlim=c(0,65),
      freq=FALSE)
 x <- seq(0, 65, by=0.01)
 y <- dburr(x, shape1=optim.out$par[1], shape2=optim.out$par[2], rate=optim.out$par[3])
 lines(x,y,col="red",lwd=2)
+dev.off()
+pdf(file="../../submission/DecisionAnalysisBergenPartII.pdf", width=5, height=5, points=12)
+par(mex=0.75, mar=c(5,4,2,2)+0.1)
 ### (b) Plot of extrapolated damage change profiles 
 x <- c(0,20,40)
 plot(x, E[1, 2:4], type="o", col="black", xlim=c(-100,130), ylim=c(-180,1000),
-     xlab="Sea level anomaly (cm)", ylab="Relative mean annual damage", main="(b)", axes=FALSE)
+     xlab="Sea level anomaly (cm)", ylab="Relative mean annual damage", main="", axes=FALSE)
 box()
 axis(1)
 axis(2, at=c(-200, 1, 200, 400, 600, 800, 1000), labels=c(0.005, 1, 200, 400, 600, 800, 1000))
