@@ -42,11 +42,11 @@ Sea level rise has serious consequences for harbor infrastructure, storm drains 
 
 
 \section{Introduction}\label{sec:intro}
-Long-term planning and decision-making regarding societal infrastructure along coastal areas must account for a changing climate. In particular, potential changes in local sea level can yield numerous effects such as frequent flooding, inundation and back flow of storm drainage and sewer systems, destructive erosion and contamination of wetlands and other habitats. Considerable challenges continue to exist in understanding  the impacts of a combination of sea level rise and storm surges and the implementation of potential adaptation options to reduce these impacts. Severe inherent uncertainties persist along all parts of the processing chain from climate projections to adaptation assessments, and it is critical that decision-making appropriately accounts for this.
- 
+The potential impact of climate change on local sea level, yielding effects such as frequent flooding, inundation and backflow of storm drainage and sewer systems, destructive erosion and contamination of wetlands and other habitats, requires city planners to make decisions in the presence of substantial uncertainty.
+
 As adaptation decision-making is an ongoing process of weighing and choosing which measures should be taken at which moment in time \citep{Hallegatte&2012} adaptive planning methods need to support decisions in the short term, while considering long-term developments. Challenges of adaptation decision-making under uncertainty relate to the incorporation of spatial, inter-temporal and flexibility aspects of adaptation priorities \citep{FankhauserSoare2013}, and the linkage with specific characteristics of sectors and contexts \citep{BisaroSwartHinkel2016, HinkelBisaro2016}. Several economic decision support tools and methods exist for adaptation assessment under uncertainty \citep[e.g.][]{Chambwera&2014, WilbyDessai2010, WalkerHaasnootKwakkel2013}. However, \citet{Watkiss&2015} conclude that these tools are very resource intensive and complex in the context of long-term adaptation investment decisions and call for the development of ``light touch'' approaches to better support local adaptation making.
- 
-In this paper we combine the uncertainty of sea level projections with a simplified decision framework under uncertainty where planners want to know how early they should implement costly adaptation measures.  We discuss the advantages of using a fully probabilistic approach in a light touch decision framework that accounts for uncertainty both in climate projections and damage assessments, where information on uncertainty is turned into a driver of change rather than a barrier.
+
+In this paper we employ light touch decision tools to demonstrate the importance of combining projections of sea level rise and flood damages alongside a detailed quantification of both hydrologic and economic uncertainties in the context of real-life decision-problems experienced by stakeholders and authorities in two northern European cities, Bergen in Norway and Esbjerg in Denmark, see Figure~\ref{fig:CityMaps}. Based on communications with local end-users we highlight the value of taking into account uncertainty through two simplified and complementary case studies, where in the first one  planners want to know how early they should implement costly adaptation measures, whereas in the second case the aim is to highlight the risk of flooding in coastal areas, e.g. in order to prioritize future adaptation actions and investments. In both cases we show that embracing the uncertainties derived from economic and hydrologic models is absolutely crucial in order to answer the question of "are we sure we want to do this?". 
 
 \begin{figure}[!hbpt]
 \begin{center}
@@ -57,13 +57,15 @@ In this paper we combine the uncertainty of sea level projections with a simplif
 \end{center}
 \end{figure}
 
-We illustrate the sea level rise projections and timing of adaptation measures for two case studies in Northern Europe, namely the city of Bergen in Norway and Esbjerg in Denmark, see Figure~\ref{fig:CityMaps}. The Norwegian city of Bergen is the capital of Hordaland County. The city center is located on Byfjorden, and is surrounded by mountains. It has the largest port in Norway, both in terms of freight and passengers. The historic harbor area, Bryggen, is the only Hanseatic trade center remaining in its original style, and has been declared a UN-ESCO World Heritage site\footnote{See \url{http://whc.unesco.org/en/list/59}.}. Bryggen is regularly flooded at extreme tides, and it is feared that as sea levels rise, floods will become a major problem in other parts of Bergen as well \citep{bergenreport}.
+The Norwegian city of Bergen is the capital of Hordaland County. The city center is located on Byfjorden, and is surrounded by mountains. It has the largest port in Norway, both in terms of freight and passengers. The historic harbor area, Bryggen, is the only Hanseatic trade center remaining in its original style, and has been declared a UNESCO World Heritage site\footnote{See \url{http://whc.unesco.org/en/list/59}.}. Bryggen is regularly flooded at extreme tides, and it is feared that as sea levels rise, floods will become a major problem in other parts of Bergen as well \citep{bergenreport}.
 
 The municipality of Bergen has, in cooperation with private actors, analyzed several possible adaptation measures against sea level rise. The measures range from an outer barrier that would protect the entire metropolitan area to various protection measures of limited areas in the inner harbor \citep{bergenreport}. While the viability of the constructions and the associated construction costs have been carefully analyzed, the optimal timing of potential adaptation measures and the effects of the associated uncertainties have yet to be investigated. We perform such an analysis where we consider uncertainty in projected sea level rise, damage costs and the effects of sea level rise on changes in damage costs. 
 
-Esbjerg, on the west coast of Jutland, has the second largest harbor in Denmark. It can be subjected to substantial storm surges, which, in conjunction with heavy rainfall, can flood substantial parts of the town.
- 
-The remainder of the paper is organized as follows. Section \ref{sealevelproj} describes our approach to projecting sea level. In section \ref{decision_tools_PartI} we describe the decision framework focused on the timing of proactive adaptation decision. We apply this framework to sea level projections and adaptation for Bergen, Norway, and for Esbjerg, Denmark in section \ref{cases}. In the final section \ref{unc} we demonstrate the consequences of ignoring the uncertainty in the projections.
+Esbjerg, on the southwest coast of Jutland, is the fifth-largest city in Denmark and the largest urban area in the region. The city hosts one of the largest harbours  in Denmark, which serves as a focal point for offshore activities in the North Sea, including the continued development of offshore wind power and extensive activities related to the extraction of oil and gas. As a result critical infrastructures and commercial buildings figure prominently in the coastal zone. Esbjerg is frequently subject to substantial storms and storm surges, causing severe flooding of the harbour and the city. The highest ever since 1874 was recorded in 1981, where the harbour was completely flooded and the water level reached a record-high 433 cm above the norm, causing massive economic losses.  More generally, storm surges causing water levels in Esbjerg to rise to between 2 and 3 metres have quadrupled over the last four decades according to local records, whereas half of the most severe events have taken place since 1975.
+
+As in the case of Bergen, sea level rise caused by climate change is expected to compound these risks, alongside parallel threats caused by increased risks of pluvial flooding and rising ground water levels in Esbjerg. The municipality recently adopted its climate adaptation plan, which in its first phase is aimed at identifying present and future flood-prone areas, e.g. to avoid urban development into such areas, to limit damages to buildings of high societal or cultural value, and to pave the way for implementing cost-effective adaptation measures in the second phase of the plan.   
+
+The remainder of the paper is organized as follows. Section \ref{sealevelproj} describes our approach to projecting sea level. In sections \ref{decision_tools_PartI} and \ref{decision_tools_PartII} we describe the type of decision problems that we are going to attack. We apply these tools to sea level projections for Bergen, Norway, and for Esbjerg, Denmark in section \ref{cases}. In the final section \ref{unc} we demonstrate the consequences of ignoring the uncertainty in the projections.
 
 \section{Sea level projections}
 \label{sealevelproj}
@@ -106,7 +108,11 @@ The main assumption is using historical relationships in statistical projections
 \section{Timing of adaptation measures}
 \label{decision_tools_PartI}
 
-To assess the optimal timing of an adaptation measure, we employ a probabilistic extension of the framework described by \citep{Fankhauser&1999} in which we obtain a probabilistic distribution for the net present value damage in a given year for various adaptation options. The probabilistic distribution is constructed by considering uncertainty in the local sea level projections, in the annual damage costs, and in the effect of changes in sea level on the annual damage costs. 
+There is an increasing need for more detailed economic analysis, including simple methods and tools for assessment of options, especially since as Downing (2012) recognizes adaptation is moving from theory to practice and practitioners try to deal with how to begin adapting. This leads to an increasing need and interest in the appraisal of options.
+
+Several economic decision support tools and methods exist for adaptation assessment under uncertainty. Robust decision-making approaches are able to better incorporate uncertainty and a broad range of climate scenarios to capture as much of the uncertainty on future climates as possible (Dittrich et al. 2016). These approaches can be classified according to a science-first or policy-first approach. The former has a ‘predict-then-act’ foundation, which starts with for example probabilistic climate projections and impact assessments, not linked to any specific adaptation choices (Jones et al., 2014). The latter starts out with the formulated adaptation plans and not impacts and their functioning is tested against different future projections (Dittrich et al. 2016).
+
+We take a policy-first approach, in which we test a current adaptation plan against different sea level and damage projections and the inclusion of different sources of uncertainty. We focus on what this implies for the timing of adaptation measures and the implications of including uncertainty. In particular, we employ a probabilistic extension of the framework described by \citep{Fankhauser&1999} in which we obtain a probabilistic distribution for the net present value damage in a given year for various adaptation options. The probabilistic distribution is constructed by considering uncertainty in the local sea level projections, in the annual damage costs, and in the effect of changes in sea level on the annual damage costs. 
 
 \subsection{Annual damage costs} 
 
@@ -171,9 +177,16 @@ The distribution in \eqref{eq:FutureDamage} describes the projected damage distr
 \end{linenomath*}
 
 \subsection{Limitations of the decision framework}
-The main limitation of this light touch decision framework is that we have significantly simplified the assessment of the effect of sea level rise on the damage costs. In particular, the linear extrapolation of the results reported in \citet{Hallegatte&2013} might provide a conservative estimate of the effect of extreme sea level rise. However, with only two data points, extrapolation approaces such as a power law or exponential growth seem unfeasible. Alternatively, a modeling framework similar to that of \citet{Hallegatte&2013} could be applied directly to a larger range of potential changes in sea level. Our framework also simplifies the cost and effect of an adaptation option during construction in that we assume no effect until the construction is finished with all the construction cost falling in the last year of the construction. Especially for larger constructions, these assumptions might need to be modified. Additionally, we have not specifically accounted for potential changes in storm surge patterns.
+The main limitation of this light touch decision framework is that we have significantly simplified the assessment of the effect of sea level rise on the damage costs. In particular, the linear extrapolation of the results reported in \citet{Hallegatte&2013} might provide a conservative estimate of the effect of extreme sea level rise. However, with only two data points, extrapolation approaces such as a power law or exponential growth seem unfeasible.
+
+Alternatively, a modeling framework similar to that of \citet{Hallegatte&2013} could be applied directly to a larger range of potential changes in sea level. The elements of such a framework might include an appropriate social discount rate, valuing environmental goods in monetary terms, incorporate socio-economic assumptions and long-term policy goals of decision makers, as well as that climate change is often not the only driver that decision makers should consider, therefore costs and benefits should be studied in a wider context (Dittrich et al, 2016).
+
+Our framework simplifies the cost and effect of an adaptation option during construction in that we assume no effect until the construction is finished with all the construction cost falling in the last year of the construction. Especially for larger constructions, these assumptions might need to be modified. Additionally, we have not specifically accounted for potential changes in storm surge patterns.
+
 
 \section{Danish decision framework}
+\label{decision_tools_PartI}
+
 
 \section{Case studies}
 \label{cases}
@@ -231,7 +244,9 @@ For Esbjerg, the glacial isostatic adjustment is 0.06 (0.03) cm/yr. The time ser
 \end{center}
 \end{figure}
 
-Figure~\ref{fig:BergenDamageDist} shows the histogram of observed annual damage costs for Bergen and the associated Burr distribution. The parameter estimates are $\hat{\alpha} = 1.27$, $\hat{\gamma} = 0.51$ and $\hat{\theta} = 0.002$. \citet{bergenreport} discuss several different adaptation options for Bergen. In Figure~\ref{fig:TotalDamageBergen} we consider the optimal timing of an adaptation option that includes two inner barriers at V{\aa}gen and Damg{\aa}rdssundet, that is, one on each side of central Bergen. The combined construction cost of the two barriers for a protection against 75 cm sea level rise is estimated at 1.13 billion NOK (2015 level). 
+Figure~\ref{fig:BergenDamageDist} shows the histogram of observed annual damage costs for Bergen and the associated Burr distribution. The parameter estimates are $\hat{\alpha} = 7.84$, $\hat{\gamma} = 0.40$ and $\hat{\theta} = 0.007$. \citet{bergenreport} discuss several different adaptation options for Bergen. In Figure~\ref{fig:TotalDamageBergen} we consider the optimal timing of an adaptation option that includes two inner barriers at V{\aa}gen and Damg{\aa}rdssundet, that is, one on each side of central Bergen. The combined construction cost of the two barriers for a protection against 75 cm sea level rise is estimated at 1.13 billion NOK (2015 level). 
+
+
 
 \begin{figure}[!hbpt]
 \begin{center}
@@ -249,13 +264,21 @@ Figure~\ref{fig:BergenDamageDist} shows the histogram of observed annual damage 
 \end{center}
 \end{figure}
 
+\subsection{Identifying flood-prone areas}
 
-\subsection{Selection of adaptation measures(?) {\color{blue} (MD)}}
+In 2014 the municipality of Esbjerg adopted its climate adaptation plan {\color{blue}(ref)}, which will cover the period from 2014-2026, and which aims to reduce the risk of flooding caused by storm surges, heavy rainfall and rising ground water levels, respectively. In the following and based on interviews with end-users from the municipality we will focus on the harbour of Esbjerg and the nearby coastal areas, and we will only consider the hazard of coastal flooding, though evidently in some areas the flood risk is compounded. 
 
-A case study focusing on Denmark. 
+The initial scoping of the climate adaptation plan in Esbjerg was completed in 2014 and includes a preliminary value and risk mapping, considering critical infrastructure and buildings of high cultural and societal value as identified by the municipality, while informed by spatial floods maps for different scenarios corresponding to each of the three different kinds of hydrological events (sea level rise/storm surges, pluvial flooding and rising ground water levels). In terms of coastal floods the mapping considers only one type of storm surge, corresponding to a 20-year return event (based on historical storm surge statistics), and increased sea level due to climate change was not accounted for. 
+
+The risk for any given map area as the probability of, e.g. a certain flood depth, is derived from a hydrological flood model (not including urban drainage system) times a valuation of the consequences, which - similar to the Bergen case - is essentially a loss function associating the flood depth with a measure of economic cost. 
+
+
+
 
 \section{The value of including uncertainty}
 \label{unc}
+
+\subsection{Sea level projections}
 
 In many cases sea level rise projections are given as a single number for each scenario, usually the mean or median of the ensemble of projections from different climate models (e.g. \citet{climateimpactgroup}). Sometimes the spread of the ensemble is used to assess the uncertainty in the projections (e.g., the Norwegian Environmental Agency recommends using the upper ensemble value for RCP 8.5 as the basis for planning decision, pers. comm. from Even Nilsson, Norwegian Mapping Authority). In our analysis there are two more sources of uncertainty, namely the two regression models. Figure \ref{fig:unc} shows the single number (vertical black line), the ensemble spread (histogram), the uncertainty including only the global model (red) and the full uncertainty (blue) for Bergen projections of sea level rise relative to 1999 under RCP 8.5. We see that the ensemble range is about 16 cm, whereas the overall uncertainty range is about 40 cm.
 
@@ -268,9 +291,21 @@ In many cases sea level rise projections are given as a single number for each s
 \end{center}
 \end{figure}
 
+\subsection{Damage costs}
 
+\subsection{...}
 
+\section{Conclusions and discussion}
 
+Important to continue an iterative and interactive with end-users, as the decision framework provides actionable information to decision-makers, who will then make their own decisions. These decision are then incorporated into the current adaptation strategy. Continued loop to identify potential vulnerabilities of the approaches across a wide-range of possible futures.
+
+Take home message
+
+\begin{itemize}
+\item It is possible to account for uncertainty even if you do a light touch decision-making approach -- Explain what it implies if you don't account and if you do
+\item Proof of concept -- connect in a probabilistic way (normally done in a discrete way) -- consider uncertainty in both ways
+\item Improve the accessibility and demonstrating the general applicability of policy first approaches -- towards more generic toolkit
+\end{itemize}
 
 %  ACKNOWLEDGMENTS
 \begin{acknowledgments}
