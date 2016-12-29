@@ -427,6 +427,17 @@ legend("topright",
        col=c("black", "#7D26CD", "orange", "#008B45", "gray50"), lty=1, lwd=2)
 dev.off()
 
+### Map of Bergen
+library(RgoogleMaps)
+MyMap = GetMap(center=c(60.3913, 5.3221), zoom=13, destfile="../../submission/BergenMap.png", size=c(500,500), maptype="terrain", GRAYSCALE=TRUE)
+MyMap2 = GetMap(center=c(55.4765, 8.4594), zoom=10, destfile="../../submission/EsbjergMap.png", size=c(500,500), maptype="terrain", GRAYSCALE=TRUE)
+
+
+## mymarkers <- cbind.data.frame(lat=c(60.383723, 60.400241), lon=c(5.316847, 5.312512))
+## pdf(file="../../submission/BergenMap.pdf", width=5, height=5, points=12)
+## tmp = PlotOnStaticMap(MyMap, lat=mymarkers[,"lat"], lon=mymarkers[,"lon"], cex=2.5, pch=20, col="red", add=T) 
+## dev.off()
+
 #######################################################################
 ### Other plots 
 #######################################################################

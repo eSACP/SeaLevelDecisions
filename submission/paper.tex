@@ -47,8 +47,17 @@ Long-term planning and decision-making regarding societal infrastructure along c
 As adaptation decision-making is an ongoing process of weighing and choosing which measures should be taken at which moment in time \citep{Hallegatte&2012} adaptive planning methods need to support decisions in the short term, while considering long-term developments. Challenges of adaptation decision-making under uncertainty relate to the incorporation of spatial, inter-temporal and flexibility aspects of adaptation priorities \citep{FankhauserSoare2013}, and the linkage with specific characteristics of sectors and contexts \citep{BisaroSwartHinkel2016, HinkelBisaro2016}. Several economic decision support tools and methods exist for adaptation assessment under uncertainty \citep[e.g.][]{Chambwera&2014, WilbyDessai2010, WalkerHaasnootKwakkel2013}. However, \citet{Watkiss&2015} conclude that these tools are very resource intensive and complex in the context of long-term adaptation investment decisions and call for the development of ``light touch'' approaches to better support local adaptation making.
  
 In this paper we combine the uncertainty of sea level projections with a simplified decision framework under uncertainty where planners want to know how early they should implement costly adaptation measures.  We discuss the advantages of using a fully probabilistic approach in a light touch decision framework that accounts for uncertainty both in climate projections and damage assessments, where information on uncertainty is turned into a driver of change rather than a barrier.
- 
-We illustrate the sea level rise projections and timing of adaptation measures for two case studies in Northern Europe, namely the city of Bergen in Norway and Esbjerg in Denmark. The Norwegian city of Bergen is the capital of Hordaland County. The city center is located on Byfjorden, and is surrounded by mountains. It has the largest port in Norway, both in terms of freight and passengers. The historic harbor area, Bryggen, is the only Hanseatic trade center remaining in its original style, and has been declared a UN-ESCO World Heritage site\footnote{See \url{http://whc.unesco.org/en/list/59}.}. Bryggen is regularly flooded at extreme tides, and it is feared that as sea levels rise, floods will become a major problem in other parts of Bergen as well \citep{bergenreport}.
+
+\begin{figure}[!hbpt]
+\begin{center}
+  \includegraphics[width=0.45\linewidth]{BergenMap.png}
+  \includegraphics[width=0.45\linewidth]{EsbjergMap.png}
+\caption{Terrain maps of central Bergen, Norway (left) and Esbjerg, Denmark (right).}
+\label{fig:CityMaps}
+\end{center}
+\end{figure}
+
+We illustrate the sea level rise projections and timing of adaptation measures for two case studies in Northern Europe, namely the city of Bergen in Norway and Esbjerg in Denmark, see Figure~\ref{fig:CityMaps}. The Norwegian city of Bergen is the capital of Hordaland County. The city center is located on Byfjorden, and is surrounded by mountains. It has the largest port in Norway, both in terms of freight and passengers. The historic harbor area, Bryggen, is the only Hanseatic trade center remaining in its original style, and has been declared a UN-ESCO World Heritage site\footnote{See \url{http://whc.unesco.org/en/list/59}.}. Bryggen is regularly flooded at extreme tides, and it is feared that as sea levels rise, floods will become a major problem in other parts of Bergen as well \citep{bergenreport}.
 
 The municipality of Bergen has, in cooperation with private actors, analyzed several possible adaptation measures against sea level rise. The measures range from an outer barrier that would protect the entire metropolitan area to various protection measures of limited areas in the inner harbor \citep{bergenreport}. While the viability of the constructions and the associated construction costs have been carefully analyzed, the optimal timing of potential adaptation measures and the effects of the associated uncertainties have yet to be investigated. We perform such an analysis where we consider uncertainty in projected sea level rise, damage costs and the effects of sea level rise on changes in damage costs. 
 
@@ -59,11 +68,8 @@ The remainder of the paper is organized as follows. Section \ref{sealevelproj} d
 \section{Sea level projections}
 \label{sealevelproj}
 
-We project local sea level changes by Modeling two processes:
-\begin{enumerate}
-\item The relationship between global temperature and global sea level;
-\item The relationship between global sea level and local sea level.
-\end{enumerate}
+We project local sea level changes by Modeling two processes, the relationship between global temperature and global sea level, and the relationship between global sea level and local sea level.
+
 
 \subsection{Global sea level}
 Most climate models do not explicitly provide sea level as an output of the calculations. Rather, the IPCC AR5 report \citep[ch.~13]{ipcc} combines the heat expansion of the ocean with temperature forced models for glacial melt, Greenland ice melt, and Antarctic ice melt and with land rise due to rebound from the last ice age. Judging from the supplementary material to \citet[ch.~13]{ipcc}, the uncertainty assessment is only based on the spread of the ensemble of temperature projections, not on the additional uncertainty in the ice models used.
@@ -100,12 +106,7 @@ The main assumption is using historical relationships in statistical projections
 \section{Timing of adaptation measures}
 \label{decision_tools_PartI}
 
-To assess the optimal timing of an adaptation measure, we employ a probabilistic extension of the framework described by \citep{Fankhauser&1999} in which we obtain a probabilistic distribution for the net present value damage in a given year for various adaptation options. The probabilistic distribution is constructed by considering uncertainty
-\begin{itemize}
-\item in the local sea level projections;
-\item in the annual damage costs;
-\item in the effect of changes in sea level on the annual damage costs. 
-\end{itemize}
+To assess the optimal timing of an adaptation measure, we employ a probabilistic extension of the framework described by \citep{Fankhauser&1999} in which we obtain a probabilistic distribution for the net present value damage in a given year for various adaptation options. The probabilistic distribution is constructed by considering uncertainty in the local sea level projections, in the annual damage costs, and in the effect of changes in sea level on the annual damage costs. 
 
 \subsection{Annual damage costs} 
 
@@ -170,7 +171,7 @@ The distribution in \eqref{eq:FutureDamage} describes the projected damage distr
 \end{linenomath*}
 
 \subsection{Limitations of the decision framework}
-The main limitation of this light touch decision framework is that we have significantly simplified the assessment of the effect of sea level rise on the damage costs. In particular, the linear extrapolation of the results reported in \citet{Hallegatte&2013} might provide a conservative estimate of the effect of extreme sea level rise. However, with only two data points, extrapolation approaces such as a power law or exponential growth seem unfeasible. Alternatively, a modeling framework similar to that of \citet{Hallegatte&2013} could be applied directly to a larger range of potential changes in sea level. Additionally, we have not specifically accounted for potential changes in storm surge patterns.
+The main limitation of this light touch decision framework is that we have significantly simplified the assessment of the effect of sea level rise on the damage costs. In particular, the linear extrapolation of the results reported in \citet{Hallegatte&2013} might provide a conservative estimate of the effect of extreme sea level rise. However, with only two data points, extrapolation approaces such as a power law or exponential growth seem unfeasible. Alternatively, a modeling framework similar to that of \citet{Hallegatte&2013} could be applied directly to a larger range of potential changes in sea level. Our framework also simplifies the cost and effect of an adaptation option during construction in that we assume no effect until the construction is finished with all the construction cost falling in the last year of the construction. Especially for larger constructions, these assumptions might need to be modified. Additionally, we have not specifically accounted for potential changes in storm surge patterns.
 
 \section{Danish decision framework}
 
@@ -220,26 +221,30 @@ For the relationship between global annual mean temperature and global annual me
 
 For Esbjerg, the glacial isostatic adjustment is 0.06 (0.03) cm/yr. The time series regression model relating gia-corrected local to global sea level is an MA(1) model with parameter 0.17 (0.09). The regression slope is 1.02 (0.06). The right panel of figure \ref{fig:ci} shows the simultaneous 90\% confidence region for sea level rise relative to 1999 under scenario RCP 8.5.
 
+\subsection{Timing of adaptation measures in Bergen}
 
-\subsection{Timing of adaptation measures {\color{blue} (KdB, TT)}}
-
-The histogram of the observed annual damages and the estimated distribution are given in Figure~\ref{fig:BergenDamageDist}. The parameter estimates for the Burr distribution are $\hat{\alpha} = 1.27$, $\hat{\gamma} = 0.51$ and $\hat{\theta} = 0.002$. 
-
-\begin{figure}
+\begin{figure}[!hbpt]
 \begin{center}
-\includegraphics[width=\linewidth]{DecisionAnalysisBergen.pdf}
-\caption{Damage data used in the decision analysis for Bergen: (a) Estimated distribution of annual storm surge damage in Bergen for 2015 (red) based on observed annual damage in Hordaland and Rogaland 1980-2015 (gray bars); (b) Relative change in mean annual damage as a function of sea level rise for 15 European cites as estimated by \cite{Hallegatte&2013} (black circles) with linearly extrapolated values indicated by gray lines. The median change and the corresponding extrapolation are indicated in red.}
+\includegraphics[width=0.5\linewidth]{DecisionAnalysisBergenPartI.pdf}
+\caption{Estimated distribution of annual damage costs in Bergen for 2015 (red) based on observed annual damage in Hordaland and Rogaland counties 1980-2015 (gray bars).}
 \label{fig:BergenDamageDist}
 \end{center}
 \end{figure}
 
+Figure~\ref{fig:BergenDamageDist} shows the histogram of observed annual damage costs for Bergen and the associated Burr distribution. The parameter estimates are $\hat{\alpha} = 1.27$, $\hat{\gamma} = 0.51$ and $\hat{\theta} = 0.002$. \citet{bergenreport} discuss several different adaptation options for Bergen. In Figure~\ref{fig:TotalDamageBergen} we consider the optimal timing of an adaptation option that includes two inner barriers at V{\aa}gen and Damg{\aa}rdssundet, that is, one on each side of central Bergen. The combined construction cost of the two barriers for a protection against 75 cm sea level rise is estimated at 1.13 billion NOK (2015 level). 
 
-
+\begin{figure}[!hbpt]
+\begin{center}
+\includegraphics[width=\linewidth]{TotalDamageCostsAdaptation.pdf}
+\caption{Projected total damage costs in Bergen for the time period 2016-2100 as a function of the timing of an adaptation measure consisting of the construction of two inner barriers. The median projection under each adaptation scenario is indicated in red with gray bars denoting the 90\% projection intervals. The median projected total damage cost under no action is shown with a black line with the corresponding 90\% projection interval indicated by dotted lines. }  
+\label{fig:TotalDamageBergen}
+\end{center}
+\end{figure}
 
 \begin{figure}[!hbpt]
 \begin{center}
 \includegraphics[width=0.5\linewidth]{CumDamageCostsBergen.pdf}
-\caption{Distribution of accumulated future loss 2016-2100 under RCP 8.5 and assuming that no adaptation measures are implemented.} 
+\caption{Median projected cumulative damage costs in Bergen under constant sea level (gray line), under sea level rise according to RCP 8.5 with no adaptation action (black line) and with the construction of two inner barriers in 2047 (red line). The shaded gray area denotes the 90\% projection interval under constant sea level. Dotted lines indicate the 90\% projection intervals with sea level rise according to RCP 8.5. }
 \label{fig:NoAction}
 \end{center}
 \end{figure}
