@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 DEC 2016 17:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 DEC 2016 20:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -705,7 +705,7 @@ File: Floodmaps_Harbour.png Graphic file (type png)
 
 <use Floodmaps_Harbour.png>
 Package pdftex.def Info: Floodmaps_Harbour.png used on input line 297.
-(pdftex.def)             Requested size: 357.73405pt x 253.15492pt.
+(pdftex.def)             Requested size: 397.48499pt x 281.2802pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 298--298
 []\T1/ntxrx/bx/n/9 Figure  8. \T1/ntxrx/m/n/9 Flood ex-tents and depths for the
@@ -780,13 +780,7 @@ ac-tors at their me-dian value. The me-dian of each
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13 <./unc.pdf>]
-Overfull \hbox (3.5103pt too wide) in paragraph at lines 341--342
-[]\T1/ntxrx/m/n/10 It is pos-si-ble to ac-count for un-cer-tainty even if you d
-o a light touch decision-making 
- []
-
-(./paper.bbl [14 <./UncertaintyLog.pdf>]
+ [13 <./unc.pdf>] (./paper.bbl [14 <./UncertaintyLog.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15])
@@ -825,7 +819,7 @@ exmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/texmf-di
 st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on paper.pdf (16 pages, 6232177 bytes).
+Output written on paper.pdf (16 pages, 6232311 bytes).
 PDF statistics:
  207 PDF objects out of 1000 (max. 8388607)
  145 compressed objects within 2 object streams
