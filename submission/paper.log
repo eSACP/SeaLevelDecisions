@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 DEC 2016 14:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 DEC 2016 17:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -496,64 +496,67 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./BergenMap.png (PNG copy)> <./EsbjergMap.png (PNG copy)>]
-Overfull \hbox (4.3578pt too wide) in paragraph at lines 79--80
+Overfull \hbox (4.3578pt too wide) in paragraph at lines 79--83
 \T1/ntxrx/m/n/10 [2014] to re-late global an-nual mean tem-per-a-ture anoma-lie
 s to global mean sea level anoma- 
  []
 
-
-Underfull \vbox (badness 5119) has occurred while \output is active []
-
- [4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 130.
-
-(/usr/local/texlive/2013/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+[4] [5]
+LaTeX Font Info:    Try loading font information for U+bbm on input line 128.
+ (/usr/local/texlive/2013/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
 
 LaTeX Font Warning: Font shape `U/bbm/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 130.
+(Font)              size <5> substituted on input line 128.
 
 LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <10> not available
-(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 146.
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 144.
 
 LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <7.3> not available
-(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 146.
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 144.
 
 LaTeX Font Info:    Font shape `T1/ntxrx/b/n' in size <5.5> not available
-(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 146.
+(Font)              Font shape `T1/ntxrx/bx/n' tried instead on input line 144.
 
 <DecisionAnalysisBergenPartII.pdf, id=34, 361.35pt x 361.35pt>
 File: DecisionAnalysisBergenPartII.pdf Graphic file (type pdf)
 
 <use DecisionAnalysisBergenPartII.pdf>
 Package pdftex.def Info: DecisionAnalysisBergenPartII.pdf used on input line 15
-3.
+1.
 (pdftex.def)             Requested size: 198.7425pt x 198.74312pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--154
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
 []\T1/ntxrx/bx/n/9 Figure  2. \T1/ntxrx/m/n/9 Rel-a-tive change in mean an-nual
  dam-age as a func-tion of sea level rise for 15 Eu-ro-pean cites as
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--154
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
 \T1/ntxrx/m/n/9 es-ti-mated by \T1/ntxrx/m/it/9 Hal-le-gatte et al. \T1/ntxrx/m
 /n/9 [2013] (black cir-cles) with lin-early ex-trap-o-lated val-ues in-di-cated
  by gray lines.
  []
 
-[6] [7 <./DecisionAnalysisBergenPartII.pdf>]
-Overfull \hbox (19.9746pt too wide) in paragraph at lines 206--207
+
+Underfull \vbox (badness 3965) has occurred while \output is active []
+
+ [6]
+[7 <./DecisionAnalysisBergenPartII.pdf>]
+Overfull \hbox (19.9746pt too wide) in paragraph at lines 204--205
 \T1/ntxrx/m/n/10 Nat-u-ral Per-ils Pool (NPP; data are avail-able at $\T1/ntxtt
 /m/n/10 https : / / www . finansnorge . no / statistikk / 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (9.72525pt too wide) in paragraph at lines 206--207
+[]\T1/ntxrx/m/n/10 Storm surge data for Es-b-jerg ate ob-tained from the Dan-is
+h Coastal Au-thor-ity [\T1/ntxrx/m/it/10 Sorensen 
+ []
+
+
+Underfull \vbox (badness 1552) has occurred while \output is active []
 
  [8]
 <bergenfit_edit.png, id=59, 1362.08875pt x 679.53876pt>
@@ -624,164 +627,166 @@ Underfull \hbox (badness 10000) in paragraph at lines 247--247
 -nual dam-age costs in Bergen for 2015 (red) based on ob-served an-nual
  []
 
-<TotalDamageCostsAdaptation.pdf, id=64, 722.7pt x 361.35pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9 <./bergenfit_edit.png>] [10 <./bergen_ci.pdf> <./esbjerg_ci.pdf> <./Decisio
+nAnalysisBergenPartI.pdf>] <TotalDamageCostsAdaptation.pdf, id=90, 722.7pt x 36
+1.35pt>
 File: TotalDamageCostsAdaptation.pdf Graphic file (type pdf)
 
 <use TotalDamageCostsAdaptation.pdf>
-Package pdftex.def Info: TotalDamageCostsAdaptation.pdf used on input line 258.
+Package pdftex.def Info: TotalDamageCostsAdaptation.pdf used on input line 260.
 
 (pdftex.def)             Requested size: 397.48499pt x 198.74312pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--259
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
 []\T1/ntxrx/bx/n/9 Figure  6. \T1/ntxrx/m/n/9 Pro-jected to-tal dam-age costs i
 n Bergen for the time pe-riod 2016-2100 as a func-tion of the tim-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--259
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
 \T1/ntxrx/m/n/9 of an adap-ta-tion mea-sure con-sist-ing of the con-struc-tion 
 of two in-ner bar-ri-ers. The me-dian pro-jec-tion un-der
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--259
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
 \T1/ntxrx/m/n/9 each adap-ta-tion sce-nario is in-di-cated in red with gray bar
 s de-not-ing the 90% pro-jec-tion in-ter-vals. The me-dian
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--259
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
 \T1/ntxrx/m/n/9 pro-jected to-tal dam-age cost un-der no ac-tion is shown with 
 a black line with the cor-re-spond-ing 90% pro-jec-tion
  []
 
-<CumDamageCostsBergen.pdf, id=65, 361.35pt x 361.35pt>
+<CumDamageCostsBergen.pdf, id=91, 361.35pt x 361.35pt>
 File: CumDamageCostsBergen.pdf Graphic file (type pdf)
 
 <use CumDamageCostsBergen.pdf>
-Package pdftex.def Info: CumDamageCostsBergen.pdf used on input line 266.
+Package pdftex.def Info: CumDamageCostsBergen.pdf used on input line 268.
 (pdftex.def)             Requested size: 198.7425pt x 198.74312pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--267
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
 []\T1/ntxrx/bx/n/9 Figure  7. \T1/ntxrx/m/n/9 Me-dian pro-jected cu-mu-la-tive 
 dam-age costs in Bergen un-der con-stant sea level (gray line), un-der
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--267
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
 \T1/ntxrx/m/n/9 sea level rise ac-cord-ing to RCP 8.5 with no adap-ta-tion ac-t
 ion (black line) and with the con-struc-tion of two
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--267
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
 \T1/ntxrx/m/n/9 in-ner bar-ri-ers in 2047 (red line). The shaded gray area de-n
 otes the 90% pro-jec-tion in-ter-val un-der con-stant sea
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 287--287
+[11 <./TotalDamageCostsAdaptation.pdf> <./CumDamageCostsBergen.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 290--290
 []\T1/ntxrx/bx/n/9 Table 1. \T1/ntxrx/m/n/9 Storm surge wa-ter lev-els [\T1/ntx
 rx/m/it/9 Sorensen et al.\T1/ntxrx/m/n/9 , 2013] with a re-turn pe-riod of 20 y
 ears (RP20) and 100
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--287
+Underfull \hbox (badness 10000) in paragraph at lines 290--290
 \T1/ntxrx/m/n/9 years (RP100) with no sea level rise and with sea level rise co
 r-re-spond-ing to RCP 8.5 (5th per-centile, me-dian,
  []
 
-<Floodmaps_Harbour.png, id=66, 844.5954pt x 597.6729pt>
+<Floodmaps_Harbour.png, id=105, 844.5954pt x 597.6729pt>
 File: Floodmaps_Harbour.png Graphic file (type png)
 
 <use Floodmaps_Harbour.png>
-Package pdftex.def Info: Floodmaps_Harbour.png used on input line 293.
+Package pdftex.def Info: Floodmaps_Harbour.png used on input line 297.
 (pdftex.def)             Requested size: 357.73405pt x 253.15492pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 294--294
+Underfull \hbox (badness 10000) in paragraph at lines 298--298
 []\T1/ntxrx/bx/n/9 Figure  8. \T1/ntxrx/m/n/9 Flood ex-tents and depths for the
  city of Es-b-jerg in year 2100 dur-ing storm surges with a 20 year
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 294--294
+Underfull \hbox (badness 10000) in paragraph at lines 298--298
 \T1/ntxrx/m/n/9 re-turn pe-riod (up-per row) and a 100 year re-turn pe-riod (lo
 wer row) with (a) no sea level rise and with sea level
  []
 
 
-Underfull \vbox (badness 4120) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9 <./bergenfit_edit.png>] [10 <./bergen_ci.pdf> <./esbjerg_ci.pdf> <./Decisio
-nAnalysisBergenPartI.pdf>] [11 <./TotalDamageCostsAdaptation.pdf> <./CumDamageC
-ostsBergen.pdf>]
+ [12 <./Floodmaps_Harbour.png (PNG copy)>]
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./unc.pdf): PDF inclusion: f
 ound PDF version <1.6>, but at most version <1.5> allowed
-<unc.pdf, id=106, 505.89pt x 505.89pt>
+<unc.pdf, id=109, 505.89pt x 505.89pt>
 File: unc.pdf Graphic file (type pdf)
  <use unc.pdf>
-Package pdftex.def Info: unc.pdf used on input line 310.
+Package pdftex.def Info: unc.pdf used on input line 314.
 (pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--311
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 []\T1/ntxrx/bx/n/9 Figure  9. \T1/ntxrx/m/n/9 2050 Bergen sea level pro-jec-tio
 ns with un-cer-tainty due to dif-fer-ent sources for RCP 8.5. The
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--311
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 \T1/ntxrx/m/n/9 black ver-ti-cal line is the me-dian pro-jec-tion (with no un-c
 er-tainty), while the gray his-togram cor-re-sponds
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--311
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 \T1/ntxrx/m/n/9 to the spread of the cli-mate mod-els, the red curve adds the u
 n-cer-tainty due to the re-la-tion be-tween global
  []
 
-[12 <./Floodmaps_Harbour.png (PNG copy)>]
 <UncertaintyLog.pdf, id=110, 722.7pt x 361.35pt>
 File: UncertaintyLog.pdf Graphic file (type pdf)
  <use UncertaintyLog.pdf>
-Package pdftex.def Info: UncertaintyLog.pdf used on input line 321.
+Package pdftex.def Info: UncertaintyLog.pdf used on input line 325.
 (pdftex.def)             Requested size: 317.9892pt x 158.99449pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--322
+Underfull \hbox (badness 10000) in paragraph at lines 326--326
 []\T1/ntxrx/bx/n/9 Figure  10. \T1/ntxrx/m/n/9 Sim-u-lated dis-tri-bu-tion of t
 o-tal dam-age cost for 2100 with-out adap-ta-tion on log-log scale (black
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--322
+Underfull \hbox (badness 10000) in paragraph at lines 326--326
 \T1/ntxrx/m/n/9 his-togram). We also show the dis-tri-bu-tions of costs vary-in
 g only one as-pect of the un-cer-tainty (sea level rise
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--322
+Underfull \hbox (badness 10000) in paragraph at lines 326--326
 \T1/ntxrx/m/n/9 in blue, ef-fect mul-ti-plier in yel-low, and dam-age cost in g
 reen), hold-ing the other two at their me-dian val-ues.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--322
+Underfull \hbox (badness 10000) in paragraph at lines 326--326
 \T1/ntxrx/m/n/9 The grey ver-ti-cal line is the re-sult of hold-ing all three f
 ac-tors at their me-dian value. The me-dian of each
  []
 
-[13 <./unc.pdf> <./UncertaintyLog.pdf>]
-Overfull \hbox (3.5103pt too wide) in paragraph at lines 337--338
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13 <./unc.pdf>]
+Overfull \hbox (3.5103pt too wide) in paragraph at lines 341--342
 []\T1/ntxrx/m/n/10 It is pos-si-ble to ac-count for un-cer-tainty even if you d
 o a light touch decision-making 
  []
 
-(./paper.bbl
-Underfull \vbox (badness 3428) has occurred while \output is active []
-
- [14]
+(./paper.bbl [14 <./UncertaintyLog.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15])
@@ -790,15 +795,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 5448 strings out of 493315
- 72682 string characters out of 6137904
- 138592 words of memory out of 5000000
- 8670 multiletter control sequences out of 15000+600000
+ 5449 strings out of 493315
+ 72689 string characters out of 6137904
+ 138591 words of memory out of 5000000
+ 8671 multiletter control sequences out of 15000+600000
  87788 words of font info for 174 fonts, out of 8000000 for 9000
  963 hyphenation exceptions out of 8191
  41i,12n,37p,1176b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -823,7 +825,7 @@ exmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/texmf-di
 st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on paper.pdf (16 pages, 6231487 bytes).
+Output written on paper.pdf (16 pages, 6232177 bytes).
 PDF statistics:
  207 PDF objects out of 1000 (max. 8388607)
  145 compressed objects within 2 object streams
