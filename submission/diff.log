@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.12)  29 DEC 2016 16:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.12)  31 DEC 2016 11:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -551,718 +551,707 @@ File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 (Font)              scaled to size 4.49997pt on input line 38.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <10> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 42.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 42.
+(Font)              scaled to size 10.0pt on input line 40.
 LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 4
-2.
+0.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 File: ot1ntxtlf.fd 2015/01/17 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 42.
+(Font)              scaled to size 10.0pt on input line 40.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 42.
+(Font)              scaled to size 7.3pt on input line 40.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 42.
-LaTeX Font Info:    Try loading font information for U+ntxmia on input line 42.
+(Font)              scaled to size 5.5pt on input line 40.
+LaTeX Font Info:    Try loading font information for U+ntxmia on input line 40.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 42.
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 40.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 42.
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 40.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 45.
+(Font)              scaled to size 8.0pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 45.
+(Font)              scaled to size 8.0pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 45.
-LaTeX Font Info:    Try loading font information for T1+ntxsups on input line 5
-2.
+(Font)              scaled to size 6.2pt on input line 42.
+LaTeX Font Info:    Try loading font information for T1+ntxsups on input line 4
+7.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/newtx/t1ntxsups.fd
 File: t1ntxsups.fd 2015/01/17 v1.0
 )
 LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
-(Font)              scaled to size 8.0pt on input line 52.
+(Font)              scaled to size 8.0pt on input line 47.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 52.
-LaTeX Font Info:    Try loading font information for T1+ntxtt on input line 52.
+(Font)              scaled to size 9.0pt on input line 47.
+LaTeX Font Info:    Try loading font information for T1+ntxtt on input line 47.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/newtx/t1ntxtt.fd
 File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 9.0pt on input line 52.
-
-Overfull \hbox (20.55502pt too wide) in paragraph at lines 55--57
-[]\T1/ntxtlf/m/n/10 Decisions on adap-ta-tion mea-sures need to take care-ful a
-c-count of []|   []   [][]|   [] 
- []
-
+(Font)              scaled to size 9.0pt on input line 47.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 9.0pt on input line 62.
-[1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(Font)              scaled to size 9.0pt on input line 56.
+ [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.5pt on input line 73.
+(Font)              scaled to size 10.5pt on input line 66.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <10.5> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 73.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 66.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.5pt on input line 73.
-
-Overfull \hbox (2.01501pt too wide) in paragraph at lines 74--76
-[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
-] 
- []
-
-
-Overfull \hbox (1.85503pt too wide) in paragraph at lines 74--76
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   [] 
- []
+(Font)              scaled to size 10.5pt on input line 66.
 
 
 Package natbib Warning: Citation `Hallegatte&2012' on page 2 undefined on input
- line 80.
+ line 69.
 
 
 Package natbib Warning: Citation `FankhauserSoare2013' on page 2 undefined on i
-nput line 88.
+nput line 69.
 
 
 Package natbib Warning: Citation `BisaroSwartHinkel2016' on page 2 undefined on
- input line 88.
+ input line 69.
 
 
 Package natbib Warning: Citation `HinkelBisaro2016' on page 2 undefined on inpu
-t line 88.
+t line 69.
 
 
 Package natbib Warning: Citation `Chambwera&2014' on page 2 undefined on input 
-line 88.
+line 69.
 
 
 Package natbib Warning: Citation `WilbyDessai2010' on page 2 undefined on input
- line 88.
+ line 69.
 
 
 Package natbib Warning: Citation `WalkerHaasnootKwakkel2013' on page 2 undefine
-d on input line 88.
+d on input line 69.
 
 
 Package natbib Warning: Citation `Watkiss&2015' on page 2 undefined on input li
-ne 88.
+ne 69.
 
+<BergenMap.png, id=14, 501.875pt x 501.875pt>
+File: BergenMap.png Graphic file (type png)
+ <use BergenMap.png>
+Package pdftex.def Info: BergenMap.png used on input line 75.
+(pdftex.def)             Requested size: 178.86702pt x 178.86757pt.
 
-Overfull \hbox (6.51503pt too wide) in paragraph at lines 80--90
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   [] 
- []
-
-
-Overfull \hbox (10.23499pt too wide) in paragraph at lines 80--90
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   [] 
- []
-
-
-LaTeX Warning: Reference `fig:CityMaps' on page 2 undefined on input line 113.
-
+<EsbjergMap.png, id=15, 501.875pt x 501.875pt>
+File: EsbjergMap.png Graphic file (type png)
+ <use EsbjergMap.png>
+Package pdftex.def Info: EsbjergMap.png used on input line 76.
+(pdftex.def)             Requested size: 178.86702pt x 178.86757pt.
+LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <9> not available
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 77.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 9.0pt on input line 77.
 LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
-(Font)              scaled to size 10.0pt on input line 113.
+(Font)              scaled to size 10.0pt on input line 82.
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 10.0pt on input line 116.
+(Font)              scaled to size 8.0pt on input line 82.
+
 
 Package natbib Warning: Citation `bergenreport' on page 2 undefined on input li
-ne 116.
+ne 82.
 
 
-Overfull \hbox (9.35498pt too wide) in paragraph at lines 113--117
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+Overfull \hbox (11.19502pt too wide) in paragraph at lines 82--83
+\T1/ntxtlf/m/n/10 both in terms of freight and pas-sen-gers. The his-toric har-
+bor area, Bryggen, is the only Hanseatic 
  []
 
 
-Overfull \hbox (1.11504pt too wide) in paragraph at lines 113--117
-\T1/ntxtlf/m/n/10 only Hanseatic trade cen-ter re-main-ing in its orig-i-nal st
-yle, and has been de-clared a []|   [] 
- []
+Package natbib Warning: Citation `bergenreport' on page 2 undefined on input li
+ne 84.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
+[3 <./BergenMap.png (PNG copy)> <./EsbjergMap.png (PNG copy)>]
 
-Package natbib Warning: Citation `bergenreport' on page 3 undefined on input li
-ne 120.
-
-
-Overfull \hbox (5.555pt too wide) in paragraph at lines 124--126
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
- []
+Package natbib Warning: Citation `ipcc' on page 4 undefined on input line 98.
 
 
-Overfull \hbox (2.11502pt too wide) in paragraph at lines 124--126
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
-] 
- []
-
-
-Overfull \hbox (13.15501pt too wide) in paragraph at lines 124--126
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   []   |   [] 
- []
-
-
-Overfull \hbox (11.48502pt too wide) in paragraph at lines 124--126
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   []   |   [] 
- []
-
-
-LaTeX Warning: Reference `decision_tools_PartI' on page 3 undefined on input li
-ne 128.
-
-
-Overfull \hbox (0.84503pt too wide) in paragraph at lines 137--138
-[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
-]   |   []   |   []   |   []   |   [] 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-
-Package natbib Warning: Citation `ipcc' on page 4 undefined on input line 141.
-
-
-Package natbib Warning: Citation `ipcc' on page 4 undefined on input line 141.
+Package natbib Warning: Citation `ipcc' on page 4 undefined on input line 98.
 
 
 Package natbib Warning: Citation `Rahmstorf07' on page 4 undefined on input lin
-e 143.
+e 100.
 
 
 Package natbib Warning: Citation `Rahmstorf11' on page 4 undefined on input lin
-e 143.
+e 100.
 
 
 Package natbib Warning: Citation `Bolin2014a' on page 4 undefined on input line
- 143.
+ 100.
 
 
-Package natbib Warning: Citation `cmip5' on page 4 undefined on input line 146.
+Package natbib Warning: Citation `cmip5' on page 4 undefined on input line 101.
 
 
 
-Overfull \hbox (1.075pt too wide) in paragraph at lines 152--156
+Overfull \hbox (1.075pt too wide) in paragraph at lines 104--107
 \T1/ntxtlf/m/n/10 where $[]$ and $[]$ are re-gres-sion pa-ram-e-ters of ob-serv
 ed global sea level rise on ob-served global 
  []
 
 
 Package natbib Warning: Citation `Guttorp2014' on page 4 undefined on input lin
-e 182.
+e 121.
+
+[4]
+
+Package natbib Warning: Citation `bamber2013' on page 5 undefined on input line
+ 124.
 
 
-Package natbib Warning: Citation `bamber2013' on page 4 undefined on input line
- 187.
+Package natbib Warning: Citation `jevrejeva2016' on page 5 undefined on input l
+ine 124.
 
 
-Package natbib Warning: Citation `jevrejeva2016' on page 4 undefined on input l
-ine 187.
-
-
-Package natbib Warning: Citation `change' on page 4 undefined on input line 187
+Package natbib Warning: Citation `change' on page 5 undefined on input line 124
 .
 
 
-Package natbib Warning: Citation `wada2012' on page 4 undefined on input line 1
-87.
-
-
-Underfull \vbox (badness 4505) has occurred while \output is active []
-
- [4]
-
-Package natbib Warning: Citation `Fankhauser&1999' on page 5 undefined on input
- line 197.
-
-
-Overfull \hbox (15.045pt too wide) in paragraph at lines 197--197
-[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
-]   |   []   |   []   |   []   |   []   |   [] 
- []
+Package natbib Warning: Citation `wada2012' on page 5 undefined on input line 1
+24.
 
 
 Package natbib Warning: Citation `Fankhauser&1999' on page 5 undefined on input
- line 206.
-
-
-Overfull \hbox (11.895pt too wide) in paragraph at lines 206--207
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   [] 
- []
+ line 133.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 208.
+(Font)              scaled to size 7.3pt on input line 137.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 208.
+(Font)              scaled to size 5.5pt on input line 137.
 
-Package natbib Warning: Citation `Burr1942' on page 5 undefined on input line 2
-08.
+Package natbib Warning: Citation `Burr1942' on page 5 undefined on input line 1
+37.
 
 
 Package natbib Warning: Citation `Klugman&2012' on page 5 undefined on input li
-ne 214.
+ne 143.
 
-LaTeX Font Info:    Try loading font information for U+bbm on input line 221.
-(/usr/local/texlive/2015/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+[5]
+LaTeX Font Info:    Try loading font information for U+bbm on input line 148.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
 
 LaTeX Font Warning: Font shape `U/bbm/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 221.
+(Font)              size <5> substituted on input line 148.
 
-[5]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 248.
+(Font)              scaled to size 10.0pt on input line 164.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.3pt on input line 248.
+(Font)              scaled to size 7.3pt on input line 164.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.5pt on input line 248.
-
-
-Package natbib Warning: Citation `Hallegatte&2013' on page 6 undefined on input
- line 255.
-
-
-LaTeX Warning: Reference `fig:EffectFct' on page 6 undefined on input line 255.
-
-
-
-Overfull \hbox (3.85495pt too wide) in paragraph at lines 248--256
-[]|   []   |   []   |   []   [][]|   []   |   []   |   []   |   []   |   []   |
-   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
- []
-
+(Font)              scaled to size 5.5pt on input line 164.
 
 Package natbib Warning: Citation `Hallegatte&2013' on page 6 undefined on input
- line 265.
+ line 167.
 
+<DecisionAnalysisBergenPartII.pdf, id=36, 361.35pt x 361.35pt>
+File: DecisionAnalysisBergenPartII.pdf Graphic file (type pdf)
 
-Overfull \hbox (12.14601pt too wide) in paragraph at lines 273--274
-[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
-]   |   []   |   []   |   []   |   [] 
- []
-
-
-Overfull \hbox (7.59502pt too wide) in paragraph at lines 273--274
-|   []   |   []   |   []   |   []   |   [][][]|   []   |   []   |   []   |   []
-   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
- []
-
-
-LaTeX Warning: Reference `eq:FutureDamage' on page 6 undefined on input line 27
-6.
-
-Excluding 'comment' comment.
-
-Package natbib Warning: Citation `Hallegatte&2013' on page 6 undefined on input
- line 323.
-
-
-Package natbib Warning: Citation `Hallegatte&2013' on page 6 undefined on input
- line 323.
-
-
-Overfull \hbox (15.73499pt too wide) in paragraph at lines 323--324
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   [] 
- []
-
-
-Overfull \hbox (23.255pt too wide) in paragraph at lines 323--324
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   []   |   [] 
- []
-
-
-Overfull \hbox (10.59499pt too wide) in paragraph at lines 323--324
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   [] 
- []
-
-[6]
-
-Package natbib Warning: Citation `giss' on page 7 undefined on input line 335.
-
-
-Package natbib Warning: Citation `cmip5' on page 7 undefined on input line 335.
-
-
-
-Package natbib Warning: Citation `csiro' on page 7 undefined on input line 335.
-
-
-
-Package natbib Warning: Citation `Simpson2014' on page 7 undefined on input lin
-e 335.
-
-
-Package natbib Warning: Citation `medpol' on page 7 undefined on input line 337
-.
-
-
-Overfull \hbox (0.58498pt too wide) in paragraph at lines 337--338
-\T1/ntxtlf/m/n/10 1942--43. To deal with oc-ca-sional short stretches of miss-i
-ng data ([]|   []   []most one or two months) 
- []
-
-
-Package natbib Warning: Citation `DiscountRate' on page 7 undefined on input li
-ne 344.
-
-
-Overfull \hbox (39.1942pt too wide) in paragraph at lines 341--345
-\T1/ntxtlf/m/n/10 Pool (NPP; data are avail-able at $\T1/ntxtt/m/n/10 https : /
- / www . finansnorge . no / statistikk / skadeforsikring / 
- []
-
-
-Package natbib Warning: Citation `boxjenkins' on page 7 undefined on input line
- 350.
-
-<bergenfit.png, id=42, 505.89pt x 505.89pt>
-File: bergenfit.png Graphic file (type png)
- <use bergenfit.png>
-Package pdftex.def Info: bergenfit.png used on input line 358.
-(pdftex.def)             Requested size: 397.48499pt x 397.49504pt.
-LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <9> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 359.
-
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 359.
-
-
-Package natbib Warning: Citation `csiro' on page 7 undefined on input line 359.
-
-
-
-Package natbib Warning: Citation `csiro' on page 7 undefined on input line 359.
-
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 359--359
-[]\T1/ntxtlf/b/n/9 Figure  1. \T1/ntxtlf/m/n/9 The left fig-ure shows raw (blac
-k)and gia-corrected (red) sea level data from Bergen, The right
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 359--359
-\T1/ntxtlf/m/n/9 fig-ure re-lates the gia-corrected Bergen sea level to the glo
-bal sea level se-ries of \T1/ntxtlf/b/n/9 ?\T1/ntxtlf/m/n/9 . The straight line
- is the time
- []
-
-
-Package natbib Warning: Citation `Bolin2014a' on page 7 undefined on input line
- 364.
-
-
-
-pdfTeX warning: /usr/local/texlive/2015/bin/x86_64-linux/pdflatex (file ./berge
-n_ci.pdf): PDF inclusion: found PDF version <1.6>, but at most version <1.5> al
-lowed
-<bergen_ci.pdf, id=43, 505.89pt x 505.89pt>
-File: bergen_ci.pdf Graphic file (type pdf)
- <use bergen_ci.pdf>
-Package pdftex.def Info: bergen_ci.pdf used on input line 369.
-(pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
-
-
-pdfTeX warning: /usr/local/texlive/2015/bin/x86_64-linux/pdflatex (file ./esbje
-rg_ci.pdf): PDF inclusion: found PDF version <1.6>, but at most version <1.5> a
-llowed
-<esbjerg_ci.pdf, id=44, 505.89pt x 505.89pt>
-File: esbjerg_ci.pdf Graphic file (type pdf)
- <use esbjerg_ci.pdf>
-Package pdftex.def Info: esbjerg_ci.pdf used on input line 375.
-(pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 379--379
-[]\T1/ntxtlf/b/n/9 Figure  2. \T1/ntxtlf/m/n/9 Si-mul-ta-ne-ous 90% con-fi-denc
-e set (thick black lines) for Bergen (left) and Es-b-jerg( right) sea
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 379--379
-\T1/ntxtlf/m/n/9 level pro-jec-tions for the years 2000-2100 us-ing RCP8.5. The
- sea level data are shown in blue and end in 2015.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 379--379
-\T1/ntxtlf/m/n/9 The thin red lines are the pro-jec-tions with-out un-cer-taint
-y based on each of the cli-mate mod-els. The dashed
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7]
-[8 <./bergenfit.png>]
-Overfull \hbox (10.39499pt too wide) in paragraph at lines 395--401
-[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
-]   |   []   |   []   |   []   |   []   |   [] 
- []
-
-
-Package natbib Warning: Citation `bergenreport' on page 9 undefined on input li
-ne 406.
-
-
-LaTeX Warning: Reference `fig:TotalDamageBergen' on page 9 undefined on input l
-ine 406.
-
-
-Overfull \hbox (0.60498pt too wide) in paragraph at lines 403--411
-|   []   |   []   |   []   [][]|   []   |   []   |   []   |   []   |   []   |  
- []   |   []   |   []   |   []   |   [] 
- []
-
-
-LaTeX Warning: File `DamageDistribution.pdf' not found on input line 414.
-
-
-! Package pdftex.def Error: File `DamageDistribution.pdf' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.414 ...th=0.5\linewidth]{DamageDistribution.pdf}
-                                                  
-? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 415--415
-[]\T1/ntxtlf/b/n/9 Figure  3. []|   []   |   []   |   []   |   []   |   []   | 
-  []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   
-|   []
- []
-
-
-Package natbib Warning: Citation `Hallegatte&2013' on page 9 undefined on input
- line 425.
-
-
-Package natbib Warning: Citation `Hallegatte&2013' on page 9 undefined on input
- line 425.
-
-
-Overfull \hbox (10.785pt too wide) in paragraph at lines 425--426
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   [] 
- []
-
-
-<EuropeanIncreaseLossExtrapolationUncertainty.pdf, id=52, 361.35pt x 361.35pt>
-File: EuropeanIncreaseLossExtrapolationUncertainty.pdf Graphic file (type pdf)
-
-<use EuropeanIncreaseLossExtrapolationUncertainty.pdf>
-Package pdftex.def Info: EuropeanIncreaseLossExtrapolationUncertainty.pdf used 
-on input line 431.
+<use DecisionAnalysisBergenPartII.pdf>
+Package pdftex.def Info: DecisionAnalysisBergenPartII.pdf used on input line 17
+1.
 (pdftex.def)             Requested size: 198.7425pt x 198.74312pt.
 
 
-Package natbib Warning: Citation `Hallegatte&2013' on page 9 undefined on input
- line 434.
+Package natbib Warning: Citation `Hallegatte&2013' on page 6 undefined on input
+ line 172.
 
 
-Package natbib Warning: Citation `Hallegatte&2013' on page 9 undefined on input
- line 434.
+Package natbib Warning: Citation `Hallegatte&2013' on page 6 undefined on input
+ line 172.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--434
-[]\T1/ntxtlf/b/n/9 Figure  4. []|   []   |   []   |   []   |   []   [][]|   [] 
-  |   []   []\T1/ntxtlf/m/n/9 in []|   []   |   []   |   []   |   []   |   []  
- |   []   [][]|   []
+Underfull \hbox (badness 10000) in paragraph at lines 172--172
+[]\T1/ntxtlf/b/n/9 Figure  2. \T1/ntxtlf/m/n/9 Rel-a-tive change in mean an-nua
+l dam-age as a func-tion of sea level rise for 15 Eu-ro-pean cites as
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--434
-|   []   |   []   []\T1/ntxtlf/m/n/9 as a func-tion of []|   []   |   []   |   
-[]   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   | 
-  []
+Underfull \hbox (badness 10000) in paragraph at lines 172--172
+\T1/ntxtlf/m/n/9 es-ti-mated by \T1/ntxtlf/b/n/9 ? \T1/ntxtlf/m/n/9 (black cir-
+cles) with lin-early ex-trap-o-lated val-ues in-di-cated by gray lines. The me-
+dian change
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--434
+Overfull \hbox (1.58601pt too wide) in paragraph at lines 178--180
+[]\T1/ntxtlf/m/n/10 Let fur-ther $\OMS/ntxsy/m/n/10 f\OML/ntxmi/m/it/10 s[]; []
+ ; s[]\OMS/ntxsy/m/n/10 g[]$ \T1/ntxtlf/m/n/10 de-note a sam-ple of pro-jec-tio
+ns for an-nual sea level anoma- 
+ []
+
+
+Package natbib Warning: Citation `Hallegatte&2013' on page 6 undefined on input
+ line 198.
+
+[6]
+
+Package natbib Warning: Citation `Hallegatte&2013' on page 7 undefined on input
+ line 200.
+
+
+Overfull \hbox (12.90503pt too wide) in paragraph at lines 207--209
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   [][]|   []   |   []   |   []   |   []
+  |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--434
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   []\T1/n
-txtlf/m/n/9 with []|   []   |   []   |   []   |   []   |   []   []gray []|   []
+Underfull \vbox (badness 6078) has occurred while \output is active []
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 434--434
-|   []   |   []   |   []   |   []   |   [][][]|   [][]\T1/ntxtlf/m/n/9 . The me
--dian []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []  
- |   []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 434--434
-|   []   |   []   |   []   |   []   |   []   [][]|   []   |   []   []\T1/ntxtlf
-/m/n/9 the cor-re-spond-ing []|   []   |   []   |   []   [][]|   []   |   []   
-[]in-di-cated []|   []
- []
-
-<AccumulatedFutureLoss.png, id=53, 481.8pt x 481.8pt>
-File: AccumulatedFutureLoss.png Graphic file (type png)
-
-<use AccumulatedFutureLoss.png>
-Package pdftex.def Info: AccumulatedFutureLoss.png used on input line 446.
-(pdftex.def)             Requested size: 198.7425pt x 198.7376pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
-[]\T1/ntxtlf/b/n/9 Figure  5. []|   []   |   []   |   []   |   []   |   []   | 
-  []   |   []   [][]|   []   |   []   |   []   |   []   |   []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
-|   []   |   []   []\T1/ntxtlf/m/n/9 un-der []|   []   |   []   |   []   |   []
-   |   []   |   []   |   []   |   []   |   []   |   []   |   []   []RCP 8.5 []|
-   []   [][]|   []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
-|   []   |   []   []\T1/ntxtlf/m/n/9 no adap-ta-tion []|   []   |   []   |   []
-   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   
-[]   |   []   |   []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
-|   [][][]|   []   |   []   |   [][]\T1/ntxtlf/m/n/9 .[]|   []   |   []   |   [
-]   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |  
- []
- []
-
-
-Overfull \hbox (20.35501pt too wide) in paragraph at lines 455--456
+ [7 <./DecisionAnalysisBergenPartII.pdf>]
+Overfull \hbox (3.54501pt too wide) in paragraph at lines 215--217
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]   |   []   |   [] 
  []
 
 
-Overfull \hbox (6.24503pt too wide) in paragraph at lines 455--456
+Overfull \hbox (5.87503pt too wide) in paragraph at lines 215--217
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   [][][]|   [][][][]|   [] 
+ []
+
+
+Overfull \hbox (10.91502pt too wide) in paragraph at lines 215--217
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
 ] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9 <./bergen_ci.pdf> <./esbjerg_ci.pdf>] [10 <./EuropeanIncreaseLossExtrapolat
-ionUncertainty.pdf>]
-Overfull \hbox (13.66498pt too wide) in paragraph at lines 458--459
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   [] 
+Overfull \hbox (37.675pt too wide) in paragraph at lines 220--232
+ [] 
  []
 
 
-Overfull \hbox (13.17502pt too wide) in paragraph at lines 461--462
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   [] 
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[]\T1/ntxtlf/b/n/9 Table 1. []|   []   |   []   |   []   |   []   |   []   |   
+[]   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   []
+[][]|   []
  []
 
 
-Overfull \hbox (15.27502pt too wide) in paragraph at lines 461--462
+Overfull \hbox (0.47499pt too wide) in paragraph at lines 241--242
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
-  |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   [] 
+ []
+
+[8]
+
+Package natbib Warning: Citation `giss' on page 9 undefined on input line 247.
+
+
+Package natbib Warning: Citation `cmip5' on page 9 undefined on input line 247.
+
+
+
+Package natbib Warning: Citation `csiro' on page 9 undefined on input line 247.
+
+
+
+Package natbib Warning: Citation `Simpson2014' on page 9 undefined on input lin
+e 247.
+
+
+Package natbib Warning: Citation `medpol' on page 9 undefined on input line 249
+.
+
+
+Overfull \hbox (0.58498pt too wide) in paragraph at lines 249--250
+\T1/ntxtlf/m/n/10 1942--43. To deal with oc-ca-sional short stretches of miss-i
+ng data (at most one or two months) 
+ []
+
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 10.0pt on input line 253.
+
+Package natbib Warning: Citation `DiscountRate' on page 9 undefined on input li
+ne 253.
+
+
+Package natbib Warning: Citation `sealevel2012' on page 9 undefined on input li
+ne 255.
+
+
+Package natbib Warning: Citation `boxjenkins' on page 9 undefined on input line
+ 259.
+
+<bergenfit_edit.png, id=59, 1362.08875pt x 679.53876pt>
+File: bergenfit_edit.png Graphic file (type png)
+
+<use bergenfit_edit.png>
+Package pdftex.def Info: bergenfit_edit.png used on input line 263.
+(pdftex.def)             Requested size: 298.11374pt x 148.72131pt.
+
+
+Package natbib Warning: Citation `csiro' on page 9 undefined on input line 264.
+
+
+
+Package natbib Warning: Citation `csiro' on page 9 undefined on input line 264.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--264
+[]\T1/ntxtlf/b/n/9 Figure  3. \T1/ntxtlf/m/n/9 The left fig-ure shows raw (blac
+k) and gia-corrected (red) sea level data from Bergen, The right
  []
 
 
-Package natbib Warning: Citation `climateimpactgroup' on page 11 undefined on i
-nput line 466.
+Underfull \hbox (badness 10000) in paragraph at lines 264--264
+\T1/ntxtlf/m/n/9 fig-ure re-lates the gia-corrected Bergen sea level to the glo
+bal sea level se-ries of \T1/ntxtlf/b/n/9 ?\T1/ntxtlf/m/n/9 . The straight line
+ is the time
+ []
 
-[11 <./AccumulatedFutureLoss.png>]
 
-pdfTeX warning: /usr/local/texlive/2015/bin/x86_64-linux/pdflatex (file ./unc.p
-df): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<unc.pdf, id=85, 505.89pt x 505.89pt>
-File: unc.pdf Graphic file (type pdf)
- <use unc.pdf>
-Package pdftex.def Info: unc.pdf used on input line 471.
+Package natbib Warning: Citation `Bolin2014a' on page 9 undefined on input line
+ 269.
+
+
+
+pdfTeX warning: pdflatex (file ./bergen_ci.pdf): PDF inclusion: found PDF versi
+on <1.6>, but at most version <1.5> allowed
+<bergen_ci.pdf, id=61, 505.89pt x 505.89pt>
+File: bergen_ci.pdf Graphic file (type pdf)
+ <use bergen_ci.pdf>
+Package pdftex.def Info: bergen_ci.pdf used on input line 274.
 (pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--472
-[]\T1/ntxtlf/b/n/9 Figure  6. \T1/ntxtlf/m/n/9 2050 Bergen sea level pro-jec-ti
+
+pdfTeX warning: pdflatex (file ./esbjerg_ci.pdf): PDF inclusion: found PDF vers
+ion <1.6>, but at most version <1.5> allowed
+<esbjerg_ci.pdf, id=62, 505.89pt x 505.89pt>
+File: esbjerg_ci.pdf Graphic file (type pdf)
+ <use esbjerg_ci.pdf>
+Package pdftex.def Info: esbjerg_ci.pdf used on input line 280.
+(pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--284
+[]\T1/ntxtlf/b/n/9 Figure  4. \T1/ntxtlf/m/n/9 Si-mul-ta-ne-ous 90% con-fi-denc
+e set (thick black lines) for Bergen (left) and Es-b-jerg( right) sea
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--284
+\T1/ntxtlf/m/n/9 level pro-jec-tions for the years 2000-2100 us-ing RCP8.5. The
+ sea level data are shown in blue and end in 2015.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--284
+\T1/ntxtlf/m/n/9 The thin red lines are the pro-jec-tions with-out un-cer-taint
+y based on each of the cli-mate mod-els. The dashed
+ []
+
+<DecisionAnalysisBergenPartI.pdf, id=63, 361.35pt x 361.35pt>
+File: DecisionAnalysisBergenPartI.pdf Graphic file (type pdf)
+
+<use DecisionAnalysisBergenPartI.pdf>
+Package pdftex.def Info: DecisionAnalysisBergenPartI.pdf used on input line 295
+.
+(pdftex.def)             Requested size: 198.7425pt x 198.74312pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 296--296
+[]\T1/ntxtlf/b/n/9 Figure  5. \T1/ntxtlf/m/n/9 Es-ti-mated dis-tri-bu-tion of a
+n-nual dam-age costs in Bergen for 2015 (red) based on ob-served an-nual
+ []
+
+
+Package natbib Warning: Citation `bergenreport' on page 9 undefined on input li
+ne 301.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9]
+[10 <./bergenfit_edit.png> <./bergen_ci.pdf> <./esbjerg_ci.pdf>]
+<TotalDamageCostsAdaptation.pdf, id=85, 722.7pt x 361.35pt>
+File: TotalDamageCostsAdaptation.pdf Graphic file (type pdf)
+
+<use TotalDamageCostsAdaptation.pdf>
+Package pdftex.def Info: TotalDamageCostsAdaptation.pdf used on input line 309.
+
+(pdftex.def)             Requested size: 397.48499pt x 198.74312pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--310
+[]\T1/ntxtlf/b/n/9 Figure  6. \T1/ntxtlf/m/n/9 Pro-jected to-tal dam-age costs 
+in Bergen for the time pe-riod 2016-2100 as a func-tion of the tim-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--310
+\T1/ntxtlf/m/n/9 of an adap-ta-tion mea-sure con-sist-ing of the con-struc-tion
+ of two in-ner bar-ri-ers. The me-dian pro-jec-tion un-der
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--310
+\T1/ntxtlf/m/n/9 each adap-ta-tion sce-nario is in-di-cated in red with gray ba
+rs de-not-ing the 90% pro-jec-tion in-ter-vals. The me-dian
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--310
+\T1/ntxtlf/m/n/9 pro-jected to-tal dam-age cost un-der no ac-tion is shown with
+ a black line with the cor-re-spond-ing 90% pro-jec-tion
+ []
+
+<CumDamageCostsBergen.pdf, id=86, 361.35pt x 361.35pt>
+File: CumDamageCostsBergen.pdf Graphic file (type pdf)
+
+<use CumDamageCostsBergen.pdf>
+Package pdftex.def Info: CumDamageCostsBergen.pdf used on input line 317.
+(pdftex.def)             Requested size: 198.7425pt x 198.74312pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--318
+[]\T1/ntxtlf/b/n/9 Figure  7. \T1/ntxtlf/m/n/9 Me-dian pro-jected cu-mu-la-tive
+ dam-age costs in Bergen un-der con-stant sea level (gray line), un-der
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--318
+\T1/ntxtlf/m/n/9 sea level rise ac-cord-ing to RCP 8.5 with no adap-ta-tion ac-
+tion (black line) and with the con-struc-tion of two
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--318
+\T1/ntxtlf/m/n/9 in-ner bar-ri-ers in 2047 (red line). The shaded gray area de-
+notes the 90% pro-jec-tion in-ter-val un-der con-stant sea
+ []
+
+
+Package natbib Warning: Citation `sealevel2012' on page 11 undefined on input l
+ine 326.
+
+
+Overfull \hbox (3.56494pt too wide) in paragraph at lines 324--327
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   [] 
+ []
+
+
+Package natbib Warning: Citation `sealevel2012' on page 11 undefined on input l
+ine 341.
+
+
+Package natbib Warning: Citation `sealevel2012' on page 11 undefined on input l
+ine 341.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--341
+[]\T1/ntxtlf/b/n/9 Table 2. \T1/ntxtlf/m/n/9 Storm surge wa-ter lev-els [\T1/nt
+xtlf/b/n/9 ?\T1/ntxtlf/m/n/9 ] with a re-turn pe-riod of []|   []   |   []   []
+[]|   []   [](RP20) and []|   []   |   []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--341
+[][]|   []   []\T1/ntxtlf/m/n/9 (RP100) with no sea level rise and with sea lev
+el rise cor-re-spond-ing to RCP 8.5 (5th per-centile,
+ []
+
+
+Overfull \hbox (40.69632pt too wide) in paragraph at lines 346--346
+| [][][]|   []   |   []   |   []   |   []   []$\T1/ntxtt/m/n/8 http : / / www .
+ klimatilpasning . dk / kommuner / kortlaegning-[]til-[]brug-[]for-[]klimatilpa
+sning /
+ []
+
+
+Underfull \vbox (badness 4832) has occurred while \output is active []
+
+ [11 <./DecisionAnalysisBergenPartI.pdf>] [12 <./TotalDamageCostsAdaptation.pdf
+> <./CumDamageCostsBergen.pdf>] <Floodmaps_Harbour.png, id=108, 844.5954pt x 59
+7.6729pt>
+File: Floodmaps_Harbour.png Graphic file (type png)
+
+<use Floodmaps_Harbour.png>
+Package pdftex.def Info: Floodmaps_Harbour.png used on input line 357.
+(pdftex.def)             Requested size: 397.48499pt x 281.2802pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 358--358
+[]\T1/ntxtlf/b/n/9 Figure  8. \T1/ntxtlf/m/n/9 Flood ex-tents and depths for th
+e city of Es-b-jerg in year 2100 dur-ing storm surges with a 20 year
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 358--358
+\T1/ntxtlf/m/n/9 re-turn pe-riod (up-per row) and a 100 year re-turn pe-riod (l
+ower row) with (a) no sea level rise and with sea level
+ []
+
+
+Package natbib Warning: Citation `climateimpactgroup' on page 13 undefined on i
+nput line 369.
+
+
+
+pdfTeX warning: pdflatex (file ./unc.pdf): PDF inclusion: found PDF version <1.
+6>, but at most version <1.5> allowed
+<unc.pdf, id=109, 505.89pt x 505.89pt>
+File: unc.pdf Graphic file (type pdf)
+ <use unc.pdf>
+Package pdftex.def Info: unc.pdf used on input line 374.
+(pdftex.def)             Requested size: 198.7425pt x 198.74751pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 375--375
+[]\T1/ntxtlf/b/n/9 Figure  9. \T1/ntxtlf/m/n/9 2050 Bergen sea level pro-jec-ti
 ons with un-cer-tainty due to dif-fer-ent sources for RCP 8.5. The
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--472
+Underfull \hbox (badness 10000) in paragraph at lines 375--375
 \T1/ntxtlf/m/n/9 black ver-ti-cal line is the me-dian pro-jec-tion (with no un-
-cer-tainty), while the []|   []   [][]|   []   []his-togram cor-re-sponds
+cer-tainty), while the gray his-togram cor-re-sponds
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--472
+Underfull \hbox (badness 10000) in paragraph at lines 375--375
 \T1/ntxtlf/m/n/9 to the spread of the cli-mate mod-els, the red curve adds the 
 un-cer-tainty due to the re-la-tion be-tween global
  []
 
 
-Package natbib Warning: Citation `R' on page 12 undefined on input line 485.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13]
+[14 <./Floodmaps_Harbour.png (PNG copy)> <./unc.pdf>]
+<UncertaintyLog.pdf, id=124, 722.7pt x 361.35pt>
+File: UncertaintyLog.pdf Graphic file (type pdf)
+ <use UncertaintyLog.pdf>
+Package pdftex.def Info: UncertaintyLog.pdf used on input line 385.
+(pdftex.def)             Requested size: 317.9892pt x 158.99449pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--386
+[]\T1/ntxtlf/b/n/9 Figure  10. \T1/ntxtlf/m/n/9 Sim-u-lated dis-tri-bu-tion of 
+to-tal dam-age cost for 2100 with-out adap-ta-tion on log-log scale (black
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--386
+\T1/ntxtlf/m/n/9 his-togram). We also show the dis-tri-bu-tions of costs vary-i
+ng only one as-pect of the un-cer-tainty (sea level rise
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--386
+\T1/ntxtlf/m/n/9 in blue, ef-fect mul-ti-plier in yel-low, and dam-age cost in 
+green), hold-ing the other two at their me-dian val-ues.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--386
+\T1/ntxtlf/m/n/9 The grey ver-ti-cal line is the re-sult of hold-ing all three 
+fac-tors at their me-dian value. The me-dian of each
+ []
+
+
+Overfull \hbox (5.74504pt too wide) in paragraph at lines 394--395
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []   |   []   |   [] 
+ []
+
+
+Overfull \hbox (4.475pt too wide) in paragraph at lines 394--395
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []   |   []   |   [] 
+ []
+
+
+Overfull \hbox (28.635pt too wide) in paragraph at lines 396--398
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []   |   [] 
+ []
+
+
+Overfull \hbox (7.84502pt too wide) in paragraph at lines 396--398
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   [] 
+ []
+
+
+Overfull \hbox (2.75502pt too wide) in paragraph at lines 396--398
+|   []   |   []   |   []   |   []   |   [][][][]|   [][][][]|   []   |   []   |
+   []   |   []   |   [] 
+ []
+
+
+Overfull \hbox (0.43501pt too wide) in paragraph at lines 396--398
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+ []
+
+
+Overfull \hbox (24.675pt too wide) in paragraph at lines 396--398
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []   |   [] 
+ []
+
+[15 <./UncertaintyLog.pdf>]
+Overfull \hbox (2.10501pt too wide) in paragraph at lines 407--408
+[]\T1/ntxtlf/m/n/10 Down the line we plan to de-velop a flex-i-ble and easy-to-
+use tool kit for decision-making 
+ []
+
+
+Package natbib Warning: Citation `R' on page 16 undefined on input line 414.
+
+
+Overfull \hbox (15.04437pt too wide) in paragraph at lines 413--416
+\T1/ntxtlf/m/n/10 guage \T1/ntxtt/m/n/10 R \T1/ntxtlf/m/n/10 (\T1/ntxtlf/b/n/10
+ ?\T1/ntxtlf/m/n/10 ) and is avail-able on GitHub at $\T1/ntxtt/m/n/10 http : /
+ / github . com / eSACP / SeaLevelDecisions / 
+ []
 
 No file diff.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-[12 <./unc.pdf>] (./diff.aux)
+[16] (./diff.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 6386 strings out of 493054
- 85383 string characters out of 6134766
- 203494 words of memory out of 5000000
- 9697 multiletter control sequences out of 15000+600000
- 87281 words of font info for 140 fonts, out of 8000000 for 9000
+ 6441 strings out of 493054
+ 86269 string characters out of 6134766
+ 216573 words of memory out of 5000000
+ 9730 multiletter control sequences out of 15000+600000
+ 91911 words of font info for 158 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 41i,11n,37p,1551b,432s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,37p,1928b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/disa/.texlive2015/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk>{/
 usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texli
 ve/2015/texmf-dist/fonts/enc/dvips/base/ec.enc}{/usr/local/texlive/2015/texmf-d
@@ -1278,19 +1267,20 @@ qtmri.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi.p
 fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi5.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi7.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/newtx/rtxbmi-rev.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/public/newtx/txex-bar.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
-ype1/public/txfonts/txex.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
-blic/txfonts/txsy.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times
-/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.p
-fb>
-Output written on diff.pdf (12 pages, 321092 bytes).
+texlive/2015/texmf-dist/fonts/type1/public/newtx/rtxbmi7-rev.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/newtx/txex-bar.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/txfonts/txex.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
+ic/txfonts/txsy.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/u
+tmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb
+>
+Output written on diff.pdf (16 pages, 6290215 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 120 compressed objects within 2 object streams
+ 211 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

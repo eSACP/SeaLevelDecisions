@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{37}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -45,6 +45,21 @@ Chambwera, M., G.~Heal, C.~Dubeux, S.~Hallegatte, L.~Leclerc, A.~Markandya,
 Church, J., and N.~White (2011), Sea-level rise from the late 19th to the early
   21st century, \textit{Surveys in Geophysics}, \textit{32}, 585--602.
 
+\bibitem[{\textit{Dittrich et~al.}(2016)\textit{Dittrich, Wreford, and
+  Moran}}]{Dittrich&2016}
+Dittrich, R., A.~Wreford, and D.~Moran (2016), A survey of decision-making
+  approaches for climate change adaptation: are robust methods the way
+  forward?, \textit{Ecological Economics}, \textit{122}, 79--89.
+
+\bibitem[{\textit{Downing}(2012)}]{Downing2012}
+Downing, T.~E. (2012), Views of the frontiers in climate change adaptation
+  economics, \textit{Wiley Interdisciplinary Reviews: Climate Change},
+  \textit{3}(2), 161--170.
+
+\bibitem[{\textit{{Esbjerg Municipality}}(2014)}]{Esbjerg2014}
+{Esbjerg Municipality} (2014), Klimatilpasningsplan for esbjerg, \textit{Tech.
+  rep.}, Esbjerg Municipality, Denmark.
+
 \bibitem[{\textit{Fankhauser and Soare}(2013)}]{FankhauserSoare2013}
 Fankhauser, S., and R.~Soare (2013), An economic approach to adaptation:
   illustrations from europe, \textit{Climatic Change}, \textit{118}(2),
@@ -56,8 +71,8 @@ Fankhauser, S., J.~Smith, and R.~S.~J. Tol (1999), Weathering climate change:
   some simple rules to guide adaptation decisions, \textit{Ecological
   Economics}, \textit{30}, 67--78.
 
-\bibitem[{\textit{Grieg~Foundation}(2009)}]{bergenreport}
-Grieg~Foundation, v. (2009), Regional havstigning -- prosjektrapport,
+\bibitem[{\textit{{Grieg Foundation}}(2009)}]{bergenreport}
+{Grieg Foundation} (2009), Regional havstigning -- prosjektrapport,
   \textit{Tech. rep.}, Grieg Foundation, Visjon Vest and G0 Rieber Fondene,
   Bergen.
 
@@ -82,6 +97,12 @@ Hallegatte, S., C.~Green, R.~J. Nicholls, and J.~Corfee-Morlot (2013), Future
   flood losses in major coastal cities, \textit{Nature Climate Change},
   \textit{3}(9), 802--806.
 
+\bibitem[{\textit{Halsn{\ae}s et~al.}(2015)\textit{Halsn{\ae}s, Kaspersen, and
+  Drews}}]{Halsnaes&2015}
+Halsn{\ae}s, K., P.~Kaspersen, and M.~Drews (2015), Key drivers and economic
+  consequences of high-end climate scenarios: uncertainties and risks,
+  \textit{Climate Research}, \textit{64}, 85--98.
+
 \bibitem[{\textit{Hansen et~al.}(2001)\textit{Hansen, Rued, Sato, Imhoff,
   Lawrence, Easterling, Peterson, and Karl}}]{giss}
 Hansen, J., R.~Rued, M.~Sato, M.~Imhoff, W.~Lawrence, D.~Easterling,
@@ -100,6 +121,15 @@ Jevrejeva, S., L.~P. Jackson, R.~E.~M. Riva, A.~Grinsted, and J.~C. Moore
   (2016), Coastal sea level rise with warming above 2$^{\circ}$c,
   \textit{Proceedings of the National Academy of Sciences},
   \doi{10.1073/pnas.1605312113}.
+
+\bibitem[{\textit{Jones et~al.}(2014)\textit{Jones, Patwardhan, Cohen, Dessai,
+  Lammel, Lempert, Mirza, and von Storch}}]{Jones&2014}
+Jones, R., A.~Patwardhan, S.~Cohen, S.~Dessai, A.~Lammel, R.~Lempert, M.~Mirza,
+  and H.~von Storch (2014), \textit{Climate Change 2014: Impacts, Adaptation,
+  and Vulnerability. Part A: Global and Sectoral Aspects. Contribution of
+  Working Group II to the Fifth Assessment Report of the {I}ntergovernmental
+  {P}anel on {C}limate {C}hange}, chap. Foundations for decision making, pp.
+  195--228, Cambridge University Press, Cambridge.
 
 \bibitem[{\textit{Klugman et~al.}(2012)\textit{Klugman, Panjer, and
   Willmot}}]{Klugman&2012}
@@ -150,8 +180,8 @@ Sorensen, C., H.~T. Madsen, and S.~B. Knudsen (2013), Hojvandsstatistikker
 Stocker, T., D.~Qin, G.-K. Plattner, M.~Tignor, S.~K. Allen, J.~Boschung,
   A.~Nauels, Y.~Xia, V.~Bex, and P.~Midgley (2013), \textit{Climate Change
   2013: The Physical Science Basis. Contribution of Working Group I to the
-  {F}ifth {A}ssessment {R}eport of the {I}intergovernmental {P}abel on
-  {C}limate {C}hang}, Cambridge University Press.
+  {F}ifth {A}ssessment {R}eport of the {I}ntergovernmental {P}anel on {C}limate
+  {C}hang}, Cambridge University Press.
 
 \bibitem[{\textit{Taylor et~al.}(2012)\textit{Taylor, Stouffer, and
   Meehl}}]{cmip5}
