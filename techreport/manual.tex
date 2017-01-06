@@ -1,0 +1,531 @@
+% $Id: manual.tex 239 2013-04-18 13:25:02Z wolfgang $
+% Specify language of the report
+
+\documentclass[note,screen,british,11pt]{nrdoc}
+
+
+% Verbatim is already loaded by nrdoc. It is only
+% included to make LaTeX2html work better.
+\usepackage{verbatim}   
+
+% -------------------------------------------------
+% BEGIN nrdoc special commands
+\ifx\nrdocument\undefined\relax\else
+\reportnumber{sand/08/05}
+%\publicationyear{2003}
+\keywords{\LaTeX, NR}
+\projectnumber{}
+\project{}
+\availability{Internal}
+\frontpagefigure{figs/texfriendly} % No file extension.
+\target{All employees}
+\researchfield{}
+\fi
+% END nrdoc special commands
+% ------------------------------------------------
+
+
+\makeindex
+
+\begin{document}
+
+\title{User manual for nrdoc: a \LaTeX\ class for notes and reports}
+\author{Harald H. Soleng \email{harald.soleng@nr.no} \and 
+         Anders Løland \email{anders.loland@nr.no}}
+\aboutauthors{The authors are local \LaTeX\ gurus}
+\date{\today}
+\maketitle
+
+% The abstract must always be present
+\begin{abstract}
+This document gives an example of the use of the \texttt{nrdoc} class. The
+purpose of this document class is to provide a unified style for NR
+notes and reports conforming with standard typographical practice in
+Norwegian and English.  
+The \texttt{nrdoc} class was originally
+written by Harald H. Soleng and Anders Løland,  
+redesigned by Lars Brusletto Sveen of Munch
+Design, and again modified by Harald H. Soleng and Anders Løland.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+The \texttt{nrdoc} class was first written by \cite{NRDocSource03,NRDocManual03}
+Harald H. Soleng and Anders Løland. When   Munch
+Design redesigned the graphical profile of the Institute, the class was
+modified
+by Lars Brusletto Sveen. Later, 
+the original authors have fine tuned the class 
+and added more functionality.
+
+This document gives an example of the use of the \texttt{nrdoc} class. 
+In Appendix \ref{sec:code} the \LaTeX\ source code for this document is
+given.  
+
+\section{Two ways to use the nrdoc class}
+
+The \texttt{nrdoc} class can be used both by \LaTeX\ \index{latex@\LaTeX} 
+\citep{latex}
+(using the \texttt{latex} command) and 
+pdf\LaTeX\ \index{pdflatex@pdf\LaTeX}
+(using the \texttt{pdflatex} command). Please note that you need to use 
+a reasonably recent tex distribution. Using the option
+\textit{screen} \index{screen}\index{option!screen} together with
+\texttt{pdflatex} or \texttt{latex} and
+\texttt{dvipdfm}\index{dvipdfm} gives an \textbf{electronic report
+  with hyperlinks}.\index{hyperlinks} An example of the hyperlinks is
+given here: If this is an electronic report, Equations \eqref{eq:ey}
+can be found by clicking the equation number. The option
+\textit{screen} gives coloured hyperlinks, so
+this option should not be used for a paper document. 
+
+By default the page layout is two-sided\footnote{On older \LaTeX\
+installations, the default is one-sided. If you want to be sure to 
+get two-sided output, specify the additional option
+\textit{twoside}\index{option!twoside} in the \texttt{documentclass}
+command. The option
+\textit{oneside}\index{option!oneside} gives one-sided page layout.}.
+
+
+\subsection{Note and report}
+The default option \textit{note}\index{option!note} gives a NR
+note. The option  \textit{report}\index{option!report} gives a NR
+report. For a NR report, additional variables described in Section
+\ref{sec:fronttitle} must be specified.
+
+
+
+\subsection{Long reports}
+
+The class option \textit{long}\index{option!long} 
+gives access to part\index{part} and chapter\index{chapter} commands.
+By default the highest level is section\index{section}.
+
+
+
+\section{Front and title page\label{sec:fronttitle}}
+
+For the title page to work, the abstract\index{abstract} (summary) must be
+present. The title is set by \verb!\title!. \index{title}
+\verb!\nrtitle! \index{nrtitle} can be used to specify the title in
+the title page (this is convenient if the title on the front page
+includes some line shifts). \verb!\shorttitle! \index{nrtitle}
+specifies the text in the heading of each page. If \verb!\shorttitle!
+\index{shorttitle} is not specified, the text in the heading will be
+taken from \verb!\title!. 
+
+The date\index{date} is taken from \verb!\date!.
+
+The note or publication number is given by
+\verb+\reportnumber+\index{reportnumber@\verb+\reportnumber+}.
+The keywords of the document are given by
+\verb+\keywords+\index{keywords@\verb+\keywords+}.
+The project title is given by 
+\verb+\project+\index{project@\verb+\project+},
+the project number by
+\verb+\projectnumber+\index{projectnumber@\verb+\projectnumber+},
+ and the target group by
+\verb+\target+\index{target@\verb+\target+}.
+The research field is specified using
+\verb+\researchfield+\index{researchfield@\verb+\researchfield+}. Optionally, the name of a quality assurerer may be specified by
+\verb+\qa+\index{quality assurance@\verb+\qa+}.
+
+For reports, you also need to supply the isbn\index{isbn number} number. 
+The isbn number consists
+of a country code, a publisher code, 
+a publication number and a control digit.
+You can either use \texttt{isbn}\index{isbn@\verb+\isbn+} to supply 
+the full number or 
+\texttt{shortisbn}\index{shortisbn@\verb+\shortisbn+}
+to supply just the last five digits:
+\begin{verbatim}
+\isbn{82-539-0481-9}
+\shortisbn{0481-9}
+\end{verbatim}
+
+The availability level is given by
+\verb+\availability+\index{availability@\verb+\availability+}. There
+are four possible levels of availability:
+\begin{itemize}
+\item Open\index{availability!open}: Open for everyone. Available
+from NR's web site.
+\item Internal\index{availability!internal}: Open for everyone at NR. 
+\item Confidential\index{availability!confidential}: Confidential. 
+\item Strictlyconfidential\index{availability!strictly confidential}:
+Strictly confidential. 
+\item Statoil restricted\index{availability!Statoil restricted}: Statoil restricted. 
+\end{itemize}
+
+A typical preamble\index{preamble} then looks as follows:
+\begin{verbatim}
+
+\documentclass[note,screen,twoside,british,12pt]{nrdoc}
+\reportnumber{sand/03/03}
+\keywords{\LaTeX, NR}
+\project{Fun with \LaTeX}
+\projectnumber{314259}
+\frontpagefigure{figs/texfriendly} % No file extension.
+\target{All employees}
+\researchfield{}
+\availability{Internal}
+\end{verbatim}
+At the beginning of the document, we specify the title,
+author(s) and abstract:
+\begin{verbatim}
+\makeindex
+\begin{document}
+\title{User manual for nrdoc: a \LaTeX\ class for notes and reports}
+\author{Harald Soleng \email{harald.soleng@nr.no} \and 
+        Anders Løland \email{anders.loland@nr.no}}
+
+\aboutauthors{The authors are local \LaTeX\ Gurus}
+\date{\today}
+
+\maketitle
+\end{verbatim}
+Separate each author with the \verb+\and+\index{and@\verb+\and+}
+command. The email\index{email@\verb+\email+} address and the
+\verb+\aboutauthors+\index{aboutauthors@\verb+\aboutauthors+} command are optional.
+\begin{verbatim}
+\begin{abstract}
+The abstract is obligatory!
+\end{abstract}
+
+\tableofcontents        % optional
+\end{verbatim}
+
+\section{Including a figure}
+
+On the front page, a figure\index{cover figure} can be included with
+\begin{verbatim}
+\frontpagefigure{figs/my_figure}
+\end{verbatim}
+\index{frontpagefigure@\verb+\frontpagefigure+}
+Just give the full path to the figure file,
+without the file extension. The figure is automatically scaled to fit
+into the front page. A more low-level commands called
+\texttt{frontpagefigure\-command}%
+\index{frontpagefigurecommand@\verb+\frontpagefigurecommand+} 
+allows more control. With this commands one 
+has to specify a full
+figure inclusion command, e.g., 
+\begin{verbatim}
+\frontpagefigurecommand{%
+\includegraphics[width=50mm,height=40mm]{figs/my_figure}}
+\end{verbatim}
+If you want more than one figure on the cover 
+you either need to combine them
+using a graphics manipulation program, or 
+use \texttt{frontpage\-figure\-command}
+with several 
+\texttt{include\-graphics}%
+\index{includegraphics@\verb+\includegraphics+} 
+commands.
+
+Other figures\index{graphics}\index{illustration} \index{figure}
+are included by \texttt{includegraphics}. An example is
+given here (and in Figure \ref{fig:logo}):
+\begin{verbatim}
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.3\linewidth,angle=45]{figs/fotball}
+    \caption{\label{fig:logo} Rolling NR ball.}
+  \end{center}
+\end{figure}
+\end{verbatim}
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.3\linewidth,angle=45]{figs/fotball}
+    \caption{\label{fig:logo} Rolling NR ball.}
+  \end{center}
+\end{figure}
+Note that the extension of the figure file name should be dropped. The
+reason is that \LaTeX\ will find the required file itself. 
+The figure
+files should have the following format:\index{format}
+\begin{description}
+\item [\LaTeX] postscript [.ps] or encapsulated postscript
+  [.eps] \index{format!postscript}
+\item [pdf\LaTeX] pdf  [.pdf], jpeg [.JPG/.JPEG/.jpeg/.jpg] or png [.png] formats
+  \index{format!pdf} \index{format!jpeg}\index{format!png}
+\end{description}
+We recommend pdf\LaTeX, since this gives instant pdf files and enables
+inclusion of jpeg and png images (in addition to pdf files).
+
+\subsection{Format conversion}
+postscript files can be converted to pdf using the \texttt{epstopdf}
+command or Acrobat Distiller. 
+pdf files can be converted to postscript using the \texttt{pdftops}
+command or Adobe Acrobat. 
+
+\section{Fonts}
+
+The default size is 11pt, but 10pt and 12pt sizes are also supported
+through standard 
+options.\index{option!10pt}\index{option!11pt}\index{option!12pt}
+
+The standard font is type 1 versions of palatino. An important exception is
+the typewriter font, which has been replaced with almost European fonts.
+
+
+\section{Mathematics}\index{mathematics}
+
+The \texttt{nrdoc} class loads the ams\index{amslatex@ams\LaTeX} 
+packages so that the full power of these extensions are available.
+\begin{align}\label{eq:ey}
+\begin{split}
+  EY(s)&=\sum_{i=1}^n \mathcal{K}_s(s_i)Ew(s_i),\\
+  \gamma(s,s')&=\sum_{i=1}^n \mathcal{K}_s(s_i)
+  \mathcal{K}_{s'}(s_i)Ew^2(s_i).
+\end{split}
+\end{align}
+
+\section{The example environment\index{example}}
+
+The example environment enables inclusion of numbered examples in your
+notes and reports.
+\begin{example}\caption{Example of example --  a quote!}
+\begin{quote}
+"Dirty-looking rascals, but I suppose every one has some little
+immortal spark concealed about him. You would not think it, to look at
+them. There is no a priori probability about it. A strange enigma is
+man!" 
+
+"Winwood Reade is good upon the subject," said Holmes. "He
+remarks that, while the individual man is an insoluble puzzle, in the
+aggregate he becomes a mathematical certainty. You can, for example,
+never foretell what any one man will do, but you can say with
+precision what an average number will be up to. Individuals vary, but
+percentages remain constant. So says the statistician." 
+
+\textit{--The Sign of Four, Arthur Conan Doyle}
+\end{quote}
+\end{example}
+Note that each example must have a title, which is given in a caption;
+\begin{verbatim}
+\begin{example}\caption{Example of example --  a quote!}
+\begin{quote}
+"Dirty-looking rascals, but I suppose every one has some little
+...
+percentages remain constant. So says the statistician." 
+
+\textit{--The Sign of Four , Arthur Conan Doyle}
+\end{quote}
+\end{example}
+\end{verbatim}
+A list of examples can be generated using the command \verb+\listofexamples+\index{listofexamples@\verb+\listofexamples+}.
+
+\section{Citation using {Bib}\TeX}
+ 
+Citations\index{cite}
+are handled by {Bib}\TeX\ 
+\index{bibtex@BiB\TeX}\index{cite!BiB\TeX@bibtex} and 
+\texttt{natbib} \citep{natbib:7.1}. By default 
+an author--year citation 
+scheme\footnote{With the options \texttt{citealphanumeric}\index{cite!numeric citation label}\index{option!citealphanumeric}
+or \texttt{citenumeric}\index{option!citenumeric}
+a scheme with numerical citation keys and 
+citations appearing in alphabethic order or in the order of citations
+is supported as well. This is intended for documents that need
+numerical citations due to external demands.}  is used.
+The required style files are 
+automatically loaded by \texttt{nrdoc} and support both norsk
+and english. Some examples are given in Table \ref{tab:cite}.    
+\begin{table}[htb]
+\centering
+\begin{tabular}{lll}
+\hline
+usual citations &  
+\protect\cite{mardia79} & 
+\verb!\cite{mardia79}! \\
+in parentheses  &  
+\protect\citep{mardia79} & 
+\verb!\citep{mardia79}!\\
+with a see     &  
+\protect\citep[see][]{mardia79} &
+\verb!\citep[see][]{mardia79}!\\
+with a section/page & 
+\protect\citet[Section 2]{mardia79} & 
+\verb!\citet{mardia79}!\\
+will all authors & 
+\protect\citet*{mardia79} & 
+\verb!\citet*{mardia79}!\\
+without parentheses & 
+\protect\citealt{mardia79}&
+\verb!\citealt{mardia79}!\\
+only the year & 
+\protect\citeyear{mardia79} & 
+\verb!\citeyear{mardia79}!\\
+only the author & 
+\protect\citeauthor{mardia79} &
+\verb!\citeauthor{mardia79}! \\
+\hline
+\end{tabular}
+\caption{Examples of citations using {Bib}\TeX{}.}
+\label{tab:cite} 
+\end{table}
+
+The citations are listed in a {Bib}\TeX{} file with the extension
+\texttt{.bib}. An example (\texttt{ref.bib}) is given in Appendix
+\ref{sec:ref.bib}. Use the \texttt{bibtex} command to run {Bib}\TeX{}.
+
+
+\section{Languages}
+
+The following options are available for 
+different language\index{language} support:
+\begin{description}
+\item[\textit{american}] US english (default).\index{option!american} 
+\item[\textit{british}] UK english. \index{option!british} 
+\item[\textit{english}] US english. \index{option!english} 
+\item[\textit{norsk}] Bokm\aa l.\index{option!norsk} 
+\item[\textit{nynorsk}] Nynorsk.\index{option!nynorsk} 
+\item[\textit{UKenglish}] UK english. \index{option!UKenglish}
+\item[\textit{USenglish}] US english. \index{option!USenglish} 
+\end{description}
+
+\section{Additional options}
+\subsection{The utf8 option}\index{option!utf8}
+
+Allows use of utf8 font encoding. The current 
+default is latin1.
+
+\subsection{The draft option}\index{option!draft}
+
+The draft option prevents figure inclusion, turns off the cover
+generation and adds marks on oversized lines. This option also 
+prints equation labels in the margin.
+
+\subsection{The showlabels option}\index{option!showlabels}
+
+This option prints equation labels in the margin.
+
+\subsection{The indentpar option}\index{option!indentpar}
+
+This option turns left intendation on for paragraphs.
+
+\subsection{The nodesign option}\index{option!nodesign}
+
+The nodesign option prevents inclusion of the design elements created
+by Much Design. It is used to speed up processing in the writing stage.
+This option must be removed in the final run.
+
+\subsection{The dvips option}\index{option!dvips}
+
+This package is designed to produce pdf output either via
+\LaTeX\ followed by dvipdfm or directly by pdf\LaTeX.
+By using the dvips option you can use \LaTeX\ followed by dvips to produce
+postscript.
+
+\subsection{The englishTitle option}\index{option!englishTitle}
+
+When specifying both english and norsk as options for multi-lingual
+documents the nrdoc style will choose norwegian as language for cover page
+and title matter. The option \texttt{englishTitle} will choose english
+as default language, including cover and title matter. Switching to
+norwegian language is done by \texttt{\textbackslash
+  selectlanguage\textbraceleft{norsk}\textbraceright}.
+
+
+\section{Making an index}\index{index}
+
+There is support for making indexes with makeindex.
+Add the command \verb!\makeindex! in the preamble, and
+run \texttt{makeindex} on the main tex file. This generates
+an index file.
+
+
+\section{Default packages}
+
+The following packages are loaded by default (or by use of options):
+\begin{description}
+\item[\textit{a4wide}] For page geometry. \index{package!a4wide} 
+\item[\textit{afterpage}] For float control. \index{package!afterpage}
+\item[\textit{amsmath}] For advanced mathematical typesetting. \index{package!amsmath}\item[\textit{algoritm}] For algorithm (type of float). 
+\index{package!algorithm}
+\item[\textit{array}] For added tabular functionality \index{package!array}
+\item[\textit{babel}] For language support. \index{package!babel} 
+\item[\textit{calc}] For numerical programming constructs in \LaTeX. 
+\index{package!calc}
+\item[\textit{caption}] For formatting of captions.
+\index{package!caption} 
+\item[\textit{color}] For colour fonts. \index{package!color}
+\item[\textit{fancyhdr}] For headers. \index{package!fancyhdr} 
+\item[\textit{fontenc}] For font encoding (using T1). \index{package!fontenc}
+\item[\textit{float}] For float control. \index{package!float} 
+\item[\textit{graphicx}] for graphics inclusion. \index{package!graphicx} 
+\item[\textit{hyperref}] For hyperlinks. \index{package!hyperref}
+\item[\textit{ifpdf}] Provides tests for  pdf\LaTeX. 
+\index{package!ifpdf} 
+\item[\textit{ifthen}] Provides programming constructs in \LaTeX. \index{package!ifthen} 
+\item[\textit{indentfirst}] Handles Norwegian type indentation.\index{package!firstindent} 
+\item[\textit{inputenc}] Handles Norwegian
+  letters. \index{package!inputenc} 
+\item[\textit{makeidx}] For index. \index{package!makeidx}
+\item[\textit{multicol}] For multiple columns. \index{package!multicol} 
+\item[\textit{natbib}] For bibliography. \index{package!natbib} 
+\item[\textit{paralist}] For list environments. \index{package!paralist}
+\item[\textit{parskip}] For non-indenting paragraphs. \index{package!parskip} 
+\item[\textit{rotating}] For text rotation. \index{package!rotating} 
+\item[\textit{showlabels}] For printing of labels (in drafts). 
+\index{package!showlabels} 
+\item[\textit{textcase}] For text lower case and upper case functions.
+\item[\textit{textcomp}] For special characters. 
+\index{package!textcase}
+\item[\textit{textpos}] For absolute positioning of text on front page.
+\index{package!textpos} 
+\item[\textit{thumbpdf}] For thumbnails in pdf.
+\index{package!thumbpdf}
+\item[\textit{titlesec}] For title formatting.
+\index{package!titlesec} 
+\item[\textit{geometry}] For page geometry. \index{package!geometry}
+
+
+\item[\textit{verbatim}] For verbatim text. \index{package!verbatim} 
+Also contains a useful \texttt{comment} environment.
+
+\item[\textit{xspace}] For space control. \index{package!xspace}
+\end{description} 
+For more information about most of these packages,
+consult the book by \cite{latexcompanion}.
+
+\section{Shortcomings}
+
+Pdf bookmarks does not work correctly for chapters and sections in appendices.
+Some postprocessing of the bookmark file (file extension .out) 
+may be needed to translate \LaTeX\ codes, since bookmarks must 
+be written in PDFEncoding. To aid this process, the .out file 
+is not rewritten by \LaTeX if it is edited to contain 
+a line \let\WriteBookmarks\relax.
+
+\bibliography{ref}
+
+\clearpage
+\appendix
+
+\section{Setting Unix variables}
+For the system to find the \texttt{nrdoc} class, the variables
+\texttt{TEXINPUTS}\index{texinputs@TEXINPUTS} and 
+\texttt{BSTINPUTS}\index{texinputs@BSTINPUTS} needs to be set. These
+variable should have been set for you, but if you get the message 
+\texttt{TEXINPUTS: Undefined variable.} after typing \texttt{echo
+\$TEXINPUTS} in Unix/Linux, you need to set the variable:
+If you use \texttt{tcsh} (that is
+you have a \texttt{.cshrc} file), the  \texttt{.cshrc} file should
+include this line:
+\begin{verbatim}
+setenv TEXINPUTS .:/nr/group/maler/nrdoc:
+\end{verbatim}
+If you have problems with {Bib}\TeX, it might help to set the variable
+\texttt{BSTINPUTS}:
+\begin{verbatim}
+setenv BSTINPUTS .:/nr/group/maler/nrdoc:
+\end{verbatim}
+
+\section{The \LaTeX{} code for this document\label{sec:code}}
+\verbatiminput{manual.tex}
+\section{The {Bib}\TeX{} file (\texttt{ref.bib})}\label{sec:ref.bib}
+\verbatiminput{ref.bib}
+
+\end{document}
