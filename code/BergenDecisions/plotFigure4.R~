@@ -1,3 +1,0 @@
-## Plot comparing total damage cost under different adaptation timings
-
-plotFigure4 <- function(res, ifPdf=TRUE, fileName="figures/CumDamageCostsBergen.pdf")
