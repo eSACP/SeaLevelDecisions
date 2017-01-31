@@ -1,0 +1,7 @@
+## Plots showing the underlying data used in the adaptation decision analysis
+
+plotFigure2 <- function(sf.damage, par.est, ifPdf=TRUE, fileName="figures/DecisionAnalysisBergenPartII.pdf")
+{
+
+
+}

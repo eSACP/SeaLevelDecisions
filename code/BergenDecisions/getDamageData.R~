@@ -1,0 +1,17 @@
+### Read in damage data obtained from Finance Norway's website:
+### www.finansnorge.no/statistikk/skadeforsikring/Naturskadestatistikk-NASK/
+A <- read.csv("data/StormfloYearFylkeAntall.csv", header=TRUE)
+A <- A[-37,] ## Remove 2016 as data not complete
+V <- read.csv("data/StormfloYearFylkeVerdi.csv", header=TRUE)
+V <- V[-37,] ## Remove 2016 as data not complete
+
+### Read in consumer price index (CPI).
+CPI <- read.csv("data/KPI.csv", header=TRUE)
+CPI <- CPI[-1,] ## Remove 2016 as data not yet available
+CPI$CPI <- CPI$CPI/CPI$CPI[1] ## Normalize to 2015 
+
+### Combine Hordaland and Rogaland data.
+### Standardize costs to 2015 values using CPI. 
+sf.nr <- c(A$Hordaland, A$Rogaland)
+sf.damage <- c(V$Hordaland/CPI$CPI[1:36], V$Rogaland/CPI$CPI[1:36])
+sf.damage <- sf.damage/1e3 ## Normalize to million NOK. 

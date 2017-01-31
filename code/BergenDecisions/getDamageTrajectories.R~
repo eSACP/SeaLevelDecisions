@@ -1,0 +1,12 @@
+### Calculates three different types of trajectories
+### -- No adaptation
+### -- No sea level change
+### -- Adaptation in year k for all k 
+
+getDamageTrajectories <- function(E, slopes, )
+{
+
+
+
+
+}

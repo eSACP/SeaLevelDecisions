@@ -1,0 +1,7 @@
+### Plot comparing distributions of total damage for various uncertainty settings on a log-log scale
+
+plotFigure5a <- function(res.unc, total.damage, ifPdf=TRUE, fileName="figures/UncertaintyLog.pdf")
+{
+
+
+}
