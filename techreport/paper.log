@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.5)  6 JAN 2017 09:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.26)  2 FEB 2017 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -783,17 +783,17 @@ File: sealevel-tim-marshall.jpg Graphic file (type jpg)
 Package pdftex.def Info: sealevel-tim-marshall.jpg used on input line 39.
 (pdftex.def)             Requested size: 341.43306pt x 192.0439pt.
 
-<elements/note-s1uten.pdf, id=94, 597.50829pt x 845.0471pt>
-File: elements/note-s1uten.pdf Graphic file (type pdf)
+<elements/note-s1.pdf, id=94, 597.50829pt x 845.04704pt>
+File: elements/note-s1.pdf Graphic file (type pdf)
 
-<use elements/note-s1uten.pdf>
-Package pdftex.def Info: elements/note-s1uten.pdf used on input line 39.
-(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+<use elements/note-s1.pdf>
+Package pdftex.def Info: elements/note-s1.pdf used on input line 39.
+(pdftex.def)             Requested size: 597.50682pt x 845.04498pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- </usr/share/texmf/tex/latex/nrtex/elements/note-s1uten.pdf> <./sealevel-tim-ma
-rshall.jpg>]
-<elements/NR-logo_utvidet_60-5mm_cmyk.pdf, id=116, 172.13911pt x 33.79927pt>
+ </usr/share/texmf/tex/latex/nrtex/elements/note-s1.pdf> <./sealevel-tim-marsha
+ll.jpg>]
+<elements/NR-logo_utvidet_60-5mm_cmyk.pdf, id=109, 172.13911pt x 33.79927pt>
 File: elements/NR-logo_utvidet_60-5mm_cmyk.pdf Graphic file (type pdf)
 
 <use elements/NR-logo_utvidet_60-5mm_cmyk.pdf>
@@ -805,7 +805,7 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 39.
 
-<elements/NR-address.pdf, id=117, 426.64899pt x 34.14357pt>
+<elements/NR-address.pdf, id=110, 426.64899pt x 34.14357pt>
 File: elements/NR-address.pdf Graphic file (type pdf)
 
 <use elements/NR-address.pdf>
@@ -840,13 +840,13 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
  [3
 
  </usr/share/texmf/tex/latex/nrtex/elements/NR-logo_footer.pdf>]
-<BergenMap.png, id=163, 501.875pt x 501.875pt>
+<BergenMap.png, id=156, 501.875pt x 501.875pt>
 File: BergenMap.png Graphic file (type png)
  <use BergenMap.png>
 Package pdftex.def Info: BergenMap.png used on input line 57.
 (pdftex.def)             Requested size: 192.0548pt x 192.05463pt.
 
-<EsbjergMap.png, id=164, 501.875pt x 501.875pt>
+<EsbjergMap.png, id=157, 501.875pt x 501.875pt>
 File: EsbjergMap.png Graphic file (type png)
  <use EsbjergMap.png>
 Package pdftex.def Info: EsbjergMap.png used on input line 58.
@@ -860,7 +860,7 @@ LaTeX Font Info:    Try loading font information for U+bbm on input line 123.
 (/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [8]
-<DecisionAnalysisBergenPartII.pdf, id=279, 361.35pt x 361.35pt>
+<DecisionAnalysisBergenPartII.pdf, id=272, 361.35pt x 361.35pt>
 File: DecisionAnalysisBergenPartII.pdf Graphic file (type pdf)
 
 <use DecisionAnalysisBergenPartII.pdf>
@@ -881,7 +881,7 @@ Overfull \hbox (5.75511pt too wide) in paragraph at lines 215--216
 ies re-gres-sion uses an ARMA(1,1)-
  []
 
-<bergenfit_edit.png, id=343, 1362.08875pt x 679.53876pt>
+<bergenfit_edit.png, id=336, 1362.08875pt x 679.53876pt>
 File: bergenfit_edit.png Graphic file (type png)
 
 <use bergenfit_edit.png>
@@ -891,7 +891,7 @@ Package pdftex.def Info: bergenfit_edit.png used on input line 219.
 
 pdfTeX warning: pdflatex (file ./bergen_ci.pdf): PDF inclusion: found PDF versi
 on <1.6>, but at most version <1.5> allowed
-<bergen_ci.pdf, id=350, 505.89pt x 505.89pt>
+<bergen_ci.pdf, id=343, 505.89pt x 505.89pt>
 File: bergen_ci.pdf Graphic file (type pdf)
  <use bergen_ci.pdf>
 Package pdftex.def Info: bergen_ci.pdf used on input line 230.
@@ -900,13 +900,13 @@ Package pdftex.def Info: bergen_ci.pdf used on input line 230.
 
 pdfTeX warning: pdflatex (file ./esbjerg_ci.pdf): PDF inclusion: found PDF vers
 ion <1.6>, but at most version <1.5> allowed
-<esbjerg_ci.pdf, id=351, 505.89pt x 505.89pt>
+<esbjerg_ci.pdf, id=344, 505.89pt x 505.89pt>
 File: esbjerg_ci.pdf Graphic file (type pdf)
  <use esbjerg_ci.pdf>
 Package pdftex.def Info: esbjerg_ci.pdf used on input line 236.
 (pdftex.def)             Requested size: 213.39568pt x 213.39865pt.
  [12]
-<DecisionAnalysisBergenPartI.pdf, id=368, 361.35pt x 361.35pt>
+<DecisionAnalysisBergenPartI.pdf, id=361, 361.35pt x 361.35pt>
 File: DecisionAnalysisBergenPartI.pdf Graphic file (type pdf)
 
 <use DecisionAnalysisBergenPartI.pdf>
@@ -917,7 +917,7 @@ Package pdftex.def Info: DecisionAnalysisBergenPartI.pdf used on input line 251
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [13 <./bergenfit_edit.png> <./bergen_ci.pdf> <./esbjerg_ci.pdf>]
-<TotalDamageCostsAdaptation.pdf, id=402, 722.7pt x 361.35pt>
+<TotalDamageCostsAdaptation.pdf, id=395, 722.7pt x 361.35pt>
 File: TotalDamageCostsAdaptation.pdf Graphic file (type pdf)
 
 <use TotalDamageCostsAdaptation.pdf>
@@ -925,7 +925,7 @@ Package pdftex.def Info: TotalDamageCostsAdaptation.pdf used on input line 265.
 
 (pdftex.def)             Requested size: 426.79135pt x 213.39867pt.
 
-<CumDamageCostsBergen.pdf, id=403, 361.35pt x 361.35pt>
+<CumDamageCostsBergen.pdf, id=396, 361.35pt x 361.35pt>
 File: CumDamageCostsBergen.pdf Graphic file (type pdf)
 
 <use CumDamageCostsBergen.pdf>
@@ -954,7 +954,7 @@ ntries in Table [][]2[][], based on data provided
  []
 
 [16]
-<FloodMaps_Harbour_RP20_RP100_dif2.png, id=455, 2635.59656pt x 964.35281pt>
+<FloodMaps_Harbour_RP20_RP100_dif2.png, id=448, 2635.59656pt x 964.35281pt>
 File: FloodMaps_Harbour_RP20_RP100_dif2.png Graphic file (type png)
 
 <use FloodMaps_Harbour_RP20_RP100_dif2.png>
@@ -965,20 +965,20 @@ ne 307.
 
 pdfTeX warning: pdflatex (file ./unc.pdf): PDF inclusion: found PDF version <1.
 6>, but at most version <1.5> allowed
-<unc.pdf, id=459, 505.89pt x 505.89pt>
+<unc.pdf, id=452, 505.89pt x 505.89pt>
 File: unc.pdf Graphic file (type pdf)
  <use unc.pdf>
 Package pdftex.def Info: unc.pdf used on input line 323.
 (pdftex.def)             Requested size: 192.0548pt x 192.05493pt.
 
-<ExbjergUncertainty.pdf, id=460, 504.46646pt x 505.20914pt>
+<ExbjergUncertainty.pdf, id=453, 504.46646pt x 505.20914pt>
 File: ExbjergUncertainty.pdf Graphic file (type pdf)
 
 <use ExbjergUncertainty.pdf>
 Package pdftex.def Info: ExbjergUncertainty.pdf used on input line 324.
 (pdftex.def)             Requested size: 192.0548pt x 192.33607pt.
  [17 <./FloodMaps_Harbour_RP20_RP100_dif2.png>]
-<UncertaintyLog.pdf, id=470, 722.7pt x 361.35pt>
+<UncertaintyLog.pdf, id=463, 722.7pt x 361.35pt>
 File: UncertaintyLog.pdf Graphic file (type pdf)
  <use UncertaintyLog.pdf>
 Package pdftex.def Info: UncertaintyLog.pdf used on input line 335.
@@ -1014,8 +1014,8 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 381.
  ) 
 Here is how much of TeX's memory you used:
  11236 strings out of 493029
- 166538 string characters out of 6136235
- 277527 words of memory out of 5000000
+ 166518 string characters out of 6136234
+ 277486 words of memory out of 5000000
  14397 multiletter control sequences out of 15000+600000
  45521 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1039,10 +1039,10 @@ ype1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/u
 hvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on paper.pdf (23 pages, 8004296 bytes).
+Output written on paper.pdf (23 pages, 7980211 bytes).
 PDF statistics:
- 677 PDF objects out of 1000 (max. 8388607)
- 588 compressed objects within 6 object streams
+ 670 PDF objects out of 1000 (max. 8388607)
+ 585 compressed objects within 6 object streams
  102 named destinations out of 1000 (max. 500000)
  267 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,7 @@
-# SeaLevelDecisions
+## Sea level adaptation decisions under uncertainty
 
-A paper combining sea level projections with uncertainty assessment and adaptation decision making under uncertainty. 
+R code for the sea level projections and adaptation decision analysis presented in the paper "I don't know, are you sure we want to do this? Sea level adaptation decisions under uncertainty" by Thordis L. Thorarinsdottir, Peter Guttorp, Martin Drews, Per Skougaard Kaspersen and Karianne de Bruin. 
 
-The intention is to submit this paper to a special issue of Water Resources Research on "Engagement, Communication, and Decision-Making Under Uncertainty". The deadline for submission is January 1, 2017.  
+The technical report of the paper is also included in this folder. 
+
+For questions, contact Thordis L. Thorarinsdottir at thordis@nr.no. 
