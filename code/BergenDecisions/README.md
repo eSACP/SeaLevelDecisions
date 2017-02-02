@@ -1,5 +1,5 @@
 ## Optimal timing of sea level rise adaptation measures in Bergen, Norway
-### Author: Thordis L. Thorarinsdottir
+### Author: Thordis L. Thorarinsdottir (thordis@nr.no)
     
 Data files are located in the folder "data".
 R working directory should be set to current directory.
