@@ -92,14 +92,14 @@ Plot comparing total damage cost 2016-2100 under different adaptation timings, s
 plotFigure4(res, ifPdf=FALSE) 
 ```
 
-Investigation of the effects of uncertainty (no adaptation)
+Investigation of the effects of uncertainty (no adaptation).
 ```{r}
 res.unc <- getUncertaintyTrajectories(E=E, slopes=slopes, orig.damage=res$orig, damage.scenario=res$scenario)
 total.damage <- apply(res$yearly, 1, sum)
 summary(total.damage)
 ```
 
-Plot comparing distributions of total damage for various uncertainty settings
+Plot comparing distributions of total damage for various uncertainty settings.
 ```{r}
 plotFigure5b(res.unc, total.damage, ifPdf=FALSE)
 ```
