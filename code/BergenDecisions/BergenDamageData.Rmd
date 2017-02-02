@@ -1,18 +1,10 @@
----
-title: "Decision analysis for Bergen"
-author: "Thordis L. Thorarinsdottir"
-output:
-    html_document:
-    toc: TRUE
----
-    
-<hr></hr>
-<br></br>
-
 ## Optimal timing of sea level rise adaptation measures in Bergen, Norway
+### Author: Thordis L. Thorarinsdottir
     
 Data files are located in the folder "data".
-R working directory should be set to current directory. 
+R working directory should be set to current directory.
+
+To run the analysis, run the main script BergenDamageData.R as shown below. 
 
 ```{r message=FALSE}
 rm(list=ls())
