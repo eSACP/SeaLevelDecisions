@@ -1,0 +1,114 @@
+---
+title: "Decision analysis for Bergen"
+author: "Thordis L. Thorarinsdottir"
+output:
+    html_document:
+    toc: TRUE
+---
+    
+<hr></hr>
+<br></br>
+
+## Optimal timing of sea level rise adaptation measures in Bergen, Norway
+    
+Data files are located in the folder "data".
+R working directory should be set to current directory. 
+
+```{r message=FALSE}
+rm(list=ls())
+
+library(actuar)
+library(RgoogleMaps)
+source("getDamageData.R")
+source("fitBurrDist.R")
+source("getDamageMult.R")
+source("getHallegatteData.R")
+source("getChangeSlopes.R")
+source("getDamageTrajectories.R")
+source("getDiscountRate.R")
+source("getAdaptationCost.R")
+source("getUncertaintyTrajectories.R")
+source("plotFigure1.R")
+source("plotFigure2.R")
+source("plotFigure3.R")
+source("plotFigure4.R")
+source("plotFigure5a.R")
+source("plotFigure5b.R")
+```
+
+Read in yearly damage data (in MNOK) from Rogaland and Hordaland 1980 to 2015.
+```{r}
+sf.damage <- getDamageData()
+round(sf.damage, 3)
+```
+
+Fit Burr distribution to damage data.   
+```{r warning=FALSE}
+par.est <- fitBurrDist(sf.damage)
+round(par.est, 3)
+```
+
+Plot histogram of damage data and estimated Burr distribution. 
+```{r}
+plotFigure1(sf.damage, par.est, ifPdf=FALSE)
+```
+
+Get normalized data from Hallegatte et al. (2013) on relation between change in damage cost and sea level.  
+```{r}
+E <- getHallegatteData()
+E
+```
+Extrapolate to any sea level rise. 
+```{r}
+slopes <- getChangeSlopes(E)
+slopes
+```
+
+Plot changes in damages as a function of sea level rise with data from Hallegatte et al. (2013) indicated by black circles and the median change indicated with a red line. 
+```{r}
+plotFigure2(E, ifPdf=FALSE)
+```
+
+Get adaptation cost for the construction of two inner barriers from Grief Foundation (2009) (in MNOK at 2015 level).   
+```{r}
+adaptation.cost <- getAdaptationCost() 
+adaptation.cost
+```
+
+Create damage distributions for 2016-2100 under various scenarios. 
+```{r}
+## res <- getDamageTrajectories(E, slopes, adaptation.cost) 
+## save(res, file="data/calculatedDamage.RData")
+load("data/calculatedDamage.RData")
+```
+
+Create plot that compares accumulated damage costs under various scenarios: Median projected cumulative damage costs under constant sea level (gray line), under sea level rise according to RCP 8.5 with no adaptation (black line) and with adaptation finished in 2047 (red line). The shaded area denotes the 90% projection interval under constant sea level.  Dotted lines indicate 90% projection intervals with sea level rise according to RCP 8.5.   
+```{r}
+plotFigure3(res, ifPdf=FALSE) 
+```
+
+Plot comparing total damage cost 2016-2100 under different adaptation timings, showing median total costs (red lines) and 90% projection intervals. Median projected total damage under no adaptation is indicated with a black line and the associated 90% projection interval with black dotted lines. 
+```{r}
+plotFigure4(res, ifPdf=FALSE) 
+```
+
+Investigation of the effects of uncertainty (no adaptation).
+```{r}
+res.unc <- getUncertaintyTrajectories(E=E, slopes=slopes, orig.damage=res$orig, damage.scenario=res$scenario)
+total.damage <- apply(res$yearly, 1, sum)
+summary(total.damage)
+```
+
+Plot comparing distributions of total damage for various uncertainty settings.
+```{r}
+plotFigure5b(res.unc, total.damage, ifPdf=FALSE)
+```
+
+
+
+
+
+
+
+
+
