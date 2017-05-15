@@ -3,7 +3,7 @@
 
 fitBurrDist <- function(sf.damage, E, theta.start=c(5, 0.5, 0.05))
 {
-    
+    ## Account for the effect of observed sea level 
     load("data/ObsSeaLevel.RData")
     mult <- rep(NA, 72)
     level <- rep(BergenSeaLevel, 2)
@@ -21,7 +21,6 @@ fitBurrDist <- function(sf.damage, E, theta.start=c(5, 0.5, 0.05))
         else return(y[2] + x * high.med.slope)
     }
     for(i in 1:72) mult[i] <- get.median.damage.mult(level[i])
-
     sf.damage <- sf.damage/mult
     
     ## Improve numerical stability of estimates by replacing zeros with a small value 
