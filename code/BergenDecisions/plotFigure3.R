@@ -44,18 +44,18 @@ plotFigure3 <- function(res, ifPdf=TRUE, fileName="figures/CumDamageCostsBergen.
     adapt.lower.05 <- apply(cumsum.adapt.damage[,,85],1,quantile,0.05)
 
     ## Cumulated damage due to sea level rise with
-    ## adaptation in 2047 (most cost effective adaptation). 
-    cumsum.adapt.damage.2047 <- array(NA, dim=dim(res$adapted[32,,]))
+    ## adaptation in 2059 (most cost effective adaptation). 
+    cumsum.adapt.damage.2059 <- array(NA, dim=dim(res$adapted[44,,]))
     
-    for(i in 1:dim(res$adapted[32,,])[1])
+    for(i in 1:dim(res$adapted[44,,])[1])
     {
-        cumsum.adapt.damage.2047[i,] <- cumsum(res$adapted[32,i,])
+        cumsum.adapt.damage.2059[i,] <- cumsum(res$adapted[44,i,])
     }
-    upper.95.adapt.cumsum.2047 <- apply(cumsum.adapt.damage.2047,
+    upper.95.adapt.cumsum.2059 <- apply(cumsum.adapt.damage.2059,
                                         2,quantile,0.95)
-    lower.5.adapt.cumsum.2047 <- apply(cumsum.adapt.damage.2047,
+    lower.5.adapt.cumsum.2059 <- apply(cumsum.adapt.damage.2059,
                                        2,quantile,0.05)
-    median.adapt.cumsum.2047 <- apply(cumsum.adapt.damage.2047,
+    median.adapt.cumsum.2059 <- apply(cumsum.adapt.damage.2059,
                                       2,quantile,0.5)
 
     ## Making the plot 
@@ -63,20 +63,21 @@ plotFigure3 <- function(res, ifPdf=TRUE, fileName="figures/CumDamageCostsBergen.
     par(mex=0.75)
     ## Cumulative damage costs without adaptation 
     plot(2016:2100, upper.95.yearly.cumsum/1e3,type="l",
-         ylim=c(0,14), xlab="Year",
-         ylab="Accumulated damage (billion NOK)", main="", lty=3)
+         ## ylim=c(0,14), xlab="Year",
+         ylim=c(0,4.5), xlab="Year",
+         ylab="Accumulated cost (billion NOK)", main="", lty=3)
     ## Cumulative damage costs for no sea level rise
     polygon(c(2016:2100, rev(2016:2100)),
             c(upper.95.constant.cumsum/1e3, rev(lower.5.constant.cumsum/1e3)),
-            col="gray80", border="gray80")
-    lines(2016:2100, median.constant.cumsum/1e3, lwd=2, col="gray40")
+            col="lightblue", border="lightblue")
+    lines(2016:2100, median.constant.cumsum/1e3, lwd=2, col="blue")
     ## Cumulative damage costs without adaptation 
     lines(2016:2100, lower.5.yearly.cumsum/1e3, lty=3)
     lines(2016:2100, median.yearly.cumsum/1e3, lwd=2)
-    ## Cumulative damage costs for adaptation in 2047
-    lines(2016:2100, upper.95.adapt.cumsum.2047/1e3, lty=3, col="red")
-    lines(2016:2100, lower.5.adapt.cumsum.2047/1e3, lty=3, col="red")
-    lines(2016:2100, median.adapt.cumsum.2047/1e3, lwd=2, col="red")
+    ## Cumulative damage costs for adaptation in 2059
+    lines(2016:2100, upper.95.adapt.cumsum.2059/1e3, lty=3, col="red")
+    lines(2016:2100, lower.5.adapt.cumsum.2059/1e3, lty=3, col="red")
+    lines(2016:2100, median.adapt.cumsum.2059/1e3, lwd=2, col="red")
     if(ifPdf) dev.off()
 
 }

@@ -1,6 +1,6 @@
 ### Investigation of the effects of uncertainty (no adaptation)
 
-getUncertaintyTrajectories <- function(E, slopes, orig.damage, damage.scenario)
+getUncertaintyTrajectories <- function(E, slopes, orig.damage, damage.scenario, inputfile)
 {
     ## Cumulative damage with medians
 
@@ -20,7 +20,7 @@ getUncertaintyTrajectories <- function(E, slopes, orig.damage, damage.scenario)
     }
 
     ## Read in sea level rise projections for Bergen. 
-    load("data/Simulation.Rdata")
+    load(inputfile)
     I <- dim(sim)[1]
     
     ## Get discount rates 

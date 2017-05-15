@@ -7,9 +7,9 @@ plotFigure2 <- function(E, ifPdf=TRUE, fileName="figures/DecisionAnalysisBergenP
     ## (b) Plot of extrapolated damage change profiles 
     x <- c(0,20,40)
     plot(x, E[1, 2:4], type="o", col="black", xlim=c(-100,130), ylim=c(-180,1000),
-         xlab="Sea level anomaly (cm)", ylab="Relative mean annual damage", main="", axes=FALSE)
+         xlab="Sea level anomaly (m)", ylab="Relative mean annual cost", main="", axes=FALSE)
     box()
-    axis(1)
+    axis(1, at=c(-100, -50, 0, 50, 100), labels=c(-1, -0.5, 0, 0.5, 1))
     axis(2, at=c(-200, 1, 200, 400, 600, 800, 1000), labels=c(0.005, 1, 200, 400, 600, 800, 1000))
     z <- c(40,130)
     w <- c(-100,0)
@@ -31,3 +31,5 @@ plotFigure2 <- function(E, ifPdf=TRUE, fileName="figures/DecisionAnalysisBergenP
     lines(z, res$coef[1] + z * res$coef[2], col="red", lwd=2)
     if(ifPdf) dev.off()
 }
+
+ 

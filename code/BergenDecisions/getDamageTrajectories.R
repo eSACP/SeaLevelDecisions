@@ -6,10 +6,10 @@
 ### -- No sea level change
 ### -- Adaptation in year k for all k 
 
-getDamageTrajectories <- function(E, slopes, adaptation.cost)
+getDamageTrajectories <- function(E, par.est, slopes, adaptation.cost, inputfile)
 {
     ## Read in sea level rise projections for Bergen. 
-    load("data/Simulation.Rdata")
+    load(inputfile)
     I <- dim(sim)[1]
     
     ## Get discount rates 
@@ -36,7 +36,8 @@ getDamageTrajectories <- function(E, slopes, adaptation.cost)
         for(j in 1:85)
         {
             yearly.damage[i,j] <- orig.damage[i,j] * getDamageMult(sim[i, (j+16)],
-                                                                   damage.scenario[i])
+                                                                   damage.scenario[i],
+                                                                   E=E, slopes=slopes)
         }
         yearly.damage[i,] <- yearly.damage[i,]/accum.discount.rate
     }
@@ -49,7 +50,8 @@ getDamageTrajectories <- function(E, slopes, adaptation.cost)
         for(j in 1:85)
         {
             constant.damage[i,j] <- orig.damage[i,j] * getDamageMult(sim[i, 16], 
-                                                                     damage.scenario[i])
+                                                                     damage.scenario[i],
+                                                                     E=E, slopes=slopes)
         }
         constant.damage[i,] <- constant.damage[i,]/accum.discount.rate
     }
@@ -69,9 +71,10 @@ getDamageTrajectories <- function(E, slopes, adaptation.cost)
             for(j in 1:85)
             {
                 adapted.damage[k,i,j] <- orig.damage[i,j]/2 *
-                    getDamageMult(sim[i, (j+16)], damage.scenario[i]) +
+                    getDamageMult(sim[i, (j+16)], damage.scenario[i], E=E, slopes=slopes) +
                     orig.damage[i,j]/2 *
-                    getDamageMult(sim[i, (j+16)]-adapted.slr[j], damage.scenario[i])
+                    getDamageMult(sim[i, (j+16)]-adapted.slr[j], damage.scenario[i],
+                                  E=E, slopes=slopes)
             }
             m <- which(adapted.slr==75)[1]
             adapted.damage[k,i,m] <- adapted.damage[k,i,m] + adaptation.cost
